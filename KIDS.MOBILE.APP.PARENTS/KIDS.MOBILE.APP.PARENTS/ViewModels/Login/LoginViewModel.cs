@@ -112,7 +112,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     Preferences.Set(AppConstants.SaveAccount, true);
                     await _databaseService.UpdateAccount(user);
                 }
-                if(IsSaveAccount)
+                if(!IsSaveAccount)
                 {
                     if (Preferences.ContainsKey(AppConstants.SaveAccount))
                         Preferences.Remove(AppConstants.SaveAccount);
