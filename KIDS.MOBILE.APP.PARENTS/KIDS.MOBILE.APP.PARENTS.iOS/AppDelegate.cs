@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
-using UIKit;
-using Lottie.Forms.iOS;
+﻿using Foundation;
 using Lottie.Forms.iOS.Renderers;
+using UIKit;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
 {
@@ -25,8 +20,14 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            OtherLibraries();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
+        }
+
+        private void OtherLibraries()
+        {
+            AnimationViewRenderer.Init();
         }
     }
 }
