@@ -24,6 +24,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         private INavigationService _navigationService;
         private bool _isSaveAccount;
         private bool _isCheckLogin;
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
         public ICommand LoginCommand { get; private set; }
         public string UserName { get; set; }
         public string Password { get; set; }
@@ -58,6 +64,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             }
             try
             {
+                if (IsLoading)
+                    return;
+                IsLoading = true;
                 if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password))
                 {
                     var pass = _isCheckLogin ? Password : HashFunctionHelper.GetHashCode(Password, 1);
@@ -95,7 +104,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             }
             finally
             {
-
+                IsLoading = false;
             }
         }
         /// <summary>
@@ -110,16 +119,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                 if(IsSaveAccount && user != null)
                 {
                     Preferences.Set(AppConstants.SaveAccount, true);
-                    await _databaseService.UpdateAccount(user);
                 }
-                if(!IsSaveAccount)
+                else
                 {
                     if (Preferences.ContainsKey(AppConstants.SaveAccount))
                         Preferences.Remove(AppConstants.SaveAccount);
-                    await _databaseService.DeleteAccount();
                 }
+                await _databaseService.UpdateAccount(user);
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Crashes.TrackError(e);
             }
@@ -135,6 +144,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         /// </summary>
         private async void CheckLogin()
         {
+            IsLoading = true;
             if(Preferences.ContainsKey(AppConstants.SaveAccount))
                 if (Preferences.Get(AppConstants.SaveAccount, false))
                 {
@@ -142,9 +152,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     var user = await _databaseService.GetAccount();
                     UserName = user.NickName;
                     Password = user.Password;
-                    await Task.Delay(TimeSpan.FromMilliseconds(1500));
+                    await Task.Delay(TimeSpan.FromMilliseconds(1000));
                     Login();
                 }
+            IsLoading = false;
         }
         public override void Initialize(INavigationParameters parameters)
         {

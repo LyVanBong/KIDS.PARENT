@@ -1,4 +1,5 @@
-﻿using KIDS.MOBILE.APP.PARENTS.Services.Database;
+﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
 using KIDS.MOBILE.APP.PARENTS.Services.RequestProvider;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Account;
@@ -50,6 +51,7 @@ namespace KIDS.MOBILE.APP.PARENTS
 
         protected override void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
             NavigationService.NavigateAsync(nameof(LoginPage));
         }
