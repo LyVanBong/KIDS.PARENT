@@ -86,5 +86,59 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00003", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string _00004 {
+            get {
+                return ResourceManager.GetString("00004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        internal static string _00005 {
+            get {
+                return ResourceManager.GetString("00005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string _00006 {
+            get {
+                return ResourceManager.GetString("00006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User account or password incorrect.
+        /// </summary>
+        internal static string _00007 {
+            get {
+                return ResourceManager.GetString("00007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your username and password.
+        /// </summary>
+        internal static string _00008 {
+            get {
+                return ResourceManager.GetString("00008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No internet connection.
+        /// </summary>
+        internal static string _00009 {
+            get {
+                return ResourceManager.GetString("00009", resourceCulture);
+            }
+        }
     }
 }

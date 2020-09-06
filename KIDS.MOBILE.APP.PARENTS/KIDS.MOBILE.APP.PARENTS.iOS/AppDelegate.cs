@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Lottie.Forms.iOS;
+using Lottie.Forms.iOS.Renderers;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
 {
@@ -24,7 +26,6 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
     }
