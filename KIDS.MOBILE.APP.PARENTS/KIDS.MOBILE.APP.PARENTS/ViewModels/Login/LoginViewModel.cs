@@ -126,7 +126,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                         Preferences.Remove(AppConstants.SaveAccount);
                 }
                 await _databaseService.UpdateAccount(user);
-
             }
             catch (Exception e)
             {
@@ -144,7 +143,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         /// </summary>
         private async void CheckLogin()
         {
-            IsLoading = true;
             if(Preferences.ContainsKey(AppConstants.SaveAccount))
                 if (Preferences.Get(AppConstants.SaveAccount, false))
                 {
@@ -155,7 +153,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     await Task.Delay(TimeSpan.FromMilliseconds(1000));
                     Login();
                 }
-            IsLoading = false;
         }
         public override void Initialize(INavigationParameters parameters)
         {
