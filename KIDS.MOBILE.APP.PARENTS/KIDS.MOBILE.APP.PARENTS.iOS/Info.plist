@@ -23,11 +23,11 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>KIDS.MOBILE.APP.PARENTS</string>
+	<string>Kids Of Parent</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bsoftgroup.KIDS.MOBILE.APP.PARENTS</string>
+	<string>com.bsoftgroup.kids.of.parent</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
