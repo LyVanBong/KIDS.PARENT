@@ -16,5 +16,14 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Login
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoginView.Content = new LoginView();
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }
