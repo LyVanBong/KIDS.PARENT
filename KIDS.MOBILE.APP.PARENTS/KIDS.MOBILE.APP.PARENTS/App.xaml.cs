@@ -1,4 +1,8 @@
-﻿using KIDS.MOBILE.APP.PARENTS.ViewModels.Account;
+﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Services.Database;
+using KIDS.MOBILE.APP.PARENTS.Services.Login;
+using KIDS.MOBILE.APP.PARENTS.Services.RequestProvider;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Account;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Home;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Login;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Main;
@@ -26,6 +30,11 @@ namespace KIDS.MOBILE.APP.PARENTS
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            #region Registry Service
+            containerRegistry.Register<IDatabaseService, DatabaseService>();
+            containerRegistry.Register<ILoginService, LoginService>();
+            containerRegistry.Register<IRequestProvider, RequestProvider>();
+            #endregion
             #region Registry Page - ViewModel
 
             containerRegistry.RegisterForNavigation<MainPage,MainViewModel>();
@@ -35,10 +44,14 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<HomePage,HomeViewModel>();
 
             #endregion
+            #region Registry Dialog
+
+            #endregion
         }
 
         protected override void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
             NavigationService.NavigateAsync(nameof(LoginPage));
         }

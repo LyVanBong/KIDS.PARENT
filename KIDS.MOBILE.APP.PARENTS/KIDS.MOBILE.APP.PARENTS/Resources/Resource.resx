@@ -129,4 +129,28 @@
     <value>Account</value>
     <comment>Tài khoản</comment>
   </data>
+  <data name="00004" xml:space="preserve">
+    <value>Login</value>
+    <comment>Đăng nhập</comment>
+  </data>
+  <data name="00005" xml:space="preserve">
+    <value>Remember me</value>
+    <comment>Nhớ mật khẩu</comment>
+  </data>
+  <data name="00006" xml:space="preserve">
+    <value>Password</value>
+    <comment>Mật khẩu</comment>
+  </data>
+  <data name="00007" xml:space="preserve">
+    <value>User account or password incorrect</value>
+    <comment>Sai tài khoản hoặc mật khẩu</comment>
+  </data>
+  <data name="00008" xml:space="preserve">
+    <value>Please enter your username and password</value>
+    <comment>Tài khoản và mật khẩu không được để trống</comment>
+  </data>
+  <data name="00009" xml:space="preserve">
+    <value>No internet connection</value>
+    <comment>Không có kết nối internet</comment>
+  </data>
 </root>
