@@ -1,12 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             xmlns:LoadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:markup="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Login.LoginView">
-  <ContentView.Content>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KIDS.MOBILE.APP.PARENTS.Views.Login.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:LoadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:markup="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms">
+    <ContentView.Content>
         <Grid
             Margin="0"
             Padding="0"
@@ -43,9 +44,9 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                Source="{markup:ImageResource cover.png}"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"
+                Source="{markup:ImageResource cover.png}"
                 VerticalOptions="FillAndExpand" />
             <Frame
                 Grid.Row="1"
@@ -136,7 +137,7 @@
                 Grid.Row="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                BackgroundColor="#FDA14D"
+                BackgroundColor="#fff"
                 HeightRequest="20"
                 IsVisible="true" />
         </Grid>
