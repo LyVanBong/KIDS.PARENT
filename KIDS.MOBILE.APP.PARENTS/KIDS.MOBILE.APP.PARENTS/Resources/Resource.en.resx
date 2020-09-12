@@ -153,4 +153,8 @@
     <value>No internet connection</value>
     <comment>Không có kết nối internet</comment>
   </data>
+  <data name="00017" xml:space="preserve">
+    <value>Login failed</value>
+    <comment>Lỗi đăng nhập</comment>
+  </data>
 </root>

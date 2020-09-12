@@ -5,7 +5,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Login
 {
     public class UserModel : RealmObject
     {
-        [PrimaryKey]
+
+        [JsonProperty("ID")]
+        public string ID { get; set; }
+
+        [JsonProperty("DonVi")]
+        public string DonVi { get; set; }
+
         [JsonProperty("NguoiSuDung")]
         public string NguoiSuDung { get; set; }
 
@@ -15,34 +21,28 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Login
         [JsonProperty("Password")]
         public string Password { get; set; }
 
-        [JsonProperty("USERID")]
-        public string UserId { get; set; }
+        [JsonProperty("Role")]
+        public string Role { get; set; }
 
-        [JsonProperty("isTeacher")]
-        public string IsTeacher { get; set; }
+        [PrimaryKey]
+        [JsonProperty("StudentID")]
+        public string StudentID { get; set; }
 
-        [JsonProperty("LoaiGiaoVien")]
-        public string LoaiGiaoVien { get; set; }
+        [JsonProperty("ParentID")]
+        public string ParentID { get; set; }
 
-        [JsonProperty("TenGV")]
-        public string TenGV { get; set; }
+        [JsonProperty("ParentName")]
+        public string ParentName { get; set; }
 
-        [JsonProperty("Picture")]
-        public string Picture { get; set; }
-
-        [JsonProperty("DonVi")]
-        public string DonVi { get; set; }
+        [JsonProperty("StudentName")]
+        public string StudentName { get; set; }
 
         [JsonProperty("ClassID")]
         public string ClassID { get; set; }
 
-        [JsonProperty("ClassName")]
-        public string ClassName { get; set; }
-
         [JsonProperty("GradeID")]
         public string GradeID { get; set; }
-
-        [JsonProperty("GradeName")]
-        public string GradeName { get; set; }
     }
+
+
 }
