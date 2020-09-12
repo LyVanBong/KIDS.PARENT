@@ -2,10 +2,8 @@
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
-using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using Prism.Commands;
 using Prism.Navigation;
-using Xamarin.Forms;
 using KIDS.MOBILE.APP.PARENTS.Helpers;
 using Microsoft.AppCenter.Crashes;
 using System.Threading.Tasks;
@@ -132,7 +130,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            IsSaveAccount = false;
+            IsSaveAccount = true;
             CheckLogin();
         }
         /// <summary>
@@ -140,20 +138,21 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         /// </summary>
         private async void CheckLogin()
         {
+            
             if (Preferences.ContainsKey(AppConstants.SaveAccount))
             {
-                var user = await _databaseService.GetAccount();
-                UserName = user.NickName;
-                Password = user.Password;
                 if (Preferences.Get(AppConstants.SaveAccount, false))
                 {
                     _isCheckLogin = true;
+                    var user = await _databaseService.GetAccount();
+                    UserName = user.NickName;
+                    Password = user.Password;
                     await Task.Delay(TimeSpan.FromMilliseconds(1000));
                     Login();
                 }
             }
         }
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
         }
