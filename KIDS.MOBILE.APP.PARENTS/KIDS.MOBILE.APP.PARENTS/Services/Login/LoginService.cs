@@ -22,9 +22,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Login
                 var parameters = new List<RequestParameter>
                 {
                     new RequestParameter("UserName",user),
-                    new RequestParameter("Password",pass)
+                    new RequestParameter("PassWord",pass)
                 };
-                var data = await _requestProvider.PostAsync<UserModel>("login", parameters);
+                var data = await _requestProvider.PostAsync<UserModel>("ParentLogin", parameters);
                 return data;
             }
             catch (Exception)

@@ -140,5 +140,77 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00009", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string _00010 {
+            get {
+                return ResourceManager.GetString("00010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string _00011 {
+            get {
+                return ResourceManager.GetString("00011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out of your account.
+        /// </summary>
+        internal static string _00012 {
+            get {
+                return ResourceManager.GetString("00012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string _00013 {
+            get {
+                return ResourceManager.GetString("00013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting.
+        /// </summary>
+        internal static string _00014 {
+            get {
+                return ResourceManager.GetString("00014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string _00015 {
+            get {
+                return ResourceManager.GetString("00015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kids profile.
+        /// </summary>
+        internal static string _00016 {
+            get {
+                return ResourceManager.GetString("00016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed.
+        /// </summary>
+        internal static string _00017 {
+            get {
+                return ResourceManager.GetString("00017", resourceCulture);
+            }
+        }
     }
 }

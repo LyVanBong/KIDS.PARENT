@@ -2,10 +2,8 @@
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
-using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using Prism.Commands;
 using Prism.Navigation;
-using Xamarin.Forms;
 using KIDS.MOBILE.APP.PARENTS.Helpers;
 using Microsoft.AppCenter.Crashes;
 using System.Threading.Tasks;
@@ -31,6 +29,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             set => SetProperty(ref _isLoading, value);
         }
         public ICommand LoginCommand { get; private set; }
+        public ICommand SaveAccountCommand { get; private set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsSaveAccount
@@ -40,7 +39,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         }
 
         private IDatabaseService _databaseService;
-        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService,IPageDialogService pageDialogService)
+        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService)
         {
             _pageDialogService = pageDialogService;
             _loginService = loginService;
@@ -73,19 +72,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     var data = await _loginService.LoginAppByUserPwd(UserName, pass);
                     if (data != null)
                     {
+                       
                         if (data.Code == 0)
                         {
-                            if (data.Data.IsTeacher.Equals("2"))
-                            {
-                                await CheckSaveAccount(data.Data);
-                                await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
-                            }
-                            else
-                                await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00007, "OK");
+                            await CheckSaveAccount(data.Data);
+                            await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
                         }
                         else
                         {
-                            await _pageDialogService.DisplayAlertAsync(Resource._00002,Resource._00007,"OK");
+                            await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00017, "OK");
                         }
                     }
                     else
@@ -116,7 +111,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         {
             try
             {
-                if(IsSaveAccount && user != null)
+                if (IsSaveAccount && user != null)
                 {
                     Preferences.Set(AppConstants.SaveAccount, true);
                 }
@@ -143,7 +138,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         /// </summary>
         private async void CheckLogin()
         {
-            if(Preferences.ContainsKey(AppConstants.SaveAccount))
+            
+            if (Preferences.ContainsKey(AppConstants.SaveAccount))
+            {
                 if (Preferences.Get(AppConstants.SaveAccount, false))
                 {
                     _isCheckLogin = true;
@@ -153,8 +150,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     await Task.Delay(TimeSpan.FromMilliseconds(1000));
                     Login();
                 }
+            }
         }
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
         }
