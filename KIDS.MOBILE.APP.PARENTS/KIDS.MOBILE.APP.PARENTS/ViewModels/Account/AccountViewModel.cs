@@ -95,8 +95,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             IsLoading = true;
             try
             {
-                //var student = await _userService.GetStudent(AppConstants.User.NguoiSuDung);
-                var student = await _userService.GetStudent("b7a98617-5494-4fec-a346-6bdbcb76084c");
+                var student = await _userService.GetStudent(AppConstants.User.NguoiSuDung);
                 if (student != null)
                 {
                     if(student.Code > 0)
