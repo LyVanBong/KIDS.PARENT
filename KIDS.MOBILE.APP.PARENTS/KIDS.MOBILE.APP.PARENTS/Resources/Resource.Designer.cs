@@ -140,5 +140,14 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00009", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed.
+        /// </summary>
+        internal static string _00017 {
+            get {
+                return ResourceManager.GetString("00017", resourceCulture);
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
         /// <summary>
         /// Uri web form
         /// </summary>
-        internal static string UriBaseWebForm = "http://kids.ntdauto.com";
+        internal static string UriBaseWebForm = "http://school.hkids.edu.vn/";
         /// <summary>
         /// Kiểm tra người dùng có lưu tài khoản hay không
         /// </summary>
@@ -30,6 +30,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
         /// <summary>
         /// Base Url API
         /// </summary>
-        internal static string UrlApiApp = "http://webapi.ntdauto.com/api/v1/";
+        internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
     }
 }
