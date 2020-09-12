@@ -153,6 +153,34 @@
     <value>Không có kết nối internet</value>
     <comment>Không có kết nối internet</comment>
   </data>
+  <data name="00010" xml:space="preserve">
+    <value>Huỷ bỏ</value>
+    <comment>Huỷ bỏ</comment>
+  </data>
+  <data name="00011" xml:space="preserve">
+    <value>Đồng ý</value>
+    <comment>Đồng ý</comment>
+  </data>
+  <data name="00012" xml:space="preserve">
+    <value>Đăng xuất khỏi tài khoản của bạn</value>
+    <comment>Đăng xuất khỏi tài khoản của bạn</comment>
+  </data>
+  <data name="00013" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00014" xml:space="preserve">
+    <value>Cài đặt</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00015" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00016" xml:space="preserve">
+    <value>Hồ sơ bé</value>
+    <comment>Hồ sơ bé</comment>
+  </data>
   <data name="00017" xml:space="preserve">
     <value>Lỗi đăng nhập</value>
     <comment>Lỗi đăng nhập</comment>

@@ -2,10 +2,8 @@
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
-using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using Prism.Commands;
 using Prism.Navigation;
-using Xamarin.Forms;
 using KIDS.MOBILE.APP.PARENTS.Helpers;
 using Microsoft.AppCenter.Crashes;
 using System.Threading.Tasks;
