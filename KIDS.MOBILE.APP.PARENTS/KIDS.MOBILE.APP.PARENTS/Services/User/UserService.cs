@@ -64,5 +64,22 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
                 throw;
             }
         }
+        public async Task<ResponseModel<int>> UpdateUser(string user,string pass)
+        {
+            try
+            {
+                var parameters = new List<RequestParameter>
+                {
+                    new RequestParameter("UserName",user),
+                    new RequestParameter("PassWord",pass)
+                };
+                var data = await _requestProvider.PostAsync<int>("ChangePassWord", parameters);
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

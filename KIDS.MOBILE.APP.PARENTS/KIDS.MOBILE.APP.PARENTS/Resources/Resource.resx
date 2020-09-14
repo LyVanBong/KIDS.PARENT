@@ -185,4 +185,56 @@
     <value>Login failed</value>
     <comment>Lỗi đăng nhập</comment>
   </data>
+  <data name="00018" xml:space="preserve">
+    <value>Data cannot be null</value>
+    <comment>Dữ liệu không được bỏ trống</comment>
+  </data>
+  <data name="00019" xml:space="preserve">
+    <value>New password do not match</value>
+    <comment>Mật khẩu mới không khớp</comment>
+  </data>
+  <data name="00020" xml:space="preserve">
+    <value>Old password is incorrect</value>
+    <comment>Mật khẩu cũ không chính xác</comment>
+  </data>
+  <data name="00021" xml:space="preserve">
+    <value>An error occurred during execution</value>
+    <comment>Đã xảy ra lỗi trong khi thực thi</comment>
+  </data>
+  <data name="00022" xml:space="preserve">
+    <value>Password must be at least 8 characters long </value>
+    <comment>Mật khẩu phải dài ít nhất 8 ký tự</comment>
+  </data>
+  <data name="00023" xml:space="preserve">
+    <value>Password has been changed</value>
+    <comment>Mật khẩu đã được thay đổi</comment>
+  </data>
+  <data name="00024" xml:space="preserve">
+    <value>Current password</value>
+    <comment>Mật khẩu hiện tại</comment>
+  </data>
+  <data name="00025" xml:space="preserve">
+    <value>New password</value>
+    <comment>Mật khẩu mới</comment>
+  </data>
+  <data name="00026" xml:space="preserve">
+    <value>Re-type Password</value>
+    <comment>Nhập lại mật khẩu</comment>
+  </data>
+  <data name="00027" xml:space="preserve">
+    <value>Change Password</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00028" xml:space="preserve">
+    <value>Enter current password</value>
+    <comment>Nhập mật khẩu hiện tại</comment>
+  </data>
+  <data name="00029" xml:space="preserve">
+    <value>Enter new password</value>
+    <comment>Nhập mật khẩu mới</comment>
+  </data>
+  <data name="00030" xml:space="preserve">
+    <value>Confirm new password</value>
+    <comment>Xác nhận mật khẩu mới</comment>
+  </data>
 </root>

@@ -78,15 +78,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                             await CheckSaveAccount(data.Data);
                             await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
                         }
-                        else
+                        else if(data.Code == -1)
                         {
-                            await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00017, "OK");
+                            await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00007, "OK");
                         }
+                        else
+                            await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00017, "OK");
                     }
                     else
-                    {
-                        await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00007, "OK");
-                    }
+                        await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00017, "OK");
                 }
                 else
                 {
@@ -152,7 +152,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                 }
             }
         }
-        public override async void Initialize(INavigationParameters parameters)
+        public override void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
         }

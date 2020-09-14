@@ -3,6 +3,7 @@ using KIDS.MOBILE.APP.PARENTS.Models.User;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.User;
+using KIDS.MOBILE.APP.PARENTS.Views.Account;
 using KIDS.MOBILE.APP.PARENTS.Views.User;
 using Microsoft.AppCenter.Crashes;
 using Prism;
@@ -51,6 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         public event EventHandler IsActiveChanged;
         public ICommand LogoutCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
+        public ICommand ChangePasswordCommand{ get; set; }
         public AccountViewModel(INavigationService navigationService,IPageDialogService pageDialogService,IDatabaseService databaseService,IUserService userService)
         {
             _userService = userService;
@@ -59,6 +61,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             _navigationService = navigationService;
             LogoutCommand = new Command(async () => await logout());
             ProfileCommand = new Command(async () => await Profile());
+            ChangePasswordCommand = new Command(async () => await ChangePassword());
+        }
+        private async Task ChangePassword()
+        {
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
         }
         private async Task logout()
         {

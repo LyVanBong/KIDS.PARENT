@@ -39,6 +39,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             #endregion
             #region Registry Page - ViewModel
 
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
             containerRegistry.RegisterForNavigation<MainPage,MainViewModel>();
             containerRegistry.RegisterForNavigation<NotificationPage,NotificationViewModel>();
             containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
@@ -47,7 +48,6 @@ namespace KIDS.MOBILE.APP.PARENTS
 
             #endregion
             #region Registry Dialog
-
             #endregion
         }
 
