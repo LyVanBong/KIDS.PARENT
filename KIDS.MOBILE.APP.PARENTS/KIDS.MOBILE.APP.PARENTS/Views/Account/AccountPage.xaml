@@ -155,11 +155,11 @@
                     </Frame>
                     <Frame Grid.Row="1">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" Command="{Binding ChangePasswordCommand}" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource evolution.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00015}" />
+                            <Image Grid.Column="0" Source="{markupExtension:ImageResource changepassword.png}" />
+                            <Label Grid.Column="1" Text="{markupExtension:Translate 00027}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="2">

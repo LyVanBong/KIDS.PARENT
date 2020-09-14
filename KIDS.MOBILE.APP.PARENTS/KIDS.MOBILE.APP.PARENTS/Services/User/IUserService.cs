@@ -27,5 +27,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
         /// <param name="TeacherId"></param>
         /// <returns></returns>
         Task<ResponseModel<IEnumerable<TeacherModel>>> GetTeacher(string teacherid);
+        /// <summary>
+        /// Cập nhật mật khẩu của User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        Task<ResponseModel<int>> UpdateUser(string user, string pass);
     }
 }
