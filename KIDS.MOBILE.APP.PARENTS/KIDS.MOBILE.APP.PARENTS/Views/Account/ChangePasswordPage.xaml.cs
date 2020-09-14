@@ -16,11 +16,5 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Account
         {
             InitializeComponent();
         }
-        private void FocusePassword_OnFocused(object sender, FocusEventArgs e)
-        {
-        }
-        private void UnfocusePassword_OnUnfocused(object sender, FocusEventArgs e)
-        {
-        }
     }
 }
