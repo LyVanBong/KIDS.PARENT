@@ -5,7 +5,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Login
 {
     public class UserModel : RealmObject
     {
-
+        [PrimaryKey]
         [JsonProperty("ID")]
         public string ID { get; set; }
 
@@ -24,7 +24,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Login
         [JsonProperty("Role")]
         public string Role { get; set; }
 
-        [PrimaryKey]
         [JsonProperty("StudentID")]
         public string StudentID { get; set; }
 
