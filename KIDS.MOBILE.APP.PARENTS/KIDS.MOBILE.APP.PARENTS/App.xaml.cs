@@ -43,15 +43,15 @@ namespace KIDS.MOBILE.APP.PARENTS
             #endregion
             #region Registry Page - ViewModel
 
-            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();
-            containerRegistry.RegisterForNavigation<NotificationPage, NotificationViewModel>();
-            containerRegistry.RegisterForNavigation<AccountPage, AccountViewModel>();
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
+            containerRegistry.RegisterForNavigation<MainPage,MainViewModel>();
+            containerRegistry.RegisterForNavigation<NotificationPage,NotificationViewModel>();
+            containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
 
             #endregion
             #region Registry Dialog
-
             #endregion
         }
 
