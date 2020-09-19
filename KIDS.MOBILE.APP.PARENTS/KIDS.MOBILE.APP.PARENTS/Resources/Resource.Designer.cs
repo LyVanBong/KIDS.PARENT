@@ -329,5 +329,32 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00030", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        internal static string _00031 {
+            get {
+                return ResourceManager.GetString("00031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        internal static string _00032 {
+            get {
+                return ResourceManager.GetString("00032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account info.
+        /// </summary>
+        internal static string _00033 {
+            get {
+                return ResourceManager.GetString("00033", resourceCulture);
+            }
+        }
     }
 }

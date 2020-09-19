@@ -8,11 +8,13 @@ using KIDS.MOBILE.APP.PARENTS.ViewModels.Home;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Login;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Main;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Notification;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.User;
 using KIDS.MOBILE.APP.PARENTS.Views.Account;
 using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using KIDS.MOBILE.APP.PARENTS.Views.Login;
 using KIDS.MOBILE.APP.PARENTS.Views.Main;
 using KIDS.MOBILE.APP.PARENTS.Views.Notification;
+using KIDS.MOBILE.APP.PARENTS.Views.User;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -38,7 +40,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<IRequestProvider, RequestProvider>();
             #endregion
             #region Registry Page - ViewModel
-
+            containerRegistry.RegisterForNavigation<UserProfilePage, UserProfileViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
             containerRegistry.RegisterForNavigation<MainPage,MainViewModel>();
             containerRegistry.RegisterForNavigation<NotificationPage,NotificationViewModel>();
