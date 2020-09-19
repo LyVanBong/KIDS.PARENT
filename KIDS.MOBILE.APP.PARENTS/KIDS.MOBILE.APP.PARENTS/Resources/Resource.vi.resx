@@ -185,4 +185,56 @@
     <value>Lỗi đăng nhập</value>
     <comment>Lỗi đăng nhập</comment>
   </data>
+  <data name="00018" xml:space="preserve">
+    <value>Dữ liệu không được bỏ trống</value>
+    <comment>Dữ liệu không được bỏ trống</comment>
+  </data>
+  <data name="00019" xml:space="preserve">
+    <value>Mật khẩu mới không khớp</value>
+    <comment>Mật khẩu mới không khớp</comment>
+  </data>
+  <data name="00020" xml:space="preserve">
+    <value>Mật khẩu cũ không chính xác</value>
+    <comment>Mật khẩu cũ không chính xác</comment>
+  </data>
+  <data name="00021" xml:space="preserve">
+    <value>Đã xảy ra lỗi trong khi thực thi</value>
+    <comment>Đã xảy ra lỗi trong khi thực thi</comment>
+  </data>
+  <data name="00022" xml:space="preserve">
+    <value>Mật khẩu phải dài ít nhất 8 ký tự</value>
+    <comment>Mật khẩu phải dài ít nhất 8 ký tự</comment>
+  </data>
+  <data name="00023" xml:space="preserve">
+    <value>Mật khẩu đã được thay đổi</value>
+    <comment>Mật khẩu đã được thay đổi</comment>
+  </data>
+  <data name="00024" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+    <comment>Mật khẩu cũ</comment>
+  </data>
+  <data name="00025" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+    <comment>Mật khẩu mới</comment>
+  </data>
+  <data name="00026" xml:space="preserve">
+    <value>Nhập lại mật khẩu</value>
+    <comment>Nhập lại mật khẩu</comment>
+  </data>
+  <data name="00027" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00028" xml:space="preserve">
+    <value>Nhập mật khẩu hiện tại</value>
+    <comment>Nhập mật khẩu hiện tại</comment>
+  </data>
+  <data name="00029" xml:space="preserve">
+    <value>Nhập mật khẩu mới</value>
+    <comment>Nhập mật khẩu mới</comment>
+  </data>
+  <data name="00030" xml:space="preserve">
+    <value>Xác nhận mật khẩu mới</value>
+    <comment>Xác nhận mật khẩu mới</comment>
+  </data>
 </root>

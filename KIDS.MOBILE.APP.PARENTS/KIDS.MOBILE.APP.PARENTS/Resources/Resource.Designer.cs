@@ -212,5 +212,122 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00017", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data cannot be null.
+        /// </summary>
+        internal static string _00018 {
+            get {
+                return ResourceManager.GetString("00018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password do not match.
+        /// </summary>
+        internal static string _00019 {
+            get {
+                return ResourceManager.GetString("00019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password is incorrect.
+        /// </summary>
+        internal static string _00020 {
+            get {
+                return ResourceManager.GetString("00020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred during execution.
+        /// </summary>
+        internal static string _00021 {
+            get {
+                return ResourceManager.GetString("00021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be at least 8 characters long .
+        /// </summary>
+        internal static string _00022 {
+            get {
+                return ResourceManager.GetString("00022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password has been changed.
+        /// </summary>
+        internal static string _00023 {
+            get {
+                return ResourceManager.GetString("00023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        internal static string _00024 {
+            get {
+                return ResourceManager.GetString("00024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        internal static string _00025 {
+            get {
+                return ResourceManager.GetString("00025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-type Password.
+        /// </summary>
+        internal static string _00026 {
+            get {
+                return ResourceManager.GetString("00026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        internal static string _00027 {
+            get {
+                return ResourceManager.GetString("00027", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter current password.
+        /// </summary>
+        internal static string _00028 {
+            get {
+                return ResourceManager.GetString("00028", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter new password.
+        /// </summary>
+        internal static string _00029 {
+            get {
+                return ResourceManager.GetString("00029", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm new password.
+        /// </summary>
+        internal static string _00030 {
+            get {
+                return ResourceManager.GetString("00030", resourceCulture);
+            }
+        }
     }
 }
