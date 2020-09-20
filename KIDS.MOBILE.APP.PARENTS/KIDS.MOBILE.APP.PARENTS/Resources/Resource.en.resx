@@ -237,4 +237,16 @@
     <value>Confirm new password</value>
     <comment>Xác nhận mật khẩu mới</comment>
   </data>
+  <data name="00031" xml:space="preserve">
+    <value>Male</value>
+    <comment>Nam</comment>
+  </data>
+  <data name="00032" xml:space="preserve">
+    <value>Female</value>
+    <comment>Nữ</comment>
+  </data>
+  <data name="00033" xml:space="preserve">
+    <value>Account info</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
 </root>

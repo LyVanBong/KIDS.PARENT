@@ -237,4 +237,16 @@
     <value>Xác nhận mật khẩu mới</value>
     <comment>Xác nhận mật khẩu mới</comment>
   </data>
+  <data name="00031" xml:space="preserve">
+    <value>Nam</value>
+    <comment>Nam</comment>
+  </data>
+  <data name="00032" xml:space="preserve">
+    <value>Nữ</value>
+    <comment>Nữ</comment>
+  </data>
+  <data name="00033" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
 </root>
