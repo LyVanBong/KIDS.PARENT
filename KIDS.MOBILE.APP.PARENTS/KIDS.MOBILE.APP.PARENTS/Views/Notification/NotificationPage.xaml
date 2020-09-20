@@ -91,7 +91,7 @@
                                        BackgroundColor="Transparent"
                                        FontSize="12"
                                        MaxLines="1"
-                                       Text="{Binding DateTmp}"
+                                       Text="{Binding Date}"
                                        TextColor="Gray" />
                             </StackLayout>
                             <BoxView Grid.Row="1"

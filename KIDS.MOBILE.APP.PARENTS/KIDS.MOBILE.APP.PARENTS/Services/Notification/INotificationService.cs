@@ -7,6 +7,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Notification
 {
     public interface INotificationService
     {
-        Task<ResponseModel<IEnumerable<NotificationModel>>> GetNotification(string classId, string schoolId, string studentId);
+        Task<ResponseModel<IEnumerable<NotificationModel>>> GetNotification(string SchoolId, string studentId);
     }
 }

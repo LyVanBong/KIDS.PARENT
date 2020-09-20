@@ -15,17 +15,16 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Notification
         {
             _requestProvider = requestProvider;
         }
-        public async Task<ResponseModel<IEnumerable<NotificationModel>>> GetNotification(string classId, string schoolId, string studentId)
+        public async Task<ResponseModel<IEnumerable<NotificationModel>>> GetNotification(string SchoolId, string studentId)
         {
             try
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("ClassId",classId),
-                    new RequestParameter("SchoolId",schoolId),
-                    new RequestParameter("StudentID",schoolId),
+                    new RequestParameter("SchoolId",SchoolId),
+                    new RequestParameter("StudentID",studentId),
                 };
-                var data = await _requestProvider.GetAsync<IEnumerable<NotificationModel>>("Notification/Studen", para);
+                var data = await _requestProvider.GetAsync<IEnumerable<NotificationModel>>("Notification/Student", para);
                 return data;
             }
             catch (Exception)
