@@ -60,7 +60,7 @@
                                 Margin="5"
                                 Aspect="AspectFill"
                                 BackgroundColor="{StaticResource BackgroundImage}"
-                                Source="{Binding ImageNotification}">
+                                Source="{Binding Picture}">
                                 <Image.Clip>
                                     <EllipseGeometry
                                         Center="25,25"
