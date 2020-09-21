@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Models.Notification;
 using KIDS.MOBILE.APP.PARENTS.Services.Notification;
+using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
 {
@@ -14,6 +18,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
         private INotificationService _notificationService;
         private bool _isActive;
         private bool _loadNotification;
+        private string _count;
+
+        public string Count
+        {
+            get => _count;
+            set => SetProperty(ref _count, value);
+        }
 
         public bool LoadNotification
         {
@@ -37,6 +48,43 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
         public NotificationViewModel(INotificationService notificationService)
         {
             _notificationService = notificationService;
+        }
+
+        public override void Initialize(INavigationParameters parameters)
+        {
+            base.Initialize(parameters);
+            Device.StartTimer(TimeSpan.FromMilliseconds(800), () =>
+            {
+                new Thread(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () => { await CountNotification(); });
+                }).Start();
+                return true;
+            });
+        }
+
+        private async Task CountNotification()
+        {
+            try
+            {
+                var data = await _notificationService.CountNotification();
+                if (data != null && data.Data > 0)
+                {
+                    if (data.Data > 9)
+                    {
+                        Count = "9+";
+                    }
+
+                    if (data.Data < 10 && data.Data > 0)
+                    {
+                        Count = data.Data + "";
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
         }
 
         private async void IsActiveChange()
