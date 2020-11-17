@@ -356,5 +356,23 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00033", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interact with school.
+        /// </summary>
+        internal static string _00038 {
+            get {
+                return ResourceManager.GetString("00038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parents need to know.
+        /// </summary>
+        internal static string _00039 {
+            get {
+                return ResourceManager.GetString("00039", resourceCulture);
+            }
+        }
     }
 }

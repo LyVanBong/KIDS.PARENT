@@ -249,4 +249,12 @@
     <value>Account info</value>
     <comment>Thông tin tài khoản</comment>
   </data>
+  <data name="00038" xml:space="preserve">
+    <value>Interact with school</value>
+    <comment>Tương tác với nhà trường</comment>
+  </data>
+  <data name="00039" xml:space="preserve">
+    <value>Parents need to know</value>
+    <comment>Cha mẹ cần biết</comment>
+  </data>
 </root>
