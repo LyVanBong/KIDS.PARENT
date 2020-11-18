@@ -72,8 +72,36 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\loading.json" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage3.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage4.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage5.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage6.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Splash.xcassets\AppIcons.appiconset\Webp.net-resizeimage7.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png">
       <Visible>false</Visible>
