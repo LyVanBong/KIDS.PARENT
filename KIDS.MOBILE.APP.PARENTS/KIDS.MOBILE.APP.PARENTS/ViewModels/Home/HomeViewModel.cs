@@ -71,17 +71,17 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         {
             return new List<MenuItem>
             {
-                new MenuItem{ Title = "Loi nhan",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Xin nghi",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Dan thuoc",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Don ve",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Hoat dong hang ngay",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Tin tuc",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Album anh",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Hoc phi",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Suc khoe",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Khao sat",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = "Danh gia dinh ky",Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00040,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00047,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00048,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00050,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
             };
         }
 
