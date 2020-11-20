@@ -4,12 +4,14 @@ using KIDS.MOBILE.APP.PARENTS.Services.Login;
 using KIDS.MOBILE.APP.PARENTS.Services.Notification;
 using KIDS.MOBILE.APP.PARENTS.Services.RequestProvider;
 using KIDS.MOBILE.APP.PARENTS.Services.User;
+using KIDS.MOBILE.APP.PARENTS.ViewModels;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Account;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Home;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Login;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Main;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Notification;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.User;
+using KIDS.MOBILE.APP.PARENTS.Views;
 using KIDS.MOBILE.APP.PARENTS.Views.Account;
 using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using KIDS.MOBILE.APP.PARENTS.Views.Login;
@@ -51,7 +53,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
-
+            containerRegistry.RegisterForNavigation<NewsPage, NewsViewModel>();
             #endregion
             #region Registry Dialog
             #endregion

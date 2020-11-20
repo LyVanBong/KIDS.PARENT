@@ -87,5 +87,7 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
+    <Folder Include="ViewModels\News\" />
+    <Folder Include="Views\News\" />
   </ItemGroup>
 </Project>
