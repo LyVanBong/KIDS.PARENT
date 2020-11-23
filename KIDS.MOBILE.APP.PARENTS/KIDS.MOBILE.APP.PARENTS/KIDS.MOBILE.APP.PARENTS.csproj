@@ -49,6 +49,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Tuition\TuitionPage.xaml.cs">
+      <DependentUpon>TuitionPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -90,5 +93,9 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
+    <Folder Include="ViewModels\News\" />
+    <Folder Include="Views\News\" />
+    <Folder Include="Views\Tuition\" />
+    <Folder Include="ViewModels\Tuition\" />
   </ItemGroup>
 </Project>
