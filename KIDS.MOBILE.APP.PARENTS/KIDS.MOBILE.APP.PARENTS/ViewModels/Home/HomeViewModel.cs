@@ -54,7 +54,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             NeededTitle = Resource._00039;
             MenuItems = new ObservableCollection<MenuItem>(CreateMenuList());
             NeededItems = new ObservableCollection<NeededItem>(CreateNeededList());
-            ItemTappedCommand = new Command<MenuItem>(async (sender) => await OnMenuClicked(sender)); ;
+            ItemTappedCommand = new Command<MenuItem>(async (sender) => await OnMenuClicked(sender));
         }
 
         private async Task OnMenuClicked(MenuItem sender)

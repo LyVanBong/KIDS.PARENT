@@ -9,7 +9,9 @@ using KIDS.MOBILE.APP.PARENTS.ViewModels.Home;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Login;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Main;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Notification;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Survey;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.User;
+using KIDS.MOBILE.APP.PARENTS.Views;
 using KIDS.MOBILE.APP.PARENTS.Views.Account;
 using KIDS.MOBILE.APP.PARENTS.Views.Home;
 using KIDS.MOBILE.APP.PARENTS.Views.Login;
@@ -51,6 +53,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
+            containerRegistry.RegisterForNavigation<SurveyPage, SurveyViewModel>();
 
             #endregion
             #region Registry Dialog
@@ -61,7 +64,7 @@ namespace KIDS.MOBILE.APP.PARENTS
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
-            NavigationService.NavigateAsync(nameof(LoginPage));
+            NavigationService.NavigateAsync(nameof(SurveyPage));
         }
         protected override void OnStart()
         {
