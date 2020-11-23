@@ -1,5 +1,4 @@
 ﻿using Foundation;
-using Lottie.Forms.iOS.Renderers;
 using UIKit;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
@@ -27,7 +26,6 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
 
         private void OtherLibraries()
         {
-            AnimationViewRenderer.Init();
         }
     }
 }

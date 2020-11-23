@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Lottie.Forms.Droid;
 
 namespace KIDS.MOBILE.APP.PARENTS.Droid
 {
@@ -22,7 +21,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Droid
 
         private void OtherLibraries()
         {
-            AnimationViewRenderer.Init();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
