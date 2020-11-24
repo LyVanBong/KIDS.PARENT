@@ -249,4 +249,28 @@
     <value>Thông tin tài khoản</value>
     <comment>Thông tin tài khoản</comment>
   </data>
+  <data name="00051" xml:space="preserve">
+    <value>Hồ sơ của bé</value>
+    <comment>Hồ sơ của bé</comment>
+  </data>
+  <data name="00052" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+  <data name="00053" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00054" xml:space="preserve">
+    <value>Cài đặt</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00055" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00056" xml:space="preserve">
+    <value>Lớp</value>
+    <comment>Lớp</comment>
+  </data>
 </root>

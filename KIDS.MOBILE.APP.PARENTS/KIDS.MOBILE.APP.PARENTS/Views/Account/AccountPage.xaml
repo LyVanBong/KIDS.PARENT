@@ -51,9 +51,9 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding Student.Name}" />
+                                <Span Text="{Binding User.ParentName}" />
                                 <Span Text=" (" />
-                                <Span Text="{Binding Student.NickName}" />
+                                <Span Text="{Binding User.NickName}" />
                                 <Span Text=")" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -71,6 +71,8 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
+                                <Span Text="{markupExtension:Translate 00056}" />
+                                <Span Text=": " />
                                 <Span Text="{Binding Student.ClassName}" />
                                 <Span Text=" - " />
                                 <Span Text="{Binding Student.SchoolName}" />
@@ -113,7 +115,7 @@
                     Margin="10,50,10,80"
                     Padding="0"
                     BackgroundColor="Transparent"
-                    RowDefinitions="40,40,40,40"
+                    RowDefinitions="40,40,40,40,40"
                     RowSpacing="20"
                     VerticalOptions="StartAndExpand">
                     <Grid.Resources>
@@ -144,13 +146,15 @@
                             </Style>
                         </ResourceDictionary>
                     </Grid.Resources>
-                    <Frame Grid.Row="0">
+                    <Frame Grid.Row="0" >
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{prism:NavigateTo 'ListStudentsPage'}" Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource listpeoples.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00016}" />
+                            <Image Grid.Column="0"
+                                   Source="{markupExtension:ImageResource icon_students.png}" />
+                            <Label Grid.Column="1"
+                                   Text="{markupExtension:Translate 00051}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="1">
@@ -158,8 +162,10 @@
                             <TapGestureRecognizer Tapped="AnimationTap_OnTapped" Command="{Binding ChangePasswordCommand}" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource changepassword.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00027}" />
+                            <Image Grid.Column="0"
+                                   Source="{markupExtension:ImageResource icon_accountinformation.png}" />
+                            <Label Grid.Column="1"
+                                   Text="{markupExtension:Translate 00052}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="2">
@@ -167,8 +173,10 @@
                             <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource setting.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00014}" />
+                            <Image Grid.Column="0"
+                                   Source="{markupExtension:ImageResource icon_changepassword.png}" />
+                            <Label Grid.Column="1"
+                                   Text="{markupExtension:Translate 00053}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="3">
@@ -176,8 +184,22 @@
                             <TapGestureRecognizer Command="{Binding LogoutCommand}" Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource logout.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00013}" />
+                            <Image Grid.Column="0"
+                                   Source="{markupExtension:ImageResource icon_setting.png}" />
+                            <Label Grid.Column="1"
+                                   Text="{markupExtension:Translate 00054}" />
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="4">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}"
+                                                  Tapped="AnimationTap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Grid.Column="0"
+                                   Source="{markupExtension:ImageResource icon_logout.png}" />
+                            <Label Grid.Column="1"
+                                   Text="{markupExtension:Translate 00055}" />
                         </Grid>
                     </Frame>
                 </Grid>

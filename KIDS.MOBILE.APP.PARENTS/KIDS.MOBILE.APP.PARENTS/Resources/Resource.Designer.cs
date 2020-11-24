@@ -356,5 +356,59 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00033", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student&apos;s profile.
+        /// </summary>
+        internal static string _00051 {
+            get {
+                return ResourceManager.GetString("00051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account information.
+        /// </summary>
+        internal static string _00052 {
+            get {
+                return ResourceManager.GetString("00052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string _00053 {
+            get {
+                return ResourceManager.GetString("00053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting.
+        /// </summary>
+        internal static string _00054 {
+            get {
+                return ResourceManager.GetString("00054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        internal static string _00055 {
+            get {
+                return ResourceManager.GetString("00055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class.
+        /// </summary>
+        internal static string _00056 {
+            get {
+                return ResourceManager.GetString("00056", resourceCulture);
+            }
+        }
     }
 }

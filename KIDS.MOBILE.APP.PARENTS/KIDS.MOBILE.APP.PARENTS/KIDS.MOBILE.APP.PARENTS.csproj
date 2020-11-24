@@ -13,11 +13,21 @@
   <ItemGroup>
     <None Remove="Resources\Images\close.png" />
     <None Remove="Resources\Images\cover.png" />
+    <None Remove="Resources\Images\icon_accountinformation.png" />
+    <None Remove="Resources\Images\icon_changepassword.png" />
+    <None Remove="Resources\Images\icon_logout.png" />
+    <None Remove="Resources\Images\icon_setting.png" />
+    <None Remove="Resources\Images\icon_students.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\close.png" />
     <EmbeddedResource Include="Resources\Images\cover.png" />
+    <EmbeddedResource Include="Resources\Images\icon_accountinformation.png" />
+    <EmbeddedResource Include="Resources\Images\icon_changepassword.png" />
+    <EmbeddedResource Include="Resources\Images\icon_logout.png" />
+    <EmbeddedResource Include="Resources\Images\icon_setting.png" />
+    <EmbeddedResource Include="Resources\Images\icon_students.png" />
   </ItemGroup>
 
   <ItemGroup>
