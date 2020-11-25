@@ -84,6 +84,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>18.2.0.58</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Cards">
+      <Version>18.2.0.58</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>18.2.0.58</Version>
     </PackageReference>
@@ -153,8 +156,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\testImage.jpg">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>

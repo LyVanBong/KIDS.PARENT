@@ -28,6 +28,8 @@ using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -57,10 +59,11 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
-            containerRegistry.RegisterForNavigation<NewsPage, MessageViewModel>();
+            containerRegistry.RegisterForNavigation<NewsPage, NewsViewModel>();
             containerRegistry.RegisterForNavigation<TuitionPage, TuitionViewModel>();
             containerRegistry.RegisterForNavigation<SurveyPage, SurveyViewModel>();
             containerRegistry.RegisterForNavigation<MessagePage, MessageViewModel>();
+            containerRegistry.RegisterForNavigation<LeaveRequestPage, LeaveRequestViewModel>();
 
             #endregion
             #region Registry Dialog
@@ -71,7 +74,7 @@ namespace KIDS.MOBILE.APP.PARENTS
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
-            NavigationService.NavigateAsync(nameof(MessagePage));
+            NavigationService.NavigateAsync(nameof(LeaveRequestPage));
         }
         protected override void OnStart()
         {

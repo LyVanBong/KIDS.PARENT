@@ -197,6 +197,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>18.2.0.58</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Cards">
+      <Version>18.2.0.58</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>18.2.0.58</Version>
     </PackageReference>
