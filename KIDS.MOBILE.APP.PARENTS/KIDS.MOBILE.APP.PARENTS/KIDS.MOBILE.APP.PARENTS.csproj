@@ -18,6 +18,8 @@
     <None Remove="Resources\Images\icon_logout.png" />
     <None Remove="Resources\Images\icon_setting.png" />
     <None Remove="Resources\Images\icon_students.png" />
+    <None Remove="Resources\Images\icon_student_info.png" />
+    <None Remove="Resources\Images\icon_student_male_info.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,8 @@
     <EmbeddedResource Include="Resources\Images\icon_logout.png" />
     <EmbeddedResource Include="Resources\Images\icon_setting.png" />
     <EmbeddedResource Include="Resources\Images\icon_students.png" />
+    <EmbeddedResource Include="Resources\Images\icon_student_info.png" />
+    <EmbeddedResource Include="Resources\Images\icon_student_male_info.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,6 +80,9 @@
     <EmbeddedResource Update="Views\Account\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Account\StudentProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -95,5 +102,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
+    <Folder Include="Models\Account\" />
   </ItemGroup>
 </Project>

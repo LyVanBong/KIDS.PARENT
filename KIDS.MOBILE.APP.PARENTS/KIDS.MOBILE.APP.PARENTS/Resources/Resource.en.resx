@@ -273,4 +273,24 @@
     <value>Class</value>
     <comment>Lớp</comment>
   </data>
+  <data name="00057" xml:space="preserve">
+    <value>School</value>
+    <comment>Trường</comment>
+  </data>
+  <data name="00058" xml:space="preserve">
+    <value>Student ID</value>
+    <comment>Mã học sinh</comment>
+  </data>
+  <data name="00059" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Ngày sinh</comment>
+  </data>
+  <data name="00060" xml:space="preserve">
+    <value>Gender</value>
+    <comment>Giới tính</comment>
+  </data>
+  <data name="00061" xml:space="preserve">
+    <value>Nickname</value>
+    <comment>Biết danh</comment>
+  </data>
 </root>

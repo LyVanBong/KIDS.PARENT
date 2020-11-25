@@ -31,7 +31,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         private bool _isLoading;
         private bool _isGoToProfile;
         private UserModel _user;
-
+        public ICommand SelectFeatureCommand { get; private set; }
         public UserModel User
         {
             get => _user;
@@ -71,7 +71,29 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             LogoutCommand = new Command(async () => await logout());
             ProfileCommand = new Command(async () => await Profile());
             ChangePasswordCommand = new Command(async () => await ChangePassword());
+            SelectFeatureCommand = new Command<string>(SelectFeature);
         }
+
+        private void SelectFeature(string key)
+        {
+            if (IsLoading) 
+                return;
+            IsLoading = true;
+            switch (key)
+            {
+                case "0":
+                    _navigationService.NavigateAsync(nameof(StudentProfilePage), null, true, true);
+                    break;
+                case "1":
+                    break;
+                case "2":
+                    _navigationService.NavigateAsync(nameof(ChangePasswordPage), null, true, true);
+                    break;
+            }
+
+            IsLoading = false;
+        }
+
         private async Task ChangePassword()
         {
             await _navigationService.NavigateAsync(nameof(ChangePasswordPage));

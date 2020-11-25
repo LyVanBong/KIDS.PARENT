@@ -44,6 +44,8 @@ namespace KIDS.MOBILE.APP.PARENTS
 
             #endregion
             #region Registry Page - ViewModel
+
+            containerRegistry.RegisterForNavigation<StudentProfilePage,StudentProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserProfilePage, UserProfileViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();

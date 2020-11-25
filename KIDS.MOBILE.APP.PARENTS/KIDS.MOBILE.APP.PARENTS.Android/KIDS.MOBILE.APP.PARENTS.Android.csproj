@@ -147,7 +147,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_student_male_info.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KIDS.MOBILE.APP.PARENTS\KIDS.MOBILE.APP.PARENTS.csproj">
       <Project>{A6F240AA-DC28-4025-BA1C-D58C93E1B2B7}</Project>

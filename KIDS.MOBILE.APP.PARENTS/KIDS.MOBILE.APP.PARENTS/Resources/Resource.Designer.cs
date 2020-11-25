@@ -410,5 +410,50 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00056", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to School.
+        /// </summary>
+        internal static string _00057 {
+            get {
+                return ResourceManager.GetString("00057", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        internal static string _00058 {
+            get {
+                return ResourceManager.GetString("00058", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string _00059 {
+            get {
+                return ResourceManager.GetString("00059", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        internal static string _00060 {
+            get {
+                return ResourceManager.GetString("00060", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nickname.
+        /// </summary>
+        internal static string _00061 {
+            get {
+                return ResourceManager.GetString("00061", resourceCulture);
+            }
+        }
     }
 }
