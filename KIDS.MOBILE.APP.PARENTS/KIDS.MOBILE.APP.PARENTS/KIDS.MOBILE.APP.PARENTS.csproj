@@ -52,6 +52,12 @@
     <Compile Update="Views\Tuition\TuitionPage.xaml.cs">
       <DependentUpon>TuitionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\MessageTemplate.xaml.cs">
+      <DependentUpon>MessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Message\MessagePage.xaml.cs">
+      <DependentUpon>MessagePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -86,9 +92,6 @@
     <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SurveyPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -97,5 +100,9 @@
     <Folder Include="Views\News\" />
     <Folder Include="Views\Tuition\" />
     <Folder Include="ViewModels\Tuition\" />
+    <Folder Include="ViewModels\Message\" />
+    <Folder Include="Views\Message\" />
+    <Folder Include="Views\Survey\" />
+    <Folder Include="Views\Templates\" />
   </ItemGroup>
 </Project>

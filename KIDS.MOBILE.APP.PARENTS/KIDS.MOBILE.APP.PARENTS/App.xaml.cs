@@ -27,6 +27,7 @@ using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Prism.Unity;
+using KIDS.MOBILE.APP.PARENTS.Views.Message;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -56,9 +57,10 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
-            containerRegistry.RegisterForNavigation<NewsPage, NewsViewModel>();
+            containerRegistry.RegisterForNavigation<NewsPage, MessageViewModel>();
             containerRegistry.RegisterForNavigation<TuitionPage, TuitionViewModel>();
             containerRegistry.RegisterForNavigation<SurveyPage, SurveyViewModel>();
+            containerRegistry.RegisterForNavigation<MessagePage, MessageViewModel>();
 
             #endregion
             #region Registry Dialog
@@ -69,7 +71,7 @@ namespace KIDS.MOBILE.APP.PARENTS
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
-            NavigationService.NavigateAsync(nameof(SurveyPage));
+            NavigationService.NavigateAsync(nameof(MessagePage));
         }
         protected override void OnStart()
         {
