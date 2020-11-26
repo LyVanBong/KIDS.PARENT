@@ -1,5 +1,13 @@
 ﻿using Foundation;
-using Lottie.Forms.iOS.Renderers;
+using Prism;
+using Prism.Ioc;
+using Syncfusion.SfDataGrid.XForms.iOS;
+using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.XForms.iOS.ProgressBar;
+using Syncfusion.XForms.iOS.TabView;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using Syncfusion.XForms.Pickers.iOS;
 using UIKit;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
@@ -21,13 +29,27 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             OtherLibraries();
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSInitializer()));
             return base.FinishedLaunching(app, options);
         }
 
         private void OtherLibraries()
         {
-            AnimationViewRenderer.Init();
+            SfLinearProgressBarRenderer.Init();
+            SfCircularProgressBarRenderer.Init();
+            SfComboBoxRenderer.Init();
+            SfDataGridRenderer.Init();
+            SfTimePickerRenderer.Init();
+            SfCheckBoxRenderer.Init();
+            SfTabViewRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
+        }
+    }
+    public class iOSInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register any platform specific implementations
         }
     }
 }

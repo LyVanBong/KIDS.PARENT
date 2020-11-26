@@ -40,7 +40,7 @@
                     Padding="0"
                     ColumnSpacing="0"
                     RowDefinitions="170,40,40,40,40,40,40,80"
-                    RowSpacing="15"
+                    RowSpacing="25"
                     VerticalOptions="FillAndExpand">
                     <Image
                         Grid.Row="0"

@@ -21,7 +21,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Account
             var frame = sender as Frame;
             if (frame != null)
             {
-                frame.BackgroundColor = Color.FromHex("#4d80e4");
+                frame.BackgroundColor = Color.FromHex("#b2ebf2");
                 Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
                 {
                     frame.BackgroundColor = Color.Transparent;

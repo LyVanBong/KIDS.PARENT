@@ -76,7 +76,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
                     await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00020, "OK");
                     return;
                 }
-                pass = HashFunctionHelper.GetHashCode(NewPassword, 1);
+                pass = HashFunctionHelper.GetHashCode(NewPassword, 0);
                 var data = await _userService.UpdateUser(User.NickName, pass);
                 if(data.Code!=30)
                 {
@@ -92,7 +92,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
                     return;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

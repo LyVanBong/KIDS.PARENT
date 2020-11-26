@@ -27,7 +27,7 @@ namespace KIDS.MOBILE.APP.PARENTS
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer)
+        public App(IPlatformInitializer initializer) : base(initializer)
         {
 
         }
@@ -44,11 +44,13 @@ namespace KIDS.MOBILE.APP.PARENTS
 
             #endregion
             #region Registry Page - ViewModel
+
+            containerRegistry.RegisterForNavigation<StudentProfilePage,StudentProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserProfilePage, UserProfileViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
-            containerRegistry.RegisterForNavigation<MainPage,MainViewModel>();
-            containerRegistry.RegisterForNavigation<NotificationPage,NotificationViewModel>();
-            containerRegistry.RegisterForNavigation<AccountPage,AccountViewModel>();
+            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();
+            containerRegistry.RegisterForNavigation<NotificationPage, NotificationViewModel>();
+            containerRegistry.RegisterForNavigation<AccountPage, AccountViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
 
@@ -65,8 +67,8 @@ namespace KIDS.MOBILE.APP.PARENTS
         }
         protected override void OnStart()
         {
-            AppCenter.Start("android=69882c41-844f-4e47-ad19-80aa4647b134;" +
-                            "ios=787d2acd-76d9-4df0-8be7-461d028c77f2;}",
+            AppCenter.Start(AppCenterConstants.AppSecretAndroid +
+                            AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
         }
 

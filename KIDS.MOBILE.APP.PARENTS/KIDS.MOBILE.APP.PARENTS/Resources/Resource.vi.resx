@@ -249,4 +249,48 @@
     <value>Thông tin tài khoản</value>
     <comment>Thông tin tài khoản</comment>
   </data>
+  <data name="00051" xml:space="preserve">
+    <value>Hồ sơ của bé</value>
+    <comment>Hồ sơ của bé</comment>
+  </data>
+  <data name="00052" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+  <data name="00053" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00054" xml:space="preserve">
+    <value>Cài đặt</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00055" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00056" xml:space="preserve">
+    <value>Lớp</value>
+    <comment>Lớp</comment>
+  </data>
+  <data name="00057" xml:space="preserve">
+    <value>Trường</value>
+    <comment>Trường</comment>
+  </data>
+  <data name="00058" xml:space="preserve">
+    <value>Mã học sinh</value>
+    <comment>Mã học sinh</comment>
+  </data>
+  <data name="00059" xml:space="preserve">
+    <value>Ngày sinh</value>
+    <comment>Ngày sinh</comment>
+  </data>
+  <data name="00060" xml:space="preserve">
+    <value>Giới tính</value>
+    <comment>Giới tính</comment>
+  </data>
+  <data name="00061" xml:space="preserve">
+    <value>Biết danh</value>
+    <comment>Biết danh</comment>
+  </data>
 </root>
