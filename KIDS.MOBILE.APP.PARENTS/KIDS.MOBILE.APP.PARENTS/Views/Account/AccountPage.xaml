@@ -215,7 +215,7 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="AnimationTap_OnTapped"
-                                Command="{Binding SelectFeatureCommand}"
+                                Command="{Binding ProfileCommand}"
                                 CommandParameter="1" />
                         </Frame.GestureRecognizers>
                         <Grid
@@ -250,7 +250,6 @@
                         Grid.Row="3">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding LogoutCommand}"
                                 Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid

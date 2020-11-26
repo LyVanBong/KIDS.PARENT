@@ -213,4 +213,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_student_male_info.png" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

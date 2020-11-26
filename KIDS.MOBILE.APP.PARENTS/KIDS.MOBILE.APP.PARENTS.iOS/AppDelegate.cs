@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
@@ -20,12 +22,19 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             OtherLibraries();
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSInitializer()));
             return base.FinishedLaunching(app, options);
         }
 
         private void OtherLibraries()
         {
+        }
+    }
+    public class iOSInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register any platform specific implementations
         }
     }
 }

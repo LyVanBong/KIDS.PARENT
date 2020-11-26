@@ -27,7 +27,7 @@ namespace KIDS.MOBILE.APP.PARENTS
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer)
+        public App(IPlatformInitializer initializer) : base(initializer)
         {
 
         }
