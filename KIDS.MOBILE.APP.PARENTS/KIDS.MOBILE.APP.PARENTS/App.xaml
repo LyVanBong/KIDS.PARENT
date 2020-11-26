@@ -3,11 +3,11 @@
     x:Class="KIDS.MOBILE.APP.PARENTS.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"  >
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="SummitButton" TargetType="Button">
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize" Value="18" />
                 <Setter Property="HeightRequest" Value="55" />
                 <Setter Property="BackgroundColor" Value="#69D2E7" />
                 <Setter Property="TextColor" Value="White" />

@@ -329,5 +329,131 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00030", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        internal static string _00031 {
+            get {
+                return ResourceManager.GetString("00031", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        internal static string _00032 {
+            get {
+                return ResourceManager.GetString("00032", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account info.
+        /// </summary>
+        internal static string _00033 {
+            get {
+                return ResourceManager.GetString("00033", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student&apos;s profile.
+        /// </summary>
+        internal static string _00051 {
+            get {
+                return ResourceManager.GetString("00051", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account information.
+        /// </summary>
+        internal static string _00052 {
+            get {
+                return ResourceManager.GetString("00052", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string _00053 {
+            get {
+                return ResourceManager.GetString("00053", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting.
+        /// </summary>
+        internal static string _00054 {
+            get {
+                return ResourceManager.GetString("00054", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        internal static string _00055 {
+            get {
+                return ResourceManager.GetString("00055", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class.
+        /// </summary>
+        internal static string _00056 {
+            get {
+                return ResourceManager.GetString("00056", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to School.
+        /// </summary>
+        internal static string _00057 {
+            get {
+                return ResourceManager.GetString("00057", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        internal static string _00058 {
+            get {
+                return ResourceManager.GetString("00058", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string _00059 {
+            get {
+                return ResourceManager.GetString("00059", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        internal static string _00060 {
+            get {
+                return ResourceManager.GetString("00060", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nickname.
+        /// </summary>
+        internal static string _00061 {
+            get {
+                return ResourceManager.GetString("00061", resourceCulture);
+            }
+        }
     }
 }

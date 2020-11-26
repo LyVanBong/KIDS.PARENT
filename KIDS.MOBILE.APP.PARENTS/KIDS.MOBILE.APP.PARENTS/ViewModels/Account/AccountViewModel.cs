@@ -14,12 +14,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.PARENTS.Models.Login;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
 {
-    public class AccountViewModel:BaseViewModel,IActiveAware
+    public class AccountViewModel : BaseViewModel, IActiveAware
     {
         private IUserService _userService;
         private IDatabaseService _databaseService;
@@ -29,6 +30,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         private bool _isActive;
         private bool _isLoading;
         private bool _isGoToProfile;
+        private UserModel _user;
+        public ICommand SelectFeatureCommand { get; private set; }
+        public UserModel User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
         public bool IsGoToProfile
         {
             get => _isGoToProfile;
@@ -52,8 +61,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         public event EventHandler IsActiveChanged;
         public ICommand LogoutCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
-        public ICommand ChangePasswordCommand{ get; set; }
-        public AccountViewModel(INavigationService navigationService,IPageDialogService pageDialogService,IDatabaseService databaseService,IUserService userService)
+        public ICommand ChangePasswordCommand { get; set; }
+        public AccountViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IDatabaseService databaseService, IUserService userService)
         {
             _userService = userService;
             _databaseService = databaseService;
@@ -62,14 +71,36 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             LogoutCommand = new Command(async () => await logout());
             ProfileCommand = new Command(async () => await Profile());
             ChangePasswordCommand = new Command(async () => await ChangePassword());
+            SelectFeatureCommand = new Command<string>(SelectFeature);
         }
+
+        private void SelectFeature(string key)
+        {
+            if (IsLoading) 
+                return;
+            IsLoading = true;
+            switch (key)
+            {
+                case "0":
+                    _navigationService.NavigateAsync(nameof(StudentProfilePage), null, true, true);
+                    break;
+                case "1":
+                    break;
+                case "2":
+                    _navigationService.NavigateAsync(nameof(ChangePasswordPage), null, true, true);
+                    break;
+            }
+
+            IsLoading = false;
+        }
+
         private async Task ChangePassword()
         {
             await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
         }
         private async Task logout()
         {
-            var answer = await _pageDialogService.DisplayAlertAsync(Resource._00002,Resource._00012,Resource._00011,Resource._00010);
+            var answer = await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00012, Resource._00011, Resource._00010);
             if (answer)
             {
                 await _databaseService.DeleteAccount();
@@ -102,10 +133,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             IsLoading = true;
             try
             {
-                var student = await _userService.GetStudent(AppConstants.User.NguoiSuDung);
+                User = AppConstants.User;
+                var student = await _userService.GetStudent(User.StudentID);
                 if (student != null)
                 {
-                    if(student.Code > 0)
+                    if (student.Code > 0)
                     {
                         var data = new ObservableCollection<StudentModel>(student.Data);
                         Student = data.ElementAt(0);

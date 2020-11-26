@@ -237,4 +237,60 @@
     <value>Confirm new password</value>
     <comment>Xác nhận mật khẩu mới</comment>
   </data>
+  <data name="00031" xml:space="preserve">
+    <value>Male</value>
+    <comment>Nam</comment>
+  </data>
+  <data name="00032" xml:space="preserve">
+    <value>Female</value>
+    <comment>Nữ</comment>
+  </data>
+  <data name="00033" xml:space="preserve">
+    <value>Account info</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+  <data name="00051" xml:space="preserve">
+    <value>Student's profile</value>
+    <comment>Hồ sơ của bé</comment>
+  </data>
+  <data name="00052" xml:space="preserve">
+    <value>Account information</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+  <data name="00053" xml:space="preserve">
+    <value>Change password</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00054" xml:space="preserve">
+    <value>Setting</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00055" xml:space="preserve">
+    <value>Log out</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00056" xml:space="preserve">
+    <value>Class</value>
+    <comment>Lớp</comment>
+  </data>
+  <data name="00057" xml:space="preserve">
+    <value>School</value>
+    <comment>Trường</comment>
+  </data>
+  <data name="00058" xml:space="preserve">
+    <value>Student ID</value>
+    <comment>Mã học sinh</comment>
+  </data>
+  <data name="00059" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Ngày sinh</comment>
+  </data>
+  <data name="00060" xml:space="preserve">
+    <value>Gender</value>
+    <comment>Giới tính</comment>
+  </data>
+  <data name="00061" xml:space="preserve">
+    <value>Nickname</value>
+    <comment>Biết danh</comment>
+  </data>
 </root>

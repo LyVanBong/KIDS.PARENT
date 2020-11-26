@@ -68,17 +68,17 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                 IsLoading = true;
                 if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password))
                 {
-                    var pass = _isCheckLogin ? Password : HashFunctionHelper.GetHashCode(Password, 1);
+                    var pass = _isCheckLogin ? Password : HashFunctionHelper.GetHashCode(Password, 0);
                     var data = await _loginService.LoginAppByUserPwd(UserName, pass);
                     if (data != null)
                     {
-                       
+
                         if (data.Code == 0)
                         {
                             await CheckSaveAccount(data.Data);
                             await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
                         }
-                        else if(data.Code == -1)
+                        else if (data.Code == -1)
                         {
                             await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00007, "OK");
                         }
@@ -114,6 +114,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                 if (IsSaveAccount && user != null)
                 {
                     Preferences.Set(AppConstants.SaveAccount, true);
+                    AppConstants.User = user;
                 }
                 else
                 {
@@ -138,7 +139,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         /// </summary>
         private async void CheckLogin()
         {
-            
+
             if (Preferences.ContainsKey(AppConstants.SaveAccount))
             {
                 if (Preferences.Get(AppConstants.SaveAccount, false))
@@ -147,7 +148,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     var user = await _databaseService.GetAccount();
                     UserName = user.NickName;
                     Password = user.Password;
-                    await Task.Delay(TimeSpan.FromMilliseconds(1000));
                     Login();
                 }
             }

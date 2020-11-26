@@ -1,12 +1,181 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KIDS.MOBILE.APP.PARENTS.Views.User.UserProfilePage">
+<ContentPage 
+    x:Class="KIDS.MOBILE.APP.PARENTS.Views.User.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.NavigationView;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid
+            Margin="0"
+            Padding="0"
+            ColumnDefinitions="*,80"
+            ColumnSpacing="0"
+            RowDefinitions="40,*"
+            RowSpacing="0">
+            <navigationView:NavigationView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="{markupExtension:Translate 00033}" />
+            <ScrollView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundApp}"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    Margin="10,0"
+                    Padding="0"
+                    ColumnSpacing="0"
+                    RowDefinitions="170,40,40,40,40,40,40,80"
+                    RowSpacing="25"
+                    VerticalOptions="FillAndExpand">
+                    <Image
+                        Grid.Row="0"
+                        Margin="0"
+                        Aspect="Fill"
+                        BackgroundColor="{StaticResource BackgroundImage}"
+                        HeightRequest="150"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{Binding User.Picture}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="150">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="75,75"
+                                RadiusX="75"
+                                RadiusY="75" />
+                        </Image.Clip>
+                    </Image>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="1"
+                        Margin="0"
+                        FocusedColor="White"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Name"
+                        LeadingViewPosition="Inside">
+                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Name}"/>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x1F464;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="2"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Email"
+                        LeadingViewPosition="Inside">
+                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Email}"/>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x1F4E7;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="3"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Phone Number"
+                        LeadingViewPosition="Inside">
+                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Mobile}"/>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x1F4DE;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="4"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Date of birth"
+                        LeadingViewPosition="Inside">
+                        <DatePicker Margin="0" TextColor="Black" Date="{Binding User.DOB}" FontSize="18"/>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x1F4C6;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="5"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Sex"
+                        LeadingViewPosition="Inside">
+                        <Picker
+                            x:Name="gender"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,4,0"
+                            SelectedIndex="{Binding User.Sex}"
+                            VerticalOptions="CenterAndExpand">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <markupExtension:Translate Text="00031" />
+                                    <markupExtension:Translate Text="00032" />
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x26A4;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="6"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        ContainerBackgroundColor="White"
+                        OutlineCornerRadius="10"
+                        HeightRequest="40"
+                        Hint="Address"
+                        LeadingViewPosition="Inside">
+                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Address}"/>
+                        <textInputLayout:SfTextInputLayout.LeadingView>
+                            <Label Margin="0" Text="&#x1F3E1;" FontSize="20" />
+                        </textInputLayout:SfTextInputLayout.LeadingView>
+                    </textInputLayout:SfTextInputLayout>
+                    <Button
+                        Grid.Row="7"
+                        BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                        Command="{Binding UpdateProfileCommand}"
+                        CornerRadius="10"
+                        FontSize="16"
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Text="Cập nhật"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        WidthRequest="150" />
+                </Grid>
+            </ScrollView>
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsVisible="{Binding IsLoading}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
