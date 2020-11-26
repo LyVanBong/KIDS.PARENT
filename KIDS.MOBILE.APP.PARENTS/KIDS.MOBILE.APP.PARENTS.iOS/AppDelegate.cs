@@ -1,6 +1,13 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfDataGrid.XForms.iOS;
+using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.XForms.iOS.ProgressBar;
+using Syncfusion.XForms.iOS.TabView;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using Syncfusion.XForms.Pickers.iOS;
 using UIKit;
 
 namespace KIDS.MOBILE.APP.PARENTS.iOS
@@ -28,6 +35,14 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
 
         private void OtherLibraries()
         {
+            SfLinearProgressBarRenderer.Init();
+            SfCircularProgressBarRenderer.Init();
+            SfComboBoxRenderer.Init();
+            SfDataGridRenderer.Init();
+            SfTimePickerRenderer.Init();
+            SfCheckBoxRenderer.Init();
+            SfTabViewRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
         }
     }
     public class iOSInitializer : IPlatformInitializer
