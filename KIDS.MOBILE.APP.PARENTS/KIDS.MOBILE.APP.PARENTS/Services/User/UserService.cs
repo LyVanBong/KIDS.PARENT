@@ -8,13 +8,38 @@ using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.PARENTS.Services.User
 {
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
         private IRequestProvider _requestProvider;
         public UserService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
         }
+
+        public async Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel)
+        {
+            try
+            {
+                var parameters = new List<RequestParameter>
+                {
+                    new RequestParameter("ID",parentModel.ID),
+                    new RequestParameter("Name",parentModel.Name),
+                    new RequestParameter("Sex",parentModel.Sex+""),
+                    new RequestParameter("Dob",parentModel.DOB),
+                    new RequestParameter("Mobile",parentModel.Mobile),
+                    new RequestParameter("Email",parentModel.Email),
+                    new RequestParameter("Address",parentModel.Address),
+                    new RequestParameter("Picture",parentModel.Picture),
+                };
+                var data = await _requestProvider.PostAsync<int>("Student/ParentUpdate", parameters);
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<ResponseModel<IEnumerable<StudentModel>>> GetStudent(string studentID)
         {
             try
@@ -64,7 +89,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
                 throw;
             }
         }
-        public async Task<ResponseModel<int>> UpdateUser(string user,string pass)
+        public async Task<ResponseModel<int>> UpdateUser(string user, string pass)
         {
             try
             {

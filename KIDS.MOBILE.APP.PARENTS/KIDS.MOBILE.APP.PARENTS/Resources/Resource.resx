@@ -293,4 +293,12 @@
     <value>Nickname</value>
     <comment>Biết danh</comment>
   </data>
+  <data name="00062" xml:space="preserve">
+    <value>Successful </value>
+    <comment>Thành công</comment>
+  </data>
+  <data name="00063" xml:space="preserve">
+    <value>Error</value>
+    <comment>Lỗi phát sinh</comment>
+  </data>
 </root>

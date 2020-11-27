@@ -45,7 +45,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             #endregion
             #region Registry Page - ViewModel
 
-            containerRegistry.RegisterForNavigation<StudentProfilePage,StudentProfileViewModel>();
+            containerRegistry.RegisterForNavigation<StudentProfilePage, StudentProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserProfilePage, UserProfileViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();
@@ -61,15 +61,15 @@ namespace KIDS.MOBILE.APP.PARENTS
 
         protected override void OnInitialized()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
             InitializeComponent();
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
+            AppCenter.Start(AppCenterConstants.AppSecretAndroid +
+                            AppCenterConstants.AppSecretiOS,
+                typeof(Analytics), typeof(Crashes));
             NavigationService.NavigateAsync(nameof(LoginPage));
         }
         protected override void OnStart()
         {
-            AppCenter.Start(AppCenterConstants.AppSecretAndroid +
-                            AppCenterConstants.AppSecretiOS,
-                typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

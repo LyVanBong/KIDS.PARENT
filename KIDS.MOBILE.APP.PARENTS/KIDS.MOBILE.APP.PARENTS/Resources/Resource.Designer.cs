@@ -455,5 +455,23 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00061", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful .
+        /// </summary>
+        internal static string _00062 {
+            get {
+                return ResourceManager.GetString("00062", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string _00063 {
+            get {
+                return ResourceManager.GetString("00063", resourceCulture);
+            }
+        }
     }
 }

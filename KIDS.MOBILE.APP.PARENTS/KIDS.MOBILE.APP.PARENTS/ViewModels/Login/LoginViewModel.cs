@@ -68,7 +68,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                 IsLoading = true;
                 if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Password))
                 {
-                    var pass = _isCheckLogin ? Password : HashFunctionHelper.GetHashCode(Password, 0);
+                    var pass = _isCheckLogin ? Password : HashFunctionHelper.GetHashCode(Password, 1);
                     var data = await _loginService.LoginAppByUserPwd(UserName, pass);
                     if (data != null)
                     {

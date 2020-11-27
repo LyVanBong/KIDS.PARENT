@@ -10,6 +10,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
     public interface IUserService
     {
         /// <summary>
+        /// cập nhật lại thông tin phu huynh
+        /// </summary>
+        /// <param name="parentModel"></param>
+        /// <returns></returns>
+        Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel);
+        /// <summary>
         /// Lấy thông tin học sinh
         /// </summary>
         /// <param name="classId"></param>
