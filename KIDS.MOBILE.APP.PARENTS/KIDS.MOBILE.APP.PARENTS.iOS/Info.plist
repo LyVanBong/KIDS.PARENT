@@ -25,7 +25,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.bsoftgroup.hk.parent</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.1</string>
+	<string>1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -35,7 +35,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1</string>
+	<string>1.1.1</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 </dict>
