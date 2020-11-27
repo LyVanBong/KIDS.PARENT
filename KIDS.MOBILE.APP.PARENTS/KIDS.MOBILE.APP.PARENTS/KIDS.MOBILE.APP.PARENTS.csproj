@@ -59,6 +59,9 @@
     <Compile Update="Views\Message\MessagePage.xaml.cs">
       <DependentUpon>MessagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\HealthCare\HealthCarePage.xaml.cs">
+      <DependentUpon>HealthCarePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -108,5 +111,7 @@
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Survey\" />
     <Folder Include="Views\Templates\" />
+    <Folder Include="ViewModels\HeatlCare\" />
+    <Folder Include="Views\HealthCare\" />
   </ItemGroup>
 </Project>
