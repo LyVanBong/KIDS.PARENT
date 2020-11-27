@@ -10,7 +10,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Database
     public class DatabaseService :IDatabaseService
     {
         private RealmConfiguration _realmConfiguration;
-        private byte[] _encryptionkey;
         public DatabaseService()
         {
             _realmConfiguration = new RealmConfiguration(AppConstants.RealmConfiguration);

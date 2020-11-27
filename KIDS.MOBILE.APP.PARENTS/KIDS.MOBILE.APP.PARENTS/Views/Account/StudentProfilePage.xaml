@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.PARENTS.Views.Account.StudentProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:markupExtensions="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.NavigationView;assembly=KIDS.MOBILE.APP.PARENTS"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            RowDefinitions="40,Auto">
+            <navigationView:NavigationView Grid.Row="0" Text="{markupExtensions:Translate 00051}" />
+            <Frame
+                Grid.Row="1"
+                Margin="10"
+                Padding="0"
+                BorderColor="{StaticResource BackgroundColorNavBar}"
+                CornerRadius="10"
+                HasShadow="False">
+                <Grid ColumnDefinitions="150,*" RowDefinitions="30,20,20,20,20,20,40">
+                    <Image
+                        Grid.Row="0"
+                        Grid.RowSpan="7"
+                        Grid.Column="0"
+                        Margin="0,10"
+                        Aspect="Fill"
+                        Source="{markupExtensions:ImageResource icon_student_info.png}">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding StudentModel.Sex}"
+                                TargetType="Image"
+                                Value="True">
+                                <Setter Property="Image.Source" Value="icon_student_male_info.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="18"
+                        Text="{Binding StudentModel.Name}"
+                        TextColor="#000" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00061}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.NickName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00060}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.TmpDOB}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00059}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.TmpDOB}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00058}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.NickName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00056}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.ClassName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        FontSize="14"
+                        TextColor="#000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{markupExtensions:Translate 00057}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding StudentModel.SchoolName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

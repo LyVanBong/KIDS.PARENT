@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
     x:Class="KIDS.MOBILE.APP.PARENTS.Views.Account.AccountPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -51,10 +51,14 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding Student.Name}" />
-                                <Span Text=" (" />
-                                <Span Text="{Binding Student.NickName}" />
-                                <Span Text=")" />
+                                <Span
+                                    Text="{Binding User.ParentName}" />
+                                <Span
+                                    Text=" (" />
+                                <Span
+                                    Text="{Binding User.NickName}" />
+                                <Span
+                                    Text=")" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -71,9 +75,16 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding Student.ClassName}" />
-                                <Span Text=" - " />
-                                <Span Text="{Binding Student.SchoolName}" />
+                                <Span
+                                    Text="{markupExtension:Translate 00056}" />
+                                <Span
+                                    Text=": " />
+                                <Span
+                                    Text="{Binding Student.ClassName}" />
+                                <Span
+                                    Text=" - " />
+                                <Span
+                                    Text="{Binding Student.SchoolName}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -102,7 +113,8 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ProfileCommand}" />
+                    <TapGestureRecognizer
+                        Command="{Binding ProfileCommand}" />
                 </BoxView.GestureRecognizers>
             </BoxView>
             <ScrollView
@@ -113,71 +125,158 @@
                     Margin="10,50,10,80"
                     Padding="0"
                     BackgroundColor="Transparent"
-                    RowDefinitions="40,40,40,40"
+                    RowDefinitions="40,40,40,40,40"
                     RowSpacing="20"
                     VerticalOptions="StartAndExpand">
                     <Grid.Resources>
                         <ResourceDictionary>
-                            <Style TargetType="Frame">
-                                <Setter Property="Margin" Value="0" />
-                                <Setter Property="Padding" Value="0" />
-                                <Setter Property="BorderColor" Value="{StaticResource BackgroundColorNavBar}" />
-                                <Setter Property="HasShadow" Value="False" />
-                                <Setter Property="CornerRadius" Value="10" />
-                                <Setter Property="BackgroundColor" Value="Transparent" />
-                                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                            <Style
+                                TargetType="Frame">
+                                <Setter
+                                    Property="Margin"
+                                    Value="0" />
+                                <Setter
+                                    Property="Padding"
+                                    Value="0" />
+                                <Setter
+                                    Property="BorderColor"
+                                    Value="{StaticResource BackgroundColorNavBar}" />
+                                <Setter
+                                    Property="HasShadow"
+                                    Value="False" />
+                                <Setter
+                                    Property="CornerRadius"
+                                    Value="10" />
+                                <Setter
+                                    Property="BackgroundColor"
+                                    Value="Transparent" />
+                                <Setter
+                                    Property="HorizontalOptions"
+                                    Value="FillAndExpand" />
+                                <Setter
+                                    Property="VerticalOptions"
+                                    Value="FillAndExpand" />
                             </Style>
-                            <Style TargetType="Image">
-                                <Setter Property="Margin" Value="10,0,0,0" />
-                                <Setter Property="Aspect" Value="AspectFit" />
-                                <Setter Property="WidthRequest" Value="30" />
+                            <Style
+                                TargetType="Image">
+                                <Setter
+                                    Property="Margin"
+                                    Value="10,0,0,0" />
+                                <Setter
+                                    Property="Aspect"
+                                    Value="AspectFit" />
+                                <Setter
+                                    Property="WidthRequest"
+                                    Value="30" />
                             </Style>
-                            <Style TargetType="Label">
-                                <Setter Property="TextColor" Value="#000000" />
-                                <Setter Property="FontSize" Value="16" />
-                                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                                <Setter Property="BackgroundColor" Value="Transparent" />
+                            <Style
+                                TargetType="Label">
+                                <Setter
+                                    Property="TextColor"
+                                    Value="#000000" />
+                                <Setter
+                                    Property="FontSize"
+                                    Value="16" />
+                                <Setter
+                                    Property="VerticalOptions"
+                                    Value="CenterAndExpand" />
+                                <Setter
+                                    Property="BackgroundColor"
+                                    Value="Transparent" />
                             </Style>
-                            <Style TargetType="Grid">
-                                <Setter Property="ColumnSpacing" Value="15" />
+                            <Style
+                                TargetType="Grid">
+                                <Setter
+                                    Property="ColumnSpacing"
+                                    Value="15" />
                             </Style>
                         </ResourceDictionary>
                     </Grid.Resources>
-                    <Frame Grid.Row="0">
+                    <Frame
+                        Grid.Row="0">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{prism:NavigateTo 'ListStudentsPage'}" Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer
+                                Command="{Binding SelectFeatureCommand}"
+                                CommandParameter="0"
+                                Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource listpeoples.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00016}" />
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_students.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00051}" />
                         </Grid>
                     </Frame>
-                    <Frame Grid.Row="1">
+                    <Frame
+                        Grid.Row="1">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" Command="{Binding ChangePasswordCommand}" />
+                            <TapGestureRecognizer
+                                Tapped="AnimationTap_OnTapped"
+                                Command="{Binding ProfileCommand}"
+                                CommandParameter="1" />
                         </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource changepassword.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00027}" />
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_accountinformation.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00052}" />
                         </Grid>
                     </Frame>
-                    <Frame Grid.Row="2">
+                    <Frame
+                        Grid.Row="2">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer
+                                Command="{Binding SelectFeatureCommand}"
+                                CommandParameter="2"
+                                Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource setting.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00014}" />
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_changepassword.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00053}" />
                         </Grid>
                     </Frame>
-                    <Frame Grid.Row="3">
+                    <Frame
+                        Grid.Row="3">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LogoutCommand}" Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer
+                                Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource logout.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00013}" />
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_setting.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00054}" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Grid.Row="4">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding LogoutCommand}"
+                                Tapped="AnimationTap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_logout.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00055}" />
                         </Grid>
                     </Frame>
                 </Grid>

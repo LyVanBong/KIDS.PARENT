@@ -40,7 +40,7 @@
                     Padding="0"
                     ColumnSpacing="0"
                     RowDefinitions="170,40,40,40,40,40,40,80"
-                    RowSpacing="15"
+                    RowSpacing="25"
                     VerticalOptions="FillAndExpand">
                     <Image
                         Grid.Row="0"
@@ -83,7 +83,7 @@
                         HeightRequest="40"
                         Hint="Email"
                         LeadingViewPosition="Inside">
-                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Email}"/>
+                        <Entry Margin="0" Keyboard="Email" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Email}"/>
                         <textInputLayout:SfTextInputLayout.LeadingView>
                             <Label Margin="0" Text="&#x1F4E7;" FontSize="20" />
                         </textInputLayout:SfTextInputLayout.LeadingView>
@@ -97,7 +97,7 @@
                         HeightRequest="40"
                         Hint="Phone Number"
                         LeadingViewPosition="Inside">
-                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" TextColor="Black" Text="{Binding User.Mobile}"/>
+                        <Entry Margin="0" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" TextColor="Black" Text="{Binding User.Mobile}"/>
                         <textInputLayout:SfTextInputLayout.LeadingView>
                             <Label Margin="0" Text="&#x1F4DE;" FontSize="20" />
                         </textInputLayout:SfTextInputLayout.LeadingView>
@@ -168,7 +168,7 @@
                         Text="Cập nhật"
                         TextColor="White"
                         VerticalOptions="Center"
-                        WidthRequest="150" />
+                        WidthRequest="200" />
                 </Grid>
             </ScrollView>
             <loadingView:LoadingView
