@@ -21,7 +21,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         private INavigationService _navigationService;
         private UserModel User;
         private bool _isLoading;
-        public bool IsLoading 
+        public bool IsLoading
         {
             get => _isLoading;
             set => SetProperty(ref _isLoading, value);
@@ -31,7 +31,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         public string RetypeNewPass { get; set; }
         public ICommand UpdatePassCommand { get; private set; }
         public ICommand GoBackCommand { get; set; }
-        public ChangePasswordViewModel(ILoginService loginService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService,INavigationService navigationService)
+        public ChangePasswordViewModel(ILoginService loginService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService, INavigationService navigationService)
         {
             _navigationService = navigationService;
             _databaseService = databaseService;
@@ -52,7 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
                     await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00018, "OK");
                     return;
                 }
-                if(NewPassword.Length<8)
+                if (NewPassword.Length < 8)
                 {
                     await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00022, "OK");
 
@@ -64,21 +64,21 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
                     return;
                 }
                 var pass = HashFunctionHelper.GetHashCode(OldPassword, 1);
-                if (string.Compare(User.Password, pass, true) != 0)
+                if (User.Password == pass)
                 {
-                    var checkData = await _loginService.LoginAppByUserPwd(User.NickName,pass);
-                    if(checkData != null)
-                    if (checkData.Code != 0)
-                    {
-                        await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00021, "OK");
-                        return;
-                    }
+                    var checkData = await _loginService.LoginAppByUserPwd(User.NickName, pass);
+                    if (checkData != null)
+                        if (checkData.Code != 0)
+                        {
+                            await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00021, "OK");
+                            return;
+                        }
                     await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00020, "OK");
                     return;
                 }
-                pass = HashFunctionHelper.GetHashCode(NewPassword, 0);
+                pass = HashFunctionHelper.GetHashCode(NewPassword, 1);
                 var data = await _userService.UpdateUser(User.NickName, pass);
-                if(data.Code!=30)
+                if (data.Code != 30)
                 {
                     await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00021, "OK");
                     return;
