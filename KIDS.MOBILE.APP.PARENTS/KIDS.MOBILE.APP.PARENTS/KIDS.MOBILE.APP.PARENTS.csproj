@@ -36,13 +36,16 @@
 
   <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.7" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.0.0" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.2" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Plugin.Badge" Version="2.3.1" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
     <PackageReference Include="Realm" Version="5.1.2" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.2.0.58" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.3.0.51" />
@@ -60,6 +63,18 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Tuition\TuitionPage.xaml.cs">
+      <DependentUpon>TuitionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\MessageTemplate.xaml.cs">
+      <DependentUpon>MessageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Message\MessagePage.xaml.cs">
+      <DependentUpon>MessagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HealthCare\HealthCarePage.xaml.cs">
+      <DependentUpon>HealthCarePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -86,6 +101,9 @@
     <EmbeddedResource Update="Views\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\LeaveRequest\LeaveRequestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -102,6 +120,16 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
+    <Folder Include="ViewModels\News\" />
+    <Folder Include="Views\News\" />
+    <Folder Include="Views\Tuition\" />
+    <Folder Include="ViewModels\Tuition\" />
+    <Folder Include="ViewModels\Message\" />
+    <Folder Include="Views\Message\" />
+    <Folder Include="Views\Survey\" />
+    <Folder Include="Views\Templates\" />
+    <Folder Include="ViewModels\HeatlCare\" />
+    <Folder Include="Views\HealthCare\" />
     <Folder Include="Models\Account\" />
   </ItemGroup>
 </Project>

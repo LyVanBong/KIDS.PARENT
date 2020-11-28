@@ -1,12 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Home.HomePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Home.HomePage"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ScrollView VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Always">
+        <Grid HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="330"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     VerticalOptions="Start"
+                     Grid.Row="0">
+                <Image HorizontalOptions="Start"
+                   Margin="0,0,10,0"
+                   Source="home.png"/>
+                <Label Text= "{Binding SchoolInteraction}"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"/>
+            </StackLayout>
+
+            <flv:FlowListView FlowColumnCount="4"   
+                SeparatorVisibility="Default"   
+                HasUnevenRows="True"  
+                FlowItemTappedCommand="{Binding ItemTappedCommand}"   
+                FlowItemsSource="{Binding MenuItems}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="0,0,0,10" 
+                Grid.Row="1">
+
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Vertical"
+                                 Margin="0,10,0,10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ItemTappedCommand}"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image HorizontalOptions="CenterAndExpand"
+                               Margin="0,0,0,5"
+                               Source="{Binding Icon}"/>
+                            <Label Text= "{Binding Title}"
+                               FontSize="16"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               TextColor="Black"
+                               LineBreakMode="WordWrap"
+                               HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+
+            <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     VerticalOptions="Start"
+                     Grid.Row="2">
+                <Image HorizontalOptions="Start"
+                   Margin="0,0,10,0"
+                   Source="home.png"/>
+                <Label Text= "{Binding NeededTitle}"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"/>
+                <Image HorizontalOptions="End"
+                   Margin="0,0,10,0"
+                   Source="more.png"/>
+            </StackLayout>
+
+            <syncfusion:SfListView ItemsSource="{Binding NeededItems}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="0,0,0,10"
+                Grid.Row="3" 
+                FlowDirection="LeftToRight" 
+                ItemSize="180" 
+                ColumnSpacing="10"
+                Orientation="Horizontal">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                           CornerRadius="5"
+                           Margin = "5" Padding="0"
+                           BorderColor="Black">
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Vertical"
+                                 Padding="2">
+                                <Image HorizontalOptions="FillAndExpand"
+                                   Aspect="AspectFit"
+                                    Source="testImage.jpg"/>
+                                <Label Text= "{Binding Title}"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    TextColor="Black"
+                                    LineBreakMode="WordWrap"
+                                    Margin="5,0,0,0"
+                                    HorizontalTextAlignment="Start"/>
+                                <Label Text= "{Binding Content}"
+                                    FontSize="10"
+                                    HorizontalOptions="CenterAndExpand"
+                                    TextColor="Black"
+                                    LineBreakMode="WordWrap"
+                                   Margin="5,0,0,0"
+                                    HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </Grid>
+    </ScrollView>
 </ContentPage>

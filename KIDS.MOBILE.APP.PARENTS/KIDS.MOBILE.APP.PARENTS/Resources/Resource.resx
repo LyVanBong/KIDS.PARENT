@@ -249,6 +249,58 @@
     <value>Account info</value>
     <comment>Thông tin tài khoản</comment>
   </data>
+  <data name="00038" xml:space="preserve">
+    <value>Interact with school</value>
+    <comment>Tương tác với nhà trường</comment>
+  </data>
+  <data name="00039" xml:space="preserve">
+    <value>Parents need to know</value>
+    <comment>Cha mẹ cần biết</comment>
+  </data>
+  <data name="00040" xml:space="preserve">
+    <value>Message</value>
+    <comment>Lời nhắn</comment>
+  </data>
+  <data name="00041" xml:space="preserve">
+    <value>Absent Request</value>
+    <comment>Xin nghỉ</comment>
+  </data>
+  <data name="00042" xml:space="preserve">
+    <value>Medicine Advices</value>
+    <comment>Dặn thuốc</comment>
+  </data>
+  <data name="00043" xml:space="preserve">
+    <value>Pick Up</value>
+    <comment>Đón về</comment>
+  </data>
+  <data name="00044" xml:space="preserve">
+    <value>Daily Action</value>
+    <comment>Hoạt động hàng ngày</comment>
+  </data>
+  <data name="00045" xml:space="preserve">
+    <value>News</value>
+    <comment>Tin tức</comment>
+  </data>
+  <data name="00046" xml:space="preserve">
+    <value>Album</value>
+    <comment>Album ảnh</comment>
+  </data>
+  <data name="00047" xml:space="preserve">
+    <value>Tuition Fee</value>
+    <comment>Học phí</comment>
+  </data>
+  <data name="00048" xml:space="preserve">
+    <value>Health</value>
+    <comment>Sức khỏe</comment>
+  </data>
+  <data name="00049" xml:space="preserve">
+    <value>Survey</value>
+    <comment>Khảo sát</comment>
+  </data>
+  <data name="00050" xml:space="preserve">
+    <value>Periodical Reviews</value>
+    <comment>Đánh giá định kỳ</comment>
+  </data>
   <data name="00051" xml:space="preserve">
     <value>Student's profile</value>
     <comment>Hồ sơ của bé</comment>

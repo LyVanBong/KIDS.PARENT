@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Tuition.TuitionPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0"
+                     Grid.ColumnSpan="2">
+            <Image Source="home.png"
+                   HorizontalOptions="Start">
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="Tin tuc"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Watching-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,20,5,0"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="2">
+            <Image Source="home.png"
+                   HorizontalOptions="Start"
+                   VerticalOptions="StartAndExpand">
+            </Image>
+            <Label HorizontalOptions="StartAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   Margin="10,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Dang xem thong tin be " TextColor="Black" FontSize="16"/>
+                        <Span Text="Pepsi" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+
+        <!--Tuition Done-->
+        <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Row="2"
+               Grid.Column="0"
+               CornerRadius="10"
+               IsClippedToBounds="True"
+               Margin="10,0,5,10">
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Orientation="Vertical">
+                <Image Source="home.png"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       Margin="0"/>
+                <Label Text="TONG DA DONG"
+                       FontSize="16"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       />
+                <Label Text="9.852.000 VND"
+                       FontSize="16"
+                       TextColor="Blue"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+        </Frame>
+
+        <!--Tuition Incompleted-->
+        <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Grid.Row="2"
+               Grid.Column="1"
+               CornerRadius="10"
+               IsClippedToBounds="True"
+               Margin="5,0,10,10">
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Orientation="Vertical">
+                <Image Source="home.png"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       Margin="0"/>
+                <Label Text="CON PHAI DONG"
+                       FontSize="16"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       />
+                <Label Text="9.852.000 VND"
+                       FontSize="16"
+                       TextColor="Red"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+        </Frame>
+
+        <!--Information listview-->
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Margin="10">
+            <syncfusion:SfListView ItemsSource="{Binding InformationList}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="0,0,0,10"
+                Grid.Row="3"
+                FlowDirection="LeftToRight"
+                ItemSize="150"
+                Orientation="Vertical">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="0,5,0,5">
+                            <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  Margin="10,0,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.8*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Title}"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       Grid.Row="0"
+                                       Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding Expired}"
+                                       TextColor="Black"
+                                       FontSize="12"
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding Completed}"
+                                       TextColor= "Blue"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       Grid.Row="2"
+                                       Grid.Column ="0"/>
+                                <Label Text="{Binding Incompleted}"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"/>
+                                <Label Text="DA DONG"
+                                       TextColor= "Blue"
+                                       FontSize="12"
+                                       Grid.Row="3"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"/>
+                                <Label Text="CON PHAI DONG"
+                                       TextColor="Red"
+                                       FontSize="12"
+                                       Grid.Row="3"
+                                       Grid.ColumnSpan="1"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

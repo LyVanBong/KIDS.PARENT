@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.HealthCare.HealthCarePage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="home.png"
+                   HorizontalOptions="Start">
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="Suc Khoe"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Watching-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Margin="10,5,10,5"
+                     Grid.Row="1">
+            <border:SfBorder 
+                CornerRadius="24"
+                HeightRequest="30"
+                BackgroundColor="White"
+                BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                BorderColor="Gray"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                WidthRequest="30">
+                <Image BackgroundColor="White"
+                       Source="home.png">
+                </Image>
+            </border:SfBorder>
+
+            <Label VerticalOptions="Center"
+                   HorizontalOptions="StartAndExpand"
+                   Margin="5,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Dang quan sat be " TextColor="Black" FontSize="16"/>
+                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+
+        <!--Add new-->
+        <StackLayout HorizontalOptions="StartAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Margin="10,5,10,5"
+                     Grid.Row="2">
+            <border:SfBorder
+                CornerRadius="24"
+                HeightRequest="30"
+                BackgroundColor="White"
+                BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                BorderColor="Gray"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30">
+                <Image BackgroundColor="White"
+                       Source="home.png">
+                </Image>
+            </border:SfBorder>
+
+            <Label VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="5,0,0,0"
+                   FontSize="16"
+                   TextColor="Black"
+                   Text="Them chi so suc khoe va can nang cho be">
+            </Label>
+        </StackLayout>
+
+        <!--Blood Group-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Margin="10,0,10,0"
+                     Grid.Row="3">
+            <Label Text="Nhom mau :"
+                   FontSize="16"
+                   TextColor="Black"/>
+            <buttons:SfRadioGroup Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="40">
+                <buttons:SfRadioButton Text="A" FontSize="16" TextColor="Black"/>
+                <buttons:SfRadioButton Text="B" FontSize="16" TextColor="Black"/>
+                <buttons:SfRadioButton Text="O" FontSize="16" TextColor="Black"/>
+                <buttons:SfRadioButton Text="AB" FontSize="16" TextColor="Black"/>
+            </buttons:SfRadioGroup>
+        </StackLayout>
+
+        <!--Health information-->
+        <syncfusion:SfListView SelectionMode="None" 
+                               AutoFitMode="Height" 
+                               ItemsSource="{Binding HealthList}"
+                               Grid.Row="4"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               Margin="10,0,10,0">
+
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+
+                    <cards:SfCardView CornerRadius="4"
+                                      IndicatorColor="{Binding BackgroundGradientStart}"
+                                      IndicatorPosition="Left"
+                                      IndicatorThickness="8">
+                        <Grid RowSpacing="4" Padding="16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Name}"
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           LineHeight="{OnPlatform Android=1.25, Default=-1}"
+                                           FontSize="16"
+                                           TextColor="Black"></Label>
+                            <Label Grid.Column="1"
+                                           Grid.RowSpan="2"
+                                           FontSize="16"
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="EndAndExpand"
+                                           VerticalOptions="Center"
+                                           Text="{Binding Information}"
+                                           LineHeight="{OnPlatform Android=1.25, Default=-1}"
+                                           TextColor="Black"></Label>
+                        </Grid>
+
+                    </cards:SfCardView>
+
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+
+        </syncfusion:SfListView>
+    </Grid>
+
+</ContentPage>
