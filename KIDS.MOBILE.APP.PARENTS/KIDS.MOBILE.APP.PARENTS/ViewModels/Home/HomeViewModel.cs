@@ -4,6 +4,12 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Resources;
+using KIDS.MOBILE.APP.PARENTS.Views;
+using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
+using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
+using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using KIDS.MOBILE.APP.PARENTS.Views.Tuition;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -40,7 +46,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             set => SetProperty(ref _neededItems, value);
         }
 
-        public ICommand ItemTappedCommand { get; set; }
+        public DelegateCommand<MenuItem> ItemTappedCommand { get; set; }
         private INavigationService _navigationService;
         #endregion
         public HomeViewModel(INavigationService navigationService)
@@ -54,10 +60,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             NeededTitle = Resource._00039;
             MenuItems = new ObservableCollection<MenuItem>(CreateMenuList());
             NeededItems = new ObservableCollection<NeededItem>(CreateNeededList());
-            ItemTappedCommand = new Command<MenuItem>(async (sender) => await OnMenuClicked(sender));
+            ItemTappedCommand = new DelegateCommand<MenuItem>(OnMenuClicked);
         }
 
-        private async Task OnMenuClicked(MenuItem sender)
+        private async void OnMenuClicked(MenuItem sender)
         {
             if (!string.IsNullOrEmpty(sender.NavigateTo))
                 await _navigationService.NavigateAsync(sender.NavigateTo);
@@ -71,17 +77,17 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         {
             return new List<MenuItem>
             {
-                new MenuItem{ Title = Resource._00040,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00047,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00048,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
-                new MenuItem{ Title = Resource._00050,Icon = ImageSource.FromResource("home.png"),NavigateTo=""},
+                new MenuItem{ Title = Resource._00040,Icon = ImageSource.FromFile("message.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromFile("leave.png"),NavigateTo=nameof(LeaveRequestPage)},
+                new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromFile("medicine.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromFile("news.png"),NavigateTo=nameof(NewsPage)},
+                new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromFile("album.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00047,Icon = ImageSource.FromFile("tuition.png"),NavigateTo=nameof(TuitionPage)},
+                new MenuItem{ Title = Resource._00048,Icon = ImageSource.FromFile("health.png"),NavigateTo=nameof(HealthCarePage)},
+                new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(SurveyPage)},
+                new MenuItem{ Title = Resource._00050,Icon = ImageSource.FromFile("review.png"),NavigateTo=nameof(MessagePage)},
             };
         }
 
