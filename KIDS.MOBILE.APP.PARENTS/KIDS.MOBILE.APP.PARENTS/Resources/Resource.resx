@@ -353,4 +353,8 @@
     <value>Error</value>
     <comment>Lỗi phát sinh</comment>
   </data>
+  <data name="00079" xml:space="preserve">
+    <value>You are watching information of </value>
+    <comment>Đang xem thông tin bé </comment>
+  </data>
 </root>

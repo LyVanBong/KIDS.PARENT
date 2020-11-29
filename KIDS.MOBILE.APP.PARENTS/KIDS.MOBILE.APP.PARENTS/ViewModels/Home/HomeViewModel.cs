@@ -47,11 +47,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         }
 
         public DelegateCommand<MenuItem> ItemTappedCommand { get; set; }
-        private INavigationService _navigationService;
+        
         #endregion
-        public HomeViewModel(INavigationService navigationService)
+        public HomeViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
+            ItemTappedCommand = new DelegateCommand<MenuItem>(OnMenuClicked);
         }
         public override void Initialize(INavigationParameters parameters)
         {
@@ -60,7 +61,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             NeededTitle = Resource._00039;
             MenuItems = new ObservableCollection<MenuItem>(CreateMenuList());
             NeededItems = new ObservableCollection<NeededItem>(CreateNeededList());
-            ItemTappedCommand = new DelegateCommand<MenuItem>(OnMenuClicked);
+            
         }
 
         private async void OnMenuClicked(MenuItem sender)

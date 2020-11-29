@@ -113,6 +113,9 @@
     <EmbeddedResource Update="Views\Main\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\News\NewDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -120,8 +123,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
-    <Folder Include="ViewModels\News\" />
-    <Folder Include="Views\News\" />
     <Folder Include="Views\Tuition\" />
     <Folder Include="ViewModels\Tuition\" />
     <Folder Include="ViewModels\Message\" />

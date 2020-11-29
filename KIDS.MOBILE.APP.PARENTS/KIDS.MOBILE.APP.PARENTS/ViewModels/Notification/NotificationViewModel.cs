@@ -45,7 +45,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
             set => SetProperty(ref _dataNotification, value);
         }
 
-        public NotificationViewModel(INotificationService notificationService)
+        public NotificationViewModel(INavigationService navigationService, INotificationService notificationService) : base(navigationService)
         {
             _notificationService = notificationService;
         }

@@ -9,7 +9,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
     public class MessageViewModel : BaseViewModel
     {
         #region Properties
-        private INavigationService _navigationService;
+        
         private ObservableCollection<MessageModel> _messageList = new ObservableCollection<MessageModel>();
         public ObservableCollection<MessageModel> MessageList
         {
@@ -19,7 +19,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         #endregion
 
         #region Contructor
-        public MessageViewModel(INavigationService navigationService)
+        public MessageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
         }

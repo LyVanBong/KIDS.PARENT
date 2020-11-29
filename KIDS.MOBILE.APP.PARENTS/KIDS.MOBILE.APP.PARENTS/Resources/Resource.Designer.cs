@@ -590,5 +590,14 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00063", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are watching information of .
+        /// </summary>
+        internal static string _00079 {
+            get {
+                return ResourceManager.GetString("00079", resourceCulture);
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 {
     public class LeaveRequestViewModel : BaseViewModel
     {
-        private INavigationService _navigationService;
+        
         private ObservableCollection<MessageModel> _messagesList = new ObservableCollection<MessageModel>();
         public ObservableCollection<MessageModel> MessagesList
         {
@@ -23,7 +23,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             set => SetProperty(ref _informationList, value);
         }
 
-        public LeaveRequestViewModel(INavigationService navigationService)
+        public LeaveRequestViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
         }

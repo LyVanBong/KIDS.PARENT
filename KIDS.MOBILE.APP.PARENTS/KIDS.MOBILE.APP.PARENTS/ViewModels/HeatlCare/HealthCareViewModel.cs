@@ -9,7 +9,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
     public class HealthCareViewModel : BaseViewModel
     {
         #region Properties
-        private INavigationService _navigationService;
+        
         private ObservableCollection<HealthInformationModel> _healthList;
         public ObservableCollection<HealthInformationModel> HealthList
         {
@@ -19,7 +19,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         #endregion
 
         #region Constructor
-        public HealthCareViewModel(INavigationService navigationService)
+        public HealthCareViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
         }

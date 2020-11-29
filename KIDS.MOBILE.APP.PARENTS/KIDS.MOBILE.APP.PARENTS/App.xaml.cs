@@ -32,6 +32,7 @@ using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare;
+using KIDS.MOBILE.APP.PARENTS.Services.News;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -51,6 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<IDatabaseService, DatabaseService>();
             containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<IRequestProvider, RequestProvider>();
+            containerRegistry.Register<INewService, NewService>();
 
             #endregion
             #region Registry Page - ViewModel

@@ -1,0 +1,39 @@
+﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.News;
+using KIDS.MOBILE.APP.PARENTS.Models.RequestProvider;
+using KIDS.MOBILE.APP.PARENTS.Models.Response;
+using KIDS.MOBILE.APP.PARENTS.Services.RequestProvider;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KIDS.MOBILE.APP.PARENTS.Services.News
+{
+    public class NewService : INewService
+    {
+        private IRequestProvider _requestProvider;
+        public NewService(IRequestProvider requestProvider)
+        {
+            _requestProvider = requestProvider;
+        }
+
+        public async Task<ResponseModel<List<NewResponseModel>>> GetAllNews(string schoolId, string classId)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("ClassId", classId),
+                    new RequestParameter("SchoolId", schoolId),
+                };
+                var data = await _requestProvider.GetAsync<List<NewResponseModel>>("News/Select/All", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+    }
+}

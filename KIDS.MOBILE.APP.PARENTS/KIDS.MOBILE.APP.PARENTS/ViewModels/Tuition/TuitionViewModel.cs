@@ -8,7 +8,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
     public class TuitionViewModel : BaseViewModel
     {
         #region Properties
-        private INavigationService _navigationService;
+        
         private ObservableCollection<TuitionInformationModel> _informationList = new ObservableCollection<TuitionInformationModel>();
         public ObservableCollection<TuitionInformationModel> InformationList
         {
@@ -18,7 +18,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
         #endregion
 
         #region Constructor
-        public TuitionViewModel(INavigationService navigationService)
+        public TuitionViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
         }

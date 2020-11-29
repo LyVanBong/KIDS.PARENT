@@ -19,15 +19,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
     {
         private IPageDialogService _pageDialogService;
         private ILoginService _loginService;
-        private INavigationService _navigationService;
+        
         private bool _isSaveAccount;
         private bool _isCheckLogin;
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
-        }
         public ICommand LoginCommand { get; private set; }
         public ICommand SaveAccountCommand { get; private set; }
         public string UserName { get; set; }
@@ -39,7 +33,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         }
 
         private IDatabaseService _databaseService;
-        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService)
+        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService) : base(navigationService)
         {
             _pageDialogService = pageDialogService;
             _loginService = loginService;

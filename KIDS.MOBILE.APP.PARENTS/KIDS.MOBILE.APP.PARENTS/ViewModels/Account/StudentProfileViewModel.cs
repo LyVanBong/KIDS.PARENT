@@ -32,7 +32,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             set => SetProperty(ref _studentModel, value);
         }
 
-        public StudentProfileViewModel(IUserService userService)
+        public StudentProfileViewModel(INavigationService navigationService, IUserService userService) : base(navigationService)
         {
             _userService = userService;
         }
