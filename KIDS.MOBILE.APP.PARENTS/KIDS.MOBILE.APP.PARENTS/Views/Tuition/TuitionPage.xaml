@@ -24,8 +24,11 @@
                      BackgroundColor="White"
                      Grid.Row="0"
                      Grid.ColumnSpan="2">
-            <Image Source="home.png"
+            <Image Source="back.png"
                    HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
                    Text="Tin tuc"

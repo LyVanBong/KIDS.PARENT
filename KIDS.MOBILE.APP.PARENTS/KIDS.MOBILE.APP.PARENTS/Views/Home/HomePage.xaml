@@ -106,11 +106,16 @@
                                  Orientation="Vertical"
                                  Padding="2">
                                 <Image HorizontalOptions="FillAndExpand"
-                                   Aspect="AspectFit"
-                                    Source="testImage.jpg"/>
+                                       VerticalOptions="StartAndExpand"
+                                   Aspect="AspectFill">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding Image}" CacheValidity="1" CachingEnabled="true"/>
+                                    </Image.Source>
+                                </Image>
                                 <Label Text= "{Binding Title}"
                                     FontSize="12"
                                     HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="EndAndExpand"
                                     TextColor="Black"
                                     LineBreakMode="WordWrap"
                                     Margin="5,0,0,0"
@@ -118,9 +123,10 @@
                                 <Label Text= "{Binding Content}"
                                     FontSize="10"
                                     HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="EndAndExpand"
                                     TextColor="Black"
                                     LineBreakMode="WordWrap"
-                                   Margin="5,0,0,0"
+                                    Margin="5,0,0,10"
                                     HorizontalTextAlignment="Start"/>
                             </StackLayout>
                         </Frame>
