@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.News;
 using KIDS.MOBILE.APP.PARENTS.Views.News;
 using Prism.Commands;
@@ -105,6 +106,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         public string Image { get; set; }
         public string LikeNumber { get; set; }
         public string CommentNumber { get; set; }
-        public string CommentText { get => "Binh luan"; }
+        public string CommentText { get => Resource._00083; }
     }
 }

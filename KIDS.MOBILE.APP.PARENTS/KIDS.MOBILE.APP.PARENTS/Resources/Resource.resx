@@ -357,4 +357,32 @@
     <value>You are watching information of </value>
     <comment>Đang xem thông tin bé </comment>
   </data>
+  <data name="00080" xml:space="preserve">
+    <value>TOTAL COMPLETED</value>
+    <comment>TỔNG ĐÃ ĐÓNG</comment>
+  </data>
+  <data name="00081" xml:space="preserve">
+    <value>NEED TO COMPLETE</value>
+    <comment>CÒN PHẢI ĐÓNG</comment>
+  </data>
+  <data name="00082" xml:space="preserve">
+    <value>VND</value>
+    <comment>VND</comment>
+  </data>
+  <data name="00083" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Bình luận</comment>
+  </data>
+  <data name="00084" xml:space="preserve">
+    <value>Completed Date</value>
+    <comment>Ngày đóng </comment>
+  </data>
+  <data name="00085" xml:space="preserve">
+    <value>Completed</value>
+    <comment>Đã đóng</comment>
+  </data>
+  <data name="00086" xml:space="preserve">
+    <value>Reduce</value>
+    <comment>Miễn giảm</comment>
+  </data>
 </root>

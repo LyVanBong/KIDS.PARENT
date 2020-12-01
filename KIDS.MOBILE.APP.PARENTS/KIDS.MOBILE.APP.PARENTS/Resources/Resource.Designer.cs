@@ -599,5 +599,68 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00079", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL COMPLETED.
+        /// </summary>
+        internal static string _00080 {
+            get {
+                return ResourceManager.GetString("00080", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEED TO COMPLETE.
+        /// </summary>
+        internal static string _00081 {
+            get {
+                return ResourceManager.GetString("00081", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VND.
+        /// </summary>
+        internal static string _00082 {
+            get {
+                return ResourceManager.GetString("00082", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        internal static string _00083 {
+            get {
+                return ResourceManager.GetString("00083", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Date.
+        /// </summary>
+        internal static string _00084 {
+            get {
+                return ResourceManager.GetString("00084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string _00085 {
+            get {
+                return ResourceManager.GetString("00085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reduce.
+        /// </summary>
+        internal static string _00086 {
+            get {
+                return ResourceManager.GetString("00086", resourceCulture);
+            }
+        }
     }
 }

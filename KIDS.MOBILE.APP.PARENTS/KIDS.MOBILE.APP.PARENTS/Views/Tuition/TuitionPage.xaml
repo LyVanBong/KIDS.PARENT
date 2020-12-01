@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Tuition.TuitionPage"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
@@ -76,13 +77,13 @@
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="StartAndExpand"
                        Margin="0"/>
-                <Label Text="TONG DA DONG"
+                <Label Text="{markupExtension:Translate 00080}"
                        FontSize="16"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
                        />
-                <Label Text="9.852.000 VND"
+                <Label Text="{Binding TotalComplete}"
                        FontSize="16"
                        TextColor="Blue"
                        HorizontalTextAlignment="Center"
@@ -106,13 +107,13 @@
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="StartAndExpand"
                        Margin="0"/>
-                <Label Text="CON PHAI DONG"
+                <Label Text="{markupExtension:Translate 00081}"
                        FontSize="16"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
                        />
-                <Label Text="9.852.000 VND"
+                <Label Text="{Binding UnCompleted}"
                        FontSize="16"
                        TextColor="Red"
                        HorizontalTextAlignment="Center"
@@ -173,20 +174,20 @@
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column ="0"/>
-                                <Label Text="{Binding Incompleted}"
+                                <Label Text="{Binding Reduced}"
                                        TextColor="Red"
                                        FontAttributes="Bold"
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column="1"
                                        HorizontalOptions="End"/>
-                                <Label Text="DA DONG"
+                                <Label Text="{markupExtension:Translate 00085}"
                                        TextColor= "Blue"
                                        FontSize="12"
                                        Grid.Row="3"
                                        Grid.Column="1"
                                        HorizontalOptions="End"/>
-                                <Label Text="CON PHAI DONG"
+                                <Label Text="{markupExtension:Translate 00086}"
                                        TextColor="Red"
                                        FontSize="12"
                                        Grid.Row="3"
