@@ -15,6 +15,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="180"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
@@ -32,7 +33,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="Tin tuc"
+                   Text="{markupExtension:Translate 00047}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
@@ -73,12 +74,12 @@
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Orientation="Vertical">
-                <Image Source="home.png"
+                <Image Source="done.png"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="StartAndExpand"
                        Margin="0"/>
                 <Label Text="{markupExtension:Translate 00080}"
-                       FontSize="16"
+                       FontSize="15"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
@@ -103,16 +104,16 @@
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Orientation="Vertical">
-                <Image Source="home.png"
+                <Image Source="error.png"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="StartAndExpand"
                        Margin="0"/>
                 <Label Text="{markupExtension:Translate 00081}"
-                       FontSize="16"
+                       FontSize="15"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
-                       />
+                       Padding="0"/>
                 <Label Text="{Binding UnCompleted}"
                        FontSize="16"
                        TextColor="Red"
@@ -121,11 +122,69 @@
                        FontAttributes="Bold"/>
             </StackLayout>
         </Frame>
+        
+        <!--Current tuition-->
+        <Frame HorizontalOptions="FillAndExpand" BackgroundColor="White"
+                               VerticalOptions="FillAndExpand"
+                               CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="10"
+                               Grid.Row="3"
+                               Grid.ColumnSpan="2">
+            <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  Margin="10,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{Binding Title}"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       Grid.Row="0"
+                                       Grid.ColumnSpan="2"/>
+                <Label Text="{Binding Expired}"
+                                       TextColor="Black"
+                                       FontSize="12"
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="2"/>
+                
+                <Label Text="{Binding Completed}"
+                                       TextColor= "Blue"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       Grid.Row="2"
+                                       Grid.Column ="0"/>
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       HorizontalOptions="EndAndExpand"
+                       Margin="0,0,10,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{markupExtension:Translate 00087}" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                            <Span Text="{Binding TuitionStatus}" TextColor="{Binding TuitionStatusColor}" FontSize="12" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{markupExtension:Translate 00088}"
+                                       TextColor="Red"
+                                       FontSize="12"
+                                       Grid.Row="3"
+                                       Grid.ColumnSpan="1"/>
+            </Grid>
+        </Frame>
 
         <!--Information listview-->
         <ScrollView HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.ColumnSpan="2"
                     Margin="10">
             <syncfusion:SfListView ItemsSource="{Binding InformationList}"

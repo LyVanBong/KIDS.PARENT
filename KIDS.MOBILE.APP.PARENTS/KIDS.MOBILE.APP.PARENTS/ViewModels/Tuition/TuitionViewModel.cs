@@ -32,6 +32,36 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
             get => _nCompleted;
             set => SetProperty(ref _nCompleted, value);
         }
+        private string _tuitionStatus;
+        public string TuitionStatus
+        {
+            get => _tuitionStatus;
+            set => SetProperty(ref _tuitionStatus, value);
+        }
+        private string _tuitionStatusColor;
+        public string TuitionStatusColor
+        {
+            get => _tuitionStatusColor;
+            set => SetProperty(ref _tuitionStatusColor, value);
+        }
+        private string _completed;
+        public string Completed
+        {
+            get => _completed;
+            set => SetProperty(ref _completed, value);
+        }
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+        private string _expired;
+        public string Expired
+        {
+            get => _expired;
+            set => SetProperty(ref _expired, value);
+        }
         #endregion
 
         #region Constructor
@@ -53,6 +83,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
                 {
                     var currentTuition = listTuition.Data.First();
                     UnCompleted = currentTuition.TrangThai == "CHƯA ĐÓNG" ? $"{currentTuition.TongCong} {Resource._00082}" : $"0 {Resource._00082}";
+                    TuitionStatus = currentTuition.TrangThai;
+                    TuitionStatusColor = currentTuition.TrangThai == "CHƯA ĐÓNG" ? "#FF0000" : "#0000FF";
+                    Completed = $"{currentTuition.TongCong?.ToString("#,###.###")} {Resource._00082}";
+                    Title = currentTuition.TenDotThu;
+                    Expired = currentTuition.ThoiGianThu != null ? $"{Resource._00089}{currentTuition.ThoiGianThu.Value.ToShortDateString()}" : $"{Resource._00089}";
                 }
             });
             Task.Run(async () =>

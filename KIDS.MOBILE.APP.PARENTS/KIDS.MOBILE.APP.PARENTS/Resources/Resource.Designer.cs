@@ -662,5 +662,50 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00086", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status : .
+        /// </summary>
+        internal static string _00087 {
+            get {
+                return ResourceManager.GetString("00087", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need to complete.
+        /// </summary>
+        internal static string _00088 {
+            get {
+                return ResourceManager.GetString("00088", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired Date : .
+        /// </summary>
+        internal static string _00089 {
+            get {
+                return ResourceManager.GetString("00089", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent to .
+        /// </summary>
+        internal static string _00090 {
+            get {
+                return ResourceManager.GetString("00090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new message to send to kid&apos;s teacher.
+        /// </summary>
+        internal static string _00091 {
+            get {
+                return ResourceManager.GetString("00091", resourceCulture);
+            }
+        }
     }
 }

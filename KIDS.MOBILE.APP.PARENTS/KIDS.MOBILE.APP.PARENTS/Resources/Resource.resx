@@ -385,4 +385,24 @@
     <value>Reduce</value>
     <comment>Miễn giảm</comment>
   </data>
+  <data name="00087" xml:space="preserve">
+    <value>Status : </value>
+    <comment>Trạng thái : </comment>
+  </data>
+  <data name="00088" xml:space="preserve">
+    <value>Need to complete</value>
+    <comment>Cần đóng</comment>
+  </data>
+  <data name="00089" xml:space="preserve">
+    <value>Expired Date : </value>
+    <comment>Ngày thu : </comment>
+  </data>
+  <data name="00090" xml:space="preserve">
+    <value>Sent to </value>
+    <comment>Gửi tới </comment>
+  </data>
+  <data name="00091" xml:space="preserve">
+    <value>Create a new message to send to kid's teacher</value>
+    <comment>Gửi tin nhắn tới giáo viên của bé</comment>
+  </data>
 </root>

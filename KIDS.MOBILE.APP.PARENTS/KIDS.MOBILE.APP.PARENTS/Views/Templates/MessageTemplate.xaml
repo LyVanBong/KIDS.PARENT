@@ -3,7 +3,8 @@
     x:Class="KIDS.MOBILE.APP.PARENTS.Views.Templates.MessageTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
@@ -27,8 +28,10 @@
         HorizontalOptions="Center"
         VerticalOptions="Center"
         WidthRequest="48">
-        <Image BackgroundColor="White"
-               Source="home.png">
+        <Image>
+            <Image.Source>
+                <UriImageSource Uri="{Binding ImageUrl}" CacheValidity="1" CachingEnabled="true"/>
+            </Image.Source>
         </Image>
     </border:SfBorder>
 

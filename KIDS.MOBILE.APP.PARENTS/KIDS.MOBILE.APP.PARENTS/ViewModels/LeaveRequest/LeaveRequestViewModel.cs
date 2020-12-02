@@ -77,7 +77,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 {
                     ReceivedUser ="Toroto",
                     DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
+                    ImageUrl="",
                     Comment = "Mở tài khoản ngay, " +
                     "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
                     "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
@@ -87,7 +87,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 {
                     ReceivedUser ="Toroto",
                     DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
+                    ImageUrl="",
                     Comment = "Mở tài khoản ngay, " +
                     "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
                     "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
@@ -97,7 +97,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 {
                     ReceivedUser ="Toroto",
                     DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
+                    ImageUrl="",
                     Comment = "Mở tài khoản ngay, " +
                     "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
                     "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
@@ -107,7 +107,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 {
                     ReceivedUser ="Toroto",
                     DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
+                    ImageUrl="",
                     Comment = "Mở tài khoản ngay, " +
                     "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
                     "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
