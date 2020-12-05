@@ -1,8 +1,13 @@
-﻿using Prism.Navigation;
+﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Resources;
+using KIDS.MOBILE.APP.PARENTS.Services;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 {
@@ -22,51 +27,72 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             get => _informationList;
             set => SetProperty(ref _informationList, value);
         }
+        private ILeaveRequestService _leaveRequestService;
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
 
-        public LeaveRequestViewModel(INavigationService navigationService) : base(navigationService)
+        public LeaveRequestViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _leaveRequestService = leaveRequestService;
         }
         public override void Initialize(INavigationParameters parameters)
         {
-            base.Initialize(parameters);
-            MessagesList = new ObservableCollection<MessageModel>(GetMessagesList());
-            InformationList = new ObservableCollection<AbsentInformationModel>(GetInformationList());
+            try
+            {
+                IsLoading = true;
+                base.Initialize(parameters);
+                MessagesList = new ObservableCollection<MessageModel>(GetMessagesList());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
-        private List<AbsentInformationModel> GetInformationList()
+        private async Task GetInformationList()
         {
-            return new List<AbsentInformationModel>()
+            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, DateFrom.ToShortDateString(), DateTo.ToShortDateString());
+            if(data?.Data?.Any() == true)
             {
-                new AbsentInformationModel
+                var information = data.Data.First();
+                var info = new List<AbsentInformationModel>
                 {
-                    Title = "Tổng",
-                    Number = "23",
-                    BackgroundGradientStart = "#f59083",
-                    BackgroundGradientEnd = "#fae188"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Nghỉ",
-                    Number = "5",
-                    BackgroundGradientStart = "#ff7272",
-                    BackgroundGradientEnd = "#f650c5"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Có phép",
-                    Number = "3",
-                    BackgroundGradientStart = "#5e7cea",
-                    BackgroundGradientEnd = "#1dcce3"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Không phép",
-                    Number = "2",
-                    BackgroundGradientStart = "#255ea6",
-                    BackgroundGradientEnd = "#b350d1"
-                }
-            };
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00098,
+                            Number = information.STT.ToString(),
+                            BackgroundGradientStart = "#f59083",
+                            BackgroundGradientEnd = "#fae188"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00099,
+                            Number = information.CoMat.ToString(),
+                            BackgroundGradientStart = "#ff7272",
+                            BackgroundGradientEnd = "#f650c5"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00100,
+                            Number = information.NghiCoPhep.ToString(),
+                            BackgroundGradientStart = "#5e7cea",
+                            BackgroundGradientEnd = "#1dcce3"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00101,
+                            Number = information.NghiKhongPhep.ToString(),
+                            BackgroundGradientStart = "#255ea6",
+                            BackgroundGradientEnd = "#b350d1"
+                        }
+                };
+                InformationList = new ObservableCollection<AbsentInformationModel>(info);
+            }
         }
 
         private List<MessageModel> GetMessagesList()

@@ -33,5 +33,48 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
                 return null;
             }
         }
+
+        public async Task<ResponseModel<int>> CreateMessage(CreateMessageModel model)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("ClassID", model.ClassID),
+                    new RequestParameter("TeacherID", model.TeacherID),
+                    new RequestParameter("Parent", model.Parent),
+                    new RequestParameter("Content", model.Content),
+                    new RequestParameter("DateCreate", model.DateCreate.ToString()),
+                    new RequestParameter("StudentID", model.StudentID),
+                    new RequestParameter("Type", model.Type.ToString()),
+                };
+                var data = await _requestProvider.PostAsync<int>("Communication/Insert", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<ResponseModel<int>> UpdateMessage(CreateMessageModel model)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("CommunicationID", model.CommunicationID),
+                    new RequestParameter("Content", model.Content),
+                    new RequestParameter("DateCreate", model.DateCreate.ToString()),
+                    new RequestParameter("StudentID", model.StudentID)
+                };
+                var data = await _requestProvider.PostAsync<int>("Communication/Update", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

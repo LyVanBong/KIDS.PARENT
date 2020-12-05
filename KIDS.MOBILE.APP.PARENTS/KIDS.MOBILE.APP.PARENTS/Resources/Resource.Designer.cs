@@ -707,5 +707,95 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00091", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose kids .
+        /// </summary>
+        internal static string _00092 {
+            get {
+                return ResourceManager.GetString("00092", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choosing.
+        /// </summary>
+        internal static string _00093 {
+            get {
+                return ResourceManager.GetString("00093", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose date to send message.
+        /// </summary>
+        internal static string _00094 {
+            get {
+                return ResourceManager.GetString("00094", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        internal static string _00095 {
+            get {
+                return ResourceManager.GetString("00095", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please input your message..
+        /// </summary>
+        internal static string _00096 {
+            get {
+                return ResourceManager.GetString("00096", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string _00097 {
+            get {
+                return ResourceManager.GetString("00097", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string _00098 {
+            get {
+                return ResourceManager.GetString("00098", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent.
+        /// </summary>
+        internal static string _00099 {
+            get {
+                return ResourceManager.GetString("00099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent with Approved.
+        /// </summary>
+        internal static string _00100 {
+            get {
+                return ResourceManager.GetString("00100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent without Approved.
+        /// </summary>
+        internal static string _00101 {
+            get {
+                return ResourceManager.GetString("00101", resourceCulture);
+            }
+        }
     }
 }

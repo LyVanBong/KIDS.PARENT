@@ -86,6 +86,9 @@
                 <Image BackgroundColor="White"
                        Source="add.png">
                 </Image>
+                <border:SfBorder.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                </border:SfBorder.GestureRecognizers>
             </border:SfBorder>
 
             <Label VerticalOptions="Center"

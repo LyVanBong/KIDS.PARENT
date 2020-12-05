@@ -54,6 +54,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.3.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.3.0.51" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
@@ -113,6 +114,9 @@
     <EmbeddedResource Update="Views\Main\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Message\CreateMessagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\News\NewDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -125,8 +129,6 @@
     <Folder Include="Controls\Dialogs\" />
     <Folder Include="Views\Tuition\" />
     <Folder Include="ViewModels\Tuition\" />
-    <Folder Include="ViewModels\Message\" />
-    <Folder Include="Views\Message\" />
     <Folder Include="Views\Survey\" />
     <Folder Include="Views\Templates\" />
     <Folder Include="ViewModels\HeatlCare\" />

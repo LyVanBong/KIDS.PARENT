@@ -405,4 +405,44 @@
     <value>Create a new message to send to kid's teacher</value>
     <comment>Gửi tin nhắn tới giáo viên của bé</comment>
   </data>
+  <data name="00092" xml:space="preserve">
+    <value>Choose kids </value>
+    <comment>Chọn bé </comment>
+  </data>
+  <data name="00093" xml:space="preserve">
+    <value>Choosing</value>
+    <comment>Đang chọn bé </comment>
+  </data>
+  <data name="00094" xml:space="preserve">
+    <value>Choose date to send message</value>
+    <comment>Nhắn cho ngày</comment>
+  </data>
+  <data name="00095" xml:space="preserve">
+    <value>Picture</value>
+    <comment>Hình ảnh</comment>
+  </data>
+  <data name="00096" xml:space="preserve">
+    <value>Please input your message.</value>
+    <comment>Hãy viết tin nhắn để gửi tới cô giáo của bé.</comment>
+  </data>
+  <data name="00097" xml:space="preserve">
+    <value>Success</value>
+    <comment>Thành công</comment>
+  </data>
+  <data name="00098" xml:space="preserve">
+    <value>Total</value>
+    <comment>Tổng</comment>
+  </data>
+  <data name="00099" xml:space="preserve">
+    <value>Absent</value>
+    <comment>Nghỉ</comment>
+  </data>
+  <data name="00100" xml:space="preserve">
+    <value>Absent with Approved</value>
+    <comment>Nghỉ có phép</comment>
+  </data>
+  <data name="00101" xml:space="preserve">
+    <value>Absent without Approved</value>
+    <comment>Nghỉ không phép</comment>
+  </data>
 </root>

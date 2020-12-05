@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.Message;
+using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -21,6 +23,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             get => _messageList;
             set => SetProperty(ref _messageList, value);
         }
+        public DelegateCommand AddCommand { get;}
         #endregion
 
         #region Contructor
@@ -28,6 +31,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         {
             _navigationService = navigationService;
             _messageService = messageService;
+            AddCommand = new DelegateCommand(OnAddClick);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -56,49 +60,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         #region Private methods
         private async Task GetMessagesList()
         {
-
-            //return new List<MessageModel> {
-            //    new MessageModel
-            //    {
-            //        ReceivedUser ="Toroto",
-            //        DateTime = DateTime.Now.ToLongDateString(),
-            //        Image="",
-            //        Comment = "Mở tài khoản ngay, " +
-            //        "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-            //        "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-            //        "ngay khi mở tà khoản Standard Chartered EliteFly"
-            //    },
-            //    new MessageModel
-            //    {
-            //        ReceivedUser ="Toroto",
-            //        DateTime = DateTime.Now.ToLongDateString(),
-            //        Image="",
-            //        Comment = "Mở tài khoản ngay, " +
-            //        "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-            //        "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-            //        "ngay khi mở tà khoản Standard Chartered EliteFly"
-            //    },
-            //    new MessageModel
-            //    {
-            //        ReceivedUser ="Toroto",
-            //        DateTime = DateTime.Now.ToLongDateString(),
-            //        Image="",
-            //        Comment = "Mở tài khoản ngay, " +
-            //        "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-            //        "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-            //        "ngay khi mở tà khoản Standard Chartered EliteFly"
-            //    },
-            //    new MessageModel
-            //    {
-            //        ReceivedUser ="Toroto",
-            //        DateTime = DateTime.Now.ToLongDateString(),
-            //        Image="",
-            //        Comment = "Mở tài khoản ngay, " +
-            //        "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-            //        "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-            //        "ngay khi mở tà khoản Standard Chartered EliteFly"
-            //    }
-            //};
             var studentId = AppConstants.User.StudentID;
             var data = await _messageService.GetAllSentMessage(studentId);
             if(data?.Data?.Any() == true)
@@ -117,6 +78,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                 }
                 MessageList = new ObservableCollection<MessageModel>(messageList);
             }
+        }
+
+        private async void OnAddClick()
+        {
+            var param = new NavigationParameters();
+            param.Add("isUpdate", false);
+            await _navigationService.NavigateAsync(nameof(CreateMessagePage),param);
         }
         #endregion
     }

@@ -36,6 +36,8 @@ using KIDS.MOBILE.APP.PARENTS.Services.News;
 using KIDS.MOBILE.APP.PARENTS.Services.Tuition;
 using KIDS.MOBILE.APP.PARENTS.Services.Message;
 using KIDS.MOBILE.APP.PARENTS.Services;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Message;
+using KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -58,6 +60,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<INewService, NewService>();
             containerRegistry.Register<ITuitionService, TuitionService>();
             containerRegistry.Register<IMessageService, MessageService>();
+            containerRegistry.Register<ILeaveRequestService, LeaveRequestService>();
 
             #endregion
             #region Registry Page - ViewModel
@@ -76,6 +79,8 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<MessagePage, MessageViewModel>();
             containerRegistry.RegisterForNavigation<LeaveRequestPage, LeaveRequestViewModel>();
             containerRegistry.RegisterForNavigation<HealthCarePage, HealthCareViewModel>();
+            containerRegistry.RegisterForNavigation<CreateMessagePage, CreateMessageViewModel>();
+            //containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
 
             #endregion
             #region Registry Dialog
