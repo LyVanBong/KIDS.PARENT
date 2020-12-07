@@ -80,7 +80,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<LeaveRequestPage, LeaveRequestViewModel>();
             containerRegistry.RegisterForNavigation<HealthCarePage, HealthCareViewModel>();
             containerRegistry.RegisterForNavigation<CreateMessagePage, CreateMessageViewModel>();
-            //containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
+            containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
 
             #endregion
             #region Registry Dialog

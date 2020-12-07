@@ -127,8 +127,12 @@
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
+    <Folder Include="ViewModels\News\" />
+    <Folder Include="Views\News\" />
     <Folder Include="Views\Tuition\" />
     <Folder Include="ViewModels\Tuition\" />
+    <Folder Include="ViewModels\Message\" />
+    <Folder Include="Views\Message\" />
     <Folder Include="Views\Survey\" />
     <Folder Include="Views\Templates\" />
     <Folder Include="ViewModels\HeatlCare\" />

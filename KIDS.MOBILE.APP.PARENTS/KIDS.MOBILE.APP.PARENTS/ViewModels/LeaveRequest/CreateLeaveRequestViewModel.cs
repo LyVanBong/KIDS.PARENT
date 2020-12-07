@@ -1,42 +1,55 @@
 ﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Models.Message;
 using KIDS.MOBILE.APP.PARENTS.Resources;
+using KIDS.MOBILE.APP.PARENTS.Services;
 using KIDS.MOBILE.APP.PARENTS.Services.Message;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 {
     public class CreateLeaveRequestViewModel : BaseViewModel
     {
         #region Properties
-        private IMessageService _messageService;
+        private ILeaveRequestService _leaveRequestService;
         private string messageContent;
         public string MessageContent
         {
             get => messageContent;
             set => SetProperty(ref messageContent, value);
         }
-        private DateTime selectedDate;
-        public DateTime SelectedDate
+        private DateTime selectedfromDate;
+        public DateTime SelectedFromDate
         {
-            get => selectedDate;
-            set => SetProperty(ref selectedDate, value);
+            get => selectedfromDate;
+            set => SetProperty(ref selectedfromDate, value);
         }
-        public DelegateCommand SendCommand { get; set; }
-        private bool isUpdate;
+        private DateTime selectedToDate;
+        public DateTime SelectedToDate
+        {
+            get => selectedToDate;
+            set => SetProperty(ref selectedToDate, value);
+        }
+        public DelegateCommand SendCommand { get; }
+        public DelegateCommand DeleteCommand { get; }
+        private bool _isUpdate;
+        public bool IsUpdate
+        {
+            get => _isUpdate;
+            set => SetProperty(ref _isUpdate, value);
+        }
         private MessageModel CurrentMessage { get; set; }
         #endregion
 
         #region Contructor
-        public CreateLeaveRequestViewModel(INavigationService navigationService, IMessageService messageService) : base(navigationService)
+        public CreateLeaveRequestViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService) : base(navigationService)
         {
             _navigationService = navigationService;
-            _messageService = messageService;
+            _leaveRequestService = leaveRequestService;
             SendCommand = new DelegateCommand(OnSendClick);
+            DeleteCommand = new DelegateCommand(OnDeleteClick);
         }
         public override void Initialize(INavigationParameters parameters)
         {
@@ -44,7 +57,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             {
                 base.Initialize(parameters);
                 IsLoading = true;
-                SelectedDate = DateTime.Now;
+                SelectedFromDate = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -61,12 +74,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             try
             {
                 base.OnNavigatedTo(parameters);
-                isUpdate = (bool?)parameters["isUpdate"] ?? false;
+                IsUpdate = (bool?)parameters["isUpdate"] ?? false;
                 CurrentMessage = parameters["Message"] as MessageModel;
-                if (isUpdate)
+                if (IsUpdate)
                 {
                     MessageContent = CurrentMessage.Comment;
-                    SelectedDate = CurrentMessage.DateTime != null ? DateTime.Parse(CurrentMessage.DateTime) : DateTime.Now;
+                    SelectedFromDate = CurrentMessage.DateTime != null ? DateTime.Parse(CurrentMessage.DateTime) : DateTime.Now;
                 }
             }
             catch (Exception ex)
@@ -88,19 +101,18 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             }
             else
             {
-                if (!isUpdate)
+                if (!IsUpdate)
                 {
-                    var model = new CreateMessageModel
+                    var model = new CreateLeaveRequestModel
                     {
                         ClassID = AppConstants.User.ClassID,
-                        TeacherID = string.Empty, //TODO
-                        Parent = AppConstants.User.ParentID,
-                        Content = MessageContent,
-                        DateCreate = SelectedDate,
                         StudentID = AppConstants.User.StudentID,
-                        Type = 2
+                        FromDate = SelectedFromDate,
+                        ToDate = SelectedFromDate,
+                        Date = DateTime.Now,
+                        Content = MessageContent
                     };
-                    var result = await _messageService.CreateMessage(model);
+                    var result = await _leaveRequestService.CreateLeaveRequest(model);
                     if (result.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -113,15 +125,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 }
                 else
                 {
-                    var model = new CreateMessageModel
+                    var model = new CreateLeaveRequestModel
                     {
-                        CommunicationID = CurrentMessage.Id.ToString(),
+                        FromDate = SelectedFromDate,
+                        ToDate = SelectedToDate,
+                        Date = DateTime.Now,
                         Content = MessageContent,
-                        DateCreate = SelectedDate,
-                        StudentID = AppConstants.User.StudentID,
-                        Type = 2
+                        ID = CurrentMessage.Id
                     };
-                    var result = await _messageService.UpdateMessage(model);
+                    var result = await _leaveRequestService.UpdateLeaveRequest(model);
                     if (result.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -132,6 +144,24 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                         await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
                     }
                 }
+            }
+        }
+
+        private async void OnDeleteClick()
+        {
+            var model = new CreateLeaveRequestModel
+            {
+                ID = CurrentMessage.Id
+            };
+            var result = await _leaveRequestService.DeleteLeaveRequest(model);
+            if (result.Data == 1)
+            {
+                await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
+                await _navigationService.GoBackAsync();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
             }
         }
         #endregion
