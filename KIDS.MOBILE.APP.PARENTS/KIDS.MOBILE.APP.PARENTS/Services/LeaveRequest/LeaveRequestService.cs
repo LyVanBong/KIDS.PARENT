@@ -37,6 +37,23 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest
             }
         }
 
+        public async Task<ResponseModel<List<GetListLeaveRequestModel>>> GetListLeaveRequest(string studentId)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("StudentId", studentId)
+                };
+                var data = await _requestProvider.GetAsync<List<GetListLeaveRequestModel>>("Application/Select/Student", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<ResponseModel<int>> CreateLeaveRequest(CreateLeaveRequestModel model)
         {
             try

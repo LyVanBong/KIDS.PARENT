@@ -797,5 +797,50 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00101", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new leave request.
+        /// </summary>
+        internal static string _00102 {
+            get {
+                return ResourceManager.GetString("00102", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        internal static string _00103 {
+            get {
+                return ResourceManager.GetString("00103", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unconfirmed.
+        /// </summary>
+        internal static string _00104 {
+            get {
+                return ResourceManager.GetString("00104", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        internal static string _00105 {
+            get {
+                return ResourceManager.GetString("00105", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string _00106 {
+            get {
+                return ResourceManager.GetString("00106", resourceCulture);
+            }
+        }
     }
 }

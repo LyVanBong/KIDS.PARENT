@@ -8,6 +8,7 @@ using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.News;
 using KIDS.MOBILE.APP.PARENTS.Views;
+using KIDS.MOBILE.APP.PARENTS.Views.Activity;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.Message;
@@ -111,7 +112,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                 new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromFile("leave.png"),NavigateTo=nameof(LeaveRequestPage)},
                 new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromFile("medicine.png"),NavigateTo=nameof(MessagePage)},
                 new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(MessagePage)},
-                new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(ActivityPage)},
                 new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromFile("news.png"),NavigateTo=nameof(NewsPage)},
                 new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromFile("album.png"),NavigateTo=nameof(MessagePage)},
                 new MenuItem{ Title = Resource._00047,Icon = ImageSource.FromFile("tuition.png"),NavigateTo=nameof(TuitionPage)},

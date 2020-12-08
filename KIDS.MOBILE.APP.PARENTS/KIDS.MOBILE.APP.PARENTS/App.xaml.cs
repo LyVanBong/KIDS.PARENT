@@ -97,7 +97,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             AppCenter.Start(AppCenterConstants.AppSecretAndroid +
                             AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
-            NavigationService.NavigateAsync(nameof(ActivityPage));
+            NavigationService.NavigateAsync(nameof(LoginPage));
         }
         protected override void OnStart()
         {

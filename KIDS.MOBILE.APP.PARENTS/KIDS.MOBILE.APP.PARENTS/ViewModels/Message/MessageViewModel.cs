@@ -38,7 +38,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             try
             {
                 base.Initialize(parameters);
-                //MessageList = new ObservableCollection<MessageModel>(GetMessagesList());
                 IsLoading = true;
                 await GetMessagesList();
             }
@@ -94,6 +93,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         public Guid Id { get; set; }
         public string ReceivedUser { get; set; }
         public string ReceivedUserText { get =>  $"{Resource._00090}{ReceivedUser}"; }
+        public string TimePeriod { get; set; }
         public string DateTime { get; set; }
         public string ImageUrl { get; set; }
         public string Comment { get; set; }
@@ -106,6 +106,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                 }
                 return Comment;
             } }
-        public string CommentText { get => "Viet binh luan"; }
+        public string Approved { get; set; }
     }
 }

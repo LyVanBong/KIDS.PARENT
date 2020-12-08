@@ -6,7 +6,8 @@
              xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms">
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -33,7 +34,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="Xin nghỉ"
+                   Text="{markupExtension:Translate 00041}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
@@ -72,34 +73,27 @@
             </Label>
         </StackLayout>
 
-        <!--Add new-->
+        
         <StackLayout HorizontalOptions="StartAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Margin="10,5,10,5"
                      Grid.Row="2">
-            <border:SfBorder
-                CornerRadius="24"
-                HeightRequest="30"
-                BackgroundColor="White"
-                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                BorderColor="Gray"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="30">
-                <Image BackgroundColor="White"
-                       Source="home.png">
-                </Image>
-            </border:SfBorder>
+            <Image BackgroundColor="White"
+                       Source="leave.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <Label VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
                    Margin="5,0,0,0">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span FontSize="16" TextColor="Black" Text="25-11-2020" FontAttributes="Bold"/>
+                        <Span FontSize="16" TextColor="Black" Text="{Binding FromDate}" FontAttributes="Bold"/>
                         <Span FontSize="16" TextColor="Black" Text="   -   "/>
-                        <Span FontSize="16" TextColor="Black" Text="25-12-2020" FontAttributes="Bold"/>
+                        <Span FontSize="16" TextColor="Black" Text="{Binding ToDate}" FontAttributes="Bold"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -138,7 +132,7 @@
                                         </gradient:SfGradientView.BackgroundBrush>
                                     </gradient:SfGradientView>
 
-                                    <StackLayout Margin="15" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <StackLayout Margin="0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="12" Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
                                         <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="24" Text="{Binding Number}" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
 
@@ -174,20 +168,23 @@
                 VerticalOptions="Center"
                 WidthRequest="30">
                 <Image BackgroundColor="White"
-                       Source="home.png">
+                       Source="add.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                    </Image.GestureRecognizers>
                 </Image>
             </border:SfBorder>
 
             <Label VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   Text="Tạo đơn nghỉ"
+                   Text="{markupExtension:Translate 00102}"
                    FontSize="16"
                    TextColor="Black"
                    Margin="5,0,0,0">
             </Label>
         </StackLayout>
 
-        <!--Survey List-->
+        <!--Request List-->
         <ScrollView HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Grid.Row="5"

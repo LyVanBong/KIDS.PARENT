@@ -98,59 +98,38 @@
 
         <DatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
-                    Format="D"
+                    Format="yyyy-MM-dd"
                     FontSize="16"
                     TextColor="Black"
                     Date="{Binding SelectedFromDate}"
                     Grid.Row="4"
-                    Margin="10,5,10,5"
+                    Margin="10,5,5,5"
                     HeightRequest="60"
                     Grid.Column="0"/>
 
         <DatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
-                    Format="D"
+                    Format="yyyy-MM-dd"
                     FontSize="16"
                     TextColor="Black"
                     Date="{Binding SelectedToDate}"
                     Grid.Row="4"
-                    Margin="10,5,10,5"
+                    Margin="5,5,10,5"
                     HeightRequest="60"
                     Grid.Column="1"/>
-
-        <Label Text="{markupExtension:Translate 00095}"
-               TextColor="Black"
-               FontSize="16"
-               FontAttributes="Bold"
-               Grid.Row="5"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>
-
-        <Image HeightRequest="100"
-               WidthRequest="125"
-               HorizontalOptions="Start"
-               Source="{Binding ChooseImage}" 
-               Aspect="AspectFill"
-               Grid.Row="6"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
-            </Image.GestureRecognizers>
-        </Image>
 
         <Label Text="{markupExtension:Translate 00040}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
-               Grid.Row="7"
+               Grid.Row="6"
                Margin="10,5,10,5"
                Grid.ColumnSpan="2"/>
 
         <Editor HorizontalOptions="FillAndExpand"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="8"
+                Grid.Row="7"
                 HeightRequest="150"
                 BackgroundColor="White"
                 Margin="10,5,10,5"
@@ -158,7 +137,7 @@
                 Grid.ColumnSpan="2"/>
 
         <Button
-                Grid.Row="9"
+                Grid.Row="8"
                 HorizontalOptions="FillAndExpand"
                 Margin="10,10,10,10"
                 Command="{Binding SendCommand}"

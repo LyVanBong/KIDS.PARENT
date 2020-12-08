@@ -58,6 +58,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 base.Initialize(parameters);
                 IsLoading = true;
                 SelectedFromDate = DateTime.Now;
+                SelectedToDate = DateTime.Now;
             }
             catch (Exception ex)
             {

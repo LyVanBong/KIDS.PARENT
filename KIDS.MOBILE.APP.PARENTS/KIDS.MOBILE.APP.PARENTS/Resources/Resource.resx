@@ -445,4 +445,24 @@
     <value>Absent without Approved</value>
     <comment>Nghỉ không phép</comment>
   </data>
+  <data name="00102" xml:space="preserve">
+    <value>Create a new leave request</value>
+    <comment>Tạo đơn xin nghỉ</comment>
+  </data>
+  <data name="00103" xml:space="preserve">
+    <value>Confirmed</value>
+    <comment>Đã xác nhận</comment>
+  </data>
+  <data name="00104" xml:space="preserve">
+    <value>Unconfirmed</value>
+    <comment>Chưa xác nhận</comment>
+  </data>
+  <data name="00105" xml:space="preserve">
+    <value>From</value>
+    <comment>Từ ngày</comment>
+  </data>
+  <data name="00106" xml:space="preserve">
+    <value>To</value>
+    <comment>đến ngày</comment>
+  </data>
 </root>
