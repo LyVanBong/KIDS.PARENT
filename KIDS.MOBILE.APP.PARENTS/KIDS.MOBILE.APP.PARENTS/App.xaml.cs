@@ -38,6 +38,8 @@ using KIDS.MOBILE.APP.PARENTS.Services.Message;
 using KIDS.MOBILE.APP.PARENTS.Services;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Message;
 using KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest;
+using KIDS.MOBILE.APP.PARENTS.Views.Activity;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Activity;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -81,6 +83,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<HealthCarePage, HealthCareViewModel>();
             containerRegistry.RegisterForNavigation<CreateMessagePage, CreateMessageViewModel>();
             containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
+            containerRegistry.RegisterForNavigation<ActivityPage, ActivityViewModel>();
 
             #endregion
             #region Registry Dialog
@@ -94,7 +97,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             AppCenter.Start(AppCenterConstants.AppSecretAndroid +
                             AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
-            NavigationService.NavigateAsync(nameof(LoginPage));
+            NavigationService.NavigateAsync(nameof(ActivityPage));
         }
         protected override void OnStart()
         {

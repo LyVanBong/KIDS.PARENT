@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Activity.ActivityPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00040}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Watching-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Margin="10,5,10,5"
+                     Grid.Row="1">
+            <border:SfBorder
+                CornerRadius="24"
+                HeightRequest="30"
+                BackgroundColor="White"
+                BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                BorderColor="Gray"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                WidthRequest="30">
+                <Image BackgroundColor="White"
+                       Source="home.png">
+                </Image>
+            </border:SfBorder>
+
+            <Label VerticalOptions="Center"
+                   HorizontalOptions="StartAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Dang quan sat be " TextColor="Black" FontSize="16"/>
+                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+
+        <!--loading view-->
+        <loadingView:LoadingView
+                Grid.Row="2"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+
+        <!--activity list-->
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="2"
+                    Margin="10">
+            <syncfusion:SfListView
+                ItemsSource="{Binding ActivityList}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="10"
+                FlowDirection="LeftToRight"
+                ItemSize="100"
+                Orientation="Vertical">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Label HorizontalOptions="Center"
+                                   TextColor="Black"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />
+
+                                <Label
+                                  Grid.Column="2"
+                                  Margin="20,0"
+                                  TextColor="Black"
+                                  FontSize="16"
+                                    FontAttributes="Bold"
+                                  Text="{Binding ClassName}" />
+
+                                <Label
+                                  Grid.Row="1"
+                                  Grid.Column="2"
+                                  Margin="20,0"
+                                  TextColor="Gray"
+                                  FontSize="14"
+                                  Text="{Binding Instructor}" />
+
+                                <BoxView
+                                  Grid.RowSpan="2"
+                                  Grid.Column="1"
+                                  BackgroundColor="#E4B6C3"
+                                  HorizontalOptions="Center"
+                                  IsVisible="{Binding IsLast, Converter={converter:NotBooleanConverter}}"
+                                  VerticalOptions="Fill"
+                                  WidthRequest="3" />
+
+                                <Image Grid.Column="1" Source="Bullet.png" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

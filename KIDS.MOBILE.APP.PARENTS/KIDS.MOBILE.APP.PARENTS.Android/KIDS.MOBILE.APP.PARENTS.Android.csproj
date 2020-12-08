@@ -163,6 +163,10 @@
       <Generator>
       </Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\Bullet.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_student_male_info.png" />
