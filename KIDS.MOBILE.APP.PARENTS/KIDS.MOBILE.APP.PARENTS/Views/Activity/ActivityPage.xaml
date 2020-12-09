@@ -6,16 +6,19 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter">
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
+             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
+            <!--<RowDefinition Height="60"/>-->
+            <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <!--Header-->
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
@@ -38,6 +41,7 @@
         </StackLayout>
 
         <!--Watching-->
+        <!--
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
@@ -66,7 +70,17 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-        </StackLayout>
+        </StackLayout>-->
+
+        <calendar:SfCalendar x:Name="calendar" 
+                             ViewMode="MonthView"
+                               NumberOfWeeksInView="1"
+                              HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Grid.Row="1" 
+                             HeaderHeight="30" 
+                             SelectionMode="SingleSelection"
+                             SelectedDate="{Binding SelectedDate}"/>
 
         <!--loading view-->
         <loadingView:LoadingView
@@ -75,49 +89,65 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
 
-        <!--activity list-->
         <ScrollView HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Grid.Row="2"
-                    Margin="10">
-            <syncfusion:SfListView
-                ItemsSource="{Binding ActivityList}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Margin="10"
-                FlowDirection="LeftToRight"
-                ItemSize="100"
-                Orientation="Vertical">
+          VerticalOptions="FillAndExpand"
+                                       Grid.Row="2">
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="0"
+          VerticalOptions="FillAndExpand" Orientation="Vertical">
 
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid ColumnSpacing="0" RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="30" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
+                <!--activity list-->
+                <syncfusion:SfListView
+                    ItemsSource="{Binding ActivityList}" 
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="10,0,10,10" 
+                    IsStickyHeader="True" 
+                    HeaderSize="60"
+                    FlowDirection="LeftToRight" 
+                    IsScrollBarVisible="False"
+                    ItemSize="100"
+                    Orientation="Vertical"
+                    SelectionMode="None">
 
-                                <Label HorizontalOptions="Center"
+                    <syncfusion:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="20,5,0,20">
+                                <Label TextColor="Black" FontSize="18" FontAttributes="Bold" Text="Class Schedule" />
+                                <Label TextColor="Gray" FontSize="12" Text="8 Mar 2017" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </syncfusion:SfListView.HeaderTemplate>
+
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label HorizontalOptions="Center"
                                    TextColor="Black"
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />
 
-                                <Label
+                                    <Label
                                   Grid.Column="2"
-                                  Margin="20,0"
+                                  Margin="20,5,20,5"
                                   TextColor="Black"
                                   FontSize="16"
                                     FontAttributes="Bold"
                                   Text="{Binding ClassName}" />
 
-                                <Label
+                                    <Label
                                   Grid.Row="1"
                                   Grid.Column="2"
                                   Margin="20,0"
@@ -125,7 +155,7 @@
                                   FontSize="14"
                                   Text="{Binding Instructor}" />
 
-                                <BoxView
+                                    <BoxView
                                   Grid.RowSpan="2"
                                   Grid.Column="1"
                                   BackgroundColor="#E4B6C3"
@@ -134,14 +164,88 @@
                                   VerticalOptions="Fill"
                                   WidthRequest="3" />
 
-                                <Image Grid.Column="1" Source="Bullet.png" />
+                                    <Image Grid.Column="1" Source="Bullet.png" />
 
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+
+                <!--Menu for today-->
+                <syncfusion:SfListView 
+                    BackgroundColor="White"
+                    ItemsSource="{Binding ActivityList}"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10,10,10,0" 
+                    IsStickyHeader="True"
+                    HeaderSize="60"
+                    FlowDirection="LeftToRight" 
+                    IsScrollBarVisible="False"
+                    Orientation="Vertical"
+                    ItemSize="100"
+                    RowSpacing="0">
+
+                        <syncfusion:SfListView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="20,5,0,20">
+                                    <Label TextColor="Black" FontSize="18" FontAttributes="Bold" Text="Class Schedule" />
+                                    <Label TextColor="Gray" FontSize="12" Text="8 Mar 2017" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </syncfusion:SfListView.HeaderTemplate>
+
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label
+                                      Grid.Column="2"
+                                      Margin="20,0"
+                                      TextColor="Black"
+                                      FontSize="16"
+                                        FontAttributes="Bold"
+                                      Text="{Binding ClassName}" />
+
+                                    <Label
+                                      Grid.Row="1"
+                                      Grid.Column="2"
+                                      Margin="20,5,20,5"
+                                      TextColor="Gray"
+                                      FontSize="14"
+                                      Text="{Binding Instructor}" />
+
+                                    <BoxView
+                                      Grid.RowSpan="2"
+                                      Grid.Column="1"
+                                      BackgroundColor="#E4B6C3"
+                                      HorizontalOptions="Center"
+                                      IsVisible="{Binding IsLast, Converter={converter:NotBooleanConverter}}"
+                                      VerticalOptions="Fill"
+                                      WidthRequest="3" />
+
+                                    <Image Grid.Column="1" Source="Bullet.png" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </StackLayout>
         </ScrollView>
+
+        
+
     </Grid>
 
 </ContentPage>
