@@ -7,7 +7,8 @@
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
-             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms">
+             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:dataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -108,7 +109,8 @@
                     IsScrollBarVisible="False"
                     ItemSize="100"
                     Orientation="Vertical"
-                    SelectionMode="None">
+                    SelectionMode="None"
+                    x:Name="activityList">
 
                     <syncfusion:SfListView.HeaderTemplate>
                         <DataTemplate>
@@ -173,74 +175,26 @@
                 </syncfusion:SfListView>
 
                 <!--Menu for today-->
-                <syncfusion:SfListView 
-                    BackgroundColor="White"
-                    ItemsSource="{Binding ActivityList}"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="10,10,10,0" 
-                    IsStickyHeader="True"
-                    HeaderSize="60"
-                    FlowDirection="LeftToRight" 
-                    IsScrollBarVisible="False"
-                    Orientation="Vertical"
-                    ItemSize="100"
-                    RowSpacing="0">
-
-                        <syncfusion:SfListView.HeaderTemplate>
-                            <DataTemplate>
-                                <StackLayout Padding="20,5,0,20">
-                                    <Label TextColor="Black" FontSize="18" FontAttributes="Bold" Text="Class Schedule" />
-                                    <Label TextColor="Gray" FontSize="12" Text="8 Mar 2017" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </syncfusion:SfListView.HeaderTemplate>
-
-                    <syncfusion:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid ColumnSpacing="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="10" />
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                    <Label
-                                      Grid.Column="2"
-                                      Margin="20,0"
-                                      TextColor="Black"
-                                      FontSize="16"
-                                        FontAttributes="Bold"
-                                      Text="{Binding ClassName}" />
-
-                                    <Label
-                                      Grid.Row="1"
-                                      Grid.Column="2"
-                                      Margin="20,5,20,5"
-                                      TextColor="Gray"
-                                      FontSize="14"
-                                      Text="{Binding Instructor}" />
-
-                                    <BoxView
-                                      Grid.RowSpan="2"
-                                      Grid.Column="1"
-                                      BackgroundColor="#E4B6C3"
-                                      HorizontalOptions="Center"
-                                      IsVisible="{Binding IsLast, Converter={converter:NotBooleanConverter}}"
-                                      VerticalOptions="Fill"
-                                      WidthRequest="3" />
-
-                                    <Image Grid.Column="1" Source="Bullet.png" />
-
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </syncfusion:SfListView.ItemTemplate>
-                </syncfusion:SfListView>
+                <dataGrid:SfDataGrid HorizontalOptions="FillAndExpand"
+                                     ItemsSource="{Binding MenuList}"
+                                     BackgroundColor="White"
+                                     AutoGenerateColumns="False"
+                                     AllowEditing="False"
+                                     Margin="10,0,10,10"
+                                     x:Name="menuData">
+                    <dataGrid:SfDataGrid.Columns>
+                        <dataGrid:GridTextColumn HeaderText="Thoi gian" Width="150"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Time" TextAlignment="Start" Padding="10,5,10,5"/>
+                        <dataGrid:GridTextColumn HeaderText="Noi dung" ColumnSizer="LastColumnFill"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Content"
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5"/>
+                    </dataGrid:SfDataGrid.Columns>
+                </dataGrid:SfDataGrid>
             </StackLayout>
         </ScrollView>
 

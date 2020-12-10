@@ -16,6 +16,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => _activityList;
             set => SetProperty(ref _activityList, value);
         }
+        private ObservableCollection<MenuToDay> menuList = new ObservableCollection<MenuToDay>();
+        public ObservableCollection<MenuToDay> MenuList
+        {
+            get => menuList;
+            set => SetProperty(ref menuList, value);
+        }
         //public DelegateCommand AddCommand { get; }
         #endregion
 
@@ -32,6 +38,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             {
                 base.Initialize(parameters);
                 ActivityList = new ObservableCollection<ExerciseClass>(GetActivityList());
+                MenuList = new ObservableCollection<MenuToDay>(GetMenuList());
                 IsLoading = true;
             }
             catch (Exception ex)
@@ -101,6 +108,28 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 DateTime.Now.Day,
                 hour, minute, 0);
         }
+
+        private List<MenuToDay> GetMenuList()
+        {
+            return new List<MenuToDay>
+            {
+                new MenuToDay
+                {
+                    Time = "Buoi sang",
+                    Content="Pho co\nXoi ngo"
+                },
+                new MenuToDay
+                {
+                    Time = "Buoi trua",
+                    Content="Pho co\nXoi ngo\nCom trang\nRau xao\nCanh bi do"
+                },
+                new MenuToDay
+                {
+                    Time = "Buoi chieu",
+                    Content="Pho co\nXoi ngo\nBanh my kep thit\nAnything else"
+                },
+            };
+        }
         #endregion
     }
 
@@ -111,6 +140,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public string Instructor { get; set; }
 
         public bool IsLast { get; set; } = false;
+    }
+
+    public class MenuToDay
+    {
+        public string Time { get; set; }
+        public string Content { get; set; }
     }
 }
 
