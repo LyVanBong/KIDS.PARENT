@@ -21,6 +21,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
         {
             base.OnAppearing();
             activityList.Behaviors.Add(new ListViewBehavior());
+            Style style = new Style(typeof(GridCell));
+            style.Setters.Add(new Setter() {
+                Property= GridCell.ForegroundProperty,
+                Value = Color.Black
+            });
+            menuData.Columns[0].CellStyle = style;
+            menuData.Columns[1].CellStyle = style;
             menuData.Behaviors.Add(new DataGridBehavior());
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
         }
