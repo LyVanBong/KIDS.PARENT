@@ -148,7 +148,22 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Image { get; set; }
-        public string Content { get; set; }
+        private string content;
+        public string Content 
+        {
+            get
+            {
+                if(content?.Length >= 100)
+                {
+                    return $"{content.Substring(0, 100)}...";
+                }
+                return content ?? string.Empty;
+            }
+            set
+            {
+                content = value;
+            }
+        }
         public int Like { get; set; }
         public string Comment { get; set; }
     }

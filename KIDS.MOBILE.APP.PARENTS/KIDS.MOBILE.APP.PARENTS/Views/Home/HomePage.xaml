@@ -90,44 +90,56 @@
                 Margin="0,0,0,10"
                 Grid.Row="3" 
                 FlowDirection="LeftToRight" 
-                ItemSize="180" 
+                ItemSize="200" 
                 ColumnSpacing="10"
                 Orientation="Horizontal">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Frame HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                           CornerRadius="5"
-                           Margin = "5" Padding="0"
-                           BorderColor="Black">
+                               VerticalOptions="FillAndExpand"
+                               CornerRadius="5"
+                               Margin = "5" 
+                               Padding="0">
                             <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Orientation="Vertical"
-                                 Padding="2">
+                                 Padding="0">
                                 <Image HorizontalOptions="FillAndExpand"
-                                       VerticalOptions="StartAndExpand"
+                                       VerticalOptions="Start"
                                    Aspect="AspectFill">
                                     <Image.Source>
                                         <UriImageSource Uri="{Binding Image}" CacheValidity="1" CachingEnabled="true"/>
                                     </Image.Source>
                                 </Image>
                                 <Label Text= "{Binding Title}"
-                                    FontSize="12"
-                                    HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="EndAndExpand"
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    VerticalTextAlignment="Start"
+                                    HorizontalTextAlignment="Start"
                                     TextColor="Black"
                                     LineBreakMode="WordWrap"
-                                    Margin="5,0,0,0"
-                                    HorizontalTextAlignment="Start"/>
+                                    Margin="10,0,10,0"/>
                                 <Label Text= "{Binding Content}"
                                     FontSize="10"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="EndAndExpand"
                                     TextColor="Black"
                                     LineBreakMode="WordWrap"
-                                    Margin="5,0,0,10"
-                                    HorizontalTextAlignment="Start"/>
+                                    HorizontalTextAlignment="Start" BackgroundColor="Red"
+                                       VerticalTextAlignment="End"/>
+                                <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="Blue"
+                                             VerticalOptions="End"
+                                             Margin="10,5,10,5"
+                                             Orientation="Horizontal">
+                                    <Image Source="view.png"
+                                           HeightRequest="30"
+                                           WidthRequest="30"
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding Like}"
+                                           FontSize="14"
+                                           TextColor="Black"
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center"/>
+                                </StackLayout>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
