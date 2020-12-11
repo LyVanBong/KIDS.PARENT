@@ -8,7 +8,8 @@
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
-             xmlns:dataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+             xmlns:dataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Name="activityPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <style:SfDataGridData x:Key="dataGridStyle"/>
@@ -183,6 +184,7 @@
                            FontSize="20"
                            TextColor="Black"/>
                 </StackLayout>
+                
                 <Frame Margin="10,5,10,5"
                        HorizontalOptions="FillAndExpand"
                        CornerRadius="10"
@@ -215,7 +217,7 @@
                     HeaderSize="60"
                     FlowDirection="LeftToRight" 
                     IsScrollBarVisible="False"
-                    ItemSize="100"
+                    ItemSize="100" AutoFitMode="Height"
                     Orientation="Vertical"
                     SelectionMode="None"
                     x:Name="activityList">
@@ -247,7 +249,7 @@
                                    TextColor="Black"
                                    FontSize="16"
                                    FontAttributes="Bold"
-                                   Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />
+                                   Text="{Binding ClassTime}" />
 
                                     <Label
                                   Grid.Column="2"
@@ -255,7 +257,7 @@
                                   TextColor="Black"
                                   FontSize="16"
                                     FontAttributes="Bold"
-                                  Text="{Binding ClassName}" />
+                                  Text="{Binding Title}" />
 
                                     <Label
                                   Grid.Row="1"
@@ -397,12 +399,12 @@
                                CornerRadius="10" 
                                Padding="5,0,5,0"
                                HeightRequest="40"
-                               WidthRequest="50"
+                               WidthRequest="60"
                                VerticalOptions="Center">
                             <Label FontAttributes="Bold"
                                    FontSize="18"
                                    TextColor="Blue"
-                                   Text="12:00"
+                                   Text="{Binding SleepFrom}"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"/>
                         </Frame>
@@ -416,12 +418,12 @@
                                CornerRadius="10" 
                                Padding="5,0,5,0"
                                HeightRequest="40"
-                               WidthRequest="50"
+                               WidthRequest="60"
                                VerticalOptions="Center">
                             <Label FontAttributes="Bold"
                                    FontSize="18"
                                    TextColor="Blue"
-                                   Text="14:00"
+                                   Text="{Binding SleepTo}"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"/>
                         </Frame>
@@ -461,7 +463,7 @@
                                 <FormattedString>
                                     <Span Text="Số lần poo:"/>
                                     <Span Text=" "/>
-                                    <Span Text="0"/>
+                                    <Span Text="{Binding PooNumber}"/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

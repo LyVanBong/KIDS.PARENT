@@ -32,10 +32,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
         }
 
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             menuData.QueryRowHeight -= MenuData_QueryRowHeight;
+            activityList.Behaviors.Clear();
+            activityPage.Content = null;
         }
 
         private void MenuData_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)

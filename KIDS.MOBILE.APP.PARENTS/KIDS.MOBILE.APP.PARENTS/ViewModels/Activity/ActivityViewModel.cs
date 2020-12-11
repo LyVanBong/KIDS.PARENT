@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.Activity;
+using KIDS.MOBILE.APP.PARENTS.Services.Activity;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -9,7 +14,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
     public class ActivityViewModel : BaseViewModel
     {
         #region Properties
-        //private IMessageService _messageService;
+        private IActivityService _activityService;
         private ObservableCollection<ExerciseClass> _activityList = new ObservableCollection<ExerciseClass>();
         public ObservableCollection<ExerciseClass> ActivityList
         {
@@ -22,24 +27,58 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => menuList;
             set => SetProperty(ref menuList, value);
         }
+        private DateTime selectedDate;
+        public DateTime SelectedDate
+        {
+            get => selectedDate;
+            set => SetProperty(ref selectedDate, value);
+        }
+        private string sleepFrom;
+        public string SleepFrom
+        {
+            get => sleepFrom;
+            set => SetProperty(ref sleepFrom, value);
+        }
+        private string sleepTo;
+        public string SleepTo
+        {
+            get => sleepTo;
+            set => SetProperty(ref sleepTo, value);
+        }
+        private int pooNumber;
+        public int PooNumber
+        {
+            get => pooNumber;
+            set => SetProperty(ref pooNumber, value);
+        }
+        private string studentId;
+        private string classId;
+        private string gradeId;
         //public DelegateCommand AddCommand { get; }
         #endregion
 
         #region Contructor
-        public ActivityViewModel(INavigationService navigationService) : base(navigationService)
+        public ActivityViewModel(INavigationService navigationService,IActivityService activityService) : base(navigationService)
         {
             _navigationService = navigationService;
-            //_messageService = messageService;
+            _activityService = activityService;
             //AddCommand = new DelegateCommand(OnAddClick);
         }
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             try
             {
                 base.Initialize(parameters);
-                ActivityList = new ObservableCollection<ExerciseClass>(GetActivityList());
-                MenuList = new ObservableCollection<MenuToDay>(GetMenuList());
                 IsLoading = true;
+                SelectedDate = DateTime.Now;
+                studentId = AppConstants.User.StudentID;
+                classId = AppConstants.User.ClassID;
+                gradeId = AppConstants.User.GradeID;
+                ActivityList = new ObservableCollection<ExerciseClass>(new List<ExerciseClass>());
+                await GetActivityList(SelectedDate.ToString());
+                await GetMenuList(SelectedDate.ToString());
+                await GetSleepActivity();
+                await GetPooActivity();
             }
             catch (Exception ex)
             {
@@ -57,86 +96,93 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         #endregion
 
         #region Private methods
-        private List<ExerciseClass> GetActivityList()
+        private async Task GetSleepActivity()
         {
-            return new List<ExerciseClass>
+            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString());
+            if(sleepActivity?.Data?.Any() == true)
             {
-                new ExerciseClass
+                var sleepItem = sleepActivity.Data?.First();
+                SleepFrom = sleepItem.SleepFrom;
+                SleepTo = sleepItem.SleepTo;
+            }
+        }
+        private async Task GetPooActivity()
+        {
+            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString());
+            if (pooActivity?.Data?.Any() == true)
+            {
+                var pooItem = pooActivity.Data?.First();
+                PooNumber = pooItem.Hygiene ?? 0;
+            }
+        }
+        private async Task GetActivityList(string date)
+        {
+            var listMorningActivity = await _activityService.GetMorningActivity(studentId, classId, date);
+            var listAfternoonActivity = await _activityService.GetAfternoonActivity(studentId, classId, date);
+            var listActivities = new List<DailyActivityResponseModel>();
+            var listBinding = new List<ExerciseClass>();
+            if (listMorningActivity?.Data?.Any() == true) listActivities.AddRange(listMorningActivity.Data);
+            if (listAfternoonActivity?.Data?.Any() == true) listActivities.AddRange(listAfternoonActivity.Data);
+            foreach(var item in listActivities)
+            {
+                listBinding.Add(new ExerciseClass
                 {
-                    ClassName = "Yoga",
-                    Instructor = "Maharshi Patanjali",
-                    ClassTime = TodayAt(8,00),
-                },
-                 new ExerciseClass
+                    Id = item.ID,
+                    Instructor = item.Contents,
+                    ClassTime = item.ThoiGian,
+                    IsLast = false,
+                    Title = string.Empty
+                });
+                    listBinding.Add(new ExerciseClass
+                    {
+                        Id = item.ID,
+                        Instructor = item.Contents,
+                        ClassTime = item.ThoiGian,
+                        IsLast = false,
+                        Title = string.Empty
+                    });
+                listBinding.Add(new ExerciseClass
                 {
-                    ClassName = "ABS + Stretch",
-                    Instructor = "David Hasslehoff",
-                    ClassTime = TodayAt(9,30),
-                },
-                 new ExerciseClass
-                {
-                    ClassName = "Body Sculpt",
-                    Instructor = "Sadie Terry",
-                    ClassTime = DateTime.Now.AddHours(3),
-                },
-                 new ExerciseClass
-                {
-                    ClassName = "Cycle",
-                    Instructor = "Lance Armstrong",
-                    ClassTime = TodayAt(12,00),
-                },
-                 new ExerciseClass
-                {
-                    ClassName = "Aerobics",
-                    Instructor = "Jacky Chan",
-                    ClassTime = TodayAt(15,30),
-                },
-                 new ExerciseClass
-                {
-                    ClassName = "Weights",
-                    Instructor = "Arnold Schwarzenegger",
-                    ClassTime = TodayAt(18,00),
-                    IsLast = true
-                },
-            };
+                    Id = item.ID,
+                    Instructor = item.Contents,
+                    ClassTime = item.ThoiGian,
+                    IsLast = false,
+                    Title = string.Empty
+                });
+            }
+            if (listBinding.Any()) listBinding.Last().IsLast = true;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                ActivityList = new ObservableCollection<ExerciseClass>(listBinding);
+            });
         }
 
-        private DateTime TodayAt(int hour, int minute)
+        private async Task GetMenuList(string date)
         {
-            return new DateTime(DateTime.Now.Year,
-                DateTime.Now.Month,
-                DateTime.Now.Day,
-                hour, minute, 0);
-        }
-
-        private List<MenuToDay> GetMenuList()
-        {
-            return new List<MenuToDay>
+            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date);
+            var menuList = new List<MenuToDay>();
+            if(listMenu?.Data?.Any() == true)
             {
-                new MenuToDay
+                foreach(var item in listMenu.Data)
                 {
-                    Time = "Buoi sang",
-                    Content="Pho co\nXoi ngo"
-                },
-                new MenuToDay
-                {
-                    Time = "Buoi trua",
-                    Content="Pho co\nXoi ngo\nCom trang\nRau xao\nCanh bi do"
-                },
-                new MenuToDay
-                {
-                    Time = "Buoi chieu",
-                    Content="Pho co\nXoi ngo\nBanh my kep thit\nAnything else"
-                },
-            };
+                    menuList.Add(new MenuToDay
+                    {
+                        Id = item.ID,
+                        Time = item.BuaAn,
+                        Content = item.MonAn
+                    });
+                }
+            }
+            MenuList = new ObservableCollection<MenuToDay>(menuList);
         }
         #endregion
     }
 
     public class ExerciseClass
     {
-        public DateTime ClassTime { get; set; }
-        public string ClassName { get; set; }
+        public Guid? Id { get; set; }
+        public string ClassTime { get; set; }
+        public string Title { get; set; }
         public string Instructor { get; set; }
 
         public bool IsLast { get; set; } = false;
@@ -144,6 +190,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
 
     public class MenuToDay
     {
+        public Guid? Id { get; set; }
         public string Time { get; set; }
         public string Content { get; set; }
     }
