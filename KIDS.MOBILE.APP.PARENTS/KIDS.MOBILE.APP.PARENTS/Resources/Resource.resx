@@ -465,4 +465,44 @@
     <value>To</value>
     <comment>đến ngày</comment>
   </data>
+  <data name="00107" xml:space="preserve">
+    <value>Learning for today</value>
+    <comment>Hôm nay con học</comment>
+  </data>
+  <data name="00108" xml:space="preserve">
+    <value>Menu for today</value>
+    <comment>Thực đơn hôm nay của con</comment>
+  </data>
+  <data name="00109" xml:space="preserve">
+    <value>Sleeping activity</value>
+    <comment>Hoạt động ngủ</comment>
+  </data>
+  <data name="00110" xml:space="preserve">
+    <value>Poo activity</value>
+    <comment>Hoạt động vệ sinh</comment>
+  </data>
+  <data name="00111" xml:space="preserve">
+    <value>Kid slept from</value>
+    <comment>Con ngủ từ</comment>
+  </data>
+  <data name="00112" xml:space="preserve">
+    <value>To</value>
+    <comment>Đến</comment>
+  </data>
+  <data name="00113" xml:space="preserve">
+    <value>Number of poo :</value>
+    <comment>Số lần đi vệ sinh :</comment>
+  </data>
+  <data name="00114" xml:space="preserve">
+    <value>Thanks giving</value>
+    <comment>Lời cảm ơn</comment>
+  </data>
+  <data name="00115" xml:space="preserve">
+    <value>Parents can send message to motivate kid's teacher here.</value>
+    <comment>Phụ huynh có thể gửi lời nhắn cảm ơn, động viên cho các cô giáo trong ở đây</comment>
+  </data>
+  <data name="00116" xml:space="preserve">
+    <value>Send message</value>
+    <comment>Gửi lời cảm ơn</comment>
+  </data>
 </root>

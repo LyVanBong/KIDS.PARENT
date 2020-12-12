@@ -19,7 +19,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public ObservableCollection<ExerciseClass> ActivityList
         {
             get => _activityList;
-            set => SetProperty(ref _activityList, value);
+            set
+            {
+                _activityList = value;
+                RaisePropertyChanged(nameof(ActivityHeightRequest));
+                RaisePropertyChanged(nameof(ActivityList));
+                RaisePropertyChanged(nameof(IsActivityVisible));
+            }
         }
         private ObservableCollection<MenuToDay> menuList = new ObservableCollection<MenuToDay>();
         public ObservableCollection<MenuToDay> MenuList
@@ -51,12 +57,48 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => pooNumber;
             set => SetProperty(ref pooNumber, value);
         }
+        public bool IsActivityVisible
+        {
+            get => ActivityList.Any();
+        }
         private bool _IsDailyCommentVisible;
         public bool IsDailyCommentVisible
         {
             get => _IsDailyCommentVisible;
             set => SetProperty(ref _IsDailyCommentVisible, value);
         }
+        public decimal ActivityHeightRequest
+        {
+            get
+            {
+                var count = ActivityList?.Count ?? 0;
+                return 80 * (count + 1);
+            }
+        }
+        private string _EatingComment;
+        public string EatingComment
+        {
+            get => _EatingComment;
+            set 
+            {
+                _EatingComment = value;
+                RaisePropertyChanged(nameof(EatingComment));
+                RaisePropertyChanged(nameof(IsEatingCommentVisible));
+            }
+        }
+        public bool IsEatingCommentVisible { get => !string.IsNullOrEmpty(EatingComment); }
+        private string _StudyingComment;
+        public string StudyingComment
+        {
+            get => _StudyingComment;
+            set
+            {
+                _EatingComment = value;
+                RaisePropertyChanged(nameof(_StudyingComment));
+                RaisePropertyChanged(nameof(IsStudyingCommentVisible));
+            }
+        }
+        public bool IsStudyingCommentVisible { get => !string.IsNullOrEmpty(StudyingComment); }
         //private bool _IsStudyingCommentVisible;
         //public bool IsStudyingCommentVisible
         //{
@@ -172,6 +214,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                         Comment = item.MealComment
                     });
                 }
+                EatingComment = listMenu.Data.First().MealComment;
             }
             MenuList = new ObservableCollection<MenuToDay>(menuList);
         }

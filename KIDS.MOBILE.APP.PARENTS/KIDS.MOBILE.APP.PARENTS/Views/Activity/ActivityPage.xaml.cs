@@ -20,16 +20,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //activityList.Behaviors.Add(new ListViewBehavior());
+            activityList.Behaviors.Add(new ListViewBehavior());
             Style style = new Style(typeof(GridCell));
             style.Setters.Add(new Setter() {
                 Property= GridCell.ForegroundProperty,
                 Value = Color.Black
             });
-            activityList.Columns[0].CellStyle = style;
-            activityList.Columns[1].CellStyle = style;
-            activityList.Behaviors.Add(new DataGridBehavior());
-            activityList.QueryRowHeight += ActivityList_QueryRowHeight;
 
             menuData.Columns[0].CellStyle = style;
             menuData.Columns[1].CellStyle = style;
@@ -37,22 +33,11 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
         }
 
-        private void ActivityList_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
-        {
-            if (e.RowIndex > 0)
-            {
-                e.Height = SfDataGridHelpers.GetRowHeight(activityList, e.RowIndex);
-                e.Handled = true;
-            }
-        }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             menuData.QueryRowHeight -= MenuData_QueryRowHeight;
-            activityList.QueryRowHeight -= ActivityList_QueryRowHeight;
-            //activityList.Behaviors.Clear();
-            //activityPage.Content = null;
+            activityList.Behaviors.Clear();
         }
 
         private void MenuData_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)
@@ -103,9 +88,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
 
         private void OnListViewLoaded(object sender, ListViewLoadedEventArgs e)
         {
-            var container = listView.GetVisualContainer();
-            var extent = (double)container.GetType().GetRuntimeProperties().FirstOrDefault(x => x.Name == "TotalExtent").GetValue(container);
-            listView.HeightRequest = extent;
+            //var container = listView.GetVisualContainer();
+            //var extent = (double)container.GetType().GetRuntimeProperties().FirstOrDefault(x => x.Name == "TotalExtent").GetValue(container);
+            //listView.HeightRequest = extent;
         }
 
         protected override void OnDetachingFrom(SfListView bindable)

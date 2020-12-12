@@ -842,5 +842,95 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00106", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learning for today.
+        /// </summary>
+        internal static string _00107 {
+            get {
+                return ResourceManager.GetString("00107", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu for today.
+        /// </summary>
+        internal static string _00108 {
+            get {
+                return ResourceManager.GetString("00108", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sleeping activity.
+        /// </summary>
+        internal static string _00109 {
+            get {
+                return ResourceManager.GetString("00109", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poo activity.
+        /// </summary>
+        internal static string _00110 {
+            get {
+                return ResourceManager.GetString("00110", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kid slept from.
+        /// </summary>
+        internal static string _00111 {
+            get {
+                return ResourceManager.GetString("00111", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string _00112 {
+            get {
+                return ResourceManager.GetString("00112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of poo :.
+        /// </summary>
+        internal static string _00113 {
+            get {
+                return ResourceManager.GetString("00113", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks giving.
+        /// </summary>
+        internal static string _00114 {
+            get {
+                return ResourceManager.GetString("00114", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parents can send message to motivate kid&apos;s teacher here..
+        /// </summary>
+        internal static string _00115 {
+            get {
+                return ResourceManager.GetString("00115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send message.
+        /// </summary>
+        internal static string _00116 {
+            get {
+                return ResourceManager.GetString("00116", resourceCulture);
+            }
+        }
     }
 }
