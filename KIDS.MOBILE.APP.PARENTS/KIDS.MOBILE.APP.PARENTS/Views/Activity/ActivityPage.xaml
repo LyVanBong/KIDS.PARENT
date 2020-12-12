@@ -75,7 +75,8 @@
                 <!--Daily comment-->
                 <StackLayout Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
-                             Orientation="Horizontal">
+                             Orientation="Horizontal"
+                             IsVisible="{Binding IsDailyCommentVisible}">
                     <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
@@ -89,7 +90,8 @@
                        HorizontalOptions="FillAndExpand"
                        CornerRadius="10"
                        BorderColor="Transparent"
-                       BackgroundColor="White">
+                       BackgroundColor="White"
+                       IsVisible="{Binding IsDailyCommentVisible}">
                     <Grid HorizontalOptions="FillAndExpand"
                           ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
@@ -189,7 +191,8 @@
                        HorizontalOptions="FillAndExpand"
                        CornerRadius="10"
                        BorderColor="Transparent"
-                       BackgroundColor="White">
+                       BackgroundColor="White"
+                       >
                     <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Orientation="Horizontal">
@@ -207,7 +210,55 @@
                 </Frame>
 
                 <!--activity list-->
-                <syncfusion:SfListView
+                <dataGrid:SfDataGrid ItemsSource="{Binding ActivityList}"  
+                                    BackgroundColor="White" AutoGenerateColumns="False" 
+                                    HorizontalOptions="FillAndExpand"
+                                    Margin="10,0,10,10" 
+                                    FlowDirection="LeftToRight" 
+                                    SelectionMode="None"
+                                     x:Name="activityList" HeightRequest="10"
+                                     GridStyle="{StaticResource dataGridStyle}"
+                                     >
+                    <dataGrid:SfDataGrid.Columns>
+                        <dataGrid:GridTextColumn Width="150" 
+                                                 FontAttribute="Bold"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="ClassTime" 
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Thời gian"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                        <dataGrid:GridTextColumn HeaderText="Noi dung" 
+                                                 ColumnSizer="LastColumnFill"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Instructor"
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Nội dung"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                    </dataGrid:SfDataGrid.Columns>
+                </dataGrid:SfDataGrid>
+                <!--<syncfusion:SfListView
                     ItemsSource="{Binding ActivityList}" 
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
@@ -282,7 +333,7 @@
                             </ViewCell>
                         </DataTemplate>
                     </syncfusion:SfListView.ItemTemplate>
-                </syncfusion:SfListView>
+                </syncfusion:SfListView>-->
                 
                 <!--Comment for eating-->
                 <StackLayout Margin="10,10,10,5"
@@ -300,7 +351,8 @@
                        HorizontalOptions="FillAndExpand"
                        CornerRadius="10"
                        BorderColor="Transparent"
-                       BackgroundColor="White">
+                       BackgroundColor="White"
+                       >
                     <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Orientation="Horizontal">
@@ -325,14 +377,16 @@
                                      AllowEditing="False"
                                      Margin="10,0,10,10"
                                      GridStyle="{StaticResource dataGridStyle}"
-                                     x:Name="menuData">
+                                     x:Name="menuData"
+                                     ItemsSourceChanged="activityList_ItemsSourceChanged">
                     <dataGrid:SfDataGrid.Columns>
-                        <dataGrid:GridTextColumn Width="150"
+                        <dataGrid:GridTextColumn Width="60"
                                                  HeaderFontAttribute="Bold"
                                                  HeaderCellTextSize="18"
                                                  MappingName="Time" 
                                                  TextAlignment="Start"
-                                                 Padding="10,5,10,5">
+                                                 Padding="10,5,10,5"
+                                                 FontAttribute="Bold">
                             <dataGrid:GridTextColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <Label Text="Thời gian"
@@ -345,7 +399,7 @@
                             </dataGrid:GridTextColumn.HeaderTemplate>
                         </dataGrid:GridTextColumn>
                         <dataGrid:GridTextColumn HeaderText="Noi dung" 
-                                                 ColumnSizer="LastColumnFill"
+                                                 ColumnSizer="Star"
                                                  HeaderFontAttribute="Bold"
                                                  HeaderCellTextSize="18"
                                                  MappingName="Content"
@@ -354,6 +408,24 @@
                             <dataGrid:GridTextColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <Label Text="Nội dung"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                        <dataGrid:GridTextColumn ColumnSizer="Star"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Time" 
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5"
+                                                 FontAttribute="Bold">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Nhận xét"
                                            TextColor="Black"
                                            FontSize="18"
                                            FontAttributes="Bold"

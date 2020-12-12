@@ -20,25 +20,39 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            activityList.Behaviors.Add(new ListViewBehavior());
+            //activityList.Behaviors.Add(new ListViewBehavior());
             Style style = new Style(typeof(GridCell));
             style.Setters.Add(new Setter() {
                 Property= GridCell.ForegroundProperty,
                 Value = Color.Black
             });
+            activityList.Columns[0].CellStyle = style;
+            activityList.Columns[1].CellStyle = style;
+            activityList.Behaviors.Add(new DataGridBehavior());
+            activityList.QueryRowHeight += ActivityList_QueryRowHeight;
+
             menuData.Columns[0].CellStyle = style;
             menuData.Columns[1].CellStyle = style;
             menuData.Behaviors.Add(new DataGridBehavior());
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
         }
 
+        private void ActivityList_QueryRowHeight(object sender, QueryRowHeightEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+                e.Height = SfDataGridHelpers.GetRowHeight(activityList, e.RowIndex);
+                e.Handled = true;
+            }
+        }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             menuData.QueryRowHeight -= MenuData_QueryRowHeight;
-            activityList.Behaviors.Clear();
-            activityPage.Content = null;
+            activityList.QueryRowHeight -= ActivityList_QueryRowHeight;
+            //activityList.Behaviors.Clear();
+            //activityPage.Content = null;
         }
 
         private void MenuData_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)
@@ -48,6 +62,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
                 e.Height = SfDataGridHelpers.GetRowHeight(menuData, e.RowIndex);
                 e.Handled = true;
             }
+        }
+
+        private void activityList_ItemsSourceChanged(object sender, GridItemsSourceChangedEventArgs e)
+        {
+            var height = (menuData.View.Records.Count * menuData.RowHeight) + menuData.HeaderRowHeight;
+            this.menuData.HeightRequest = (double)height;
         }
     }
 

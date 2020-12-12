@@ -51,6 +51,24 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => pooNumber;
             set => SetProperty(ref pooNumber, value);
         }
+        private bool _IsDailyCommentVisible;
+        public bool IsDailyCommentVisible
+        {
+            get => _IsDailyCommentVisible;
+            set => SetProperty(ref _IsDailyCommentVisible, value);
+        }
+        //private bool _IsStudyingCommentVisible;
+        //public bool IsStudyingCommentVisible
+        //{
+        //    get => _IsStudyingCommentVisible;
+        //    set => SetProperty(ref _IsStudyingCommentVisible, value);
+        //}
+        //private bool _IsEatingCommentVisible;
+        //public bool IsEatingCommentVisible
+        //{
+        //    get => _IsEatingCommentVisible;
+        //    set => SetProperty(ref _IsEatingCommentVisible, value);
+        //}
         private string studentId;
         private string classId;
         private string gradeId;
@@ -70,7 +88,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             {
                 base.Initialize(parameters);
                 IsLoading = true;
-                SelectedDate = DateTime.Now;
+                SelectedDate = new DateTime(2020, 12, 11); //DateTime.Now;
                 studentId = AppConstants.User.StudentID;
                 classId = AppConstants.User.ClassID;
                 gradeId = AppConstants.User.GradeID;
@@ -133,33 +151,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                     IsLast = false,
                     Title = string.Empty
                 });
-                    listBinding.Add(new ExerciseClass
-                    {
-                        Id = item.ID,
-                        Instructor = item.Contents,
-                        ClassTime = item.ThoiGian,
-                        IsLast = false,
-                        Title = string.Empty
-                    });
-                listBinding.Add(new ExerciseClass
-                {
-                    Id = item.ID,
-                    Instructor = item.Contents,
-                    ClassTime = item.ThoiGian,
-                    IsLast = false,
-                    Title = string.Empty
-                });
             }
             if (listBinding.Any()) listBinding.Last().IsLast = true;
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                ActivityList = new ObservableCollection<ExerciseClass>(listBinding);
-            });
+            ActivityList = new ObservableCollection<ExerciseClass>(listBinding);
         }
 
         private async Task GetMenuList(string date)
         {
-            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date);
+            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date); 
             var menuList = new List<MenuToDay>();
             if(listMenu?.Data?.Any() == true)
             {
@@ -169,7 +168,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                     {
                         Id = item.ID,
                         Time = item.BuaAn,
-                        Content = item.MonAn
+                        Content = item.MonAn,
+                        Comment = item.MealComment
                     });
                 }
             }
@@ -193,6 +193,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public Guid? Id { get; set; }
         public string Time { get; set; }
         public string Content { get; set; }
+        public string Comment { get; set; }
     }
 }
 
