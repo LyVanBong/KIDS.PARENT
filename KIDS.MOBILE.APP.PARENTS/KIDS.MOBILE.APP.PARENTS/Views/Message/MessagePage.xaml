@@ -116,7 +116,7 @@
                 VerticalOptions="CenterAndExpand"
                 Margin="10"
                 FlowDirection="LeftToRight"
-                ItemSize="200"
+                ItemSize="300"
                 Orientation="Vertical">
 
                 <syncfusion:SfListView.ItemTemplate>
@@ -126,7 +126,7 @@
                                Margin="0,5,0,5"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                            <template:MessageTemplate Padding="10,0,10,0" ColumnSpacing="0" BackgroundColor="White" />
+                            <template:MessageTemplate BackgroundColor="White" />
                         </Frame>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
