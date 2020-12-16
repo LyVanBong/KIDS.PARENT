@@ -41,6 +41,9 @@ using KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.Activity;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Activity;
 using KIDS.MOBILE.APP.PARENTS.Services.Activity;
+using KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -65,6 +68,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<IMessageService, MessageService>();
             containerRegistry.Register<ILeaveRequestService, LeaveRequestService>();
             containerRegistry.Register<IActivityService, ActivityService>();
+            containerRegistry.Register<IMedicineAdviseService, MedicineAdviseService>();
 
             #endregion
             #region Registry Page - ViewModel
@@ -86,6 +90,8 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<CreateMessagePage, CreateMessageViewModel>();
             containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
             containerRegistry.RegisterForNavigation<ActivityPage, ActivityViewModel>();
+            containerRegistry.RegisterForNavigation<MedicineAdvisePage, MedicineAdviseViewModel>();
+            containerRegistry.RegisterForNavigation<CreteMedicineAdvisePage, CreateMedicineAdviseViewModel>();
 
             #endregion
             #region Registry Dialog
