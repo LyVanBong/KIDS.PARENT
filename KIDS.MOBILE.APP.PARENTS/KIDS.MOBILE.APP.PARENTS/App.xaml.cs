@@ -44,6 +44,8 @@ using KIDS.MOBILE.APP.PARENTS.Services.Activity;
 using KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise;
 using KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -92,7 +94,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<ActivityPage, ActivityViewModel>();
             containerRegistry.RegisterForNavigation<MedicineAdvisePage, MedicineAdviseViewModel>();
             containerRegistry.RegisterForNavigation<CreteMedicineAdvisePage, CreateMedicineAdviseViewModel>();
-
+            containerRegistry.RegisterForNavigation<PickupPage, PickupViewModel>();
             #endregion
             #region Registry Dialog
             #endregion

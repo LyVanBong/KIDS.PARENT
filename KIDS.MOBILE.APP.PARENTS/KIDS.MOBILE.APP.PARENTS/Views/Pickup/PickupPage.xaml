@@ -4,9 +4,6 @@
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Pickup.PickupPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
-             
-             
-             
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
     <Grid HorizontalOptions="FillAndExpand"
@@ -43,6 +40,7 @@
         <Frame Margin="10,5,10,5"
                BackgroundColor="White"
                CornerRadius="10"
+               Padding="0"
                Grid.Row="1">
             <Grid HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand">
@@ -72,10 +70,10 @@
                            HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
 
-                <Frame Margin="10,5,5,10"
+                <Frame Margin="10,0,5,0"
                        HorizontalOptions="FillAndExpand"
                        VerticalOptions="FillAndExpand"
-                       BackgroundColor="Gray"
+                       BackgroundColor="#f0eded"
                        CornerRadius="10"
                        Grid.Row="1"
                        Grid.Column="0">
@@ -99,10 +97,10 @@
                     </StackLayout>
                 </Frame>
 
-                <Frame Margin="10,5,5,10"
+                <Frame Margin="5,0,10,0"
                        HorizontalOptions="FillAndExpand"
                        VerticalOptions="FillAndExpand"
-                       BackgroundColor="Gray"
+                       BackgroundColor="#f0eded"
                        CornerRadius="10"
                        Grid.Row="1"
                        Grid.Column="1">

@@ -13,6 +13,7 @@ using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise;
 using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
 using KIDS.MOBILE.APP.PARENTS.Views.Tuition;
 using Prism.Commands;
 using Prism.Navigation;
@@ -112,7 +113,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                 new MenuItem{ Title = Resource._00040,Icon = ImageSource.FromFile("message.png"),NavigateTo=nameof(MessagePage)},
                 new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromFile("leave.png"),NavigateTo=nameof(LeaveRequestPage)},
                 new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromFile("medicine.png"),NavigateTo=nameof(MedicineAdvisePage)},
-                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(PickupPage)},
                 new MenuItem{ Title = Resource._00044,Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(ActivityPage)},
                 new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromFile("news.png"),NavigateTo=nameof(NewsPage)},
                 new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromFile("album.png"),NavigateTo=nameof(MessagePage)},
