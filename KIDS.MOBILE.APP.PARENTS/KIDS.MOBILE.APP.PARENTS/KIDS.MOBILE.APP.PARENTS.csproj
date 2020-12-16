@@ -142,5 +142,9 @@
     <Folder Include="Models\Account\" />
     <Folder Include="ViewModels\Activity\" />
     <Folder Include="Views\Activity\" />
+    <Folder Include="ViewModels\MedicineAdvise\" />
+    <Folder Include="Views\MedicineAdvise\" />
+    <Folder Include="Services\MedicineAdvise\" />
+    <Folder Include="Models\MedicineAdvise\" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest.CreateLeaveRequestPage"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise.CreteMedicineAdvisePage"
+             
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
@@ -19,21 +19,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
+
         <!--Header-->
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Padding="5,10,5,10"
                      BackgroundColor="White"
-                     Grid.Row="0"
-                     Grid.ColumnSpan="2">
+                     Grid.Row="0">
             <Image Source="back.png"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
@@ -53,23 +47,29 @@
                FontSize="16"
                FontAttributes="Bold"
                Grid.Row="1"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>
+               Margin="10,5,10,5"/>
 
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
                Grid.Row="3"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>
+               Margin="10,5,10,5"/>
 
-        <DatePicker BackgroundColor="White"
+        <Grid HorizontalOptions="FillAndExpand"
+              HeightRequest="70"
+              Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     Format="yyyy-MM-dd"
                     FontSize="16"
                     TextColor="Black"
-                    Date="{Binding SelectedFromDate}"
+                    Date="{Binding FromDate}"
                     Grid.Row="4"
                     Margin="10,5,5,5"
                     HeightRequest="60"
@@ -77,55 +77,90 @@
 
         <DatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     Format="yyyy-MM-dd"
                     FontSize="16"
                     TextColor="Black"
-                    Date="{Binding SelectedToDate}"
+                    Date="{Binding ToDate}"
                     Grid.Row="4"
                     Margin="5,5,10,5"
                     HeightRequest="60"
                     Grid.Column="1"/>
+        </Grid>
+
+        <Label Text="{markupExtension:Translate 00095}"
+               TextColor="Black"
+               FontSize="16"
+               FontAttributes="Bold"
+               Grid.Row="5"
+               Margin="10,5,10,5"/>
+
+        <Grid Grid.Row="6"
+              HorizontalOptions="FillAndExpand"
+              HeightRequest="100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+               Source="{Binding ChooseImage}" 
+               Aspect="AspectFill"
+               Grid.Column="0"
+               Margin="10,5,5,5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+               Source="{Binding ChooseImage}" 
+               Aspect="AspectFill"
+               Grid.Column="1"
+               Margin="5,5,5,5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+               Source="{Binding ChooseImage}" 
+               Aspect="AspectFill"
+               Grid.Column="2"
+               Margin="5,5,10,5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
 
         <Label Text="{markupExtension:Translate 00040}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
-               Grid.Row="6"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>
+               Grid.Row="7"
+               Margin="10,5,10,5"/>
 
         <Editor HorizontalOptions="FillAndExpand"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="7"
+                Grid.Row="8"
                 HeightRequest="150"
                 BackgroundColor="White"
                 Margin="10,5,10,5"
-                Text="{Binding MessageContent}"
-                Grid.ColumnSpan="2"/>
-
-        <Button
-                Grid.Row="8"
-                HorizontalOptions="FillAndExpand"
-                Margin="10,10,10,10"
-                Command="{Binding SendCommand}"
-                Style="{StaticResource SummitButton}"
-                Text="{markupExtension:Translate 00011}"
-            Grid.ColumnSpan="2"/>
+                Text="{Binding MessageContent}"/>
 
         <Button
                 Grid.Row="9"
                 HorizontalOptions="FillAndExpand"
                 Margin="10,10,10,10"
-                Command="{Binding DeleteCommand}"
-                IsVisible="{Binding IsUpdate}"
+                Command="{Binding SendCommand}"
                 Style="{StaticResource SummitButton}"
-                Text="{markupExtension:Translate 00011}"
-            Grid.ColumnSpan="2"/>
+                Text="{markupExtension:Translate 00011}"/>
 
         <loadingView:LoadingView
                 Grid.Row="3"
-            Grid.ColumnSpan="2"
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
