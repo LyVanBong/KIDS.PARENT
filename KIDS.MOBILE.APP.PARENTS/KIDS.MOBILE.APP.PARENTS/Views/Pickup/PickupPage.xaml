@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Pickup.PickupPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
+             
+             
+             
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00041}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Information-->
+        <Frame Margin="10,5,10,5"
+               BackgroundColor="White"
+               CornerRadius="10"
+               Grid.Row="1">
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.ColumnSpan="2">
+                    <Image Source="leave.png"
+                           HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10,0,20,0"/>
+                    <Label Text="{Binding TimePeriod}"
+                           LineBreakMode="WordWrap"
+                           MaxLines="2"
+                           Margin="10,0,20,0"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+                <Frame Margin="10,5,5,10"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       BackgroundColor="Gray"
+                       CornerRadius="10"
+                       Grid.Row="1"
+                       Grid.Column="0">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Vertical">
+                        <Image Source="leave.png"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+                        <Label Text="Ve dung gio"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               TextColor="Black"/>
+                        <Label Text="0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               TextColor="Black"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="10,5,5,10"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       BackgroundColor="Gray"
+                       CornerRadius="10"
+                       Grid.Row="1"
+                       Grid.Column="1">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Vertical">
+                        <Image Source="leave.png"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+                        <Label Text="Ve muon"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               TextColor="Black"/>
+                        <Label Text="0"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               TextColor="Black"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <!--Create new request-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="2"
+                             Margin="10,5,10,5">
+                    <Image Source="leave.png"
+                           HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10,0,20,0"/>
+                    <Label Text="Ban ban ron, can nguoi don be ve?"
+                           LineBreakMode="WordWrap"
+                           MaxLines="2"
+                           Margin="10,0,20,0"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+        <!--Request List-->
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Margin="10">
+            <syncfusion:SfListView
+                ItemsSource="{Binding MessagesList}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="10"
+                FlowDirection="LeftToRight"
+                ItemSize="180"
+                Orientation="Vertical">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="0,5,0,5"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand">
+                            <template:MessageTemplate
+                                Padding="10,0,10,0"
+                                ColumnSpacing="0"
+                                BackgroundColor="White" />
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

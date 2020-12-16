@@ -146,5 +146,8 @@
     <Folder Include="Views\MedicineAdvise\" />
     <Folder Include="Services\MedicineAdvise\" />
     <Folder Include="Models\MedicineAdvise\" />
+    <Folder Include="Views\Pickup\" />
+    <Folder Include="Services\Pickup\" />
+    <Folder Include="ViewModels\Pickup\" />
   </ItemGroup>
 </Project>
