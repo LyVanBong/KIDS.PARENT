@@ -20,7 +20,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="150"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="30"></RowDefinition>
+        <RowDefinition Height="40"></RowDefinition>
 	</Grid.RowDefinitions>
 
     <ffimageloading:CachedImage DownsampleToViewSize="true"
@@ -71,6 +71,7 @@
             TextTransform="Lowercase"
             CornerRadius="8"
             VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
             Margin="0"
             Padding="0"/>
 </Grid>

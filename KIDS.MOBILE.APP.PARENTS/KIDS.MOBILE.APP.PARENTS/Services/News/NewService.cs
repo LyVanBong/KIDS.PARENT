@@ -35,5 +35,23 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.News
                 return null;
             }
         }
+
+        public async Task<ResponseModel<List<GetNewsForParentModel>>> GetNewsForParent(string parentId, string classId)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("ClassID", classId),
+                    new RequestParameter("ParentID", parentId),
+                };
+                var data = await _requestProvider.GetAsync<List<GetNewsForParentModel>>("News/SelectParent", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

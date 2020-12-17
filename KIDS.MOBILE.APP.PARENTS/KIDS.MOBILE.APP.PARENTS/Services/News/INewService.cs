@@ -10,5 +10,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.News
     public interface INewService
     {
         Task<ResponseModel<List<NewResponseModel>>> GetAllNews(string schoolId, string classId);
+        Task<ResponseModel<List<GetNewsForParentModel>>> GetNewsForParent(string parentId, string classId);
     }
 }

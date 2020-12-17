@@ -14,7 +14,7 @@
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="120"/>
             <RowDefinition Height="40"/>
@@ -42,7 +42,7 @@
         </StackLayout>
 
         <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <!--<StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Margin="10,5,10,5"
@@ -71,7 +71,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-        </StackLayout>
+        </StackLayout>-->
 
         
         <StackLayout HorizontalOptions="StartAndExpand"
@@ -109,7 +109,9 @@
 
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
-                    <cards:SfCardView CornerRadius="8" BackgroundColor="Transparent">
+                    <cards:SfCardView CornerRadius="8"
+                                      BackgroundColor="Transparent"
+                                      BorderColor="Transparent">
                         <cards:SfCardView.Content>
                             <border:SfBorder
                                 CornerRadius="50"
@@ -120,7 +122,7 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 WidthRequest="100">      
-                                <Grid>
+                                <Grid BackgroundColor="Transparent">
                                     <gradient:SfGradientView>
                                         <gradient:SfGradientView.BackgroundBrush>
                                             <gradient:SfLinearGradientBrush>
@@ -132,8 +134,8 @@
                                         </gradient:SfGradientView.BackgroundBrush>
                                     </gradient:SfGradientView>
 
-                                    <StackLayout Margin="0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="12" Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
+                                    <StackLayout Margin="5,0,5,0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="10" Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
                                         <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="24" Text="{Binding Number}" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
 
                                     </StackLayout>
@@ -195,7 +197,7 @@
                 VerticalOptions="CenterAndExpand"
                 Margin="10"
                 FlowDirection="LeftToRight"
-                ItemSize="180"
+                AutoFitMode="DynamicHeight"
                 Orientation="Vertical">
 
                 <syncfusion:SfListView.ItemTemplate>

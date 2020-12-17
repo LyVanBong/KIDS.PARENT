@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Services.Album;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -15,12 +19,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             get => _imageList;
             set => SetProperty(ref _imageList, value);
         }
+        private IAlbumService _albumService;
         #endregion
 
         #region Contructor
-        public AlbumDetailViewModel(INavigationService navigationService) : base(navigationService)
+        public AlbumDetailViewModel(INavigationService navigationService, IAlbumService albumService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _albumService = albumService;
         }
 
         public override async void Initialize(INavigationParameters parameters)
@@ -29,7 +35,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             {
                 base.Initialize(parameters);
                 IsLoading = true;
-                GetImageList();
+                await GetImageList();
             }
             catch (Exception ex)
             {
@@ -47,12 +53,21 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
         #endregion
 
         #region Private methods
-        private void GetImageList()
+        private async Task GetImageList()
         {
+            var classId = AppConstants.User.ClassID;
+            var schoolId = AppConstants.User.DonVi;
             var imageList = new List<AlbumDetailModel>();
-            for(int i = 0; i < 20; i++)
+            var data = await _albumService.GetAlbumListByClass(classId, schoolId);
+            if(data?.Data?.Any() == true)
             {
-                imageList.Add(new AlbumDetailModel());
+                foreach(var item in data.Data)
+                {
+                    imageList.Add(new AlbumDetailModel
+                    {
+                        Uri = $"{AppConstants.UrlApiApp}{item.Thumbnail}"
+                    });
+                }
             }
             ImageList = new ObservableCollection<AlbumDetailModel>(imageList);
         }

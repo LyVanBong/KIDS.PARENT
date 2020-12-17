@@ -151,5 +151,7 @@
     <Folder Include="ViewModels\Pickup\" />
     <Folder Include="Views\Album\" />
     <Folder Include="ViewModels\Album\" />
+    <Folder Include="Services\Album\" />
+    <Folder Include="Models\Album\" />
   </ItemGroup>
 </Project>
