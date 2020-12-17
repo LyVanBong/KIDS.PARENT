@@ -15,12 +15,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
     {
         #region Properties
         private IMedicineAdviseService _messageService;
-        private ImageSource chooseImage;
-        public ImageSource ChooseImage
-        {
-            get => chooseImage;
-            set => SetProperty(ref chooseImage, value);
-        }
         private string messageContent;
         public string MessageContent
         {
@@ -45,6 +39,24 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             get => selectedToDate;
             set => SetProperty(ref selectedToDate, value);
         }
+        private ImageSource chooseImage1;
+        public ImageSource ChooseImage1
+        {
+            get => chooseImage1;
+            set => SetProperty(ref chooseImage1, value);
+        }
+        private ImageSource chooseImage2;
+        public ImageSource ChooseImage2
+        {
+            get => chooseImage2;
+            set => SetProperty(ref chooseImage2, value);
+        }
+        private ImageSource chooseImage3;
+        public ImageSource ChooseImage3
+        {
+            get => chooseImage3;
+            set => SetProperty(ref chooseImage3, value);
+        }
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GalleryCommand { get; set; }
         private bool isUpdate;
@@ -65,7 +77,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             {
                 base.Initialize(parameters);
                 IsLoading = true;
-                ChooseImage = ImageSource.FromFile("add_image.png");
+                ChooseImage1 = ImageSource.FromFile("add_image.png");
+                ChooseImage2 = ImageSource.FromFile("add_image.png");
+                ChooseImage3 = ImageSource.FromFile("add_image.png");
                 SelectedDate = DateTime.Now;
             }
             catch (Exception ex)
@@ -179,7 +193,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 return;
             }
 
-            ChooseImage = ImageSource.FromStream(() => selectedImageFile.GetStream());
+            ChooseImage1 = ImageSource.FromStream(() => selectedImageFile.GetStream());
         }
         #endregion
     }

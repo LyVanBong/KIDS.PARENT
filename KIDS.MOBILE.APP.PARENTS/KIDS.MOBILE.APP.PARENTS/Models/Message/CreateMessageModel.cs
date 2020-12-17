@@ -18,5 +18,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Message
         public Guid Approver { get; set; }
         public DateTime ApproverDate { get; set; } = DateTime.Now;
         public int Views { get; set; }
+        public string Image { get; set; }
     }
 }

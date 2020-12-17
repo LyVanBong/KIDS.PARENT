@@ -69,7 +69,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                     messageList.Add(new MessageModel
                     {
                         Id = item.CommunicationID,
-                        ReceivedUser = item.TeacherID.ToString(),
+                        ReceivedUser = item.NguoiGui.ToString(),
                         DateTime = item.DateCreate != null ? item.DateCreate.Value.ToShortDateString() : string.Empty,
                         ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
                         Comment = item.Content

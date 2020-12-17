@@ -116,7 +116,7 @@
                 VerticalOptions="CenterAndExpand"
                 Margin="10"
                 FlowDirection="LeftToRight"
-                ItemSize="300"
+                AutoFitMode="DynamicHeight"
                 Orientation="Vertical">
 
                 <syncfusion:SfListView.ItemTemplate>

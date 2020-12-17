@@ -35,7 +35,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                 var data = response.StatusCode == HttpStatusCode.OK ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content) : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -49,7 +49,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                 _client.Timeout = 10000;
                 _request = new RestRequest(method);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -73,7 +73,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -153,7 +153,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -178,7 +178,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

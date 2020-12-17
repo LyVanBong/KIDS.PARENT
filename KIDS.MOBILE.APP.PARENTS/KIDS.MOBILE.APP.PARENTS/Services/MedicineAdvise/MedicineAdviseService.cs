@@ -25,7 +25,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
                 {
                     new RequestParameter("StudentID", studentId)
                 };
-                var data = await _requestProvider.GetAsync<List<GetPrescriptionModel>>("Communication/Select/Student", para);
+                var data = await _requestProvider.GetAsync<List<GetPrescriptionModel>>("Prescription/Select/Student", para);
                 return data;
             }
             catch (Exception)
