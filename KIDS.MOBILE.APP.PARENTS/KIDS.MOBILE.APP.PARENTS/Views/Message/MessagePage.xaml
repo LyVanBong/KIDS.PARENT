@@ -12,7 +12,7 @@
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -34,37 +34,6 @@
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
-            </Label>
-        </StackLayout>
-
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="10,5,10,5"
-                     Grid.Row="1">
-            <border:SfBorder
-                CornerRadius="24"
-                HeightRequest="30"
-                BackgroundColor="White"
-                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                BorderColor="Gray"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                WidthRequest="30">
-                <Image BackgroundColor="White"
-                       Source="home.png">
-                </Image>
-            </border:SfBorder>
-
-            <Label VerticalOptions="Center"
-                   HorizontalOptions="StartAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang quan sat be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/> 
-                    </FormattedString>
-                </Label.FormattedText>
             </Label>
         </StackLayout>
 
@@ -117,7 +86,9 @@
                 Margin="10"
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                TapCommand="{Binding DetailCommand}"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>

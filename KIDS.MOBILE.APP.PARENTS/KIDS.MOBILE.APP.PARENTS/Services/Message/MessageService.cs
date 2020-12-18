@@ -34,6 +34,23 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
             }
         }
 
+        public async Task<ResponseModel<List<DetailMessageModel>>> GetCommentOnMessage(string parentId)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("Parent", parentId)
+                };
+                var data = await _requestProvider.GetAsync<List<DetailMessageModel>>("Communication/Select/Reply", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<ResponseModel<int>> CreateMessage(CreateMessageModel model)
         {
             try

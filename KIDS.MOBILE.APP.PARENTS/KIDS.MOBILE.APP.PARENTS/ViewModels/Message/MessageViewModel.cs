@@ -24,6 +24,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             set => SetProperty(ref _messageList, value);
         }
         public DelegateCommand AddCommand { get;}
+        public DelegateCommand<object> DetailCommand { get; }
         #endregion
 
         #region Contructor
@@ -32,6 +33,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             _navigationService = navigationService;
             _messageService = messageService;
             AddCommand = new DelegateCommand(OnAddClick);
+            DetailCommand = new DelegateCommand<object>(OnDetailClick);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -84,6 +86,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             var param = new NavigationParameters();
             param.Add("isUpdate", false);
             await _navigationService.NavigateAsync(nameof(CreateMessagePage),param);
+        }
+
+        private async void OnDetailClick(object item)
+        {
+            var data = (Syncfusion.ListView.XForms.ItemTappedEventArgs)item;
+            var param = new NavigationParameters();
+            param.Add("message", data.ItemData);
+            await _navigationService.NavigateAsync(nameof(MessageDetailPage), param);
         }
         #endregion
     }

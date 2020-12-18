@@ -100,6 +100,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<CreteMedicineAdvisePage, CreateMedicineAdviseViewModel>();
             containerRegistry.RegisterForNavigation<PickupPage, PickupViewModel>();
             containerRegistry.RegisterForNavigation<AlbumDetailpage, AlbumDetailViewModel>();
+            containerRegistry.RegisterForNavigation<MessageDetailPage, MessageDetailViewModel>();
             #endregion
             #region Registry Dialog
             #endregion

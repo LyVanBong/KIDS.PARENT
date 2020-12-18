@@ -80,7 +80,7 @@
                     <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="CenterAndExpand"
                                  Orientation="Vertical">
-                        <Image Source="leave.png"
+                        <Image Source="done.png"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="CenterAndExpand"/>
                         <Label Text="Ve dung gio"
@@ -88,7 +88,7 @@
                                VerticalTextAlignment="Center"
                                FontSize="16"
                                TextColor="Black"/>
-                        <Label Text="0"
+                        <Label Text="{Binding OnTime}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontSize="16"
@@ -107,7 +107,7 @@
                     <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="CenterAndExpand"
                                  Orientation="Vertical">
-                        <Image Source="leave.png"
+                        <Image Source="error.png"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="CenterAndExpand"/>
                         <Label Text="Ve muon"
@@ -115,7 +115,7 @@
                                VerticalTextAlignment="Center"
                                FontSize="16"
                                TextColor="Black"/>
-                        <Label Text="0"
+                        <Label Text="{Binding Late}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontSize="16"
@@ -132,7 +132,7 @@
                              Orientation="Horizontal"
                              Grid.Row="2"
                              Margin="10,5,10,5">
-                    <Image Source="leave.png"
+                    <Image Source="add.png"
                            HorizontalOptions="Start"
                            VerticalOptions="CenterAndExpand"
                            Margin="10,0,20,0"/>

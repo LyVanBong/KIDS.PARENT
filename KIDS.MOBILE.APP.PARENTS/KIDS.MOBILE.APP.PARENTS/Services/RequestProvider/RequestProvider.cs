@@ -37,6 +37,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -51,6 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -75,6 +77,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -130,6 +133,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -155,6 +159,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -180,6 +185,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }

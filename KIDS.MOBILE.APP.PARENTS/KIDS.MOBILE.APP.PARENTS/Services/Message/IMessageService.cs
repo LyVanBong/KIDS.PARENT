@@ -10,5 +10,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
         Task<ResponseModel<List<StudentMessageSentModel>>> GetAllSentMessage(string studentId);
         Task<ResponseModel<int>> CreateMessage(CreateMessageModel model);
         Task<ResponseModel<int>> UpdateMessage(CreateMessageModel model);
+        Task<ResponseModel<List<DetailMessageModel>>> GetCommentOnMessage(string parentId);
     }
 }

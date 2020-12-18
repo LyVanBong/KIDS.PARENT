@@ -5,13 +5,11 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Message
 {
-    public partial class MessagePage : ContentPage
+    public partial class MessageDetailPage : ContentPage
     {
-        public MessagePage()
+        public MessageDetailPage()
         {
             InitializeComponent();
         }
-
-        //private void SfListView_ItemTapped(object sender, )
     }
 }
