@@ -7,7 +7,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
 {
     public class AppSettings
     {
-        internal static string SyncfusionLicense = "MzU2ODE5QDMxMzgyZTMzMmUzMGV4R0lYbXhhRm5VRXJmeVhRNm0wNFNWank5ZWU3dUsrYjBSb0REY2hzRUU9";
+        internal static string SyncfusionLicense = "MzY4NDUxQDMxMzgyZTM0MmUzMFc5bUkxNmxnSSt3M2tVdjMxWk5YWlM5Y1lHdHVBV25kMFlrYm1uWFZ0Z289";
     }
     public class AppCenterConstants
     {
