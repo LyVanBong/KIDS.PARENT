@@ -208,6 +208,9 @@
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
       <Version>4.0.8</Version>
     </PackageReference>
+    <PackageReference Include="Com.OneSignal">
+      <Version>3.10.3</Version>
+    </PackageReference>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
       <Version>2.0.11</Version>
     </PackageReference>
