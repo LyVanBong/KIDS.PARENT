@@ -1,4 +1,7 @@
-﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+﻿using System.Collections.Generic;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
+using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
 using KIDS.MOBILE.APP.PARENTS.Services.Notification;
@@ -83,7 +86,27 @@ namespace KIDS.MOBILE.APP.PARENTS
                             AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
             NavigationService.NavigateAsync(nameof(LoginPage));
+            InitializedOneSignal();
         }
+
+        private static void InitializedOneSignal()
+        {
+            //Remove this method to stop OneSignalApp Debugging  
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+
+            OneSignal.Current.StartInit(OneSignalApp.OneSignalAppId)
+                .Settings(new Dictionary<string, bool>()
+                {
+                    {IOSSettings.kOSSettingsKeyAutoPrompt, false},
+                    {IOSSettings.kOSSettingsKeyInAppLaunchURL, false}
+                })
+                .InFocusDisplaying(OSInFocusDisplayOption.Notification)
+                .EndInit();
+
+            // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+            OneSignal.Current.RegisterForPushNotifications();
+        }
+
         protected override void OnStart()
         {
         }
