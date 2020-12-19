@@ -50,17 +50,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
             _notificationService = notificationService;
         }
 
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            Device.StartTimer(TimeSpan.FromMilliseconds(800), () =>
-            {
-                new Thread(() =>
-                {
-                    Device.BeginInvokeOnMainThread(async () => { await CountNotification(); });
-                }).Start();
-                return true;
-            });
+            await CountNotification();
         }
 
         private async Task CountNotification()
@@ -94,7 +87,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Notification
                 LoadNotification = true;
                 var notification = new { SchoolId = AppConstants.User.ClassID, StudentId = AppConstants.User.StudentID };
                 var data = await _notificationService.GetNotification(notification.SchoolId, notification.StudentId);
-                if (data.Code > 0)
+                if (data != null && data.Code > 0)
                 {
                     DataNotification = new ObservableCollection<NotificationModel>(data.Data);
                 }

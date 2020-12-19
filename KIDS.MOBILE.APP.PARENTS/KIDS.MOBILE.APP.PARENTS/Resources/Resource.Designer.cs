@@ -358,6 +358,123 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interact with school.
+        /// </summary>
+        internal static string _00038 {
+            get {
+                return ResourceManager.GetString("00038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parents need to know.
+        /// </summary>
+        internal static string _00039 {
+            get {
+                return ResourceManager.GetString("00039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        internal static string _00040 {
+            get {
+                return ResourceManager.GetString("00040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent Request.
+        /// </summary>
+        internal static string _00041 {
+            get {
+                return ResourceManager.GetString("00041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medicine Advices.
+        /// </summary>
+        internal static string _00042 {
+            get {
+                return ResourceManager.GetString("00042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick Up.
+        /// </summary>
+        internal static string _00043 {
+            get {
+                return ResourceManager.GetString("00043", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Action.
+        /// </summary>
+        internal static string _00044 {
+            get {
+                return ResourceManager.GetString("00044", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        internal static string _00045 {
+            get {
+                return ResourceManager.GetString("00045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Album.
+        /// </summary>
+        internal static string _00046 {
+            get {
+                return ResourceManager.GetString("00046", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuition Fee.
+        /// </summary>
+        internal static string _00047 {
+            get {
+                return ResourceManager.GetString("00047", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Health.
+        /// </summary>
+        internal static string _00048 {
+            get {
+                return ResourceManager.GetString("00048", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Survey.
+        /// </summary>
+        internal static string _00049 {
+            get {
+                return ResourceManager.GetString("00049", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periodical Reviews.
+        /// </summary>
+        internal static string _00050 {
+            get {
+                return ResourceManager.GetString("00050", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Student&apos;s profile.
         /// </summary>
         internal static string _00051 {

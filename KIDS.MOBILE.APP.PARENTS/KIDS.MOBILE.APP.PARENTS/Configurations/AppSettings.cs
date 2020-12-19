@@ -7,7 +7,18 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
 {
     public class AppSettings
     {
-        internal static string SyncfusionLicense = "MzU2ODE5QDMxMzgyZTMzMmUzMGV4R0lYbXhhRm5VRXJmeVhRNm0wNFNWank5ZWU3dUsrYjBSb0REY2hzRUU9";
+        /// <summary>
+        /// khoa ban quyen synfusion
+        /// </summary>
+        internal static string SyncfusionLicense = "MzY4NDUxQDMxMzgyZTM0MmUzMFc5bUkxNmxnSSt3M2tVdjMxWk5YWlM5Y1lHdHVBV25kMFlrYm1uWFZ0Z289";
+    }
+
+    public class OneSignalApp
+    {
+        /// <summary>
+        /// id onesignal
+        /// </summary>
+        internal static string OneSignalAppId = "4039833c-4862-44d5-b3a6-4045f71106b3";
     }
     public class AppCenterConstants
     {

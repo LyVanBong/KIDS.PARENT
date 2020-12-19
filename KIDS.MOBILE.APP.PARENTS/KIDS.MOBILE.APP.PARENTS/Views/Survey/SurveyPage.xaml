@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.SurveyPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="home.png"
+                   HorizontalOptions="Start">
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="Khảo sát"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+        
+        <!--Survey List-->
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="1"
+                    Margin="10">
+            <syncfusion:SfListView ItemsSource="{Binding SurveysList}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="10"
+                Grid.Row="3"
+                FlowDirection="LeftToRight"
+                ItemSize="250"
+                Orientation="Vertical">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="10,10,10,10">
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" Margin="0"
+                                         Orientation="Vertical">
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Margin="10,0,10,0">
+                                    <Image Source="home.png" Margin="0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           Aspect="AspectFill"
+                                           HeightRequest="30"
+                                           WidthRequest="30"/>
+                                    <Label Text="{Binding Title}"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           Margin="10,0,0,0"
+                                           LineBreakMode="WordWrap"
+                                           VerticalOptions="FillAndExpand"/>
+                                </StackLayout>
+                                <Label Text="{Binding CreatedDateTime}"
+                                       TextColor="Black"
+                                       FontSize="12"
+                                       Margin="60,0,0,0"/>
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Margin="10,0,10,0">
+                                    <Image Source="home.png"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start"
+                                           Aspect="AspectFill"
+                                           HeightRequest="60"
+                                           WidthRequest="60"/>
+                                    <Label Text="{Binding Content}"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           Margin="10,0,0,0"
+                                           LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                                <BoxView HeightRequest="1"
+                                         BackgroundColor="Gray"
+                                         Margin="10,0,10,0"
+                                         HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding ExpiryDate}"
+                                       TextColor="Black"  
+                                       FontSize="12"
+                                       Margin="10,0,0,0"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
