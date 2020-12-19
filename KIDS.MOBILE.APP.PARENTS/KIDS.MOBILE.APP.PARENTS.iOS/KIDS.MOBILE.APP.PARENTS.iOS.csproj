@@ -77,7 +77,10 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\loading.json" />
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\splash.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
@@ -268,7 +271,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\KIDS.MOBILE.APP.PARENTS\KIDS.MOBILE.APP.PARENTS.csproj">
-      <Project>{A6F240AA-DC28-4025-BA1C-D58C93E1B2B7}</Project>
+      <Project>{1C9DD2B6-58B1-49F8-BE09-D1E3D208487F}</Project>
       <Name>KIDS.MOBILE.APP.PARENTS</Name>
     </ProjectReference>
   </ItemGroup>
