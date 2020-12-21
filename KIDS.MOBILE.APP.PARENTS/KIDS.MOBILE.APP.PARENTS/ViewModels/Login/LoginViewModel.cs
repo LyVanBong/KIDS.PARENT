@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Services.Database;
 using KIDS.MOBILE.APP.PARENTS.Services.Login;
@@ -12,6 +14,7 @@ using Xamarin.Essentials;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using Prism.Services;
 using KIDS.MOBILE.APP.PARENTS.Resources;
+using KIDS.MOBILE.APP.PARENTS.Services.PushNotification;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
 {
@@ -22,6 +25,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         
         private bool _isSaveAccount;
         private bool _isCheckLogin;
+        private bool _isLoading;
+        private IPushNotificationService _pushNotificationService;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
         public ICommand LoginCommand { get; private set; }
         public ICommand SaveAccountCommand { get; private set; }
         public string UserName { get; set; }
@@ -33,8 +43,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         }
 
         private IDatabaseService _databaseService;
-        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService) : base(navigationService)
+        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService, IPushNotificationService pushNotificationService) : base(navigationService)
         {
+            _pushNotificationService = pushNotificationService;
             _pageDialogService = pageDialogService;
             _loginService = loginService;
             _databaseService = databaseService;
@@ -70,6 +81,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                         if (data.Code == 0)
                         {
                             await CheckSaveAccount(data.Data);
+                            var idDevice = Xamarin.Essentials.Preferences.Get(AppConstants.PlayerId, null);
+                            if (idDevice != null)
+                            {
+                                var userSend = data.Data;
+                                if (userSend != null)
+                                {
+                                    var send = await _pushNotificationService.UpdateDeviceDd(userSend.DonVi, userSend.ClassID, userSend.NguoiSuDung, idDevice, DateTime.Now.ToString("F"));
+                                    Debug.WriteLine($"Phan hoi tu thong bao day: {send}");
+                                }
+                            }
                             await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
                         }
                         else if (data.Code == -1)
