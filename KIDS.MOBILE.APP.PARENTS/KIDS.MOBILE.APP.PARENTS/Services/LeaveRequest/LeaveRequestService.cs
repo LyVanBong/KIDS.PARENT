@@ -113,5 +113,25 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest
                 return null;
             }
         }
+
+        public async Task<ResponseModel<List<GetAttendanceForMonthModel>>> GetAttendanceForMonth(string classID, string studentID, DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("FromDate", fromDate.ToShortDateString()),
+                    new RequestParameter("ToDate", toDate.ToShortDateString()),
+                    new RequestParameter("ClassID", classID),
+                    new RequestParameter("StudentID", studentID)
+                };
+                var data = await _requestProvider.GetAsync<List<GetAttendanceForMonthModel>>("Attendance/StudentAttendance", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

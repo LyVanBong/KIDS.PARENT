@@ -76,6 +76,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
 
     public class AlbumDetailModel
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
         public string Uri { get; set; }
     }
 }

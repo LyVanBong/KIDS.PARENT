@@ -18,16 +18,16 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.News
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<List<NewResponseModel>>> GetAllNews(string schoolId, string classId)
+        public async Task<ResponseModel<List<NewResponseModel>>> GetAllNews(string schoolId, string parentId)
         {
             try
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("ClassId", classId),
+                    new RequestParameter("ParentID", parentId),
                     new RequestParameter("SchoolId", schoolId),
                 };
-                var data = await _requestProvider.GetAsync<List<NewResponseModel>>("News/Select/All", para);
+                var data = await _requestProvider.GetAsync<List<NewResponseModel>>("News/SelectParent", para);
                 return data;
             }
             catch (Exception)

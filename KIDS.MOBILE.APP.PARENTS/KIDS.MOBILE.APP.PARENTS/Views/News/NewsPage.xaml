@@ -42,25 +42,6 @@
             </Image>-->
         </StackLayout>
 
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="5,10,5,10">
-            <Image Source="home.png"
-                   HorizontalOptions="Start">
-            </Image>
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Margin="10,0,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{markupExtension:Translate 00079}" TextColor="Black" FontSize="16"/>
-                        <Span Text="{Binding KidName}" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
-
         <loadingView:LoadingView
                 Grid.Row="0"
                 Grid.RowSpan="5"
@@ -117,6 +98,7 @@
                                        VerticalOptions="FillAndExpand"
                                        Aspect="AspectFill"
                                        HeightRequest="150"
+                                       Margin="1,0,1,0"
                                        Source="{Binding Image, Converter={StaticResource ImageConverter}}"/>
 
                                 <StackLayout HorizontalOptions="FillAndExpand"

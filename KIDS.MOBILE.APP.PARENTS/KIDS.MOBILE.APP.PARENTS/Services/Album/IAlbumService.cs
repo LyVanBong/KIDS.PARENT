@@ -8,7 +8,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Album
 {
     public interface IAlbumService
     {
-        Task<ResponseModel<List<GetAlbumModel>>> GetAlbumListByClass(string classId, string schoolId);
+        Task<ResponseModel<List<GetAlbumModel>>> GetAlbumListByClass(string parentId, string schoolId);
         Task<ResponseModel<List<GetDetailAlbumModel>>> GetAlbumDetail(string albumId, string parentId);
     }
 }

@@ -42,8 +42,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                 IsLoading = true;
                 var schoolId = AppConstants.User.DonVi;
                 var classid = AppConstants.User.ClassID;
-
-                await GetAllNews(schoolId, classid);
+                var parentId = AppConstants.User.ParentID;
+                await GetAllNews(schoolId, parentId);
             }
             catch (Exception ex)
             {
@@ -61,9 +61,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
 
         #region Private methods
 
-        private async Task GetAllNews(string schoolId, string classId)
+        private async Task GetAllNews(string schoolId, string parentId)
         {
-            var data = await _newService.GetAllNews(schoolId, classId);
+            var data = await _newService.GetAllNews(schoolId, parentId);
             if(data?.Data?.Any() == true)
             {
                 var newsList = new List<NewModel>();

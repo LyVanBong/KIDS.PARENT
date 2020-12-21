@@ -14,5 +14,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services
         Task<ResponseModel<int>> CreateLeaveRequest(CreateLeaveRequestModel model);
         Task<ResponseModel<int>> UpdateLeaveRequest(CreateLeaveRequestModel model);
         Task<ResponseModel<int>> DeleteLeaveRequest(CreateLeaveRequestModel model);
+        Task<ResponseModel<List<GetAttendanceForMonthModel>>> GetAttendanceForMonth(string classID, string studentID, DateTime fromDate, DateTime toDate);
     }
 }

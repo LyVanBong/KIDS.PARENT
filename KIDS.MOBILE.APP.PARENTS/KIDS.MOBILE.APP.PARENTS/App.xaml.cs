@@ -62,7 +62,6 @@ namespace KIDS.MOBILE.APP.PARENTS
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             #region Registry Service
-
             containerRegistry.Register<INotificationService, NotificationService>();
             containerRegistry.Register<IUserService, UserService>();
             containerRegistry.Register<IDatabaseService, DatabaseService>();
@@ -101,6 +100,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<PickupPage, PickupViewModel>();
             containerRegistry.RegisterForNavigation<AlbumDetailpage, AlbumDetailViewModel>();
             containerRegistry.RegisterForNavigation<MessageDetailPage, MessageDetailViewModel>();
+            containerRegistry.RegisterForNavigation<AlbumPage, AlbumViewModel>();
             #endregion
             #region Registry Dialog
             #endregion

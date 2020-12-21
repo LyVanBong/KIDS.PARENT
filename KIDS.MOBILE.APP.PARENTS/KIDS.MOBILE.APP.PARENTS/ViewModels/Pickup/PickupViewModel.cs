@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services;
 using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
 {
@@ -71,6 +74,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
         private async Task GetListPickUpMessage()
         {
 
+        }
+
+        public async Task<List<GetAttendanceForMonthModel>> GetAttendanceForMonth()
+        {
+            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var data = await _leaveRequestService.GetAttendanceForMonth(AppConstants.User.ClassID.ToString(),
+                AppConstants.User.StudentID.ToString(),
+                startDate,
+                startDate.AddMonths(1).AddDays(-1));
+            return data?.Data;
         }
     }
 }
