@@ -47,18 +47,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             get => chooseImage1;
             set => SetProperty(ref chooseImage1, value);
         }
-        private ImageSource chooseImage2;
-        public ImageSource ChooseImage2
-        {
-            get => chooseImage2;
-            set => SetProperty(ref chooseImage2, value);
-        }
-        private ImageSource chooseImage3;
-        public ImageSource ChooseImage3
-        {
-            get => chooseImage3;
-            set => SetProperty(ref chooseImage3, value);
-        }
         private ObservableCollection<MedicineModel> _MedicineList;
         public ObservableCollection<MedicineModel> MedicineList
         {
@@ -87,8 +75,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 base.Initialize(parameters);
                 IsLoading = true;
                 ChooseImage1 = ImageSource.FromFile("add_image.png");
-                ChooseImage2 = ImageSource.FromFile("add_image.png");
-                ChooseImage3 = ImageSource.FromFile("add_image.png");
                 SelectedDate = DateTime.Now;
                 medicineList = new List<MedicineModel>();
             }
