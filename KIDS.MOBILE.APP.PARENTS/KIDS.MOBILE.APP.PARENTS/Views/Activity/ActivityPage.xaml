@@ -13,6 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <style:SfDataGridData x:Key="dataGridStyle"/>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid HorizontalOptions="FillAndExpand"
@@ -53,7 +54,8 @@
                              VerticalOptions="FillAndExpand"
                              Grid.Row="1" 
                              HeaderHeight="30" 
-                             SelectionMode="SingleSelection"
+                             SelectionMode="SingleSelection" 
+                             SelectionChanged="Calendar_SelectionChanged"
                              SelectedDate="{Binding SelectedDate}"
                              BackgroundColor="Blue"/>
 
@@ -64,7 +66,14 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
 
-        <ScrollView HorizontalOptions="FillAndExpand"
+        <Image Source="question.jpg"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="2"
+               IsVisible="{Binding HasAnyActivity, Converter={StaticResource boolReserve}}"
+               Aspect="AspectFit"/>
+
+        <ScrollView HorizontalOptions="FillAndExpand" IsVisible="{Binding HasAnyActivity}"
                     VerticalOptions="FillAndExpand"
                     Grid.Row="2">
             <Grid HorizontalOptions="FillAndExpand" 
@@ -192,7 +201,7 @@
                 </Frame>
 
                 <!--Studying comment-->
-                <StackLayout Margin="10,10,10,5"
+                <StackLayout Margin="10,10,10,5" IsVisible="{Binding IsStudyingCommentVisible}"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="2">
@@ -204,8 +213,8 @@
                            FontSize="20"
                            TextColor="Black"/>
                 </StackLayout>
-                
-                <Frame Margin="10,5,10,5"
+
+                <Frame Margin="10,5,10,5" IsVisible="{Binding IsStudyingCommentVisible}"
                        HorizontalOptions="FillAndExpand"
                        CornerRadius="10"
                        BorderColor="Transparent"
@@ -222,7 +231,7 @@
                                TextColor="Black"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Center"
-                               Text="Even people who feel well can help health researchers predict the spread of COVID-19 by answering a short survey from the University of Maryland. Can you spare a few minutes to help?"
+                               Text="{Binding StudyingComment}"
                                Margin="10,5,5,5"/>
                     </StackLayout>
                 </Frame>
@@ -276,7 +285,7 @@
                         </dataGrid:GridTextColumn>
                     </dataGrid:SfDataGrid.Columns>
                 </dataGrid:SfDataGrid>-->
-                <syncfusion:SfListView IsVisible="{Binding IsActivityVisible}"
+                <syncfusion:SfListView
                     ItemsSource="{Binding ActivityList}"
                     HeightRequest="{Binding ActivityHeightRequest}"
                     BackgroundColor="White"

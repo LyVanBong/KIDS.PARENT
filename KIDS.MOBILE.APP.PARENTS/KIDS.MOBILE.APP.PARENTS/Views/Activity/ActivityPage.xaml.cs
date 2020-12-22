@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Activity;
+using Prism.Mvvm;
 using Syncfusion.ListView.XForms;
-using Syncfusion.ListView.XForms.Control.Helpers;
 using Syncfusion.SfDataGrid.XForms;
 using Xamarin.Forms;
 
@@ -11,10 +10,18 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
 {
     public partial class ActivityPage : ContentPage
     {
+        ActivityViewModel vm;
         public ActivityPage()
         {
             InitializeComponent();
-            
+            ViewModelLocator.SetAutowireViewModel(this, true);
+            vm = (ActivityViewModel) this.BindingContext;
+        }
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            vm = (ActivityViewModel)this.BindingContext;
         }
 
         protected override void OnAppearing()
@@ -53,6 +60,11 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
         {
             var height = (menuData.View.Records.Count * menuData.RowHeight) + menuData.HeaderRowHeight;
             this.menuData.HeightRequest = (double)height;
+        }
+
+        private async  void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
+        {
+            await vm?.GetDailyActivity(e.DateAdded.First());
         }
     }
 

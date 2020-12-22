@@ -24,7 +24,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 _activityList = value;
                 RaisePropertyChanged(nameof(ActivityHeightRequest));
                 RaisePropertyChanged(nameof(ActivityList));
-                RaisePropertyChanged(nameof(IsActivityVisible));
             }
         }
         private ObservableCollection<MenuToDay> menuList = new ObservableCollection<MenuToDay>();
@@ -99,21 +98,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             }
         }
         public bool IsStudyingCommentVisible { get => !string.IsNullOrEmpty(StudyingComment); }
-        //private bool _IsStudyingCommentVisible;
-        //public bool IsStudyingCommentVisible
-        //{
-        //    get => _IsStudyingCommentVisible;
-        //    set => SetProperty(ref _IsStudyingCommentVisible, value);
-        //}
-        //private bool _IsEatingCommentVisible;
-        //public bool IsEatingCommentVisible
-        //{
-        //    get => _IsEatingCommentVisible;
-        //    set => SetProperty(ref _IsEatingCommentVisible, value);
-        //}
         private string studentId;
         private string classId;
         private string gradeId;
+        private bool hasAnyActivity;
+        public bool HasAnyActivity
+        {
+            get => hasAnyActivity;
+            set => SetProperty(ref hasAnyActivity, value);
+        }
         //public DelegateCommand AddCommand { get; }
         #endregion
 
@@ -130,15 +123,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             {
                 base.Initialize(parameters);
                 IsLoading = true;
-                SelectedDate = new DateTime(2020, 12, 11); //DateTime.Now;
+                SelectedDate = DateTime.Now;
                 studentId = AppConstants.User.StudentID;
                 classId = AppConstants.User.ClassID;
                 gradeId = AppConstants.User.GradeID;
                 ActivityList = new ObservableCollection<ExerciseClass>(new List<ExerciseClass>());
-                await GetActivityList(SelectedDate.ToString());
-                await GetMenuList(SelectedDate.ToString());
-                await GetSleepActivity();
-                await GetPooActivity();
+                await GetDailyActivity(SelectedDate);
             }
             catch (Exception ex)
             {
@@ -153,6 +143,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         #endregion
 
         #region Public methods
+        public async Task GetDailyActivity(DateTime date)
+        {
+            SelectedDate = date;
+            await GetActivityList();
+            await GetMenuList();
+            await GetSleepActivity();
+            await GetPooActivity();
+        }
         #endregion
 
         #region Private methods
@@ -175,10 +173,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 PooNumber = pooItem.Hygiene ?? 0;
             }
         }
-        private async Task GetActivityList(string date)
+        private async Task GetActivityList()
         {
+            var date = SelectedDate.ToString();
             var listMorningActivity = await _activityService.GetMorningActivity(studentId, classId, date);
             var listAfternoonActivity = await _activityService.GetAfternoonActivity(studentId, classId, date);
+
+            StudyingComment = listAfternoonActivity?.Data?.FirstOrDefault().NhanXet;
+            HasAnyActivity = listMorningActivity?.Data?.Any() == true || listAfternoonActivity?.Data?.Any() == true;
+
             var listActivities = new List<DailyActivityResponseModel>();
             var listBinding = new List<ExerciseClass>();
             if (listMorningActivity?.Data?.Any() == true) listActivities.AddRange(listMorningActivity.Data);
@@ -198,9 +201,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             ActivityList = new ObservableCollection<ExerciseClass>(listBinding);
         }
 
-        private async Task GetMenuList(string date)
+        private async Task GetMenuList()
         {
-            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date); 
+            var date = SelectedDate.ToString();
+            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date);
+            EatingComment = listMenu?.Data?.FirstOrDefault()?.MealComment;
+            HasAnyActivity = HasAnyActivity ? HasAnyActivity : listMenu?.Data?.Any() == true;
             var menuList = new List<MenuToDay>();
             if(listMenu?.Data?.Any() == true)
             {
