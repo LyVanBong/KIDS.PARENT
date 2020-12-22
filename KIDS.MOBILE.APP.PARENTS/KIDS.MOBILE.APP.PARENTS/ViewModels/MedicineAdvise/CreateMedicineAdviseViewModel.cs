@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Models.MedicineAdvise;
 using KIDS.MOBILE.APP.PARENTS.Resources;
@@ -57,6 +59,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             get => chooseImage3;
             set => SetProperty(ref chooseImage3, value);
         }
+        private ObservableCollection<MedicineModel> _MedicineList;
+        public ObservableCollection<MedicineModel> MedicineList
+        {
+            get => _MedicineList;
+            set => SetProperty(ref _MedicineList, value);
+        }
+        private List<MedicineModel> medicineList;
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GalleryCommand { get; set; }
         private bool isUpdate;
@@ -81,6 +90,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 ChooseImage2 = ImageSource.FromFile("add_image.png");
                 ChooseImage3 = ImageSource.FromFile("add_image.png");
                 SelectedDate = DateTime.Now;
+                medicineList = new List<MedicineModel>();
             }
             catch (Exception ex)
             {
@@ -118,57 +128,50 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         #region Private methods
         private async void OnSendClick()
         {
-            if (string.IsNullOrEmpty(MessageContent))
+            if (!isUpdate)
             {
-                await App.Current.MainPage.DisplayAlert(Resource._00063, Resource._00096, Resource._00011);
-            }
-            else
-            {
-                if (!isUpdate)
+                var model = new PrescriptionModel
                 {
-                    var model = new PrescriptionModel
-                    {
-                        ClassID = AppConstants.User.ClassID,
-                        Content = MessageContent,
-                        StudentID = AppConstants.User.StudentID,
-                        Date = DateTime.Now,
-                        FromDate = SelectedFromDate,
-                        ToDate = SelectedToDate
+                    ClassID = AppConstants.User.ClassID,
+                    Content = MessageContent,
+                    StudentID = AppConstants.User.StudentID,
+                    Date = DateTime.Now,
+                    FromDate = SelectedFromDate,
+                    ToDate = SelectedToDate
 
-                    };
-                    var result = await _messageService.CreateMessage(model);
-                    if (result.Data == 1)
-                    {
-                        await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
-                        await _navigationService.GoBackAsync();
-                    }
-                    else
-                    {
-                        await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
-                    }
+                };
+                var result = await _messageService.CreateMessage(model);
+                if (result.Data == 1)
+                {
+                    await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
+                    await _navigationService.GoBackAsync();
                 }
                 else
                 {
-                    var model = new PrescriptionModel
-                    {
-                        ID = CurrentMessage.Id,
-                        ClassID = AppConstants.User.ClassID,
-                        Content = MessageContent,
-                        StudentID = AppConstants.User.StudentID,
-                        Date = DateTime.Now,
-                        FromDate = SelectedFromDate,
-                        ToDate = SelectedToDate
-                    };
-                    var result = await _messageService.UpdateMessage(model);
-                    if (result.Data == 1)
-                    {
-                        await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
-                        await _navigationService.GoBackAsync();
-                    }
-                    else
-                    {
-                        await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
-                    }
+                    await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
+                }
+            }
+            else
+            {
+                var model = new PrescriptionModel
+                {
+                    ID = CurrentMessage.Id,
+                    ClassID = AppConstants.User.ClassID,
+                    Content = MessageContent,
+                    StudentID = AppConstants.User.StudentID,
+                    Date = DateTime.Now,
+                    FromDate = SelectedFromDate,
+                    ToDate = SelectedToDate
+                };
+                var result = await _messageService.UpdateMessage(model);
+                if (result.Data == 1)
+                {
+                    await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
+                    await _navigationService.GoBackAsync();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
                 }
             }
         }
@@ -193,9 +196,23 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 return;
             }
 
-            ChooseImage1 = ImageSource.FromStream(() => selectedImageFile.GetStream());
+            //ChooseImage1 = ImageSource.FromStream(() => selectedImageFile.GetStream());
+            medicineList.Add(new MedicineModel
+            {
+                Id = Guid.Empty,
+                Image = ImageSource.FromStream(() => selectedImageFile.GetStream()),
+                MessageContent = string.Empty
+            });
+            MedicineList = new ObservableCollection<MedicineModel>(medicineList);
         }
         #endregion
+    }
+
+    public class MedicineModel
+    {
+        public Guid Id { get; set; }
+        public ImageSource Image { get; set; }
+        public string MessageContent { get; set; }
     }
 }
 

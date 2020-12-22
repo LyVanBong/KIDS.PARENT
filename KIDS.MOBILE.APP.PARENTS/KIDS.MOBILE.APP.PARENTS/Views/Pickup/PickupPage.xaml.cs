@@ -18,67 +18,42 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Pickup
             InitializeComponent();
         }
         private List<GetAttendanceForMonthModel> Data = null;
-        protected async override void OnAppearing()
+        private PickupViewModel vm;
+        protected override void OnAppearing()
         {
-            try
-            {
-                loadingView.IsVisible = true;
-                calendar.IsVisible = false;
-                base.OnAppearing();
-                var vm = (PickupViewModel)this.BindingContext;
-
-                Data = await vm.GetAttendanceForMonth();
-                calendar.IsVisible = true;
-                calendar.Refresh();
-            }
-            finally
-            {
-                loadingView.IsVisible = false;
-            }
+            base.OnAppearing();
+            vm = (PickupViewModel)this.BindingContext;
         }
 
         private void Calendar_OnMonthCellLoaded(object sender, MonthCellLoadedEventArgs e)
         {
+            if (Data == null) return;
+            var item = Data?.FirstOrDefault(x => x.Date?.Date == e.Date.Date);
+            var model = new AttendanceCalendarModel(e.Date,
+                item == null ? string.Empty : (item?.CoMat == true ? "done.png" : "error.png"));
+            e.CellBindingContext = model;
+        }
+
+        private async void Calendar_MonthChanged(object sender, MonthCellLoadedEventArgs e)
+        {
             try
             {
-                var item = Data?.FirstOrDefault(x => x.Date?.Date == e.Date.Date);
-                var model = new AttendanceCalendarModel(e.Date,
-                    item == null ? string.Empty : (item?.CoMat == true ? "done.png" : "error.png"));
-                e.CellBindingContext = model;
-                //var grid = new Grid
-                //{
-                //    HorizontalOptions = LayoutOptions.FillAndExpand,
-                //    VerticalOptions = LayoutOptions.FillAndExpand,
-                //    RowDefinitions =
-                //{
-                //    new RowDefinition{Height= new GridLength(1, GridUnitType.Star)},
-                //    new RowDefinition{Height= new GridLength(1, GridUnitType.Star)}
-                //}
-                //};
-                //grid.Children.Add(new Label
-                //{
-                //    Text = e.Date.Day.ToString(),
-                //    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                //    VerticalOptions = LayoutOptions.CenterAndExpand,
-                //    TextColor = Color.Black,
-                //    FontSize = 10
-                //}, 0, 0);
-
-                //grid.Children.Add(new Image
-                //{
-                //    WidthRequest=30,
-                //    HeightRequest=30,
-                //    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                //    VerticalOptions = LayoutOptions.CenterAndExpand,
-                //    Source = item == null ? null : (item?.CoMat == true ? "done.png" : "error.png")
-                //}, 0, 1);
-
-                //e.View = grid;
-                //calendar.SelectedDate = e.Date;
+                try
+                {
+                    loadingView.IsVisible = true;
+                    calendar.IsVisible = false;
+                    Data = await vm.GetAttendanceForMonth(e.Date);
+                    calendar.IsVisible = true;
+                    //calendar.Refresh();
+                }
+                finally
+                {
+                    loadingView.IsVisible = false;
+                }
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise.CreteMedicineAdvisePage"
-             
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
@@ -14,9 +14,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -54,7 +54,8 @@
                FontSize="16"
                FontAttributes="Bold"
                Grid.Row="3"
-               Margin="10,5,10,5"/>
+               Margin="10,5,10,5"
+               HeightRequest="40"/>
 
         <Grid HorizontalOptions="FillAndExpand"
               HeightRequest="70"
@@ -74,7 +75,7 @@
                     HeightRequest="60"
                     Grid.Column="0"/>
 
-        <DatePicker BackgroundColor="White"
+            <DatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"
                     Format="yyyy-MM-dd"
@@ -111,7 +112,7 @@
                     <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image HorizontalOptions="FillAndExpand"
+            <!--<Image HorizontalOptions="FillAndExpand"
                    VerticalOptions="FillAndExpand"
                Source="{Binding ChooseImage2}" 
                Aspect="AspectFill"
@@ -130,10 +131,10 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
         </Grid>
 
-        <Label Text="{markupExtension:Translate 00040}"
+        <!--<Label Text="{markupExtension:Translate 00040}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
@@ -147,10 +148,47 @@
                 HeightRequest="150"
                 BackgroundColor="White"
                 Margin="10,5,10,5"
-                Text="{Binding MessageContent}"/>
+                Text="{Binding MessageContent}"/>-->
 
-        <Button
-                Grid.Row="9"
+        <ScrollView HorizontalOptions="FillAndExpand"
+                     Grid.Row="7"
+                     VerticalScrollBarVisibility="Never">
+            <syncfusion:SfListView HorizontalOptions="FillAndExpand"
+                               AutoFitMode="DynamicHeight"
+                               ItemsSource="{Binding MedicineList}"
+                               Margin="10,5,10,5"
+                               FlowDirection="MatchParent">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                  HeightRequest="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Source="{Binding Image}" 
+                               Aspect="AspectFill"
+                               Margin="10,5,5,5"
+                               Grid.Column="0"/>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                TextColor="Black"
+                                FontSize="16"
+                                BackgroundColor="White"
+                                Margin="5"
+                                Text="{Binding MessageContent}"
+                                Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+        </ScrollView>
+
+        <Button Grid.Row="8"
                 HorizontalOptions="FillAndExpand"
                 Margin="10,10,10,10"
                 Command="{Binding SendCommand}"

@@ -76,9 +76,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
 
         }
 
-        public async Task<List<GetAttendanceForMonthModel>> GetAttendanceForMonth()
+        public async Task<List<GetAttendanceForMonthModel>> GetAttendanceForMonth(DateTime date)
         {
-            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var startDate = new DateTime(date.Year, date.Month, 1);
             var data = await _leaveRequestService.GetAttendanceForMonth(AppConstants.User.ClassID.ToString(),
                 AppConstants.User.StudentID.ToString(),
                 startDate,

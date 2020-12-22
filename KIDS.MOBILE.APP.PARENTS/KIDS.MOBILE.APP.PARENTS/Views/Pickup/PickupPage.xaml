@@ -10,19 +10,19 @@
         <ResourceDictionary>
             <DataTemplate x:Key="MonthTemplate">
                 <Grid BackgroundColor="White" 
-                                  HorizontalOptions="Center">
+                      HorizontalOptions="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label Text="{Binding Date.Day}" 
-                                       HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center" 
-                                       VerticalOptions="FillAndExpand" 
-                                       HorizontalOptions="FillAndExpand" 
-                                       TextColor="Black" 
-                                       FontAttributes="None" 
-                                       FontSize="10" />
+                            HorizontalTextAlignment="Center" 
+                            VerticalTextAlignment="Center" 
+                            VerticalOptions="FillAndExpand" 
+                            HorizontalOptions="FillAndExpand" 
+                            TextColor="Black" 
+                            FontAttributes="None" 
+                            FontSize="10" />
                     <Image Source="{Binding Image}" 
                             WidthRequest="20" 
                             HeightRequest="20" 
@@ -70,11 +70,14 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
 
-        <calendar:SfCalendar x:Name="calendar" OnMonthCellLoaded="Calendar_OnMonthCellLoaded"
+        <calendar:SfCalendar x:Name="calendar"
+                             OnMonthCellLoaded="Calendar_OnMonthCellLoaded"
+                             MonthChanging="Calendar_MonthChanged"
                              Margin="10"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand"
-                             BackgroundColor="White" ViewMode="MonthView"
+                             BackgroundColor="White"
+                             ViewMode="MonthView"
                              Grid.Row="1">
             <calendar:SfCalendar.MonthViewSettings>
                 <calendar:MonthViewSettings CellTemplate="{StaticResource MonthTemplate}" />
