@@ -31,7 +31,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="{markupExtension:Translate 00042}"
+                   Text="{markupExtension:Translate 00046}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
@@ -56,7 +56,8 @@
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
-                SelectionBackgroundColor="Transparent">
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding SelectionCommand}">
                 <syncfusion:SfListView.LayoutManager>
                     <syncfusion:GridLayout SpanCount="2"/>
                 </syncfusion:SfListView.LayoutManager>

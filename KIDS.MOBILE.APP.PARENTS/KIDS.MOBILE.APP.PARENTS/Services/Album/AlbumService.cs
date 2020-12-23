@@ -34,13 +34,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Album
             }
         }
 
-        public async Task<ResponseModel<List<GetDetailAlbumModel>>> GetAlbumDetail(string classId, string parentId)
+        public async Task<ResponseModel<List<GetDetailAlbumModel>>> GetAlbumDetail(string albumId, string parentId)
         {
             try
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("ClassId", classId),
+                    new RequestParameter("AlbumID", albumId),
                     new RequestParameter("GiaoVien_PhuHuynhClick", parentId)
                 };
                 var data = await _requestProvider.GetAsync<List<GetDetailAlbumModel>>("Album/Detail", para);

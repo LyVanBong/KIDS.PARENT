@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Services.Album;
+using KIDS.MOBILE.APP.PARENTS.Views.Album;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -20,6 +22,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             set => SetProperty(ref _imageList, value);
         }
         private IAlbumService _albumService;
+        public DelegateCommand<object> SelectionCommand { get; }
         #endregion
 
         #region Contructor
@@ -27,6 +30,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
         {
             _navigationService = navigationService;
             _albumService = albumService;
+            SelectionCommand = new DelegateCommand<object>(OnSelectionClick);
         }
 
         public override async void Initialize(INavigationParameters parameters)
@@ -67,11 +71,19 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
                     {
                         Id = item.AlbumID,
                         Name = item.Description,
-                        Uri = $"{AppConstants.UrlApiApp}{item.Thumbnail}"
+                        Uri = $"{AppConstants.UriBaseWebForm}{item.Thumbnail}"
                     });
                 }
             }
             ImageList = new ObservableCollection<AlbumDetailModel>(imageList);
+        }
+
+        private async void OnSelectionClick(object data)
+        {
+            var item = ((Syncfusion.ListView.XForms.ItemTappedEventArgs)data).ItemData;
+            var param = new NavigationParameters();
+            param.Add("album", item);
+            await _navigationService.NavigateAsync(nameof(AlbumDetailpage), param);
         }
         #endregion
     }

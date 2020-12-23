@@ -49,9 +49,6 @@
                                  VerticalOptions="FillAndExpand"
                                  Orientation="Vertical"
                                  Margin="0,10,0,10">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ItemTappedCommand}"/>
-                            </StackLayout.GestureRecognizers>
                             <Image HorizontalOptions="CenterAndExpand"
                                Margin="0,0,0,5"
                                Source="{Binding Icon}"/>
@@ -94,7 +91,8 @@
                 ItemSize="250" 
                 ColumnSpacing="10"
                 Orientation="Horizontal"
-                IsScrollBarVisible="False">
+                IsScrollBarVisible="False"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -156,10 +154,6 @@
                                                HorizontalTextAlignment="Start"
                                                VerticalTextAlignment="Center"/>
                                         </StackLayout>
-
-                                        <!--<StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.FeatureStoriesCommand, Source={x:Reference Rotator}}" CommandParameter="{Binding .}" />
-                                        </StackLayout.GestureRecognizers>-->
 
                                     </StackLayout>
                                 </cards:SfCardView.Content>

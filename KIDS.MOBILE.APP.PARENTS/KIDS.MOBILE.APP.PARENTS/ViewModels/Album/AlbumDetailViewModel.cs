@@ -19,7 +19,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             get => _imageList;
             set => SetProperty(ref _imageList, value);
         }
+        private string _Title;
+        public string Title
+        {
+            get => _Title;
+            set => SetProperty(ref _Title, value);
+        }
         private IAlbumService _albumService;
+        private AlbumDetailModel selectionAlbum;
         #endregion
 
         #region Contructor
@@ -35,6 +42,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             {
                 base.Initialize(parameters);
                 IsLoading = true;
+                selectionAlbum = parameters.GetValue<AlbumDetailModel>("album");
+                Title = selectionAlbum?.Name;
                 await GetImageList();
             }
             catch (Exception ex)
@@ -55,17 +64,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
         #region Private methods
         private async Task GetImageList()
         {
-            var classId = AppConstants.User.ClassID;
-            var schoolId = AppConstants.User.DonVi;
+            var parentId = AppConstants.User.ParentID;
             var imageList = new List<AlbumDetailModel>();
-            var data = await _albumService.GetAlbumListByClass(classId, schoolId);
+            var data = await _albumService.GetAlbumDetail(selectionAlbum?.Id.ToString() ?? Guid.Empty.ToString(), parentId);
             if(data?.Data?.Any() == true)
             {
                 foreach(var item in data.Data)
                 {
                     imageList.Add(new AlbumDetailModel
                     {
-                        Uri = $"{AppConstants.UrlApiApp}{item.Thumbnail}"
+                        Uri = $"{AppConstants.UriBaseWebForm}{item.ImageURL}"
                     });
                 }
             }

@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
@@ -31,13 +31,23 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="{markupExtension:Translate 00042}"
+                   Text="{markupExtension:Translate 00046}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
             </Label>
         </StackLayout>
         
+        <!--Title-->
+        <Label HorizontalOptions="CenterAndExpand"
+               Text="{Binding Title}"
+               FontSize="20"
+               TextColor="Black"
+               FontAttributes="Bold"
+               LineBreakMode="WordWrap"
+               Margin="30,0,30,0"
+               Grid.Row="1"/>
+
         <!--Image List-->
         <loadingView:LoadingView
                 Grid.Row="3"
@@ -55,7 +65,9 @@
                 Margin="10"
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding SelectionCommand}">
                 <syncfusion:SfListView.LayoutManager>
                     <syncfusion:GridLayout SpanCount="3"/>
                 </syncfusion:SfListView.LayoutManager>

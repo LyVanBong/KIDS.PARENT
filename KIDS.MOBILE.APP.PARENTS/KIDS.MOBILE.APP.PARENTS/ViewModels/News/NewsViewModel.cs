@@ -24,7 +24,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             get => _newsList;
             set => SetProperty(ref _newsList, value);
         }
-        public DelegateCommand<NewModel> SelectionCommand { get; }
+        public DelegateCommand<object> SelectionCommand { get; }
         #endregion
 
         #region Contructor
@@ -32,7 +32,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         {
             _navigationService = navigationService;
             _newService = newService;
-            SelectionCommand = new DelegateCommand<NewModel>(OnSelectionClicked);
+            SelectionCommand = new DelegateCommand<object>(OnSelectionClicked);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -87,10 +87,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             }
         }
 
-        private async void OnSelectionClicked(NewModel data)
+        private async void OnSelectionClicked(object dataItem)
         {
+            var data = (Syncfusion.ListView.XForms.ItemTappedEventArgs) dataItem;
             var param = new NavigationParameters();
-            param.Add("NewsId", data.Id);
+            param.Add("NewsId", ((NewModel)data.ItemData).Id);
 
             await _navigationService.NavigateAsync(nameof(NewDetailPage), param);
         }
