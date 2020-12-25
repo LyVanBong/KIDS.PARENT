@@ -51,6 +51,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             _databaseService = databaseService;
             _navigationService = navigationService;
             LoginCommand = new DelegateCommand(Login);
+#if DEBUG
+            UserName = "0984103587";
+            Password = "123456";
+#endif
         }
         private bool isOnline()
         {

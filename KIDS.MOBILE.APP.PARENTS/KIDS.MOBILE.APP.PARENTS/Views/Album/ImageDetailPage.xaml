@@ -7,7 +7,9 @@
              BackgroundColor="Black">
 
     <Grid RowSpacing="10"
-          Margin="10">
+          Margin="10"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
@@ -43,9 +45,10 @@
             </Label>
         </StackLayout>
 
-        <Image HorizontalOptions="Fill"
-                VerticalOptions="CenterAndExpand"
+        <Image HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
                 BackgroundColor="Black"
+               Aspect="AspectFit"
                 Grid.Row="1">
             <Image.Source>
                 <UriImageSource

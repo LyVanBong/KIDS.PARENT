@@ -31,7 +31,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="{markupExtension:Translate 00042}"
+                   Text="{markupExtension:Translate 00046}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
@@ -56,9 +56,10 @@
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
+                SelectionBackgroundColor="Transparent"
                 TapCommand="{Binding SelectionCommand}">
                 <syncfusion:SfListView.LayoutManager>
-                    <syncfusion:GridLayout SpanCount="3"/>
+                    <syncfusion:GridLayout SpanCount="2"/>
                 </syncfusion:SfListView.LayoutManager>
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -68,10 +69,17 @@
                                Padding="0"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                            <Image Source="testImage.jpg"
-                                   HorizontalOptions="Fill"
+                            <Image 
+                                   HorizontalOptions="FillAndExpand"
                                    Aspect="AspectFill"
-                                   Margin="0"/>
+                                   Margin="0">
+                                <Image.Source>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="true"
+                                        Uri="{Binding Uri}" />
+                                </Image.Source>
+                                </Image>
                         </Frame>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
