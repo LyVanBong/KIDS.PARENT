@@ -4,7 +4,8 @@
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Message.CreateMessagePage"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:datePicker = "clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -43,43 +44,6 @@
             </Label>
         </StackLayout>
 
-        <Label Text="{markupExtension:Translate 00092}"
-               TextColor="Black"
-               FontSize="16"
-               FontAttributes="Bold"
-               Grid.Row="1"
-               Margin="10,5,10,5"/>
-
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="10,0,10,0"
-                     Grid.Row="2">
-            <border:SfBorder
-                CornerRadius="15"
-                HeightRequest="30"
-                BackgroundColor="White"
-                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                BorderColor="Gray"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                WidthRequest="30">
-                <Image BackgroundColor="White"
-                       Source="home.png">
-                </Image>
-            </border:SfBorder>
-
-            <Label VerticalOptions="Center"
-                   HorizontalOptions="StartAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{markupExtension:Translate 00093}" TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
 
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"
@@ -88,17 +52,17 @@
                Grid.Row="3"
                Margin="10,5,10,5"/>
 
-        <DatePicker BackgroundColor="White"
+        <datePicker:SfDatePicker BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
-                    Format="D"
-                    FontSize="16"
-                    TextColor="Black"
+                    Format="dd_MM_yyyy"
                     Date="{Binding SelectedDate}"
+                    ShowHeader="False"
+                    ShowFooter="False"
                     Grid.Row="4"
                     Margin="10,5,10,5"
                     HeightRequest="60"/>
 
-        <Label Text="{markupExtension:Translate 00095}"
+        <!--<Label Text="{markupExtension:Translate 00095}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
@@ -115,7 +79,7 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding GalleryCommand}"/>
             </Image.GestureRecognizers>
-        </Image>
+        </Image>-->
 
         <Label Text="{markupExtension:Translate 00040}"
                TextColor="Black"

@@ -62,6 +62,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="18.4.0.30" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.2936" />
   </ItemGroup>
 
   <ItemGroup>
