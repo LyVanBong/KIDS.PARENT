@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Models.LeaveRequest;
+using KIDS.MOBILE.APP.PARENTS.Models.User;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services;
+using KIDS.MOBILE.APP.PARENTS.Services.User;
 using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
 using Prism.Commands;
 using Prism.Navigation;
@@ -75,12 +77,21 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
             }
         }
 
+        private StudentModel _Student;
+        public StudentModel Student
+        {
+            get => _Student;
+            set => SetProperty(ref _Student, value);
+        }
+
+        private IUserService _userService;
         private ILeaveRequestService _leaveRequestService;
 
-        public PickupViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService) : base(navigationService)
+        public PickupViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService, IUserService userService) : base(navigationService)
         {
             _navigationService = navigationService;
             _leaveRequestService = leaveRequestService;
+            _userService = userService;
             SelectedDate = DateTime.Now;
             Month = DateTime.Now.Month;
         }
@@ -90,8 +101,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
         public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            await GetAttendanceInformation();
-            await GetListPickUpMessage();
+            //await GetAttendanceInformation();
+            await GetStudentInformation();
             //await GetAttendanceForMonth(SelectedDate);
         }
 
@@ -109,9 +120,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
             }
         }
 
-        private async Task GetListPickUpMessage()
+        private async Task GetStudentInformation()
         {
-
+            var student = await _userService.GetStudent(AppConstants.User.StudentID);
+            if (student?.Code > 0)
+            {
+                Student = student.Data.FirstOrDefault();
+            }
         }
 
         public async Task GetAttendanceForMonth(DateTime date)

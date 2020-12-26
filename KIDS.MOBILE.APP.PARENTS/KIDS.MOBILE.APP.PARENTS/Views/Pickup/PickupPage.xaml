@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
         <StackLayout HorizontalOptions="FillAndExpand"
@@ -35,9 +36,74 @@
             </Label>
         </StackLayout>
 
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0"
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Aspect="AspectFit">
+                <Image.Source>
+                    <UriImageSource Uri="{Binding Path=Student.TmpPicture}"
+                                    CachingEnabled="True"
+                                    CacheValidity="14"/>
+                </Image.Source>
+            </Image>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="4"
+                   Text="{Binding Path=Student.Name}"
+                   TextColor="Black"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   Margin="5"/>
+
+            <Image Source="green.png" 
+                   HeightRequest="20" 
+                   WidthRequest="20" 
+                   VerticalOptions="Center"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Aspect="AspectFit"/>
+
+            <Label Text="Có mặt"
+                   TextColor="Gray"
+                   FontSize="14"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="1"
+                   Grid.Column="2"/>
+
+            <Image Source="red.jpg"
+                   HeightRequest="20" 
+                   WidthRequest="20" 
+                   VerticalOptions="Center"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   Aspect="AspectFit"/>
+
+            <Label Text="Vắng mặt"
+                   TextColor="Gray"
+                   FontSize="14"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="1"
+                   Grid.Column="4"/>
+            
+        </Grid>
+
         <loadingView:LoadingView
             x:Name="loadingView"
-                Grid.Row="1"
+                Grid.Row="2"
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
@@ -48,7 +114,7 @@
                     VerticalOptions="FillAndExpand"
                     BackgroundColor="White"
                     SelectedDate="{Binding SelectedDate}"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Month="{Binding Month}"
                     Events="{Binding Events}"
                     SwipeToChangeMonthEnabled="True">

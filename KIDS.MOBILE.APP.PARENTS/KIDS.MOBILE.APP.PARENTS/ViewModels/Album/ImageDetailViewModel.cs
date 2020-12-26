@@ -15,14 +15,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
             set => SetProperty(ref _Uri, value);
         }
         private AlbumDetailModel selectionImage;
-        public DelegateCommand SaveImageCommand { get; }
         #endregion
 
         #region Contructor
         public ImageDetailViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            SaveImageCommand = new DelegateCommand(OnSaveClicked);
         }
 
         public override void Initialize(INavigationParameters parameters)
@@ -50,10 +48,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
         #endregion
 
         #region Private methods
-        private void OnSaveClicked()
-        {
-
-        }
         #endregion
     }
 }

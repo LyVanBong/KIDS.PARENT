@@ -81,7 +81,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<IActivityService, ActivityService>();
             containerRegistry.Register<IMedicineAdviseService, MedicineAdviseService>();
             containerRegistry.Register<IAlbumService, AlbumService>();
-
+            containerRegistry.Register<IImageService>();
             #endregion
             #region Registry Page - ViewModel
 

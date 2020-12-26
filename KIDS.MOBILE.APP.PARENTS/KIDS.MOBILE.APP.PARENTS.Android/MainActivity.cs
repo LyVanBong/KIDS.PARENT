@@ -11,6 +11,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Droid
     [Activity(Label = "HK Parent", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public static double ScreenWidth = 0;
+
+        public static float Density = 0;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -21,6 +25,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             OtherLibraries();
             LoadApplication(new App(new AndroidInitializer()));
+            var metrics = Resources.DisplayMetrics;
+            ScreenWidth = (double)metrics.WidthPixels;
+            Density = metrics.Density;
+
         }
 
         private void OtherLibraries()

@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Album.AlbumDetailpage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
-             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
 
@@ -57,7 +55,7 @@
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
                 SelectionBackgroundColor="Transparent"
-                ItemTapped="SfListView_ItemTapped">
+                TapCommand="{Binding SelectionCommand}">
                 <syncfusion:SfListView.LayoutManager>
                     <syncfusion:GridLayout SpanCount="2"/>
                 </syncfusion:SfListView.LayoutManager>

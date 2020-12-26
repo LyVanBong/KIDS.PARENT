@@ -22,7 +22,7 @@
                      Padding="5,10,5,10"
                      BackgroundColor="Black"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="backwhite.png"
                    HorizontalOptions="StartAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
@@ -40,12 +40,12 @@
                    FontAttributes="Bold"
                    FontSize="24">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SaveImageCommand}"/>
+                    <TapGestureRecognizer Tapped="Save_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
 
-        <Image HorizontalOptions="FillAndExpand"
+        <Image HorizontalOptions="FillAndExpand" x:Name="picture"
                VerticalOptions="FillAndExpand"
                 BackgroundColor="Black"
                Aspect="AspectFit"
