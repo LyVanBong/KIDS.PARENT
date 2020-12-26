@@ -37,7 +37,7 @@
                    FontSize="24">
             </Label>
         </StackLayout>
-        
+
         <!--Image List-->
         <loadingView:LoadingView
                 Grid.Row="3"
@@ -57,7 +57,7 @@
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
                 SelectionBackgroundColor="Transparent"
-                TapCommand="{Binding SelectionCommand}">
+                ItemTapped="SfListView_ItemTapped">
                 <syncfusion:SfListView.LayoutManager>
                     <syncfusion:GridLayout SpanCount="2"/>
                 </syncfusion:SfListView.LayoutManager>
@@ -79,7 +79,7 @@
                                         CachingEnabled="true"
                                         Uri="{Binding Uri}" />
                                 </Image.Source>
-                                </Image>
+                            </Image>
                         </Frame>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
