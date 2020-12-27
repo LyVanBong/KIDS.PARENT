@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Message.MessageDetailPage"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0"
+                     Grid.Column="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00040}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalScrollBarVisibility="Never"
+                    Grid.Row="1">
+            <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              Margin="10,5,10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <ffimageloading:CachedImage DownsampleToViewSize="true"
+                                Source="{markupExtension:ImageResource icon_accountinformation.png}"
+                                Grid.RowSpan="2"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="30"
+                                WidthRequest="30"/>
+                <!--<Image x:Name="AuthorPhoto" Grid.RowSpan="2" />-->
+                <Label 
+           Grid.Column="1"
+           Grid.ColumnSpan="5"
+           HorizontalOptions="FillAndExpand"
+           TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{markupExtension:Translate 00090}"/>
+                            <Span Text="{Binding Path=MessageModel.ReceivedUser}" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="{Binding Path=MessageModel.DateTime}"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="5" ></Label>
+
+                <Label Text="{Binding Path=MessageModel.Comment}"
+                   LineBreakMode="WordWrap"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="7" />
+                <ffimageloading:CachedImage DownsampleToViewSize="true"
+                                Aspect="AspectFill"
+                                Grid.Row="3"
+                                Grid.ColumnSpan="7"
+                                HorizontalOptions="FillAndExpand" >
+                    <ffimageloading:CachedImage.Source>
+                        <UriImageSource Uri="{Binding Path=MessageModel.ImageUrl}" CacheValidity="1" CachingEnabled="true"/>
+                    </ffimageloading:CachedImage.Source>
+                </ffimageloading:CachedImage>
+
+                <BoxView HeightRequest="1"
+             BackgroundColor="Gray"
+             HorizontalOptions="FillAndExpand"
+             Margin="0,5,0,5"
+             Grid.Row="4"
+             Grid.ColumnSpan="7"/>
+
+                <syncfusion:SfListView HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="Start"
+                                       IsScrollBarVisible="False"
+                                       IsScrollingEnabled="False"
+                                   AutoFitMode="DynamicHeight"
+                                   Grid.Row="5"
+                                   Grid.ColumnSpan="7"
+                                   ItemsSource="{Binding CommentList}">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="White"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                                  Margin="0,10,0,10"
+                                  Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="leave.png"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+
+                                <Label TextColor="Black"
+                                   FontSize="14"
+                                   Text="{Binding ReceivedUser}"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+
+                                <Label TextColor="Black"
+                                   FontSize="12"
+                                   Text="{Binding Comment}"
+                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Start"
+                                   Grid.Row="1"
+                                   Grid.ColumnSpan="2"/>
+
+                                <Label Text="{Binding DateTime}"
+                                   FontSize="12"
+                                   FontAttributes="Italic"
+                                   HorizontalTextAlignment="End"
+                                   HorizontalOptions="EndAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+
+                <Editor HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   HeightRequest="60"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   FontSize="12"
+                   Placeholder="Viet binh luan..."
+                   Text="{Binding Content}"
+                   Grid.Row="6"
+                   Grid.ColumnSpan="6"
+                   Margin="0,10,0,10"/>
+
+                <Image Grid.Row="6"
+                       Grid.Column="6"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Aspect="AspectFill"
+                       Source="add.png"
+                       Margin="0,10,0,10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </ScrollView>
+
+        <loadingView:LoadingView
+                Grid.Row="1"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+
+    </Grid>
+</ContentPage>

@@ -590,5 +590,347 @@ namespace KIDS.MOBILE.APP.PARENTS.Resources {
                 return ResourceManager.GetString("00063", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are watching information of .
+        /// </summary>
+        internal static string _00079 {
+            get {
+                return ResourceManager.GetString("00079", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL COMPLETED.
+        /// </summary>
+        internal static string _00080 {
+            get {
+                return ResourceManager.GetString("00080", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEED TO COMPLETE.
+        /// </summary>
+        internal static string _00081 {
+            get {
+                return ResourceManager.GetString("00081", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VND.
+        /// </summary>
+        internal static string _00082 {
+            get {
+                return ResourceManager.GetString("00082", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        internal static string _00083 {
+            get {
+                return ResourceManager.GetString("00083", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Date.
+        /// </summary>
+        internal static string _00084 {
+            get {
+                return ResourceManager.GetString("00084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string _00085 {
+            get {
+                return ResourceManager.GetString("00085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reduce.
+        /// </summary>
+        internal static string _00086 {
+            get {
+                return ResourceManager.GetString("00086", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status : .
+        /// </summary>
+        internal static string _00087 {
+            get {
+                return ResourceManager.GetString("00087", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need to complete.
+        /// </summary>
+        internal static string _00088 {
+            get {
+                return ResourceManager.GetString("00088", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired Date : .
+        /// </summary>
+        internal static string _00089 {
+            get {
+                return ResourceManager.GetString("00089", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent to .
+        /// </summary>
+        internal static string _00090 {
+            get {
+                return ResourceManager.GetString("00090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new message to send to kid&apos;s teacher.
+        /// </summary>
+        internal static string _00091 {
+            get {
+                return ResourceManager.GetString("00091", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose kids .
+        /// </summary>
+        internal static string _00092 {
+            get {
+                return ResourceManager.GetString("00092", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choosing.
+        /// </summary>
+        internal static string _00093 {
+            get {
+                return ResourceManager.GetString("00093", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose date to send message.
+        /// </summary>
+        internal static string _00094 {
+            get {
+                return ResourceManager.GetString("00094", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        internal static string _00095 {
+            get {
+                return ResourceManager.GetString("00095", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please input your message..
+        /// </summary>
+        internal static string _00096 {
+            get {
+                return ResourceManager.GetString("00096", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string _00097 {
+            get {
+                return ResourceManager.GetString("00097", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        internal static string _00098 {
+            get {
+                return ResourceManager.GetString("00098", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent.
+        /// </summary>
+        internal static string _00099 {
+            get {
+                return ResourceManager.GetString("00099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent with Approved.
+        /// </summary>
+        internal static string _00100 {
+            get {
+                return ResourceManager.GetString("00100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absent without Approved.
+        /// </summary>
+        internal static string _00101 {
+            get {
+                return ResourceManager.GetString("00101", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new leave request.
+        /// </summary>
+        internal static string _00102 {
+            get {
+                return ResourceManager.GetString("00102", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        internal static string _00103 {
+            get {
+                return ResourceManager.GetString("00103", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unconfirmed.
+        /// </summary>
+        internal static string _00104 {
+            get {
+                return ResourceManager.GetString("00104", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        internal static string _00105 {
+            get {
+                return ResourceManager.GetString("00105", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string _00106 {
+            get {
+                return ResourceManager.GetString("00106", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learning for today.
+        /// </summary>
+        internal static string _00107 {
+            get {
+                return ResourceManager.GetString("00107", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu for today.
+        /// </summary>
+        internal static string _00108 {
+            get {
+                return ResourceManager.GetString("00108", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sleeping activity.
+        /// </summary>
+        internal static string _00109 {
+            get {
+                return ResourceManager.GetString("00109", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poo activity.
+        /// </summary>
+        internal static string _00110 {
+            get {
+                return ResourceManager.GetString("00110", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kid slept from.
+        /// </summary>
+        internal static string _00111 {
+            get {
+                return ResourceManager.GetString("00111", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string _00112 {
+            get {
+                return ResourceManager.GetString("00112", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of poo :.
+        /// </summary>
+        internal static string _00113 {
+            get {
+                return ResourceManager.GetString("00113", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks giving.
+        /// </summary>
+        internal static string _00114 {
+            get {
+                return ResourceManager.GetString("00114", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parents can send message to motivate kid&apos;s teacher here..
+        /// </summary>
+        internal static string _00115 {
+            get {
+                return ResourceManager.GetString("00115", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send message.
+        /// </summary>
+        internal static string _00116 {
+            get {
+                return ResourceManager.GetString("00116", resourceCulture);
+            }
+        }
     }
 }

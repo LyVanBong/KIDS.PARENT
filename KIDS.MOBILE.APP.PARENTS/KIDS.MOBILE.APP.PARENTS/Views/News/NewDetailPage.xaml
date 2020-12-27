@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.News.NewDetailPage"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Orientation="Vertical"
+                 BackgroundColor="#f0eded">
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="Start"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00045}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Watching-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Margin="5,10,5,10">
+            <Image Source="home.png"
+                   HorizontalOptions="Start">
+            </Image>
+            <Label HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="10,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{markupExtension:Translate 00079}" TextColor="Black" FontSize="16"/>
+                        <Span Text="{Binding KidName}" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+
+        <loadingView:LoadingView
+                Grid.Row="0"
+                Grid.RowSpan="5"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+
+        <Label Margin="10"
+               TextType="Html"
+               Text="{Binding Content}"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand">
+            
+        </Label>
+    </StackLayout>
+
+</ContentPage>

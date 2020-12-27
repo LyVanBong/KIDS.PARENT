@@ -22,7 +22,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
     {
         private IPageDialogService _pageDialogService;
         private ILoginService _loginService;
-        private INavigationService _navigationService;
+        
         private bool _isSaveAccount;
         private bool _isCheckLogin;
         private bool _isLoading;
@@ -43,7 +43,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         }
 
         private IDatabaseService _databaseService;
-        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService, IPushNotificationService pushNotificationService)
+        public LoginViewModel(INavigationService navigationService, ILoginService loginService, IDatabaseService databaseService, IPageDialogService pageDialogService, IPushNotificationService pushNotificationService) : base(navigationService)
         {
             _pushNotificationService = pushNotificationService;
             _pageDialogService = pageDialogService;
@@ -51,6 +51,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             _databaseService = databaseService;
             _navigationService = navigationService;
             LoginCommand = new DelegateCommand(Login);
+#if DEBUG
+            UserName = "0984103587";
+            Password = "123456";
+#endif
         }
         private bool isOnline()
         {

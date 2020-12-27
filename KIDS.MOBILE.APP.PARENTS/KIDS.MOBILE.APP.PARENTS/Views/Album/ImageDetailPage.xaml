@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Album.ImageDetailPage"
+             xmlns:image="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             BackgroundColor="Black">
+
+    <Grid RowSpacing="10"
+          Margin="10"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="Black"
+                     Grid.Row="0">
+            <Image Source="backwhite.png"
+                   HorizontalOptions="StartAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00046}"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+            <Label HorizontalOptions="EndAndExpand"
+                   Text="Save"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="24">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Save_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+        <Image HorizontalOptions="FillAndExpand" x:Name="picture"
+               VerticalOptions="FillAndExpand"
+                BackgroundColor="Black"
+               Aspect="AspectFit"
+                Grid.Row="1">
+            <Image.Source>
+                <UriImageSource
+                    CacheValidity="14"
+                    CachingEnabled="true"
+                    Uri="{Binding Uri}" />
+            </Image.Source>
+        </Image>
+    </Grid>
+
+</ContentPage>

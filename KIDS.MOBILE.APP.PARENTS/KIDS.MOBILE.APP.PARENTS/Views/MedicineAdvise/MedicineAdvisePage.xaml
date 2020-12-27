@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise.MedicineAdvisePage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00042}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <!--Add new-->
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Margin="0,5,10,5"
+                     Grid.Row="2">
+            <border:SfBorder
+                CornerRadius="24"
+                HeightRequest="30"
+                BackgroundColor="White"
+                BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                BorderColor="Gray"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30">
+                <Image BackgroundColor="White"
+                       Source="add.png">
+                </Image>
+                <border:SfBorder.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                </border:SfBorder.GestureRecognizers>
+            </border:SfBorder>
+
+            <Label VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00091}"
+                   FontSize="16"
+                   TextColor="Black"
+                   Margin="5,0,0,0">
+            </Label>
+        </StackLayout>
+        
+        <!--Message List-->
+        <loadingView:LoadingView
+                Grid.Row="3"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Margin="10">
+            <syncfusion:SfListView
+                ItemsSource="{Binding MessageList}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Margin="10"
+                FlowDirection="LeftToRight"
+                AutoFitMode="DynamicHeight"
+                Orientation="Vertical">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="0,5,0,5"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand">
+                            <template:MessageTemplate BackgroundColor="White" />
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

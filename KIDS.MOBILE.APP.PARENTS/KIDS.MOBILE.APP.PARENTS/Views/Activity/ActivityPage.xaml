@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Activity.ActivityPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:style="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.Style"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
+             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:dataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Name="activityPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <style:SfDataGridData x:Key="dataGridStyle"/>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <!--<RowDefinition Height="60"/>-->
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00044}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <calendar:SfCalendar x:Name="calendar" 
+                             ViewMode="MonthView"
+                             NumberOfWeeksInView="1"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Grid.Row="1" 
+                             HeaderHeight="30" 
+                             SelectionMode="SingleSelection" 
+                             SelectionChanged="Calendar_SelectionChanged"
+                             SelectedDate="{Binding SelectedDate}"
+                             BackgroundColor="Blue"/>
+
+        <!--loading view-->
+        <loadingView:LoadingView
+                Grid.Row="2"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+
+        <Image Source="question.jpg"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="2"
+               IsVisible="{Binding HasAnyActivity, Converter={StaticResource boolReserve}}"
+               Aspect="AspectFit"/>
+
+        <ScrollView HorizontalOptions="FillAndExpand" IsVisible="{Binding HasAnyActivity}"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="2">
+            <Grid HorizontalOptions="FillAndExpand" 
+                         Padding="0"
+                         VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Daily comment-->
+                <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             IsVisible="{Binding IsDailyCommentVisible}"
+                             Grid.Row="0">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="Nhận xét hàng ngày"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+
+                <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       IsVisible="{Binding IsDailyCommentVisible}"
+                       Grid.Row="1">
+                    <Grid HorizontalOptions="FillAndExpand"
+                          ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="21"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Aspect="AspectFit"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Source="studying.jpg"/>
+                        <Image Aspect="AspectFit"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Grid.Row="0"
+                               Grid.Column="2"
+                               Grid.ColumnSpan="2"
+                               Source="sleeping.jpg"/>
+                        <Image Aspect="AspectFit"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Grid.Row="0"
+                               Grid.Column="4"
+                               Grid.ColumnSpan="2"
+                               Source="studying.jpg"/>
+                        <BoxView Margin="10,20,10,0"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="Gray"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="6"
+                                 HeightRequest="1"/>
+                        <Image Source="view.png"
+                               WidthRequest="30"
+                               HeightRequest="30"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="10,0,0,0"/>
+                        <Label TextColor="Gray"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Grid.Row="2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="0"/>
+                                    <Span Text=" "/>
+                                    <Span Text="Thích"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image Source="view.png"
+                               WidthRequest="30"
+                               HeightRequest="30"
+                               Grid.Row="2"
+                               Grid.Column="3"
+                               Margin="10,0,0,0"
+                               HorizontalOptions="EndAndExpand"/>
+                        <Label TextColor="Red"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Grid.Column="4"
+                               Grid.ColumnSpan="2"
+                               Grid.Row="2"
+                               Text="Gửi lời cảm ơn">
+                        </Label>
+                    </Grid>
+                </Frame>
+
+                <!--Studying comment-->
+                <StackLayout Margin="10,10,10,5" IsVisible="{Binding IsStudyingCommentVisible}"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="2">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="{markupExtension:Translate 00107}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+
+                <Frame Margin="10,5,10,5" IsVisible="{Binding IsStudyingCommentVisible}"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       Grid.Row="3">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                        <Image Aspect="AspectFit"
+                               WidthRequest="80"
+                               VerticalOptions="CenterAndExpand"
+                               Source="studying.jpg"/>
+                        <Label FontSize="16"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding StudyingComment}"
+                               Margin="10,5,5,5"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--activity list-->
+                <!--<dataGrid:SfDataGrid ItemsSource="{Binding ActivityList}"  
+                                    BackgroundColor="White" AutoGenerateColumns="False" 
+                                    HorizontalOptions="FillAndExpand"
+                                    Margin="10,0,10,10" 
+                                    FlowDirection="LeftToRight" 
+                                    SelectionMode="None"
+                                     x:Name="activityList" HeightRequest="10"
+                                     GridStyle="{StaticResource dataGridStyle}"
+                                     Grid.Row="4">
+                    <dataGrid:SfDataGrid.Columns>
+                        <dataGrid:GridTextColumn Width="150" 
+                                                 FontAttribute="Bold"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="ClassTime" 
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Thời gian"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                        <dataGrid:GridTextColumn HeaderText="Noi dung" 
+                                                 ColumnSizer="LastColumnFill"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Instructor"
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Nội dung"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                    </dataGrid:SfDataGrid.Columns>
+                </dataGrid:SfDataGrid>-->
+                <syncfusion:SfListView
+                    ItemsSource="{Binding ActivityList}"
+                    HeightRequest="{Binding ActivityHeightRequest}"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="10,0,10,0" 
+                    IsStickyHeader="True" 
+                    HeaderSize="60"
+                    FlowDirection="LeftToRight" 
+                    IsScrollBarVisible="False"
+                    ItemSize="80"
+                    Orientation="Vertical"
+                    SelectionMode="None"
+                    x:Name="activityList"
+                    Grid.Row="4">
+
+                    <syncfusion:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="20,5,0,20">
+                                <Label TextColor="Black" FontSize="18" FontAttributes="Bold" Text="Class Schedule" />
+                                <Label TextColor="Gray" FontSize="12" Text="8 Mar 2017" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </syncfusion:SfListView.HeaderTemplate>
+
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label HorizontalOptions="Center"
+                                   TextColor="Black"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   Text="{Binding ClassTime}" />
+
+                                    <Label
+                                  Grid.Row="0"
+                                  Grid.Column="2"
+                                  Margin="20,0"
+                                  TextColor="Gray"
+                                  FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                  Text="{Binding Instructor}" />
+
+                                    <BoxView
+                                  Grid.RowSpan="2"
+                                  Grid.Column="1"
+                                  BackgroundColor="#E4B6C3"
+                                  HorizontalOptions="Center"
+                                  IsVisible="{Binding IsLast, Converter={converter:NotBooleanConverter}}"
+                                  VerticalOptions="Fill"
+                                  WidthRequest="3" />
+
+                                    <Image Grid.Column="1" Source="Bullet.png" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                
+                <!--Comment for eating-->
+                <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="5">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="{markupExtension:Translate 00108}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+                
+                <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       Grid.Row="6"
+                       IsVisible="{Binding IsEatingCommentVisible}">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                        <Image Aspect="AspectFit"
+                               WidthRequest="80"
+                               VerticalOptions="CenterAndExpand"
+                               Source="studying.jpg"/>
+                        <Label FontSize="16"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding EatingComment}"
+                               Margin="10,5,5,5"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Menu for today-->
+                <dataGrid:SfDataGrid HorizontalOptions="FillAndExpand"
+                                     ItemsSource="{Binding MenuList}"
+                                     BackgroundColor="White"
+                                     AutoGenerateColumns="False"
+                                     AllowEditing="False"
+                                     Margin="10,0,10,10"
+                                     GridStyle="{StaticResource dataGridStyle}"
+                                     x:Name="menuData"
+                                     Grid.Row="7">
+                    <dataGrid:SfDataGrid.Columns>
+                        <dataGrid:GridTextColumn Width="60"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Time" 
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5"
+                                                 FontAttribute="Bold">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Thời gian"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                        <dataGrid:GridTextColumn HeaderText="Noi dung" 
+                                                 ColumnSizer="LastColumnFill"
+                                                 HeaderFontAttribute="Bold"
+                                                 HeaderCellTextSize="18"
+                                                 MappingName="Content"
+                                                 TextAlignment="Start"
+                                                 Padding="10,5,10,5">
+                            <dataGrid:GridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label Text="Nội dung"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                </DataTemplate>
+                            </dataGrid:GridTextColumn.HeaderTemplate>
+                        </dataGrid:GridTextColumn>
+                    </dataGrid:SfDataGrid.Columns>
+                </dataGrid:SfDataGrid>
+
+                <!--Sleeping-->
+                <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="8">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="{markupExtension:Translate 00109}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+                
+                <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       Grid.Row="9">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                        <Image Aspect="AspectFit"
+                               WidthRequest="60"
+                               VerticalOptions="CenterAndExpand"
+                               Source="studying.jpg"/>
+                        <Label FontSize="12"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{markupExtension:Translate 00111}"
+                               Margin="5,5,5,5"/>
+                        <Frame BorderColor="Blue"
+                               CornerRadius="10" 
+                               Padding="5,0,5,0"
+                               HeightRequest="40"
+                               WidthRequest="50"
+                               VerticalOptions="Center">
+                            <Label FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="Blue"
+                                   Text="{Binding SleepFrom}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                        <Label FontSize="12"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{markupExtension:Translate 00112}"
+                               Margin="5,5,5,5"/>
+                        <Frame BorderColor="Blue"
+                               CornerRadius="10" 
+                               Padding="5,0,5,0"
+                               HeightRequest="40"
+                               WidthRequest="50"
+                               VerticalOptions="Center">
+                            <Label FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="Blue"
+                                   Text="{Binding SleepTo}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <!--Poo-->
+                <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="10">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="{markupExtension:Translate 00110}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+                
+                <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       Grid.Row="11">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                        <Image Aspect="AspectFit"
+                               WidthRequest="60"
+                               VerticalOptions="CenterAndExpand"
+                               Source="studying.jpg"/>
+                        <Label FontSize="16"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               Margin="5,5,5,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{markupExtension:Translate 00113}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding PooNumber}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+
+                <!--Thanks giving-->
+                <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="12">
+                    <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                    <Label Text="{markupExtension:Translate 00114}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </StackLayout>
+                
+                <Frame Margin="10,5,10,20"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Red"
+                       BackgroundColor="White"
+                       Grid.Row="13">
+                    <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          RowSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label TextColor="Gray"
+                               FontSize="14"
+                               Text="{markupExtension:Translate 00115}"
+                               LineBreakMode="WordWrap"
+                               Grid.Row="0"
+                               Grid.ColumnSpan="2"/>
+                        <Image Aspect="AspectFit"
+                               WidthRequest="200"
+                               VerticalOptions="StartAndExpand"
+                               Source="giving.jpg"
+                               Grid.Column="0"
+                               Grid.Row="1"/>
+                        <Button CornerRadius="10"
+                                BackgroundColor="Red"
+                                TextColor="White"
+                                Text="{markupExtension:Translate 00116}"
+                                Padding="10,5,10,5"
+                                HorizontalOptions="End"
+                                VerticalOptions="End"
+                                Grid.Row="1"
+                                Grid.Column="1"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+
+        
+
+    </Grid>
+
+</ContentPage>

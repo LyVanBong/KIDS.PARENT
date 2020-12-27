@@ -11,5 +11,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Message
         {
             InitializeComponent();
         }
+
+        //private void SfListView_ItemTapped(object sender, )
     }
 }

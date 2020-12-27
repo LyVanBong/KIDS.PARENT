@@ -37,6 +37,23 @@ using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare;
+using KIDS.MOBILE.APP.PARENTS.Services.News;
+using KIDS.MOBILE.APP.PARENTS.Services.Tuition;
+using KIDS.MOBILE.APP.PARENTS.Services.Message;
+using KIDS.MOBILE.APP.PARENTS.Services;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Message;
+using KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest;
+using KIDS.MOBILE.APP.PARENTS.Views.Activity;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Activity;
+using KIDS.MOBILE.APP.PARENTS.Services.Activity;
+using KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise;
+using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup;
+using KIDS.MOBILE.APP.PARENTS.Views.Album;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Album;
+using KIDS.MOBILE.APP.PARENTS.Services.Album;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -57,7 +74,14 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.Register<IDatabaseService, DatabaseService>();
             containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<IRequestProvider, RequestProvider>();
-
+            containerRegistry.Register<INewService, NewService>();
+            containerRegistry.Register<ITuitionService, TuitionService>();
+            containerRegistry.Register<IMessageService, MessageService>();
+            containerRegistry.Register<ILeaveRequestService, LeaveRequestService>();
+            containerRegistry.Register<IActivityService, ActivityService>();
+            containerRegistry.Register<IMedicineAdviseService, MedicineAdviseService>();
+            containerRegistry.Register<IAlbumService, AlbumService>();
+            containerRegistry.Register<IImageService>();
             #endregion
             #region Registry Page - ViewModel
 
@@ -75,7 +99,16 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<MessagePage, MessageViewModel>();
             containerRegistry.RegisterForNavigation<LeaveRequestPage, LeaveRequestViewModel>();
             containerRegistry.RegisterForNavigation<HealthCarePage, HealthCareViewModel>();
-
+            containerRegistry.RegisterForNavigation<CreateMessagePage, CreateMessageViewModel>();
+            containerRegistry.RegisterForNavigation<CreateLeaveRequestPage, CreateLeaveRequestViewModel>();
+            containerRegistry.RegisterForNavigation<ActivityPage, ActivityViewModel>();
+            containerRegistry.RegisterForNavigation<MedicineAdvisePage, MedicineAdviseViewModel>();
+            containerRegistry.RegisterForNavigation<CreteMedicineAdvisePage, CreateMedicineAdviseViewModel>();
+            containerRegistry.RegisterForNavigation<PickupPage, PickupViewModel>();
+            containerRegistry.RegisterForNavigation<AlbumDetailpage, AlbumDetailViewModel>();
+            containerRegistry.RegisterForNavigation<MessageDetailPage, MessageDetailViewModel>();
+            containerRegistry.RegisterForNavigation<AlbumPage, AlbumViewModel>();
+            containerRegistry.RegisterForNavigation<ImageDetailPage, ImageDetailViewModel>();
             #endregion
             #region Registry Dialog
             #endregion
