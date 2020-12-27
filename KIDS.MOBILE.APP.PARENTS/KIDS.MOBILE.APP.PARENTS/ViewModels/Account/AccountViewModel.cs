@@ -24,11 +24,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
     {
         private IUserService _userService;
         private IDatabaseService _databaseService;
-        private INavigationService _navigationService;
+        
         private IPageDialogService _pageDialogService;
         private StudentModel _student;
         private bool _isActive;
-        private bool _isLoading;
         private bool _isGoToProfile;
         private UserModel _user;
         public ICommand SelectFeatureCommand { get; private set; }
@@ -48,11 +47,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
             get => _student;
             set => SetProperty(ref _student, value);
         }
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
-        }
         public bool IsActive
         {
             get => _isActive;
@@ -62,7 +56,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         public ICommand LogoutCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
         public ICommand ChangePasswordCommand { get; set; }
-        public AccountViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IDatabaseService databaseService, IUserService userService)
+        public AccountViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IDatabaseService databaseService, IUserService userService) : base(navigationService)
         {
             _userService = userService;
             _databaseService = databaseService;

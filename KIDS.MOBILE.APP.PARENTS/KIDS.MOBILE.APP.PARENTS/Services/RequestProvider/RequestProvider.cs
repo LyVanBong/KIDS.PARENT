@@ -35,8 +35,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                 var data = response.StatusCode == HttpStatusCode.OK ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content) : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -49,8 +50,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                 _client.Timeout = 10000;
                 _request = new RestRequest(method);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -66,15 +68,72 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                         _request.AddParameter(item.Key, item.Value);
                     }
                 }
-
+                _request.Timeout = 10000;
                 var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
                 var data = response.StatusCode == HttpStatusCode.OK
                     ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters, Dictionary<string, string> files = null)
+        {
+            try
+            {
+                //CreateClients(uri, Method.POST);
+                //if (parameters != null && parameters.Any())
+                //{
+                //    foreach (var item in parameters)
+                //    {
+                //        _request.AddParameter(item.Key, item.Value);
+                //    }
+                //}
+                //if (files?.Any() == true)
+                //{
+                //    foreach (var file in files)
+                //    {
+                //        _request.AddFile(file.Key, file.Value);
+                //    }
+                //}
+                //_request.AlwaysMultipartFormData = true;
+                //var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
+                //var data = response.StatusCode == HttpStatusCode.OK
+                //    ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
+                //    : default;
+                //return data;
+                var url = AppConstants.UrlApiApp + uri;
+                RestClient client = new RestClient(url);
+                var request = new RestRequest(string.Empty, Method.POST);
+                //if (parameters != null && parameters.Any())
+                //{
+                //    foreach (var item in parameters)
+                //    {
+                //        request.AddParameter(item.Key,item.Value);
+                //    }
+                //}
+                request.AddJsonBody(JsonConvert.SerializeObject(parameters));
+                if (files?.Any() == true)
+                {
+                    foreach (var file in files)
+                    {
+                        request.AddFile(file.Key, file.Value);
+                    }
+                }
+                
+                request.AlwaysMultipartFormData = true;
+                request.AddHeader("Content-Type", "multipart/form-data");
+                IRestResponse response = client.Execute(request);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -98,8 +157,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }
@@ -123,8 +183,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }

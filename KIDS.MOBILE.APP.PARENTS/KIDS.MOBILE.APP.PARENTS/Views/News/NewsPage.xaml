@@ -2,7 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.NewsPage"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ImageSourceConverter x:Key="ImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout HorizontalOptions="FillAndExpand"
                  VerticalOptions="FillAndExpand"
                  Orientation="Vertical"
@@ -13,42 +21,33 @@
                      Orientation="Horizontal"
                      Padding="5,10,5,10"
                      BackgroundColor="White">
-            <Image Source="home.png"
-                   HorizontalOptions="StartAndExpand">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="Tin tuc"
+                   Text="{markupExtension:Translate 00045}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
             </Label>
-            <Image Source="home.png"
+            <!--<Image Source="home.png"
                    HorizontalOptions="EndAndExpand"
                    VerticalOptions="CenterAndExpand">
             </Image>
             <Image Source="home.png"
                    HorizontalOptions="EndAndExpand">
-            </Image>
+            </Image>-->
         </StackLayout>
 
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="5,10,5,10">
-            <Image Source="home.png"
-                   HorizontalOptions="Start">
-            </Image>
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Margin="10,0,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang xem thong tin be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
+        <loadingView:LoadingView
+                Grid.Row="0"
+                Grid.RowSpan="5"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
 
         <!--News listview-->
         <ScrollView HorizontalOptions="FillAndExpand"
@@ -59,9 +58,10 @@
                 Margin="10,0,10,10"
                 Grid.Row="3"
                 FlowDirection="LeftToRight"
-                ItemSize="420"
+                ItemSize="300"
                 ColumnSpacing="10"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                TapCommand="{Binding SelectionCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -69,23 +69,22 @@
                                  VerticalOptions="FillAndExpand"
                            CornerRadius="10"
                                IsClippedToBounds="True"
-                           Margin = "5"
                                Padding="0"
-                           BorderColor="Blue"
+                               Margin="10"
+                           BorderColor="Black"
                                BackgroundColor="White"
                                FlowDirection="MatchParent">
                             <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
-                                 Orientation="Vertical"
-                                 Padding="5"
-                                 Margin="5">
+                                 Orientation="Vertical">
 
                                 <Label Text="{Binding Title}"
                                        HorizontalOptions="FillAndExpand"
                                        FontAttributes="Bold"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                       Margin="10,5,0,0"/>
 
-                                <Label HorizontalOptions="FillAndExpand">
+                                <Label HorizontalOptions="FillAndExpand" Margin="10,0,0,0">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding NewsTo}" FontSize="16" TextColor="Blue"></Span>
@@ -97,14 +96,17 @@
 
                                 <Image HorizontalOptions="FillAndExpand"
                                        VerticalOptions="FillAndExpand"
-                                       Aspect="AspectFit"
-                                       Source="testImage.jpg"/>
+                                       Aspect="AspectFill"
+                                       HeightRequest="150"
+                                       Margin="1,0,1,0"
+                                       Source="{Binding Image, Converter={StaticResource ImageConverter}}"/>
 
                                 <StackLayout HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="FillAndExpand"
-                                             Orientation="Horizontal">
+                                             VerticalOptions="EndAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10,0,10,10">
 
-                                    <Image Source="home.png"
+                                    <Image Source="view.png"
                                            HorizontalOptions="Start"/>
 
                                     <Label Text="{Binding LikeNumber}"
@@ -114,7 +116,7 @@
                                            VerticalOptions="CenterAndExpand"
                                            Margin="5,0,0,0"/>
 
-                                    <Label HorizontalOptions="EndAndExpand"
+                                    <!--<Label HorizontalOptions="EndAndExpand"
                                            VerticalOptions="CenterAndExpand">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -123,10 +125,10 @@
                                                 <Span Text="{Binding CommentText}" TextColor="Black" FontSize="16"/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </Label>
+                                    </Label>-->
                                 </StackLayout>
 
-                                <StackLayout HorizontalOptions="FillAndExpand"
+                                <!--<StackLayout HorizontalOptions="FillAndExpand"
                                              VerticalOptions="FillAndExpand"
                                              Orientation="Horizontal"
                                              HeightRequest="30">
@@ -145,7 +147,7 @@
                                                FontSize="20"
                                                TextColor="Black"/>
                                     </Frame>
-                                </StackLayout>
+                                </StackLayout>-->
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

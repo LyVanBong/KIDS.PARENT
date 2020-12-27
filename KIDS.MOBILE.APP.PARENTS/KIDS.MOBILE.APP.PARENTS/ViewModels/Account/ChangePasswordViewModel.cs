@@ -18,20 +18,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Account
         private ILoginService _loginService;
         private IUserService _userService;
         private IDatabaseService _databaseService;
-        private INavigationService _navigationService;
+        
         private UserModel User;
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
-        }
+        
         public string OldPassword { get; set; }
         public string NewPassword { get; set; }
         public string RetypeNewPass { get; set; }
         public ICommand UpdatePassCommand { get; private set; }
         public ICommand GoBackCommand { get; set; }
-        public ChangePasswordViewModel(ILoginService loginService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService, INavigationService navigationService)
+        public ChangePasswordViewModel(ILoginService loginService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService, INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             _databaseService = databaseService;

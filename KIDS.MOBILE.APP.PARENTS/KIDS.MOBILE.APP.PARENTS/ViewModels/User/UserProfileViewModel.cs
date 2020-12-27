@@ -20,7 +20,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.User
 {
     public class UserProfileViewModel : BaseViewModel
     {
-        private bool _isLoading;
         private ParentModel _user;
         private IUserService _userService;
         private IPageDialogService _pageDialogService;
@@ -31,12 +30,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.User
             get => _user;
             set => SetProperty(ref _user, value);
         }
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
-        }
-        public UserProfileViewModel(IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService)
+        public UserProfileViewModel(INavigationService navigationService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService) : base(navigationService)
         {
             _databaseService = databaseService;
             _pageDialogService = pageDialogService;

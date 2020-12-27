@@ -8,6 +8,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
     public static class AppConstants
     {
         /// <summary>
+        /// Id thiet bi dung cho thong bao day onesignal
+        /// </summary>
+        internal const string PlayerId = "PLAYER _ID";
+        /// <summary>
         /// Lưu thông tin user khi login thành công
         /// </summary>
         internal static UserModel User = new UserModel();

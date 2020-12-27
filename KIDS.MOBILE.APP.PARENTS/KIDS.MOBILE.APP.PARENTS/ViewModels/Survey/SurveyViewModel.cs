@@ -8,7 +8,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Survey
 {
     public class SurveyViewModel : BaseViewModel
     {
-        private INavigationService _navigationService;
+        
         private ObservableCollection<SurveyModel> _surveysList = new ObservableCollection<SurveyModel>();
         public ObservableCollection<SurveyModel> SurveysList
         {
@@ -16,7 +16,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Survey
             set => SetProperty(ref _surveysList, value);
         }
 
-        public SurveyViewModel(INavigationService navigationService)
+        public SurveyViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
         }

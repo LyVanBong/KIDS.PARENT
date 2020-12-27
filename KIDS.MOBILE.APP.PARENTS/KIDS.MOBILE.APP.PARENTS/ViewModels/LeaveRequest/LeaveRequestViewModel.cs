@@ -1,14 +1,21 @@
-﻿using Prism.Navigation;
+﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Resources;
+using KIDS.MOBILE.APP.PARENTS.Services;
+using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
+using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 {
     public class LeaveRequestViewModel : BaseViewModel
     {
-        private INavigationService _navigationService;
+        
         private ObservableCollection<MessageModel> _messagesList = new ObservableCollection<MessageModel>();
         public ObservableCollection<MessageModel> MessagesList
         {
@@ -22,98 +29,117 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             get => _informationList;
             set => SetProperty(ref _informationList, value);
         }
+        private ILeaveRequestService _leaveRequestService;
+        private string fromDate;
+        public string FromDate 
+        {
+            get => fromDate;
+            set => SetProperty(ref fromDate, value);
+        }
+        private string toDate;
+        public string ToDate 
+        {
+            get => toDate;
+            set => SetProperty(ref toDate, value);
+        }
+        public DelegateCommand AddCommand { get; }
 
-        public LeaveRequestViewModel(INavigationService navigationService)
+        public LeaveRequestViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _leaveRequestService = leaveRequestService;
+            AddCommand = new DelegateCommand(OnAddClick);
         }
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
-            base.Initialize(parameters);
-            MessagesList = new ObservableCollection<MessageModel>(GetMessagesList());
-            InformationList = new ObservableCollection<AbsentInformationModel>(GetInformationList());
-        }
-
-        private List<AbsentInformationModel> GetInformationList()
-        {
-            return new List<AbsentInformationModel>()
+            try
             {
-                new AbsentInformationModel
-                {
-                    Title = "Tổng",
-                    Number = "23",
-                    BackgroundGradientStart = "#f59083",
-                    BackgroundGradientEnd = "#fae188"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Nghỉ",
-                    Number = "5",
-                    BackgroundGradientStart = "#ff7272",
-                    BackgroundGradientEnd = "#f650c5"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Có phép",
-                    Number = "3",
-                    BackgroundGradientStart = "#5e7cea",
-                    BackgroundGradientEnd = "#1dcce3"
-                },
-                new AbsentInformationModel
-                {
-                    Title = "Không phép",
-                    Number = "2",
-                    BackgroundGradientStart = "#255ea6",
-                    BackgroundGradientEnd = "#b350d1"
-                }
-            };
+                IsLoading = true;
+                base.Initialize(parameters);
+                var date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                FromDate = date.Date.ToString("yyyy-MM-dd");
+                ToDate = date.AddMonths(1).AddDays(-1).Date.ToString("yyyy-MM-dd");
+                await GetInformationList();
+                await GetMessagesList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
-        private List<MessageModel> GetMessagesList()
+        private async Task GetInformationList()
         {
+            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, FromDate, ToDate);
+            if(data?.Data?.Any() == true)
+            {
+                var information = data.Data.First();
+                var info = new List<AbsentInformationModel>
+                {
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00098,
+                            Number = information.STT.ToString(),
+                            BackgroundGradientStart = "#f59083",
+                            BackgroundGradientEnd = "#fae188"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00099,
+                            Number = information.CoMat.ToString(),
+                            BackgroundGradientStart = "#ff7272",
+                            BackgroundGradientEnd = "#f650c5"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00100,
+                            Number = information.NghiCoPhep.ToString(),
+                            BackgroundGradientStart = "#5e7cea",
+                            BackgroundGradientEnd = "#1dcce3"
+                        },
+                        new AbsentInformationModel
+                        {
+                            Title = Resource._00101,
+                            Number = information.NghiKhongPhep.ToString(),
+                            BackgroundGradientStart = "#255ea6",
+                            BackgroundGradientEnd = "#b350d1"
+                        }
+                };
+                InformationList = new ObservableCollection<AbsentInformationModel>(info);
+            }
+        }
 
-            return new List<MessageModel> {
-                new MessageModel
+        private async Task GetMessagesList()
+        {
+            var listRequest = new List<MessageModel>();
+            var listResult = await _leaveRequestService.GetListLeaveRequest(AppConstants.User.StudentID);
+            if (listResult?.Data?.Any() == true)
+            {
+                foreach(var item in listResult.Data)
                 {
-                    ReceivedUser ="Toroto",
-                    DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
-                    Comment = "Mở tài khoản ngay, " +
-                    "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-                    "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-                    "ngay khi mở tà khoản Standard Chartered EliteFly"
-                },
-                new MessageModel
-                {
-                    ReceivedUser ="Toroto",
-                    DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
-                    Comment = "Mở tài khoản ngay, " +
-                    "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-                    "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-                    "ngay khi mở tà khoản Standard Chartered EliteFly"
-                },
-                new MessageModel
-                {
-                    ReceivedUser ="Toroto",
-                    DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
-                    Comment = "Mở tài khoản ngay, " +
-                    "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-                    "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-                    "ngay khi mở tà khoản Standard Chartered EliteFly"
-                },
-                new MessageModel
-                {
-                    ReceivedUser ="Toroto",
-                    DateTime = DateTime.Now.ToLongDateString(),
-                    Image="",
-                    Comment = "Mở tài khoản ngay, " +
-                    "tích lũy lên đến 360.000 dặm thưởng, tận hưởng chuyến bay 0 đồng." +
-                    "💥 Tận hưởng chuyến bay 0 đồng Vietnam Airline với cơ hội  tích lũy lên đến 360.000 dặm thưởng " +
-                    "ngay khi mở tà khoản Standard Chartered EliteFly"
+                    listRequest.Add(new MessageModel
+                    {
+                        ReceivedUser = item.NguoiGui,
+                        DateTime = item.Date?.ToString("yyyy-MM-dd") ?? string.Empty,
+                        ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
+                        Comment = item.Content,
+                        TimePeriod = $"{Resource._00105} {item.FromDate?.ToString("yyyy-MM-dd")} {Resource._00106} {item.ToDate?.ToString("yyyy-MM-dd")}",
+                        Approved = item.Status == true ? Resource._00103 : Resource._00104
+                    });
                 }
-            };
+            }
+            MessagesList = new ObservableCollection<MessageModel>(listRequest);
+        }
+
+        private async void OnAddClick()
+        {
+            var param = new NavigationParameters();
+            param.Add("isUpdate", false);
+            await _navigationService.NavigateAsync(nameof(CreateLeaveRequestPage), param);
         }
     }
 

@@ -4,13 +4,15 @@
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Message.MessagePage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -21,45 +23,17 @@
                      Padding="5,10,5,10"
                      BackgroundColor="White"
                      Grid.Row="0">
-            <Image Source="home.png"
+            <Image Source="back.png"
                    HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="Tin nhan"
+                   Text="{markupExtension:Translate 00040}"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
-            </Label>
-        </StackLayout>
-
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="10,5,10,5"
-                     Grid.Row="1">
-            <border:SfBorder
-                CornerRadius="24"
-                HeightRequest="30"
-                BackgroundColor="White"
-                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                BorderColor="Gray"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                WidthRequest="30">
-                <Image BackgroundColor="White"
-                       Source="home.png">
-                </Image>
-            </border:SfBorder>
-
-            <Label VerticalOptions="Center"
-                   HorizontalOptions="StartAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang quan sat be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/> 
-                    </FormattedString>
-                </Label.FormattedText>
             </Label>
         </StackLayout>
 
@@ -67,7 +41,7 @@
         <StackLayout HorizontalOptions="CenterAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
-                     Margin="10,5,10,5"
+                     Margin="0,5,10,5"
                      Grid.Row="2">
             <border:SfBorder
                 CornerRadius="24"
@@ -79,20 +53,28 @@
                 VerticalOptions="Center"
                 WidthRequest="30">
                 <Image BackgroundColor="White"
-                       Source="home.png">
+                       Source="add.png">
                 </Image>
+                <border:SfBorder.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                </border:SfBorder.GestureRecognizers>
             </border:SfBorder>
 
             <Label VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   Text="Ban co muon gui loi nhan toi giao vien cua lop be khong?"
+                   Text="{markupExtension:Translate 00091}"
                    FontSize="16"
                    TextColor="Black"
                    Margin="5,0,0,0">
             </Label>
         </StackLayout>
         
-        <!--Survey List-->
+        <!--Message List-->
+        <loadingView:LoadingView
+                Grid.Row="3"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
         <ScrollView HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Grid.Row="3"
@@ -103,8 +85,10 @@
                 VerticalOptions="CenterAndExpand"
                 Margin="10"
                 FlowDirection="LeftToRight"
-                ItemSize="180"
-                Orientation="Vertical">
+                AutoFitMode="DynamicHeight"
+                Orientation="Vertical"
+                TapCommand="{Binding DetailCommand}"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -113,7 +97,7 @@
                                Margin="0,5,0,5"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                            <template:MessageTemplate Padding="10,0,10,0" ColumnSpacing="0" BackgroundColor="White" />
+                            <template:MessageTemplate BackgroundColor="White" />
                         </Frame>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
