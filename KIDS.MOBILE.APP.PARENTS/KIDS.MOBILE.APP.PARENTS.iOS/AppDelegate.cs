@@ -1,8 +1,13 @@
-﻿using Foundation;
+﻿using FFImageLoading.Forms.Platform;
+using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.ListView.XForms;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfCalendar.XForms.iOS;
 using Syncfusion.SfDataGrid.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.ProgressBar;
 using Syncfusion.XForms.iOS.TabView;
@@ -43,6 +48,10 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
             SfCheckBoxRenderer.Init();
             SfTabViewRenderer.Init();
             SfTextInputLayoutRenderer.Init();
+            SfCalendarRenderer.Init();
+            CachedImageRenderer.Init();
+            SfListViewRenderer.Init();
+            SfCardViewRenderer.Init();
         }
     }
     public class iOSInitializer : IPlatformInitializer

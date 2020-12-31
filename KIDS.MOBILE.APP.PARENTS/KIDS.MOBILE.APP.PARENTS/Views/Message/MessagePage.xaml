@@ -14,7 +14,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--Header-->
         <StackLayout HorizontalOptions="FillAndExpand"
@@ -75,26 +75,24 @@
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
-        <ScrollView HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Grid.Row="3"
-                    Margin="10">
-            <syncfusion:SfListView
+        <syncfusion:SfListView
                 ItemsSource="{Binding MessageList}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
                 Margin="10"
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
                 TapCommand="{Binding DetailCommand}"
-                SelectionBackgroundColor="Transparent">
+                SelectionBackgroundColor="Transparent"
+                IsScrollBarVisible="False"
+                Grid.Row="3">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Frame CornerRadius="10"
                                IsClippedToBounds="True"
-                               Margin="0,5,0,5"
+                               Margin="5"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
                             <template:MessageTemplate BackgroundColor="White" />
@@ -102,6 +100,5 @@
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
             </syncfusion:SfListView>
-        </ScrollView>
     </Grid>
 </ContentPage>

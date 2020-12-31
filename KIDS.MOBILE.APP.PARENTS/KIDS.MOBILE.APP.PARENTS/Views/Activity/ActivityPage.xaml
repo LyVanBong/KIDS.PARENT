@@ -47,7 +47,7 @@
             </Label>
         </StackLayout>
 
-        <calendar:SfCalendar x:Name="calendar" 
+        <calendar:SfCalendar x:Name="calendar"
                              ViewMode="MonthView"
                              NumberOfWeeksInView="1"
                              HorizontalOptions="FillAndExpand"
