@@ -9,7 +9,14 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Templates
     {
         public MessageTemplate()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

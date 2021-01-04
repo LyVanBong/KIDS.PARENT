@@ -81,6 +81,44 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </BundleResource>
+    <BundleResource Include="Resources\view.png" />
+    <BundleResource Include="Resources\tuition.png" />
+    <BundleResource Include="Resources\testImage.jpg" />
+    <BundleResource Include="Resources\survey.png" />
+    <BundleResource Include="Resources\studying.jpg" />
+    <BundleResource Include="Resources\splash_screen.xml" />
+    <BundleResource Include="Resources\sleeping.PNG" />
+    <BundleResource Include="Resources\review.png" />
+    <BundleResource Include="Resources\red.jpg" />
+    <BundleResource Include="Resources\question.jpg" />
+    <BundleResource Include="Resources\poo.jpg" />
+    <BundleResource Include="Resources\pickup.png" />
+    <BundleResource Include="Resources\news.png" />
+    <BundleResource Include="Resources\more.png" />
+    <BundleResource Include="Resources\message.png" />
+    <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\medicine.png" />
+    <BundleResource Include="Resources\Like.png" />
+    <BundleResource Include="Resources\leave.png" />
+    <BundleResource Include="Resources\health.png" />
+    <BundleResource Include="Resources\green.png" />
+    <BundleResource Include="Resources\giving.jpg" />
+    <BundleResource Include="Resources\error.png" />
+    <BundleResource Include="Resources\eating.jpg" />
+    <BundleResource Include="Resources\done.png" />
+    <BundleResource Include="Resources\Comments.png" />
+    <BundleResource Include="Resources\Bullet.png" />
+    <BundleResource Include="Resources\back.png" />
+    <BundleResource Include="Resources\album.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add_image.png" />
+    <BundleResource Include="Resources\activity.png" />
+    <BundleResource Include="Resources\backwhite.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
@@ -268,6 +306,9 @@
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor">
+      <Version>18.4.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
       <Version>18.4.0.30</Version>
     </PackageReference>
   </ItemGroup>

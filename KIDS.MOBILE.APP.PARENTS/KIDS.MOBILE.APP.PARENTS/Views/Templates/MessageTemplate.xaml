@@ -23,17 +23,17 @@
         <RowDefinition Height="40"></RowDefinition>
 	</Grid.RowDefinitions>
 
-    <ffimageloading:CachedImage DownsampleToViewSize="true"
+    <Image 
                                 Aspect="AspectFill"
                                 Grid.RowSpan="2"
                                 VerticalOptions="CenterAndExpand"
                                 HeightRequest="30"
                                 WidthRequest="30"
                                 Margin="5,0,5,0">
-        <ffimageloading:CachedImage.Source>
+        <Image.Source>
             <UriImageSource Uri="{Binding ImageUrl}" CacheValidity="1" CachingEnabled="true"/>
-        </ffimageloading:CachedImage.Source>
-    </ffimageloading:CachedImage>
+        </Image.Source>
+    </Image>
 
 	<!--<Image x:Name="AuthorPhoto" Grid.RowSpan="2" />-->
     <Label Text="{Binding ReceivedUserText}"
