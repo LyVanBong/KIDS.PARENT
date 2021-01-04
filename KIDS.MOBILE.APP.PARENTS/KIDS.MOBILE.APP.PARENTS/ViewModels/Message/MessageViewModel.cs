@@ -61,23 +61,30 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         #region Private methods
         private async Task GetMessagesList()
         {
-            var studentId = AppConstants.User.StudentID;
-            var data = await _messageService.GetAllSentMessage(studentId);
-            if(data?.Data?.Any() == true)
+            try
             {
-                var messageList = new List<MessageModel>();
-                foreach(var item in data.Data)
+                var studentId = AppConstants.User.StudentID;
+                var data = await _messageService.GetAllSentMessage(studentId);
+                if (data?.Data?.Any() == true)
                 {
-                    messageList.Add(new MessageModel
+                    var messageList = new List<MessageModel>();
+                    foreach (var item in data.Data)
                     {
-                        Id = item.CommunicationID,
-                        ReceivedUser = item.NguoiGui.ToString(),
-                        DateTime = item.DateCreate != null ? item.DateCreate.Value.ToShortDateString() : string.Empty,
-                        ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
-                        Comment = item.Content
-                    });
+                        messageList.Add(new MessageModel
+                        {
+                            Id = item.CommunicationID,
+                            ReceivedUser = item.NguoiGui?.ToString(),
+                            DateTime = item.DateCreate != null ? item.DateCreate.Value.ToShortDateString() : string.Empty,
+                            ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
+                            Comment = item.Content
+                        });
+                    }
+                    MessageList = new ObservableCollection<MessageModel>(messageList);
                 }
-                MessageList = new ObservableCollection<MessageModel>(messageList);
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

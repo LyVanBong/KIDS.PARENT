@@ -48,13 +48,13 @@
             </Label>
         </StackLayout>
 
-        <Label Text="{markupExtension:Translate 00092}"
+        <!--<Label Text="{markupExtension:Translate 00092}"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
                Grid.Row="1"
                Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="2"/>-->
 
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"
