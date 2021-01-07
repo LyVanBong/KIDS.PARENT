@@ -9,7 +9,7 @@
 	<key>CFBundleName</key>
 	<string>KIDS.MOBILE.APP.PARENTS</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.1</string>
+	<string>1.1.2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>MinimumOSVersion</key>
@@ -41,5 +41,13 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+  <key>NSCameraUsageDescription</key>
+  <string>Access camera</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Library</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Our library favors this right</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Our library favors this right</string>
 </dict>
 </plist>
