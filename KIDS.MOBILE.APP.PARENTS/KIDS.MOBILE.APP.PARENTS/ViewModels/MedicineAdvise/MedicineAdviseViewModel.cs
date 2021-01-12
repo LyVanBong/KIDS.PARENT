@@ -23,6 +23,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             set => SetProperty(ref _messageList, value);
         }
         public DelegateCommand AddCommand { get; }
+        private bool hasAnyMessages;
+        public bool HasAnyMessages
+        {
+            get => hasAnyMessages;
+            set => SetProperty(ref hasAnyMessages, value);
+        }
         #endregion
 
         #region Contructor
@@ -38,6 +44,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             {
                 base.Initialize(parameters);
                 IsLoading = true;
+                HasAnyMessages = false;
                 await GetMessagesList();
             }
             catch (Exception ex)
@@ -75,6 +82,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     });
                 }
                 MessageList = new ObservableCollection<MessageModel>(messageList);
+                HasAnyMessages = true;
             }
         }
 

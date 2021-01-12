@@ -4,9 +4,15 @@
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Message.MessagePage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
@@ -69,12 +75,21 @@
             </Label>
         </StackLayout>
         
-        <!--Message List-->
+        <!--Loading View-->
         <loadingView:LoadingView
                 Grid.Row="3"
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
+
+        <Image Source="question.jpg"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="3"
+               IsVisible="{Binding HasAnyMessages, Converter={StaticResource boolReserve}}"
+               Aspect="AspectFit"/>
+
+        <!--Message List-->
         <syncfusion:SfListView
                 ItemsSource="{Binding MessageList}"
                 HorizontalOptions="FillAndExpand"

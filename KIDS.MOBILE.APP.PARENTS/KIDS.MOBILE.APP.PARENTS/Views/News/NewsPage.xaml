@@ -9,6 +9,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:ImageSourceConverter x:Key="ImageConverter"/>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="FillAndExpand"
@@ -48,6 +49,13 @@
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
+
+        <Image Source="question.jpg"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="0"
+               IsVisible="{Binding HasAnyNews, Converter={StaticResource boolReserve}}"
+               Aspect="AspectFit"/>
 
         <!--News listview-->
         <ScrollView HorizontalOptions="FillAndExpand"

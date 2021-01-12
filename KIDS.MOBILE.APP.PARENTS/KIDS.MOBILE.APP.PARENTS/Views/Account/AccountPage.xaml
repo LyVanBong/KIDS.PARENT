@@ -125,7 +125,7 @@
                     Margin="10,50,10,80"
                     Padding="0"
                     BackgroundColor="Transparent"
-                    RowDefinitions="40,40,40,40,40"
+                    RowDefinitions="40,40,40,40,40,40"
                     RowSpacing="20"
                     VerticalOptions="StartAndExpand">
                     <Grid.Resources>
@@ -232,6 +232,24 @@
                         Grid.Row="2">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
+                                Tapped="AnimationTap_OnTapped"
+                                Command="{Binding ProfileCommand}"
+                                CommandParameter="1" />
+                        </Frame.GestureRecognizers>
+                        <Grid
+                            ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Source="{markupExtension:ImageResource icon_accountinformation.png}" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{markupExtension:Translate 00052}" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Grid.Row="3">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
                                 Command="{Binding SelectFeatureCommand}"
                                 CommandParameter="2"
                                 Tapped="AnimationTap_OnTapped" />
@@ -247,7 +265,7 @@
                         </Grid>
                     </Frame>
                     <Frame
-                        Grid.Row="3">
+                        Grid.Row="4">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="AnimationTap_OnTapped" />
@@ -263,7 +281,7 @@
                         </Grid>
                     </Frame>
                     <Frame
-                        Grid.Row="4">
+                        Grid.Row="5">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer
                                 Command="{Binding LogoutCommand}"
