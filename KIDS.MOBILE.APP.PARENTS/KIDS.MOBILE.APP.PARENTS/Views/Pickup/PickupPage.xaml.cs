@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Pickup
 {
-    public partial class PickupPage : ContentPage
+    public partial class PickupPage : PageBase
     {
         public PickupPage()
         {

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views.News
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewDetailPage : ContentPage
+    public partial class NewDetailPage : PageBase
     {
         public NewDetailPage()
         {

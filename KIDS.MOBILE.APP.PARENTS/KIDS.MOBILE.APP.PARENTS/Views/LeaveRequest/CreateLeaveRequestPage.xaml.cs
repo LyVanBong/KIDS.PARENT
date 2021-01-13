@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest
 {
-    public partial class CreateLeaveRequestPage : ContentPage
+    public partial class CreateLeaveRequestPage : PageBase
     {
         public CreateLeaveRequestPage()
         {

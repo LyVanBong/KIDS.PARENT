@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views.Account
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StudentProfilePage : ContentPage
+    public partial class StudentProfilePage : PageBase
     {
         public StudentProfilePage()
         {

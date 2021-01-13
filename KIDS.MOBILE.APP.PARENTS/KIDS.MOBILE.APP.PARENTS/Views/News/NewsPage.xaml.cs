@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views
 {
-    public partial class NewsPage : ContentPage
+    public partial class NewsPage : PageBase
     {
         public NewsPage()
         {
