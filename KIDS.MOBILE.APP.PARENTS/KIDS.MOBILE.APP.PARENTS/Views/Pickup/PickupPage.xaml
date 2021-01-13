@@ -44,7 +44,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
                    Grid.Column="1"
                    Aspect="AspectFit"/>
 
-            <Label Text="Có mặt"
+            <Label Text="Đón đúng giờ"
                    TextColor="Gray"
                    FontSize="14"
                    VerticalTextAlignment="Center"
@@ -92,7 +92,7 @@
                    Grid.Column="3"
                    Aspect="AspectFit"/>
 
-            <Label Text="Vắng mặt"
+            <Label Text="Đón muộn"
                    TextColor="Gray"
                    FontSize="14"
                    VerticalTextAlignment="Center"

@@ -240,10 +240,10 @@
                             ColumnDefinitions="Auto,*">
                             <Image
                                 Grid.Column="0"
-                                Source="{markupExtension:ImageResource icon_accountinformation.png}" />
+                                Source="leave.png" />
                             <Label
                                 Grid.Column="1"
-                                Text="{markupExtension:Translate 00052}" />
+                                Text="Hướng dẫn sử dụng" />
                         </Grid>
                     </Frame>
                     <Frame

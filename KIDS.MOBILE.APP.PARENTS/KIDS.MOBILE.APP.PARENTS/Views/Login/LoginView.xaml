@@ -119,13 +119,13 @@
                             Grid.Row="3"
                             Padding="0"
                             FontSize="16"
-                            Text="{markup:Translate 00005}"
+                            Text="Quên mật khẩu"
                             TextColor="Black"
                             FontAttributes="Italic"
                             VerticalOptions="Center">
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
                 </Grid>
             </Frame>
