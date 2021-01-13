@@ -61,7 +61,6 @@ namespace KIDS.MOBILE.APP.PARENTS
     {
         public App(IPlatformInitializer initializer) : base(initializer)
         {
-
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -121,6 +120,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             AppCenter.Start(AppCenterConstants.AppSecretAndroid +
                             AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
+            PARENTS.Resources.Resource.Culture = new System.Globalization.CultureInfo("vi");
             NavigationService.NavigateAsync(nameof(LoginPage));
             InitializedOneSignal();
         }
