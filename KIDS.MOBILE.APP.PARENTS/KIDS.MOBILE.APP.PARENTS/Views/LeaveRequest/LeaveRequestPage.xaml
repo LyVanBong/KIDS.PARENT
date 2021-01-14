@@ -106,7 +106,8 @@
                                ItemsSource="{Binding InformationList}"
                                Grid.Row="3"
                                VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="CenterAndExpand">
+                               HorizontalOptions="CenterAndExpand"
+                               SelectionBackgroundColor="Transparent">
 
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
@@ -199,7 +200,9 @@
                 Margin="10"
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                TapCommand="{Binding SelectedCommand}"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>

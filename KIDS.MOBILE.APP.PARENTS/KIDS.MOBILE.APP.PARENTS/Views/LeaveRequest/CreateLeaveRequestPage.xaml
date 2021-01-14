@@ -121,7 +121,7 @@
                 Command="{Binding DeleteCommand}"
                 IsVisible="{Binding IsUpdate}"
                 Style="{StaticResource SummitButton}"
-                Text="{markupExtension:Translate 00011}"
+                Text="Xoá"
             Grid.ColumnSpan="2"/>
 
         <loadingView:LoadingView
