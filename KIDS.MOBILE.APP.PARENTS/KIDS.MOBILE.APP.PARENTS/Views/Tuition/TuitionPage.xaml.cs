@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Tuition
 {
-    public partial class TuitionPage : ContentPage
+    public partial class TuitionPage : PageBase
     {
         public TuitionPage()
         {

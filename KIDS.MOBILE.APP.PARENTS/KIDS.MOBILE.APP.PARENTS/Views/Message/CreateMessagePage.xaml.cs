@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views.Message
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateMessagePage : ContentPage
+    public partial class CreateMessagePage : PageBase
     {
         public CreateMessagePage()
         {

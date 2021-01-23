@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class HomePage : PageBase
     {
         public HomePage()
         {

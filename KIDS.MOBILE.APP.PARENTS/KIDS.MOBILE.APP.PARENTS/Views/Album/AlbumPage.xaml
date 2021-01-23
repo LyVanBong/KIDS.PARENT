@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Album.AlbumPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:template = "clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Templates"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -108,5 +109,5 @@
             </syncfusion:SfListView>
         </ScrollView>
     </Grid>
-</ContentPage>
+</pages:PageBase>
 

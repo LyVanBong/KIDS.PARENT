@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Message
 {
-    public partial class MessagePage : ContentPage
+    public partial class MessagePage : PageBase
     {
         public MessagePage()
         {

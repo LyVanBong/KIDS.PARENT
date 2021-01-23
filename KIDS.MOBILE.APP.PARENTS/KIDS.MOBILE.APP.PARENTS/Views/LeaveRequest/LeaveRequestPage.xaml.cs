@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LeaveRequestPage : ContentPage
+    public partial class LeaveRequestPage : PageBase
     {
         public LeaveRequestPage()
         {

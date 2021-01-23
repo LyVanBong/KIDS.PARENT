@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<pages:PageBase
     x:Class="KIDS.MOBILE.APP.PARENTS.Views.Account.StudentProfilePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,7 +8,8 @@
     xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.NavigationView;assembly=KIDS.MOBILE.APP.PARENTS"
     iOsSpecific:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
     <ContentPage.Content>
         <Grid
             Margin="0"
@@ -129,4 +130,4 @@
             </Frame>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</pages:PageBase>

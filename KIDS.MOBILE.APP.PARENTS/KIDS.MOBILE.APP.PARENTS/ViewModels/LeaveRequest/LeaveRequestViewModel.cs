@@ -43,13 +43,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             set => SetProperty(ref toDate, value);
         }
         public DelegateCommand AddCommand { get; }
+        public DelegateCommand<object> SelectedCommand { get; }
 
         public LeaveRequestViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService) : base(navigationService)
         {
             _navigationService = navigationService;
             _leaveRequestService = leaveRequestService;
             AddCommand = new DelegateCommand(OnAddClick);
+            SelectedCommand = new DelegateCommand<object>(OnSelectedClick);
         }
+
         public override async void Initialize(INavigationParameters parameters)
         {
             try
@@ -111,6 +114,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 };
                 InformationList = new ObservableCollection<AbsentInformationModel>(info);
             }
+        }
+
+        private async void OnSelectedClick(object item)
+        {
+            var data = (Syncfusion.ListView.XForms.ItemTappedEventArgs)item;
+            var param = new NavigationParameters();
+            param.Add("message", data.ItemData);
+            param.Add("isUpdate", true);
+            await _navigationService.NavigateAsync(nameof(CreateLeaveRequestPage), param);
         }
 
         private async Task GetMessagesList()

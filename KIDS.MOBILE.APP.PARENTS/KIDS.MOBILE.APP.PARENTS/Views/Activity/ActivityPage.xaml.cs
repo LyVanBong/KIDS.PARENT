@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
 {
-    public partial class ActivityPage : ContentPage
+    public partial class ActivityPage : PageBase
     {
         ActivityViewModel vm;
         public ActivityPage()
