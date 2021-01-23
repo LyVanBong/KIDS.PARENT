@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.Album.ImageDetailPage"
              xmlns:image="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             BackgroundColor="Black">
+             BackgroundColor="Black"
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
 
     <Grid RowSpacing="10"
           Margin="10"
@@ -59,4 +60,4 @@
         </Image>
     </Grid>
 
-</ContentPage>
+</pages:PageBase>

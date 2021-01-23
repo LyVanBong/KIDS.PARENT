@@ -7,6 +7,7 @@ using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.Message;
 using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using Microsoft.AppCenter.Crashes;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
@@ -25,6 +26,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         }
         public DelegateCommand AddCommand { get;}
         public DelegateCommand<object> DetailCommand { get; }
+        private bool hasAnyMessages;
+        public bool HasAnyMessages
+        {
+            get => hasAnyMessages;
+            set => SetProperty(ref hasAnyMessages, value);
+        }
         #endregion
 
         #region Contructor
@@ -41,6 +48,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             {
                 base.Initialize(parameters);
                 IsLoading = true;
+                HasAnyMessages = false;
                 await GetMessagesList();
             }
             catch (Exception ex)
@@ -80,11 +88,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                         });
                     }
                     MessageList = new ObservableCollection<MessageModel>(messageList);
+                    HasAnyMessages = true;
                 }
             }
             catch (Exception ex)
             {
-
+                Crashes.TrackError(ex);
             }
         }
 

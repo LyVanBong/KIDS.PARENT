@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="00001" xml:space="preserve">
+  <!--<data name="00001" xml:space="preserve">
     <value>Home</value>
     <comment>Trang chủ</comment>
   </data>
@@ -249,6 +249,58 @@
     <value>Account info</value>
     <comment>Thông tin tài khoản</comment>
   </data>
+  <data name="00038" xml:space="preserve">
+    <value>Interact with school</value>
+    <comment>Tương tác với nhà trường</comment>
+  </data>
+  <data name="00039" xml:space="preserve">
+    <value>Parents need to know</value>
+    <comment>Cha mẹ cần biết</comment>
+  </data>
+  <data name="00040" xml:space="preserve">
+    <value>Message</value>
+    <comment>Lời nhắn</comment>
+  </data>
+  <data name="00041" xml:space="preserve">
+    <value>Absent Request</value>
+    <comment>Xin nghỉ</comment>
+  </data>
+  <data name="00042" xml:space="preserve">
+    <value>Medicine Advices</value>
+    <comment>Dặn thuốc</comment>
+  </data>
+  <data name="00043" xml:space="preserve">
+    <value>Pick Up</value>
+    <comment>Đón về</comment>
+  </data>
+  <data name="00044" xml:space="preserve">
+    <value>Daily Action</value>
+    <comment>Hoạt động hàng ngày</comment>
+  </data>
+  <data name="00045" xml:space="preserve">
+    <value>News</value>
+    <comment>Tin tức</comment>
+  </data>
+  <data name="00046" xml:space="preserve">
+    <value>Album</value>
+    <comment>Album ảnh</comment>
+  </data>
+  <data name="00047" xml:space="preserve">
+    <value>Tuition Fee</value>
+    <comment>Học phí</comment>
+  </data>
+  <data name="00048" xml:space="preserve">
+    <value>Health</value>
+    <comment>Sức khỏe</comment>
+  </data>
+  <data name="00049" xml:space="preserve">
+    <value>Survey</value>
+    <comment>Khảo sát</comment>
+  </data>
+  <data name="00050" xml:space="preserve">
+    <value>Periodical Reviews</value>
+    <comment>Đánh giá định kỳ</comment>
+  </data>
   <data name="00051" xml:space="preserve">
     <value>Student's profile</value>
     <comment>Hồ sơ của bé</comment>
@@ -300,5 +352,545 @@
   <data name="00063" xml:space="preserve">
     <value>Error</value>
     <comment>Lỗi phát sinh</comment>
+  </data>
+  <data name="00079" xml:space="preserve">
+    <value>You are watching information of </value>
+    <comment>Đang xem thông tin bé </comment>
+  </data>
+  <data name="00080" xml:space="preserve">
+    <value>TOTAL COMPLETED</value>
+    <comment>TỔNG ĐÃ ĐÓNG</comment>
+  </data>
+  <data name="00081" xml:space="preserve">
+    <value>NEED TO COMPLETE</value>
+    <comment>CÒN PHẢI ĐÓNG</comment>
+  </data>
+  <data name="00082" xml:space="preserve">
+    <value>VND</value>
+    <comment>VND</comment>
+  </data>
+  <data name="00083" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Bình luận</comment>
+  </data>
+  <data name="00084" xml:space="preserve">
+    <value>Completed Date</value>
+    <comment>Ngày đóng </comment>
+  </data>
+  <data name="00085" xml:space="preserve">
+    <value>Completed</value>
+    <comment>Đã đóng</comment>
+  </data>
+  <data name="00086" xml:space="preserve">
+    <value>Reduce</value>
+    <comment>Miễn giảm</comment>
+  </data>
+  <data name="00087" xml:space="preserve">
+    <value>Status : </value>
+    <comment>Trạng thái : </comment>
+  </data>
+  <data name="00088" xml:space="preserve">
+    <value>Need to complete</value>
+    <comment>Cần đóng</comment>
+  </data>
+  <data name="00089" xml:space="preserve">
+    <value>Expired Date : </value>
+    <comment>Ngày thu : </comment>
+  </data>
+  <data name="00090" xml:space="preserve">
+    <value>Sent to </value>
+    <comment>Gửi tới </comment>
+  </data>
+  <data name="00091" xml:space="preserve">
+    <value>Create a new message to send to kid's teacher</value>
+    <comment>Gửi tin nhắn tới giáo viên của bé</comment>
+  </data>
+  <data name="00092" xml:space="preserve">
+    <value>Choose kids </value>
+    <comment>Chọn bé </comment>
+  </data>
+  <data name="00093" xml:space="preserve">
+    <value>Choosing</value>
+    <comment>Đang chọn bé </comment>
+  </data>
+  <data name="00094" xml:space="preserve">
+    <value>Choose date to send message</value>
+    <comment>Nhắn cho ngày</comment>
+  </data>
+  <data name="00095" xml:space="preserve">
+    <value>Picture</value>
+    <comment>Hình ảnh</comment>
+  </data>
+  <data name="00096" xml:space="preserve">
+    <value>Please input your message.</value>
+    <comment>Hãy viết tin nhắn để gửi tới cô giáo của bé.</comment>
+  </data>
+  <data name="00097" xml:space="preserve">
+    <value>Success</value>
+    <comment>Thành công</comment>
+  </data>
+  <data name="00098" xml:space="preserve">
+    <value>Total</value>
+    <comment>Tổng</comment>
+  </data>
+  <data name="00099" xml:space="preserve">
+    <value>Absent</value>
+    <comment>Nghỉ</comment>
+  </data>
+  <data name="00100" xml:space="preserve">
+    <value>Absent with Approved</value>
+    <comment>Nghỉ có phép</comment>
+  </data>
+  <data name="00101" xml:space="preserve">
+    <value>Absent without Approved</value>
+    <comment>Nghỉ không phép</comment>
+  </data>
+  <data name="00102" xml:space="preserve">
+    <value>Create a new leave request</value>
+    <comment>Tạo đơn xin nghỉ</comment>
+  </data>
+  <data name="00103" xml:space="preserve">
+    <value>Confirmed</value>
+    <comment>Đã xác nhận</comment>
+  </data>
+  <data name="00104" xml:space="preserve">
+    <value>Unconfirmed</value>
+    <comment>Chưa xác nhận</comment>
+  </data>
+  <data name="00105" xml:space="preserve">
+    <value>From</value>
+    <comment>Từ ngày</comment>
+  </data>
+  <data name="00106" xml:space="preserve">
+    <value>To</value>
+    <comment>đến ngày</comment>
+  </data>
+  <data name="00107" xml:space="preserve">
+    <value>Learning for today</value>
+    <comment>Hôm nay con học</comment>
+  </data>
+  <data name="00108" xml:space="preserve">
+    <value>Menu for today</value>
+    <comment>Thực đơn hôm nay của con</comment>
+  </data>
+  <data name="00109" xml:space="preserve">
+    <value>Sleeping activity</value>
+    <comment>Hoạt động ngủ</comment>
+  </data>
+  <data name="00110" xml:space="preserve">
+    <value>Poo activity</value>
+    <comment>Hoạt động vệ sinh</comment>
+  </data>
+  <data name="00111" xml:space="preserve">
+    <value>Kid slept from</value>
+    <comment>Con ngủ từ</comment>
+  </data>
+  <data name="00112" xml:space="preserve">
+    <value>To</value>
+    <comment>Đến</comment>
+  </data>
+  <data name="00113" xml:space="preserve">
+    <value>Number of poo :</value>
+    <comment>Số lần đi vệ sinh :</comment>
+  </data>
+  <data name="00114" xml:space="preserve">
+    <value>Thanks giving</value>
+    <comment>Lời cảm ơn</comment>
+  </data>
+  <data name="00115" xml:space="preserve">
+    <value>Parents can send message to motivate kid's teacher here.</value>
+    <comment>Phụ huynh có thể gửi lời nhắn cảm ơn, động viên cho các cô giáo trong ở đây</comment>
+  </data>
+  <data name="00116" xml:space="preserve">
+    <value>Send message</value>
+    <comment>Gửi lời cảm ơn</comment>
+  </data>-->
+    <data name="00001" xml:space="preserve">
+    <value>Trang chủ</value>
+    <comment>Trang chủ</comment>
+  </data>
+  <data name="00002" xml:space="preserve">
+    <value>Thông báo</value>
+    <comment>Thông báo</comment>
+  </data>
+  <data name="00003" xml:space="preserve">
+    <value>Tài khoản</value>
+    <comment>Tài khoản</comment>
+  </data>
+  <data name="00004" xml:space="preserve">
+    <value>Đăng nhập</value>
+    <comment>Đăng nhập</comment>
+  </data>
+  <data name="00005" xml:space="preserve">
+    <value>Nhớ mật khẩu</value>
+    <comment>Nhớ mật khẩu</comment>
+  </data>
+  <data name="00006" xml:space="preserve">
+    <value>Mật khẩu</value>
+    <comment>Mật khẩu</comment>
+  </data>
+  <data name="00007" xml:space="preserve">
+    <value>Sai tài khoản hoặc mật khẩu</value>
+    <comment>Sai tài khoản hoặc mật khẩu</comment>
+  </data>
+  <data name="00008" xml:space="preserve">
+    <value>Tài khoản và mật khẩu không được để trống</value>
+    <comment>Tài khoản và mật khẩu không được để trống</comment>
+  </data>
+  <data name="00009" xml:space="preserve">
+    <value>Không có kết nối internet</value>
+    <comment>Không có kết nối internet</comment>
+  </data>
+  <data name="00010" xml:space="preserve">
+    <value>Huỷ bỏ</value>
+    <comment>Huỷ bỏ</comment>
+  </data>
+  <data name="00011" xml:space="preserve">
+    <value>Đồng ý</value>
+    <comment>Đồng ý</comment>
+  </data>
+  <data name="00012" xml:space="preserve">
+    <value>Đăng xuất khỏi tài khoản của bạn</value>
+    <comment>Đăng xuất khỏi tài khoản của bạn</comment>
+  </data>
+  <data name="00013" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00014" xml:space="preserve">
+    <value>Cài đặt</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00015" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00016" xml:space="preserve">
+    <value>Hồ sơ bé</value>
+    <comment>Hồ sơ bé</comment>
+  </data>
+  <data name="00017" xml:space="preserve">
+    <value>Lỗi đăng nhập</value>
+    <comment>Lỗi đăng nhập</comment>
+  </data>
+  <data name="00018" xml:space="preserve">
+    <value>Dữ liệu không được bỏ trống</value>
+    <comment>Dữ liệu không được bỏ trống</comment>
+  </data>
+  <data name="00019" xml:space="preserve">
+    <value>Mật khẩu mới không khớp</value>
+    <comment>Mật khẩu mới không khớp</comment>
+  </data>
+  <data name="00020" xml:space="preserve">
+    <value>Mật khẩu cũ không chính xác</value>
+    <comment>Mật khẩu cũ không chính xác</comment>
+  </data>
+  <data name="00021" xml:space="preserve">
+    <value>Đã xảy ra lỗi trong khi thực thi</value>
+    <comment>Đã xảy ra lỗi trong khi thực thi</comment>
+  </data>
+  <data name="00022" xml:space="preserve">
+    <value>Mật khẩu phải dài ít nhất 8 ký tự</value>
+    <comment>Mật khẩu phải dài ít nhất 8 ký tự</comment>
+  </data>
+  <data name="00023" xml:space="preserve">
+    <value>Mật khẩu đã được thay đổi</value>
+    <comment>Mật khẩu đã được thay đổi</comment>
+  </data>
+  <data name="00024" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+    <comment>Mật khẩu cũ</comment>
+  </data>
+  <data name="00025" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+    <comment>Mật khẩu mới</comment>
+  </data>
+  <data name="00026" xml:space="preserve">
+    <value>Nhập lại mật khẩu</value>
+    <comment>Nhập lại mật khẩu</comment>
+  </data>
+  <data name="00027" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00028" xml:space="preserve">
+    <value>Nhập mật khẩu hiện tại</value>
+    <comment>Nhập mật khẩu hiện tại</comment>
+  </data>
+  <data name="00029" xml:space="preserve">
+    <value>Nhập mật khẩu mới</value>
+    <comment>Nhập mật khẩu mới</comment>
+  </data>
+  <data name="00030" xml:space="preserve">
+    <value>Xác nhận mật khẩu mới</value>
+    <comment>Xác nhận mật khẩu mới</comment>
+  </data>
+  <data name="00031" xml:space="preserve">
+    <value>Nam</value>
+    <comment>Nam</comment>
+  </data>
+  <data name="00032" xml:space="preserve">
+    <value>Nữ</value>
+    <comment>Nữ</comment>
+  </data>
+  <data name="00033" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+    <data name="00038" xml:space="preserve">
+    <value>Tương tác với nhà trường</value>
+    <comment>Tương tác với nhà trường</comment>
+  </data>
+  <data name="00039" xml:space="preserve">
+    <value>Cha mẹ cần biết</value>
+    <comment>Cha mẹ cần biết</comment>
+  </data>
+  <data name="00040" xml:space="preserve">
+    <value>Lời nhắn</value>
+    <comment>Lời nhắn</comment>
+  </data>
+  <data name="00041" xml:space="preserve">
+    <value>Xin nghỉ</value>
+    <comment>Xin nghỉ</comment>
+  </data>
+  <data name="00042" xml:space="preserve">
+    <value>Dặn thuốc</value>
+    <comment>Dặn thuốc</comment>
+  </data>
+  <data name="00043" xml:space="preserve">
+    <value>Đón về</value>
+    <comment>Đón về</comment>
+  </data>
+  <data name="00044" xml:space="preserve">
+    <value>Hoạt động hàng ngày</value>
+    <comment>Hoạt động hàng ngày</comment>
+  </data>
+  <data name="00045" xml:space="preserve">
+    <value>Tin tức</value>
+    <comment>Tin tức</comment>
+  </data>
+  <data name="00046" xml:space="preserve">
+    <value>Album ảnh</value>
+    <comment>Album ảnh</comment>
+  </data>
+  <data name="00047" xml:space="preserve">
+    <value>Học phí</value>
+    <comment>Học phí</comment>
+  </data>
+  <data name="00048" xml:space="preserve">
+    <value>Sức khỏe</value>
+    <comment>Sức khỏe</comment>
+  </data>
+  <data name="00049" xml:space="preserve">
+    <value>Khảo sát</value>
+    <comment>Khảo sát</comment>
+  </data>
+  <data name="00050" xml:space="preserve">
+    <value>Đánh giá định kỳ</value>
+    <comment>Đánh giá định kỳ</comment>
+  </data>
+  <data name="00051" xml:space="preserve">
+    <value>Hồ sơ của bé</value>
+    <comment>Hồ sơ của bé</comment>
+  </data>
+  <data name="00052" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+    <comment>Thông tin tài khoản</comment>
+  </data>
+  <data name="00053" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+    <comment>Đổi mật khẩu</comment>
+  </data>
+  <data name="00054" xml:space="preserve">
+    <value>Cài đặt</value>
+    <comment>Cài đặt</comment>
+  </data>
+  <data name="00055" xml:space="preserve">
+    <value>Đăng xuất</value>
+    <comment>Đăng xuất</comment>
+  </data>
+  <data name="00056" xml:space="preserve">
+    <value>Lớp</value>
+    <comment>Lớp</comment>
+  </data>
+  <data name="00057" xml:space="preserve">
+    <value>Trường</value>
+    <comment>Trường</comment>
+  </data>
+  <data name="00058" xml:space="preserve">
+    <value>Mã học sinh</value>
+    <comment>Mã học sinh</comment>
+  </data>
+  <data name="00059" xml:space="preserve">
+    <value>Ngày sinh</value>
+    <comment>Ngày sinh</comment>
+  </data>
+  <data name="00060" xml:space="preserve">
+    <value>Giới tính</value>
+    <comment>Giới tính</comment>
+  </data>
+  <data name="00061" xml:space="preserve">
+    <value>Biết danh</value>
+    <comment>Biết danh</comment>
+  </data>
+  <data name="00062" xml:space="preserve">
+    <value>Thành công</value>
+    <comment>Thành công</comment>
+  </data>
+  <data name="00063" xml:space="preserve">
+    <value>Lỗi phát sinh</value>
+    <comment>Lỗi phát sinh</comment>
+  </data>
+    <data name="00079" xml:space="preserve">
+    <value>Đang xem thông tin bé </value>
+    <comment>Đang xem thông tin bé </comment>
+  </data>
+  <data name="00080" xml:space="preserve">
+    <value>TỔNG ĐÃ ĐÓNG</value>
+    <comment>TỔNG ĐÃ ĐÓNG</comment>
+  </data>
+  <data name="00081" xml:space="preserve">
+    <value>CÒN PHẢI ĐÓNG</value>
+    <comment>CÒN PHẢI ĐÓNG</comment>
+  </data>
+  <data name="00082" xml:space="preserve">
+    <value>VND</value>
+    <comment>VND</comment>
+  </data>
+  <data name="00083" xml:space="preserve">
+    <value>Bình luận</value>
+    <comment>Bình luận</comment>
+  </data>
+  <data name="00084" xml:space="preserve">
+    <value>Ngày đóng </value>
+    <comment>Ngày đóng </comment>
+  </data>
+  <data name="00085" xml:space="preserve">
+    <value>Đã đóng</value>
+    <comment>Đã đóng</comment>
+  </data>
+  <data name="00086" xml:space="preserve">
+    <value>Miễn giảm</value>
+    <comment>Miễn giảm</comment>
+  </data>
+  <data name="00087" xml:space="preserve">
+    <value>Trạng thái : </value>
+    <comment>Trạng thái : </comment>
+  </data>
+  <data name="00088" xml:space="preserve">
+    <value>Cần đóng</value>
+    <comment>Cần đóng</comment>
+  </data>
+  <data name="00089" xml:space="preserve">
+    <value>Ngày thu : </value>
+    <comment>Ngày thu : </comment>
+  </data>
+  <data name="00090" xml:space="preserve">
+    <value>Gửi tới </value>
+    <comment>Gửi tới </comment>
+  </data>
+  <data name="00091" xml:space="preserve">
+    <value>Gửi tin nhắn tới giáo viên của bé</value>
+    <comment>Gửi tin nhắn tới giáo viên của bé</comment>
+  </data>
+  <data name="00092" xml:space="preserve">
+    <value>Chọn bé </value>
+    <comment>Chọn bé </comment>
+  </data>
+  <data name="00093" xml:space="preserve">
+    <value>Đang chọn bé </value>
+    <comment>Đang chọn bé </comment>
+  </data>
+  <data name="00094" xml:space="preserve">
+    <value>Nhắn cho ngày</value>
+    <comment>Nhắn cho ngày</comment>
+  </data>
+  <data name="00095" xml:space="preserve">
+    <value>Hình ảnh</value>
+    <comment>Hình ảnh</comment>
+  </data>
+  <data name="00096" xml:space="preserve">
+    <value>Hãy viết tin nhắn để gửi tới cô giáo của bé.</value>
+    <comment>Hãy viết tin nhắn để gửi tới cô giáo của bé.</comment>
+  </data>
+  <data name="00097" xml:space="preserve">
+    <value>Thành công</value>
+    <comment>Thành công</comment>
+  </data>
+  <data name="00098" xml:space="preserve">
+    <value>Tổng</value>
+    <comment>Tổng</comment>
+  </data>
+  <data name="00099" xml:space="preserve">
+    <value>Nghỉ</value>
+    <comment>Nghỉ</comment>
+  </data>
+  <data name="00100" xml:space="preserve">
+    <value>Nghỉ có phép</value>
+    <comment>Nghỉ có phép</comment>
+  </data>
+  <data name="00101" xml:space="preserve">
+    <value>Nghỉ không phép</value>
+    <comment>Nghỉ không phép</comment>
+  </data>
+  <data name="00102" xml:space="preserve">
+    <value>Tạo đơn xin nghỉ</value>
+    <comment>Tạo đơn xin nghỉ</comment>
+  </data>
+  <data name="00103" xml:space="preserve">
+    <value>Đã xác nhận</value>
+    <comment>Đã xác nhận</comment>
+  </data>
+  <data name="00104" xml:space="preserve">
+    <value>Chưa xác nhận</value>
+    <comment>Chưa xác nhận</comment>
+  </data>
+  <data name="00105" xml:space="preserve">
+    <value>Từ ngày</value>
+    <comment>Từ ngày</comment>
+  </data>
+  <data name="00106" xml:space="preserve">
+    <value>đến ngày</value>
+    <comment>đến ngày</comment>
+  </data>
+  <data name="00107" xml:space="preserve">
+    <value>Hôm nay con học</value>
+    <comment>Hôm nay con học</comment>
+  </data>
+  <data name="00108" xml:space="preserve">
+    <value>Thực đơn hôm nay của con</value>
+    <comment>Thực đơn hôm nay của con</comment>
+  </data>
+  <data name="00109" xml:space="preserve">
+    <value>Hoạt động ngủ</value>
+    <comment>Hoạt động ngủ</comment>
+  </data>
+  <data name="00110" xml:space="preserve">
+    <value>Hoạt động vệ sinh</value>
+    <comment>Hoạt động vệ sinh</comment>
+  </data>
+  <data name="00111" xml:space="preserve">
+    <value>Con ngủ từ</value>
+    <comment>Con ngủ từ</comment>
+  </data>
+  <data name="00112" xml:space="preserve">
+    <value>Đến</value>
+    <comment>Đến</comment>
+  </data>
+  <data name="00113" xml:space="preserve">
+    <value>Số lần đi vệ sinh :</value>
+    <comment>Số lần đi vệ sinh :</comment>
+  </data>
+  <data name="00114" xml:space="preserve">
+    <value>Lời cảm ơn</value>
+    <comment>Lời cảm ơn</comment>
+  </data>
+  <data name="00115" xml:space="preserve">
+    <value>Phụ huynh có thể gửi lời nhắn cảm ơn, động viên cho các cô giáo trong ở đây</value>
+    <comment>Phụ huynh có thể gửi lời nhắn cảm ơn, động viên cho các cô giáo trong ở đây</comment>
+  </data>
+  <data name="00116" xml:space="preserve">
+    <value>Gửi lời cảm ơn</value>
+    <comment>Gửi lời cảm ơn</comment>
   </data>
 </root>

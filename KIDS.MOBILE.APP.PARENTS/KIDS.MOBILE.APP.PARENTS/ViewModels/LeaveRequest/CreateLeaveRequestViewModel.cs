@@ -7,6 +7,7 @@ using KIDS.MOBILE.APP.PARENTS.Services.Message;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
+using System.Linq;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 {
@@ -75,12 +76,42 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             try
             {
                 base.OnNavigatedTo(parameters);
-                IsUpdate = (bool?)parameters["isUpdate"] ?? false;
-                CurrentMessage = parameters["Message"] as MessageModel;
+                if (parameters.ContainsKey("isUpdate"))
+                {
+                    IsUpdate = (bool?)parameters["isUpdate"] ?? false;
+                }
+
+                if (parameters.ContainsKey("message"))
+                {
+                    CurrentMessage = parameters["message"] as MessageModel;
+                }
+
                 if (IsUpdate)
                 {
-                    MessageContent = CurrentMessage.Comment;
-                    SelectedFromDate = CurrentMessage.DateTime != null ? DateTime.Parse(CurrentMessage.DateTime) : DateTime.Now;
+                    MessageContent = CurrentMessage?.Comment;
+                    if (!string.IsNullOrEmpty(CurrentMessage.TimePeriod))
+                    {
+                        var split = CurrentMessage.TimePeriod.Split(' ');
+                        string startDate = null;
+                        string endDate = null;
+                        foreach(var item in split)
+                        {
+                            if (item.Any(char.IsDigit))
+                            {
+                                if (!string.IsNullOrEmpty(startDate))
+                                {
+                                    startDate = item;
+                                }
+                                else
+                                {
+                                    endDate = item;
+                                }
+                            }
+                        }
+                        SelectedFromDate = !string.IsNullOrEmpty(startDate) ? DateTime.Parse(startDate) : SelectedFromDate;
+                        SelectedToDate = !string.IsNullOrEmpty(endDate) ? DateTime.Parse(endDate) : SelectedToDate;
+                    }
+                    
                 }
             }
             catch (Exception ex)

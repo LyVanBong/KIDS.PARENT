@@ -25,6 +25,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             set => SetProperty(ref _newsList, value);
         }
         public DelegateCommand<object> SelectionCommand { get; }
+        private bool hasAnyNews;
+        public bool HasAnyNews
+        {
+            get => hasAnyNews;
+            set => SetProperty(ref hasAnyNews, value);
+        }
         #endregion
 
         #region Contructor
@@ -40,6 +46,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             {
                 base.Initialize(parameters);
                 IsLoading = true;
+                HasAnyNews = false;
                 var schoolId = AppConstants.User.DonVi;
                 var classid = AppConstants.User.ClassID;
                 var parentId = AppConstants.User.ParentID;
@@ -82,6 +89,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    HasAnyNews = true;
                     NewsList = new ObservableCollection<NewModel>(newsList);
                 });
             }

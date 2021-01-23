@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<pages:PageBase
     x:Class="KIDS.MOBILE.APP.PARENTS.Views.Login.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
     <ContentPage.Content>
         <ContentView x:Name="LoginView">
         </ContentView>
     </ContentPage.Content>
-</ContentPage>
+</pages:PageBase>

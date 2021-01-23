@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.Views.Album
 {
-    public partial class ImageDetailPage : ContentPage
+    public partial class ImageDetailPage : PageBase
     {
         public ImageDetailPage()
         {

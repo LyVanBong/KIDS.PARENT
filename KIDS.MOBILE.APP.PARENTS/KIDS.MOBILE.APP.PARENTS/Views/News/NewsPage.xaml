@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.NewsPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS">
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:ImageSourceConverter x:Key="ImageConverter"/>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="FillAndExpand"
@@ -48,6 +50,13 @@
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
+
+        <Image Source="question.jpg"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="0"
+               IsVisible="{Binding HasAnyNews, Converter={StaticResource boolReserve}}"
+               Aspect="AspectFit"/>
 
         <!--News listview-->
         <ScrollView HorizontalOptions="FillAndExpand"
@@ -155,4 +164,4 @@
             </syncfusion:SfListView>
         </ScrollView>
     </StackLayout>
-</ContentPage>
+</pages:PageBase>

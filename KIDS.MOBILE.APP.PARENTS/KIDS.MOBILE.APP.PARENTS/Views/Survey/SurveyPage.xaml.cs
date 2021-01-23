@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KIDS.MOBILE.APP.PARENTS.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SurveyPage : ContentPage
+    public partial class SurveyPage : PageBase
     {
         public SurveyPage()
         {

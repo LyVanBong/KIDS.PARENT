@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*" />
-                <RowDefinition Height=".3*" />
+                <RowDefinition Height=".4*" />
                 <RowDefinition Height=".05*" />
                 <RowDefinition Height=".1*" />
                 <RowDefinition Height=".05*" />
@@ -59,6 +59,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height=".5*" />
                         <RowDefinition Height=".5*" />
                     </Grid.RowDefinitions>
                     <textInputLayout:SfTextInputLayout
@@ -114,6 +115,18 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
+                    <Label
+                            Grid.Row="3"
+                            Padding="0"
+                            FontSize="16"
+                            Text="Quên mật khẩu"
+                            TextColor="Black"
+                            FontAttributes="Italic"
+                            VerticalOptions="Center">
+                            <!--<Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
+                            </Label.GestureRecognizers>-->
+                        </Label>
                 </Grid>
             </Frame>
             <Button
