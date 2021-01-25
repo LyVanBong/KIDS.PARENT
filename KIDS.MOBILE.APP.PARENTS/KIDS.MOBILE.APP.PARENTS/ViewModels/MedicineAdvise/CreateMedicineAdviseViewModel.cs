@@ -64,7 +64,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
 
         #region Contructor
         public CreateMedicineAdviseViewModel(INavigationService navigationService, IMedicineAdviseService messageService) : base(navigationService)
-        {
+            {
             _navigationService = navigationService;
             _messageService = messageService;
             SendCommand = new DelegateCommand(OnSendClick);
@@ -133,15 +133,30 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         {
             if (!isUpdate)
             {
-                var model = new PrescriptionModel
+                var detailList = new List<MedicineDetailTicketModel>();
+                if (MedicineList.Any())
                 {
-                    ClassID = AppConstants.User.ClassID,
+                    foreach(var item in MedicineList)
+                    {
+                        detailList.Add(new MedicineDetailTicketModel
+                        {
+                            Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
+                            Name = item.Name,
+                            Unit = item.Unit,
+                            Note = item.MessageContent,
+                            Action = 0
+                        }) ;
+                    }
+                }
+                var model = new MedicineTicketModel
+                {
+                    ClassID = Guid.Parse(AppConstants.User.ClassID),
                     Content = MessageContent,
-                    StudentID = AppConstants.User.StudentID,
+                    StudentID = Guid.Parse(AppConstants.User.StudentID),
                     Date = DateTime.Now,
                     FromDate = SelectedFromDate,
-                    ToDate = SelectedToDate
-
+                    ToDate = SelectedToDate,
+                    MedicineList = detailList
                 };
                 var result = await _messageService.CreateMessage(model);
                 if (result.Data == 1)
@@ -204,9 +219,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             {
                 Id = Guid.Empty,
                 Image = ImageSource.FromStream(() => selectedImageFile.GetStream()),
+                Name = string.Empty,
+                Unit = string.Empty,
                 MessageContent = string.Empty
             });
             MedicineList = new ObservableCollection<MedicineModel>(medicineList);
+        }
+
+        public void OnDeleteClick(MedicineModel data)
+        {
+            MedicineList.Remove(data);
         }
         #endregion
     }
@@ -215,6 +237,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
     {
         public Guid Id { get; set; }
         public ImageSource Image { get; set; }
+        public string Name { get; set; }
+        public string Unit { get; set; }
         public string MessageContent { get; set; }
     }
 }

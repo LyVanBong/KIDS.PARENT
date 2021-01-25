@@ -3,6 +3,8 @@ using KIDS.MOBILE.APP.PARENTS.Models.Message;
 using KIDS.MOBILE.APP.PARENTS.Models.RequestProvider;
 using KIDS.MOBILE.APP.PARENTS.Models.Response;
 using KIDS.MOBILE.APP.PARENTS.Services.RequestProvider;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -34,23 +36,18 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> CreateMessage(PrescriptionModel model)
+        public async Task<ResponseModel<int>> CreateMessage(MedicineTicketModel model)
         {
             try
             {
-                var para = new List<RequestParameter>()
-                {
-                    new RequestParameter("FromDate", model.FromDate.ToString()),
-                    new RequestParameter("ToDate", model.ToDate.ToString()),
-                    new RequestParameter("Date", model.Date.ToString()),
-                    new RequestParameter("Content", model.Content),
-                    new RequestParameter("StudentID", model.StudentID),
-                    new RequestParameter("ClassID", model.ClassID),
-                };
-                var data = await _requestProvider.PostAsync<int>("Prescription/Insert", para);
-                return data;
+                RestClient client = new RestClient("http://api.hkids.edu.vn/api/v1/Prescription/Insert");
+                var request = new RestRequest(string.Empty, Method.POST);
+                request.AddJsonBody(JsonConvert.SerializeObject(model));
+                var data = await client.ExecuteAsync<ResponseModel<int>>(request);
+                //var data = await _requestProvider.PostAsync<int>("Prescription/Insert", para);
+                return data?.Data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }

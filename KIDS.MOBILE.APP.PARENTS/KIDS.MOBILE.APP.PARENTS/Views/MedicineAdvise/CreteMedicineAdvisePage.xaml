@@ -43,13 +43,6 @@
             </Label>
         </StackLayout>
 
-        <!--<Label Text="{markupExtension:Translate 00092}"
-               TextColor="Black"
-               FontSize="16"
-               FontAttributes="Bold"
-               Grid.Row="1"
-               Margin="10,5,10,5"/>-->
-
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"
                FontSize="16"
@@ -143,22 +136,6 @@
                     Text="{Binding MessageContent}"/>
         </Grid>
 
-        <!--<Label Text="{markupExtension:Translate 00040}"
-               TextColor="Black"
-               FontSize="16"
-               FontAttributes="Bold"
-               Grid.Row="7"
-               Margin="10,5,10,5"/>
-
-        <Editor HorizontalOptions="FillAndExpand"
-                TextColor="Black"
-                FontSize="16"
-                Grid.Row="8"
-                HeightRequest="150"
-                BackgroundColor="White"
-                Margin="10,5,10,5"
-                Text="{Binding MessageContent}"/>-->
-
         <ScrollView HorizontalOptions="FillAndExpand"
                      Grid.Row="7"
                      VerticalScrollBarVisibility="Never">
@@ -171,26 +148,62 @@
                         <DataTemplate>
                             <Grid HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
-                                  HeightRequest="100">
+                                  HeightRequest="60">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
                                 <Image
                                     HorizontalOptions="FillAndExpand"
-                               VerticalOptions="FillAndExpand"
-                               Source="{Binding Image}"
-                               Aspect="AspectFill"
-                               Margin="10,5,5,5"
-                               Grid.Column="0"/>
+                                    VerticalOptions="FillAndExpand"
+                                    Source="{Binding Image}"
+                                    Aspect="AspectFit"
+                                    Margin="5,5,5,5"
+                                    Grid.Column="0"/>
                                 <Editor HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                TextColor="Black"
-                                FontSize="16"
-                                BackgroundColor="White"
-                                Margin="5"
-                                Text="{Binding MessageContent}"
-                                Grid.Column="1"/>
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="5"
+                                    Placeholder="Tên thuốc..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding Name}"
+                                    Grid.Column="1"/>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="0,5,0,5"
+                                    Placeholder="Đơn vị..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding Unit}"
+                                    Grid.Column="2"/>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="5"
+                                    Placeholder="Ghi chú..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding MessageContent}"
+                                    Grid.Column="3"/>
+                                <Image
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Source="remove.png"
+                                    Aspect="AspectFit"
+                                    Margin="5,5,5,5"
+                                    Grid.Column="4">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Delete_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </Grid>
                         </DataTemplate>
                     </syncfusion:SfListView.ItemTemplate>

@@ -35,7 +35,6 @@
         </Image.Source>
     </Image>
 
-	<!--<Image x:Name="AuthorPhoto" Grid.RowSpan="2" />-->
     <Label Text="{Binding ReceivedUserText}"
            Grid.Column="1"
            Grid.ColumnSpan="5"
@@ -60,12 +59,13 @@
              Grid.ColumnSpan="6"/>
 	
     <Button Grid.Row="5"
+            IsEnabled="False"
             Grid.ColumnSpan="6"
             BackgroundColor="#f0eded"
             Text="Viet binh luan..."
             FontSize="12"
             TextColor="White"
-            TextTransform="Lowercase"
+            TextTransform="None"
             CornerRadius="8"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand"

@@ -125,39 +125,7 @@
                                            HorizontalOptions="StartAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            Margin="5,0,0,0"/>
-
-                                    <!--<Label HorizontalOptions="EndAndExpand"
-                                           VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding CommentNumber}" TextColor="Black" FontSize="16"/>
-                                                <Span Text=" " TextColor="Black" FontSize="16"/>
-                                                <Span Text="{Binding CommentText}" TextColor="Black" FontSize="16"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>-->
                                 </StackLayout>
-
-                                <!--<StackLayout HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="FillAndExpand"
-                                             Orientation="Horizontal"
-                                             HeightRequest="30">
-                                    <Image Source="home.png"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="FillAndExpand"
-                                           Margin="5,0,20,0"/>
-                                    <Frame CornerRadius="20"
-                                           IsClippedToBounds="True"
-                                           HorizontalOptions="FillAndExpand"
-                                           VerticalOptions="FillAndExpand"
-                                           BackgroundColor="#f0eded">
-                                        <Editor HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="FillAndExpand"
-                                               Text="Viet binh luan"
-                                               FontSize="20"
-                                               TextColor="Black"/>
-                                    </Frame>
-                                </StackLayout>-->
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
