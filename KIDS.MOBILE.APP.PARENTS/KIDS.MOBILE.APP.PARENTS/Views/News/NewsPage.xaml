@@ -70,6 +70,7 @@
                 ItemSize="300"
                 ColumnSpacing="10"
                 Orientation="Vertical"
+                SelectionBackgroundColor="Transparent"
                 TapCommand="{Binding SelectionCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>

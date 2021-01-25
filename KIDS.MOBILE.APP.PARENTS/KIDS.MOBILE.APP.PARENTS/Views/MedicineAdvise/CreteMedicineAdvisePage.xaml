@@ -179,7 +179,7 @@
                                 <Image
                                     HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand"
-                               Source="{Binding Image}" 
+                               Source="{Binding Image}"
                                Aspect="AspectFill"
                                Margin="10,5,5,5"
                                Grid.Column="0"/>

@@ -9,9 +9,10 @@
     xmlns:markupExtensions="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
     xmlns:notification="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views.Notification;assembly=KIDS.MOBILE.APP.PARENTS"
     androidSpecific:TabbedPage.IsSwipePagingEnabled="False"
+    SelectedTabColor="#054ef7"
     androidSpecific:TabbedPage.OffscreenPageLimit="3"
     androidSpecific:TabbedPage.ToolbarPlacement="Bottom">
-    <home:HomePage Title="{markupExtensions:Translate 00001}" IconImageSource="home.png" />
+    <home:HomePage Title="{markupExtensions:Translate 00001}" IconImageSource="home.png"/>
     <notification:NotificationPage Title="{markupExtensions:Translate 00002}" IconImageSource="notification.png" />
     <account:AccountPage Title="{markupExtensions:Translate 00003}" IconImageSource="account.png" />
 </TabbedPage>

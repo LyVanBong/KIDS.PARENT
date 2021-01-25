@@ -106,7 +106,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                 Type = 2
             };
             var result = await _messageService.CreateMessage(model);
-            if (result.Data == 1)
+            if (result?.Data == 1)
             {
                 Content = string.Empty;
                 await GetCommentList();

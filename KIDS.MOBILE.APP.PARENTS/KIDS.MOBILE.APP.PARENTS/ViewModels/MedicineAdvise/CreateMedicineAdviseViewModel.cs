@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Models.MedicineAdvise;
 using KIDS.MOBILE.APP.PARENTS.Resources;
@@ -58,6 +59,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         public DelegateCommand GalleryCommand { get; set; }
         private bool isUpdate;
         private MessageModel CurrentMessage { get; set; }
+        private MedicineTicketModel medicineDetail;
         #endregion
 
         #region Contructor
@@ -93,10 +95,25 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             try
             {
                 base.OnNavigatedTo(parameters);
+                medicineDetail = new MedicineTicketModel();
                 isUpdate = (bool?)parameters["isUpdate"] ?? false;
                 CurrentMessage = parameters["Message"] as MessageModel;
                 if (isUpdate)
                 {
+                    //MessageContent = medicineDetail.Content;
+                    //SelectedDate = medicineDetail.Date;
+                    //if (medicineDetail.MedicineList?.Any() == true)
+                    //{
+                    //    foreach(var item in medicineDetail.MedicineList)
+                    //    {
+                    //        medicineList.Add(new MedicineModel
+                    //        {
+                    //            Id = item.Id ?? Guid.Empty,
+                    //            Image = $"{AppConstants.UriBaseWebForm}{item.Picture}",
+                    //            MessageContent = item.Note
+                    //        });
+                    //    }
+                    //}
                     MessageContent = CurrentMessage.Comment;
                     SelectedDate = CurrentMessage.DateTime != null ? DateTime.Parse(CurrentMessage.DateTime) : DateTime.Now;
                 }
