@@ -19,7 +19,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<List<GetPrescriptionModel>>> GetAllSentMessage(string studentId)
+        public async Task<ResponseModel<List<GetPrescriptionModel>>> GetAllMedicineAdvise(string studentId)
         {
             try
             {
@@ -36,15 +36,29 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
+        public async Task<MedicineTicketModel> GetMedicineAdviseDetail(Guid id)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("PrescriptionID", id.ToString())
+                };
+                var data = await _requestProvider.GetAsync<MedicineTicketModel>("Prescription/PrescriptionDetail", para);
+                return data?.Data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<ResponseModel<int>> CreateMessage(MedicineTicketModel model)
         {
             try
             {
-                RestClient client = new RestClient("http://api.hkids.edu.vn/api/v1/Prescription/Insert");
-                var request = new RestRequest(string.Empty, Method.POST);
-                request.AddJsonBody(JsonConvert.SerializeObject(model));
-                var data = await client.ExecuteAsync<ResponseModel<int>>(request);
-                //var data = await _requestProvider.PostAsync<int>("Prescription/Insert", para);
+                var jsonBody = JsonConvert.SerializeObject(model);
+                var data = await _requestProvider.PostJsonBodyAsync<ResponseModel<int>>("Prescription/Insert", jsonBody);
                 return data?.Data;
             }
             catch (Exception ex)

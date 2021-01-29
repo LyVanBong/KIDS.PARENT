@@ -5,7 +5,13 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter">
+    <pages:PageBase.Resources>
+        <ResourceDictionary>
+            <converter:NotBooleanConverter x:Name="boolConverter"/>
+        </ResourceDictionary>
+    </pages:PageBase.Resources>
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -139,30 +145,36 @@
         <ScrollView HorizontalOptions="FillAndExpand"
                      Grid.Row="7"
                      VerticalScrollBarVisibility="Never">
-            <syncfusion:SfListView HorizontalOptions="FillAndExpand"
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <syncfusion:SfListView HorizontalOptions="FillAndExpand"
                                AutoFitMode="DynamicHeight"
                                ItemsSource="{Binding MedicineList}"
                                Margin="10,5,10,5"
-                               FlowDirection="MatchParent">
+                               FlowDirection="MatchParent"
+                               IsVisible="{Binding IsUpdate, Converter={StaticResource boolConverter}}">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                  HeightRequest="60">
+                                    VerticalOptions="FillAndExpand">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.6*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="70"/>
+                                </Grid.RowDefinitions>
                                 <Image
-                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalOptions="StartAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     Source="{Binding Image}"
                                     Aspect="AspectFit"
                                     Margin="5,5,5,5"
-                                    Grid.Column="0"/>
+                                    Grid.Column="0"
+                                    Grid.Row="0"/>
                                 <Editor HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     TextColor="Black"
@@ -172,7 +184,8 @@
                                     Placeholder="Tên thuốc..."
                                     PlaceholderColor="Gray"
                                     Text="{Binding Name}"
-                                    Grid.Column="1"/>
+                                    Grid.Column="1"
+                                        Grid.Row="0"/>
                                 <Editor HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     TextColor="Black"
@@ -182,24 +195,29 @@
                                     Placeholder="Đơn vị..."
                                     PlaceholderColor="Gray"
                                     Text="{Binding Unit}"
-                                    Grid.Column="2"/>
+                                    Grid.Column="2"
+                                        Grid.Row="0"/>
                                 <Editor HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     TextColor="Black"
                                     FontSize="12"
                                     BackgroundColor="White"
-                                    Margin="5"
+                                    Margin="5,5,0,5"
                                     Placeholder="Ghi chú..."
                                     PlaceholderColor="Gray"
                                     Text="{Binding MessageContent}"
-                                    Grid.Column="3"/>
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"/>
                                 <Image
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
                                     Source="remove.png"
                                     Aspect="AspectFit"
                                     Margin="5,5,5,5"
-                                    Grid.Column="4">
+                                    Grid.Column="3"
+                                    Grid.Row="0">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Delete_Tapped"/>
                                     </Image.GestureRecognizers>
@@ -208,11 +226,95 @@
                         </DataTemplate>
                     </syncfusion:SfListView.ItemTemplate>
                 </syncfusion:SfListView>
+
+                <syncfusion:SfListView HorizontalOptions="FillAndExpand"
+                               AutoFitMode="DynamicHeight"
+                               ItemsSource="{Binding MedicineList}"
+                               Margin="10,5,10,5"
+                               FlowDirection="MatchParent"
+                               IsVisible="{Binding IsUpdate}">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.6*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="70"/>
+                                </Grid.RowDefinitions>
+                                <Image
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Aspect="AspectFit"
+                                    Margin="5,5,5,5"
+                                    Grid.Column="0"
+                                    Grid.Row="0">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding ImageUrl}"/>
+                                    </Image.Source>
+                                </Image>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="5"
+                                    Placeholder="Tên thuốc..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding Name}"
+                                    Grid.Column="1"
+                                        Grid.Row="0"/>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="0,5,0,5"
+                                    Placeholder="Đơn vị..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding Unit}"
+                                    Grid.Column="2"
+                                        Grid.Row="0"/>
+                                <Editor HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextColor="Black"
+                                    FontSize="12"
+                                    BackgroundColor="White"
+                                    Margin="5,5,0,5"
+                                    Placeholder="Ghi chú..."
+                                    PlaceholderColor="Gray"
+                                    Text="{Binding MessageContent}"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"/>
+                                <Image
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Source="remove.png"
+                                    Aspect="AspectFit"
+                                    Margin="5,5,5,5"
+                                    Grid.Column="3"
+                                    Grid.Row="0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Delete_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </StackLayout>
         </ScrollView>
 
         <Button Grid.Row="8"
                 HorizontalOptions="FillAndExpand"
-                Margin="10,10,10,10"
+                Margin="10,10,10,40"
                 Command="{Binding SendCommand}"
                 Style="{StaticResource SummitButton}"
                 Text="{markupExtension:Translate 00011}"/>

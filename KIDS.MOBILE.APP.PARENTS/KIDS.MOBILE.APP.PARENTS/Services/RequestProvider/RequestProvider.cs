@@ -82,6 +82,26 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             }
         }
 
+        public async Task<ResponseModel<T>> PostJsonBodyAsync<T>(string uri, string jsonBody)
+        {
+            try
+            {
+                CreateClients(uri, Method.POST);
+                if (!string.IsNullOrEmpty(jsonBody)) _request.AddJsonBody(jsonBody);
+                _request.Timeout = 10000;
+                var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
+                var data = response.StatusCode == HttpStatusCode.OK
+                    ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
+                    : default;
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
         public async Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters, Dictionary<string, string> files = null)
         {
             try

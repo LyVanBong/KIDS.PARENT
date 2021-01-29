@@ -23,6 +23,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             set => SetProperty(ref _messageList, value);
         }
         public DelegateCommand AddCommand { get; }
+        public DelegateCommand<object> SelectedCommand { get; }
         private bool hasAnyMessages;
         public bool HasAnyMessages
         {
@@ -37,6 +38,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             _navigationService = navigationService;
             _messageService = messageService;
             AddCommand = new DelegateCommand(OnAddClick);
+            SelectedCommand = new DelegateCommand<object>(OnSelectedClicked);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -66,7 +68,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         private async Task GetMessagesList()
         {
             var studentId = AppConstants.User.StudentID;
-            var data = await _messageService.GetAllSentMessage(studentId);
+            var data = await _messageService.GetAllMedicineAdvise(studentId);
             if (data?.Data?.Any() == true)
             {
                 var messageList = new List<MessageModel>();
@@ -90,6 +92,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         {
             var param = new NavigationParameters();
             param.Add("isUpdate", false);
+            await _navigationService.NavigateAsync(nameof(CreteMedicineAdvisePage), param);
+        }
+
+        private async void OnSelectedClicked(object dataItem)
+        {
+            var data = (Syncfusion.ListView.XForms.ItemTappedEventArgs)dataItem;
+            var param = new NavigationParameters();
+            param.Add("Id", ((NewModel)data.ItemData).Id);
+
             await _navigationService.NavigateAsync(nameof(CreteMedicineAdvisePage), param);
         }
         #endregion
