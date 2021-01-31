@@ -42,7 +42,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("PrescriptionID", id.ToString())
+                    new RequestParameter("id", id.ToString())
                 };
                 var data = await _requestProvider.GetAsync<MedicineTicketModel>("Prescription/PrescriptionDetail", para);
                 return data?.Data;
@@ -53,13 +53,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> CreateMessage(MedicineTicketModel model)
+        public async Task<ResponseModel<int>> CreatePrescription(MedicineTicketModel model)
         {
             try
             {
                 var jsonBody = JsonConvert.SerializeObject(model);
-                var data = await _requestProvider.PostJsonBodyAsync<ResponseModel<int>>("Prescription/Insert", jsonBody);
-                return data?.Data;
+                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Create", jsonBody);
+                return data;
             }
             catch (Exception ex)
             {
@@ -67,21 +67,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> UpdateMessage(PrescriptionModel model)
+        public async Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model)
         {
             try
             {
-                var para = new List<RequestParameter>()
-                {
-                    new RequestParameter("ID", model.ID.ToString()),
-                    new RequestParameter("FromDate", model.FromDate.ToString()),
-                    new RequestParameter("ToDate", model.ToDate.ToString()),
-                    new RequestParameter("Date", model.Date.ToString()),
-                    new RequestParameter("Content", model.Content),
-                    new RequestParameter("StudentID", model.StudentID),
-                    new RequestParameter("ClassID", model.ClassID),
-                };
-                var data = await _requestProvider.PostAsync<int>("Prescription/Update", para);
+                var jsonBody = JsonConvert.SerializeObject(model);
+                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Update", jsonBody);
                 return data;
             }
             catch (Exception)
@@ -90,7 +81,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> DeleteMessage(PrescriptionModel model)
+        public async Task<ResponseModel<int>> DeletePrescription(PrescriptionModel model)
         {
             try
             {

@@ -9,7 +9,7 @@
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter">
     <pages:PageBase.Resources>
         <ResourceDictionary>
-            <converter:NotBooleanConverter x:Name="boolConverter"/>
+            <converter:NotBooleanConverter x:Key="boolConverter"/>
         </ResourceDictionary>
     </pages:PageBase.Resources>
 

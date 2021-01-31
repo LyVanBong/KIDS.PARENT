@@ -108,9 +108,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                         Guid id = (Guid?)parameters["Id"] ?? Guid.Empty;
                         medicineDetail = await _prescriptionService.GetMedicineAdviseDetail(id);
                         MessageContent = medicineDetail.Content;
-                        SelectedDate = medicineDetail.Date;
-                        SelectedFromDate = medicineDetail.FromDate;
-                        SelectedToDate = medicineDetail.ToDate;
+                        SelectedDate = medicineDetail.Date ?? DateTime.Now;
+                        SelectedFromDate = medicineDetail.FromDate ?? DateTime.Now;
+                        SelectedToDate = medicineDetail.ToDate ?? DateTime.Now;
                         if (medicineDetail.MedicineList?.Any() == true)
                         {
                             foreach (var item in medicineDetail.MedicineList)
@@ -153,7 +153,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     {
                         detailList.Add(new MedicineDetailTicketModel
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
                             Name = item.Name,
                             Unit = item.Unit,
@@ -170,9 +170,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     Date = DateTime.Now,
                     FromDate = SelectedFromDate,
                     ToDate = SelectedToDate,
-                    MedicineList = detailList
+                    MedicineList = detailList,
+                    Id = Guid.NewGuid()
                 };
-                var result = await _prescriptionService.CreateMessage(model);
+                var result = await _prescriptionService.CreatePrescription(model);
                 if (result.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -185,17 +186,26 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             }
             else
             {
-                var model = new PrescriptionModel
+                medicineDetail.FromDate = SelectedFromDate;
+                medicineDetail.ToDate = SelectedToDate;
+                medicineDetail.Content = MessageContent;
+                medicineDetail.MedicineList = medicineDetail.MedicineList ?? new List<MedicineDetailTicketModel>();
+                if (MedicineList?.Any() == true)
                 {
-                    ID = CurrentMessage.Id,
-                    ClassID = AppConstants.User.ClassID,
-                    Content = MessageContent,
-                    StudentID = AppConstants.User.StudentID,
-                    Date = DateTime.Now,
-                    FromDate = SelectedFromDate,
-                    ToDate = SelectedToDate
-                };
-                var result = await _prescriptionService.UpdateMessage(model);
+                    foreach (var item in MedicineList)
+                    {
+                        medicineDetail.MedicineList.Add(new MedicineDetailTicketModel
+                        {
+                            Id = Guid.NewGuid(),
+                            Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
+                            Name = item.Name,
+                            Unit = item.Unit,
+                            Note = item.MessageContent,
+                            Action = item.Action
+                        });
+                    }
+                }
+                var result = await _prescriptionService.UpdatePrescription(medicineDetail);
                 if (result.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
