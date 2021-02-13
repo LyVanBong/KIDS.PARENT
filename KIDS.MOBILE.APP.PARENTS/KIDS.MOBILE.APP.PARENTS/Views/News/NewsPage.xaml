@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KIDS.MOBILE.APP.PARENTS.Views.NewsPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
@@ -35,13 +36,6 @@
                    FontAttributes="Bold"
                    FontSize="24">
             </Label>
-            <!--<Image Source="home.png"
-                   HorizontalOptions="EndAndExpand"
-                   VerticalOptions="CenterAndExpand">
-            </Image>
-            <Image Source="home.png"
-                   HorizontalOptions="EndAndExpand">
-            </Image>-->
         </StackLayout>
 
         <loadingView:LoadingView
@@ -59,109 +53,104 @@
                Aspect="AspectFit"/>
 
         <!--News listview-->
-        <ScrollView HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
-            <syncfusion:SfListView ItemsSource="{Binding NewsList}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Margin="10,0,10,10"
-                Grid.Row="3"
-                FlowDirection="LeftToRight"
-                ItemSize="300"
-                ColumnSpacing="10"
-                Orientation="Vertical"
-                TapCommand="{Binding SelectionCommand}">
+        <tabview:SfTabView x:Name="tabView">
+                <tabview:SfTabView.SelectionIndicatorSettings>
+                    <tabview:SelectionIndicatorSettings Color="Blue"
+                                                        StrokeThickness="3"/>
+                </tabview:SfTabView.SelectionIndicatorSettings>
 
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                           CornerRadius="10"
-                               IsClippedToBounds="True"
-                               Padding="0"
-                               Margin="10"
-                           BorderColor="Black"
-                               BackgroundColor="White"
-                               FlowDirection="MatchParent">
-                            <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                                 Orientation="Vertical">
+                <tabview:SfTabItem Title="News"
+                                   SelectionColor="Blue"
+                                   TitleFontSize="14"
+                                   TitleFontColor="Gray">
+                    <tabview:SfTabItem.Content>
+                        <ScrollView HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                        <syncfusion:SfListView ItemsSource="{Binding NewsList}"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Margin="10,0,10,10"
+                            Grid.Row="3"
+                            FlowDirection="LeftToRight"
+                            ItemSize="300"
+                            ColumnSpacing="10"
+                            Orientation="Vertical"
+                            SelectionBackgroundColor="Transparent"
+                            TapCommand="{Binding SelectionCommand}">
 
-                                <Label Text="{Binding Title}"
-                                       HorizontalOptions="FillAndExpand"
-                                       FontAttributes="Bold"
-                                       FontSize="20"
-                                       Margin="10,5,0,0"/>
-
-                                <Label HorizontalOptions="FillAndExpand" Margin="10,0,0,0">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding NewsTo}" FontSize="16" TextColor="Blue"></Span>
-                                            <Span Text=" - " FontSize="16" TextColor="Black"></Span>
-                                            <Span Text="{Binding DateTime}" FontSize="16" TextColor="Black"></Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                                <Image HorizontalOptions="FillAndExpand"
-                                       VerticalOptions="FillAndExpand"
-                                       Aspect="AspectFill"
-                                       HeightRequest="150"
-                                       Margin="1,0,1,0"
-                                       Source="{Binding Image, Converter={StaticResource ImageConverter}}"/>
-
-                                <StackLayout HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="EndAndExpand"
-                                             Orientation="Horizontal"
-                                             Padding="10,0,10,10">
-
-                                    <Image Source="view.png"
-                                           HorizontalOptions="Start"/>
-
-                                    <Label Text="{Binding LikeNumber}"
-                                           TextColor="Black"
-                                           FontSize="16"
-                                           HorizontalOptions="StartAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           Margin="5,0,0,0"/>
-
-                                    <!--<Label HorizontalOptions="EndAndExpand"
-                                           VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding CommentNumber}" TextColor="Black" FontSize="16"/>
-                                                <Span Text=" " TextColor="Black" FontSize="16"/>
-                                                <Span Text="{Binding CommentText}" TextColor="Black" FontSize="16"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>-->
-                                </StackLayout>
-
-                                <!--<StackLayout HorizontalOptions="FillAndExpand"
+                            <syncfusion:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame HorizontalOptions="FillAndExpand"
                                              VerticalOptions="FillAndExpand"
-                                             Orientation="Horizontal"
-                                             HeightRequest="30">
-                                    <Image Source="home.png"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="FillAndExpand"
-                                           Margin="5,0,20,0"/>
-                                    <Frame CornerRadius="20"
+                                       CornerRadius="10"
                                            IsClippedToBounds="True"
-                                           HorizontalOptions="FillAndExpand"
-                                           VerticalOptions="FillAndExpand"
-                                           BackgroundColor="#f0eded">
-                                        <Editor HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="FillAndExpand"
-                                               Text="Viet binh luan"
-                                               FontSize="20"
-                                               TextColor="Black"/>
+                                           Padding="0"
+                                           Margin="10"
+                                       BorderColor="Black"
+                                           BackgroundColor="White"
+                                           FlowDirection="MatchParent">
+                                        <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             Orientation="Vertical">
+
+                                            <Label Text="{Binding Title}"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   FontAttributes="Bold"
+                                                   FontSize="20"
+                                                   Margin="10,5,0,0"/>
+
+                                            <Label HorizontalOptions="FillAndExpand" Margin="10,0,0,0">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding NewsTo}" FontSize="16" TextColor="Blue"></Span>
+                                                        <Span Text=" - " FontSize="16" TextColor="Black"></Span>
+                                                        <Span Text="{Binding DateTime}" FontSize="16" TextColor="Black"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Image HorizontalOptions="FillAndExpand"
+                                                   VerticalOptions="FillAndExpand"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="150"
+                                                   Margin="1,0,1,0"
+                                                   Source="{Binding Image, Converter={StaticResource ImageConverter}}"/>
+
+                                            <StackLayout HorizontalOptions="FillAndExpand"
+                                                         VerticalOptions="EndAndExpand"
+                                                         Orientation="Horizontal"
+                                                         Padding="10,0,10,10">
+
+                                                <Image Source="view.png"
+                                                       HorizontalOptions="Start"/>
+
+                                                <Label Text="{Binding LikeNumber}"
+                                                       TextColor="Black"
+                                                       FontSize="16"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Margin="5,0,0,0"/>
+                                            </StackLayout>
+                                        </StackLayout>
                                     </Frame>
-                                </StackLayout>-->
-                            </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
-        </ScrollView>
+                                </DataTemplate>
+                            </syncfusion:SfListView.ItemTemplate>
+                        </syncfusion:SfListView>
+                    </ScrollView>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+
+                <tabview:SfTabItem Title="Video"
+                                   SelectionColor="Blue"
+                                   TitleFontSize="14"
+                                   TitleFontColor="Gray">
+                    <tabview:SfTabItem.Content>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Fill"
+                                     BackgroundColor="#f0eded"/>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+            </tabview:SfTabView>
+        
     </StackLayout>
 </pages:PageBase>
