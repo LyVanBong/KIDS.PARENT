@@ -9,6 +9,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
     {
         Task<ResponseModel<T>> GetAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null);
         Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null);
+        Task<ResponseModel<T>> PostJsonBodyAsync<T>(string uri, string jsonBody);
 
         Task<ResponseModel<T>> PutAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null);
 

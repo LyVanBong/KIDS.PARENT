@@ -119,6 +119,8 @@
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\Default-Portrait.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\remove.png" />
+    <Compile Include="Controls\XEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
@@ -330,6 +332,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon_student_male_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

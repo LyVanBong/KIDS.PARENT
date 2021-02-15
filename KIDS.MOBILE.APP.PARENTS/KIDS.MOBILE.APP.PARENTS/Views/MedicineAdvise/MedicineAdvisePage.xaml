@@ -96,14 +96,15 @@
                     VerticalOptions="FillAndExpand"
                     Grid.Row="3"
                     Margin="10">
-            <syncfusion:SfListView
+            <syncfusion:SfListView SelectionBackgroundColor="Transparent"
                 ItemsSource="{Binding MessageList}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
                 Margin="10"
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                TapCommand="{Binding SelectedCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>

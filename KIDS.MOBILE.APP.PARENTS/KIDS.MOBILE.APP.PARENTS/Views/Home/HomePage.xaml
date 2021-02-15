@@ -5,7 +5,8 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             BackgroundColor="White">
     <ScrollView VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
                 VerticalScrollBarVisibility="Always">
@@ -14,7 +15,7 @@
                  Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="330"/>
+                <RowDefinition Height="260"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="270"/>
             </Grid.RowDefinitions>
@@ -27,10 +28,10 @@
                    Source="home.png"/>
                 <Label Text= "{Binding SchoolInteraction}"
                    FontAttributes="Bold"
-                   FontSize="20"
+                   FontSize="16"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   TextColor="Black"/>
+                   TextColor="Blue"/>
             </StackLayout>
 
             <flv:FlowListView FlowColumnCount="4"   
@@ -54,7 +55,7 @@
                                Margin="0,0,0,5"
                                Source="{Binding Icon}"/>
                             <Label Text= "{Binding Title}"
-                               FontSize="16"
+                               FontSize="12"
                                HorizontalOptions="CenterAndExpand"
                                VerticalOptions="FillAndExpand"
                                TextColor="Black"
@@ -74,11 +75,12 @@
                    Source="home.png"/>
                 <Label Text= "{Binding NeededTitle}"
                    FontAttributes="Bold"
-                   FontSize="20"
+                   FontSize="16"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   TextColor="Black"/>
+                   TextColor="Blue"/>
                 <Image HorizontalOptions="End"
+                       WidthRequest="20"
                    Margin="0,0,10,0"
                    Source="more.png"/>
             </StackLayout>
@@ -89,7 +91,7 @@
                 Margin="0,0,0,10"
                 Grid.Row="3" 
                 FlowDirection="LeftToRight" 
-                ItemSize="250" 
+                ItemSize="200" 
                 ColumnSpacing="10"
                 Orientation="Horizontal"
                 IsScrollBarVisible="False"
@@ -120,8 +122,8 @@
 
                                         <!--  Tile  -->
                                         <Label
-                                                Margin="5,0,5,5"
-                                                FontSize="16"
+                                                Margin="5,10,5,5"
+                                                FontSize="12"
                                                 LineBreakMode="TailTruncation"
                                                 LineHeight="{OnPlatform Default=-1,
                                                                         Android=1.25}"

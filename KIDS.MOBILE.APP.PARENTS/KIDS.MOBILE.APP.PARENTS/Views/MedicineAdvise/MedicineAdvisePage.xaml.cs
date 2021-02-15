@@ -11,5 +11,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise
         {
             InitializeComponent();
         }
+
+        void SfListView_ItemTapped(System.Object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+        }
     }
 }
