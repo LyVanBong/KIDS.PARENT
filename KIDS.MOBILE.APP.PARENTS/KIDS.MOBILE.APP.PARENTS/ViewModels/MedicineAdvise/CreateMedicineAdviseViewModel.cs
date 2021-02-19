@@ -134,7 +134,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             if (!isUpdate)
             {
                 var detailList = new List<MedicineDetailTicketModel>();
-                if (MedicineList.Any())
+                if (MedicineList?.Any() == true)
                 {
                     foreach(var item in MedicineList)
                     {
@@ -159,7 +159,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     MedicineList = detailList
                 };
                 var result = await _messageService.CreateMessage(model);
-                if (result.Data == 1)
+                if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                     await _navigationService.GoBackAsync();

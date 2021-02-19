@@ -40,7 +40,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
         {
             try
             {
-                RestClient client = new RestClient("http://api.hkids.edu.vn/api/v1/Prescription/Insert");
+                RestClient client = new RestClient("http://192.168.1.22:45455/api/v1/Prescription/Create");
                 var request = new RestRequest(string.Empty, Method.POST);
                 request.AddJsonBody(JsonConvert.SerializeObject(model));
                 var data = await client.ExecuteAsync<ResponseModel<int>>(request);

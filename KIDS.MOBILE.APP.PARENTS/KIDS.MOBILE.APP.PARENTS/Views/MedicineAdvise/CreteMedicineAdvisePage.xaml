@@ -18,7 +18,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -212,7 +212,8 @@
 
         <Button Grid.Row="8"
                 HorizontalOptions="FillAndExpand"
-                Margin="10,10,10,10"
+                VerticalOptions="EndAndExpand"
+                Margin="20"
                 Command="{Binding SendCommand}"
                 Style="{StaticResource SummitButton}"
                 Text="{markupExtension:Translate 00011}"/>
