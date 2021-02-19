@@ -40,6 +40,29 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
             }
         }
 
+        public async Task<ResponseModel<int>> UpdateStudentInfo(StudentModel studentModel)
+        {
+            try
+            {
+                var parameters = new List<RequestParameter>
+                {
+                    new RequestParameter("StudentID",studentModel.StudentID),
+                    new RequestParameter("Name",studentModel.Name),
+                    new RequestParameter("Sex",studentModel.Sex+""),
+                    new RequestParameter("Dob",studentModel.DOB),
+                    new RequestParameter("Email",studentModel.Email),
+                    new RequestParameter("Address",studentModel.Address),
+                    new RequestParameter("Picture",studentModel.Picture),
+                };
+                var data = await _requestProvider.PostAsync<int>("Student/Update", parameters);
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<ResponseModel<IEnumerable<StudentModel>>> GetStudent(string studentID)
         {
             try

@@ -64,10 +64,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         #endregion
 
         #region Contructor
-        public CreateMedicineAdviseViewModel(INavigationService navigationService, IMedicineAdviseService messageService) : base(navigationService)
+        public CreateMedicineAdviseViewModel(INavigationService navigationService, IMedicineAdviseService prescriptionService) : base(navigationService)
             {
             _navigationService = navigationService;
-            _prescriptionService = messageService;
+            _prescriptionService = prescriptionService;
             SendCommand = new DelegateCommand(OnSendClick);
             GalleryCommand = new DelegateCommand(OnGalleryClick);
         }
@@ -107,10 +107,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     {
                         Guid id = (Guid?)parameters["Id"] ?? Guid.Empty;
                         medicineDetail = await _prescriptionService.GetMedicineAdviseDetail(id);
-                        MessageContent = medicineDetail.Content;
-                        SelectedDate = medicineDetail.Date ?? DateTime.Now;
-                        SelectedFromDate = medicineDetail.FromDate ?? DateTime.Now;
-                        SelectedToDate = medicineDetail.ToDate ?? DateTime.Now;
+                        MessageContent = medicineDetail?.Content;
+                        SelectedDate = medicineDetail?.Date ?? DateTime.Now;
+                        SelectedFromDate = medicineDetail?.FromDate ?? DateTime.Now;
+                        SelectedToDate = medicineDetail?.ToDate ?? DateTime.Now;
                         if (medicineDetail.MedicineList?.Any() == true)
                         {
                             foreach (var item in medicineDetail.MedicineList)
@@ -118,7 +118,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                                 medicineList.Add(new MedicineModel
                                 {
                                     Id = item.Id ?? Guid.Empty,
-                                    Image = $"{AppConstants.UriBaseWebForm}{item.Picture}",
+                                    Image = ImageSource.FromUri(new Uri($"{AppConstants.UriBaseWebForm}{item.Picture}")),
                                     MessageContent = item.Note,
                                     Unit = item.Unit,
                                     Name = item.Name,
@@ -173,7 +173,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     MedicineList = detailList,
                     Id = Guid.NewGuid()
                 };
-                var result = await _messageService.CreateMessage(model);
+                var result = await _prescriptionService.CreatePrescription(model);
                 if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);

@@ -35,7 +35,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
         /// Base Url API
         /// </summary>
         #if DEBUG
-        internal static string UrlApiApp = "http://192.168.1.22:45455/api/v1/";
+        internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
         #else
         internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
         #endif
