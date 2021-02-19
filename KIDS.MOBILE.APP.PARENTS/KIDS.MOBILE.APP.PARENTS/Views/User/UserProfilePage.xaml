@@ -49,7 +49,7 @@
                         BackgroundColor="{StaticResource BackgroundImage}"
                         HeightRequest="150"
                         HorizontalOptions="CenterAndExpand"
-                        Source="{Binding User.Picture}"
+                        Source="{Binding ProfilePicture}"
                         VerticalOptions="CenterAndExpand"
                         WidthRequest="150">
                         <Image.Clip>
@@ -58,6 +58,9 @@
                                 RadiusX="75"
                                 RadiusY="75" />
                         </Image.Clip>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                        </Image.GestureRecognizers>
                     </Image>
                     <textInputLayout:SfTextInputLayout
                         Grid.Row="1"

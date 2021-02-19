@@ -40,5 +40,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
         /// <param name="pass"></param>
         /// <returns></returns>
         Task<ResponseModel<int>> UpdateUser(string user, string pass);
+
+        /// <summary>
+        /// Update info for student
+        /// </summary>
+        /// <param name="studentModel"></param>
+        /// <returns></returns>
+        Task<ResponseModel<int>> UpdateStudentInfo(StudentModel studentModel);
     }
 }

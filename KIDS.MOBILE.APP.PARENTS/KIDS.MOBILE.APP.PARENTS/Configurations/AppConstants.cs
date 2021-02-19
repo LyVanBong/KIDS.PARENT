@@ -34,6 +34,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
         /// <summary>
         /// Base Url API
         /// </summary>
+        #if DEBUG
         internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
+        #else
+        internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
+        #endif
     }
 }
