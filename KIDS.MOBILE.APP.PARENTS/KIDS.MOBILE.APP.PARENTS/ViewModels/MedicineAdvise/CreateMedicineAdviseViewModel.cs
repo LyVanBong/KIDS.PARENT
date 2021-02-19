@@ -17,7 +17,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
     public class CreateMedicineAdviseViewModel : BaseViewModel
     {
         #region Properties
-        private IMedicineAdviseService _messageService;
+        private IMedicineAdviseService _prescriptionService;
         private string messageContent;
         public string MessageContent
         {
@@ -60,13 +60,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         private bool isUpdate;
         private MessageModel CurrentMessage { get; set; }
         private MedicineTicketModel medicineDetail;
+        private List<MedicineModel> listMedicine;
         #endregion
 
         #region Contructor
         public CreateMedicineAdviseViewModel(INavigationService navigationService, IMedicineAdviseService messageService) : base(navigationService)
             {
             _navigationService = navigationService;
-            _messageService = messageService;
+            _prescriptionService = messageService;
             SendCommand = new DelegateCommand(OnSendClick);
             GalleryCommand = new DelegateCommand(OnGalleryClick);
         }
@@ -78,6 +79,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 IsLoading = true;
                 ChooseImage1 = ImageSource.FromFile("add_image.png");
                 SelectedDate = DateTime.Now;
+                SelectedFromDate = DateTime.Now;
+                SelectedToDate = DateTime.Now;
                 medicineList = new List<MedicineModel>();
             }
             catch (Exception ex)
@@ -90,32 +93,42 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             }
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             try
             {
                 base.OnNavigatedTo(parameters);
-                medicineDetail = new MedicineTicketModel();
                 isUpdate = (bool?)parameters["isUpdate"] ?? false;
-                CurrentMessage = parameters["Message"] as MessageModel;
+
+                if(parameters.ContainsKey("Message")) CurrentMessage = parameters["Message"] as MessageModel;
                 if (isUpdate)
                 {
-                    //MessageContent = medicineDetail.Content;
-                    //SelectedDate = medicineDetail.Date;
-                    //if (medicineDetail.MedicineList?.Any() == true)
-                    //{
-                    //    foreach(var item in medicineDetail.MedicineList)
-                    //    {
-                    //        medicineList.Add(new MedicineModel
-                    //        {
-                    //            Id = item.Id ?? Guid.Empty,
-                    //            Image = $"{AppConstants.UriBaseWebForm}{item.Picture}",
-                    //            MessageContent = item.Note
-                    //        });
-                    //    }
-                    //}
-                    MessageContent = CurrentMessage.Comment;
-                    SelectedDate = CurrentMessage.DateTime != null ? DateTime.Parse(CurrentMessage.DateTime) : DateTime.Now;
+                    if (parameters.ContainsKey("Id"))
+                    {
+                        Guid id = (Guid?)parameters["Id"] ?? Guid.Empty;
+                        medicineDetail = await _prescriptionService.GetMedicineAdviseDetail(id);
+                        MessageContent = medicineDetail.Content;
+                        SelectedDate = medicineDetail.Date ?? DateTime.Now;
+                        SelectedFromDate = medicineDetail.FromDate ?? DateTime.Now;
+                        SelectedToDate = medicineDetail.ToDate ?? DateTime.Now;
+                        if (medicineDetail.MedicineList?.Any() == true)
+                        {
+                            foreach (var item in medicineDetail.MedicineList)
+                            {
+                                medicineList.Add(new MedicineModel
+                                {
+                                    Id = item.Id ?? Guid.Empty,
+                                    Image = $"{AppConstants.UriBaseWebForm}{item.Picture}",
+                                    MessageContent = item.Note,
+                                    Unit = item.Unit,
+                                    Name = item.Name,
+                                    Action = 0
+                                });
+                            }
+                            listMedicine = medicineList;
+                            MedicineList = new ObservableCollection<MedicineModel>(medicineList);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -140,12 +153,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     {
                         detailList.Add(new MedicineDetailTicketModel
                         {
+                            Id = Guid.NewGuid(),
                             Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
                             Name = item.Name,
                             Unit = item.Unit,
                             Note = item.MessageContent,
-                            Action = 0
-                        }) ;
+                            Action = 1
+                        });
                     }
                 }
                 var model = new MedicineTicketModel
@@ -156,7 +170,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     Date = DateTime.Now,
                     FromDate = SelectedFromDate,
                     ToDate = SelectedToDate,
-                    MedicineList = detailList
+                    MedicineList = detailList,
+                    Id = Guid.NewGuid()
                 };
                 var result = await _messageService.CreateMessage(model);
                 if (result?.Data == 1)
@@ -171,17 +186,26 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             }
             else
             {
-                var model = new PrescriptionModel
+                medicineDetail.FromDate = SelectedFromDate;
+                medicineDetail.ToDate = SelectedToDate;
+                medicineDetail.Content = MessageContent;
+                medicineDetail.MedicineList = medicineDetail.MedicineList ?? new List<MedicineDetailTicketModel>();
+                if (MedicineList?.Any() == true)
                 {
-                    ID = CurrentMessage.Id,
-                    ClassID = AppConstants.User.ClassID,
-                    Content = MessageContent,
-                    StudentID = AppConstants.User.StudentID,
-                    Date = DateTime.Now,
-                    FromDate = SelectedFromDate,
-                    ToDate = SelectedToDate
-                };
-                var result = await _messageService.UpdateMessage(model);
+                    foreach (var item in MedicineList)
+                    {
+                        medicineDetail.MedicineList.Add(new MedicineDetailTicketModel
+                        {
+                            Id = Guid.NewGuid(),
+                            Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
+                            Name = item.Name,
+                            Unit = item.Unit,
+                            Note = item.MessageContent,
+                            Action = item.Action
+                        });
+                    }
+                }
+                var result = await _prescriptionService.UpdatePrescription(medicineDetail);
                 if (result.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -217,17 +241,23 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             //ChooseImage1 = ImageSource.FromStream(() => selectedImageFile.GetStream());
             medicineList.Add(new MedicineModel
             {
-                Id = Guid.Empty,
+                Id = Guid.NewGuid(),
                 Image = ImageSource.FromStream(() => selectedImageFile.GetStream()),
                 Name = string.Empty,
                 Unit = string.Empty,
-                MessageContent = string.Empty
+                MessageContent = string.Empty,
+                Action = 1
             });
             MedicineList = new ObservableCollection<MedicineModel>(medicineList);
         }
 
         public void OnDeleteClick(MedicineModel data)
         {
+            var item = listMedicine.FirstOrDefault(x => x.Id == data.Id);
+            if(item != null)
+            {
+                item.Action = 2;
+            }
             MedicineList.Remove(data);
         }
         #endregion
@@ -237,9 +267,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
     {
         public Guid Id { get; set; }
         public ImageSource Image { get; set; }
+        public string ImageUrl { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
         public string MessageContent { get; set; }
+        public int Action { get; set; }
     }
 }
 

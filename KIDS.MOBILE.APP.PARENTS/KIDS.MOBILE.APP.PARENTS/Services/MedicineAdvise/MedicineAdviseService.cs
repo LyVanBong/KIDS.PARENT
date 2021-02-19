@@ -19,7 +19,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<List<GetPrescriptionModel>>> GetAllSentMessage(string studentId)
+        public async Task<ResponseModel<List<GetPrescriptionModel>>> GetAllMedicineAdvise(string studentId)
         {
             try
             {
@@ -36,16 +36,30 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> CreateMessage(MedicineTicketModel model)
+        public async Task<MedicineTicketModel> GetMedicineAdviseDetail(Guid id)
         {
             try
             {
-                RestClient client = new RestClient("http://192.168.1.22:45455/api/v1/Prescription/Create");
-                var request = new RestRequest(string.Empty, Method.POST);
-                request.AddJsonBody(JsonConvert.SerializeObject(model));
-                var data = await client.ExecuteAsync<ResponseModel<int>>(request);
-                //var data = await _requestProvider.PostAsync<int>("Prescription/Insert", para);
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("id", id.ToString())
+                };
+                var data = await _requestProvider.GetAsync<MedicineTicketModel>("Prescription/PrescriptionDetail", para);
                 return data?.Data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<ResponseModel<int>> CreatePrescription(MedicineTicketModel model)
+        {
+            try
+            {
+                var jsonBody = JsonConvert.SerializeObject(model);
+                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Create", jsonBody);
+                return data;
             }
             catch (Exception ex)
             {
@@ -53,21 +67,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> UpdateMessage(PrescriptionModel model)
+        public async Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model)
         {
             try
             {
-                var para = new List<RequestParameter>()
-                {
-                    new RequestParameter("ID", model.ID.ToString()),
-                    new RequestParameter("FromDate", model.FromDate.ToString()),
-                    new RequestParameter("ToDate", model.ToDate.ToString()),
-                    new RequestParameter("Date", model.Date.ToString()),
-                    new RequestParameter("Content", model.Content),
-                    new RequestParameter("StudentID", model.StudentID),
-                    new RequestParameter("ClassID", model.ClassID),
-                };
-                var data = await _requestProvider.PostAsync<int>("Prescription/Update", para);
+                var jsonBody = JsonConvert.SerializeObject(model);
+                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Update", jsonBody);
                 return data;
             }
             catch (Exception)
@@ -76,7 +81,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> DeleteMessage(PrescriptionModel model)
+        public async Task<ResponseModel<int>> DeletePrescription(PrescriptionModel model)
         {
             try
             {
