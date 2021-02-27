@@ -106,7 +106,7 @@
                             IsChecked="{Binding IsSaveAccount}"
                             Color="#5459E6" />
                         <Label
-                            FontSize="16"
+                            FontSize="14"
                             Text="{markup:Translate 00005}"
                             TextColor="Black"
                             VerticalOptions="Center">
@@ -114,19 +114,19 @@
                                 <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                    </StackLayout>
-                    <Label
-                            Grid.Row="3"
+                        <Label
                             Padding="0"
-                            FontSize="16"
+                            FontSize="14"
                             Text="Quên mật khẩu"
                             TextColor="Black"
                             FontAttributes="Italic"
-                            VerticalOptions="Center">
+                            VerticalOptions="Center"
+                            HorizontalOptions="EndAndExpand">
                             <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
                             </Label.GestureRecognizers>-->
                         </Label>
+                    </StackLayout>
                 </Grid>
             </Frame>
             <Button

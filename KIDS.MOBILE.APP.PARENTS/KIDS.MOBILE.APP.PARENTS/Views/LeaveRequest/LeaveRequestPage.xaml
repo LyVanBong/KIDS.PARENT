@@ -41,39 +41,6 @@
                    FontSize="24">
             </Label>
         </StackLayout>
-
-        <!--Watching-->
-        <!--<StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Margin="10,5,10,5"
-                     Grid.Row="1">
-            <border:SfBorder 
-                CornerRadius="24"
-                HeightRequest="30"
-                BackgroundColor="White"
-                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                BorderColor="Gray"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                WidthRequest="30">
-                <Image BackgroundColor="White"
-                       Source="home.png">
-                </Image>
-            </border:SfBorder>
-
-            <Label VerticalOptions="Center"
-                   HorizontalOptions="StartAndExpand"
-                   Margin="5,0,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang quan sat be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>-->
-
         
         <StackLayout HorizontalOptions="StartAndExpand"
                      VerticalOptions="FillAndExpand"
@@ -106,12 +73,12 @@
                                ItemsSource="{Binding InformationList}"
                                Grid.Row="3"
                                VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="CenterAndExpand"
+                               HorizontalOptions="Center"
                                SelectionBackgroundColor="Transparent">
 
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
-                    <cards:SfCardView CornerRadius="8"
+                    <cards:SfCardView CornerRadius="8" HorizontalOptions="CenterAndExpand"
                                       BackgroundColor="Transparent"
                                       BorderColor="Transparent">
                         <cards:SfCardView.Content>
@@ -207,6 +174,7 @@
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Frame CornerRadius="10"
+                               HasShadow="False"
                                IsClippedToBounds="True"
                                Margin="0,5,0,5"
                                HorizontalOptions="FillAndExpand"

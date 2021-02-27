@@ -66,6 +66,7 @@
                                IsClippedToBounds="True"
                                Margin="5"
                                Padding="0"
+                               HasShadow="False"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
                             <Image 

@@ -187,8 +187,8 @@
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        Aspect="AspectFill"
-                       Source="add.png"
-                       Margin="0,10,0,10">
+                       Source="send.png"
+                       Margin="0,10,0,20">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AddCommand}"/>
                     </Image.GestureRecognizers>

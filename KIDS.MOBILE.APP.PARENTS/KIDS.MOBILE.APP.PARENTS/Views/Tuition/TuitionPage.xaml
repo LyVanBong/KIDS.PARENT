@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="180"/>
             <RowDefinition Height="150"/>
             <RowDefinition Height="Auto"/>
@@ -40,32 +40,10 @@
                    FontSize="24">
             </Label>
         </StackLayout>
-
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Padding="5,20,5,0"
-                     Grid.Row="1"
-                     Grid.ColumnSpan="2">
-            <Image Source="home.png"
-                   HorizontalOptions="Start"
-                   VerticalOptions="StartAndExpand">
-            </Image>
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="StartAndExpand"
-                   Margin="10,0,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang xem thong tin be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
-
+        
         <!--Tuition Done-->
         <Frame HorizontalOptions="FillAndExpand"
+               HasShadow="False"
                VerticalOptions="FillAndExpand"
                Grid.Row="2"
                Grid.Column="0"
@@ -101,7 +79,8 @@
                Grid.Column="1"
                CornerRadius="10"
                IsClippedToBounds="True"
-               Margin="5,0,10,10">
+               Margin="5,0,10,10"
+               HasShadow="False">
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Orientation="Vertical">
@@ -130,6 +109,7 @@
                                CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="10"
+                               HasShadow="False"
                                Grid.Row="3"
                                Grid.ColumnSpan="2">
             <Grid HorizontalOptions="FillAndExpand"
@@ -203,7 +183,8 @@
                                VerticalOptions="FillAndExpand"
                                CornerRadius="10"
                                IsClippedToBounds="True"
-                               Margin="0,5,0,5">
+                               Margin="0,5,0,5"
+                               HasShadow="False">
                             <Grid HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="10,0,10,0">
