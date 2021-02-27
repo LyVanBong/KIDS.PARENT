@@ -66,6 +66,7 @@
 
         <!--Tuition Done-->
         <Frame HorizontalOptions="FillAndExpand"
+               HasShadow="False"
                VerticalOptions="FillAndExpand"
                Grid.Row="2"
                Grid.Column="0"
@@ -101,7 +102,8 @@
                Grid.Column="1"
                CornerRadius="10"
                IsClippedToBounds="True"
-               Margin="5,0,10,10">
+               Margin="5,0,10,10"
+               HasShadow="False">
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Orientation="Vertical">
@@ -130,6 +132,7 @@
                                CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="10"
+                               HasShadow="False"
                                Grid.Row="3"
                                Grid.ColumnSpan="2">
             <Grid HorizontalOptions="FillAndExpand"
@@ -203,7 +206,8 @@
                                VerticalOptions="FillAndExpand"
                                CornerRadius="10"
                                IsClippedToBounds="True"
-                               Margin="0,5,0,5">
+                               Margin="0,5,0,5"
+                               HasShadow="False">
                             <Grid HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="10,0,10,0">

@@ -334,7 +334,10 @@
     <BundleResource Include="Resources\icon_student_male_info.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <BundleResource Include="Resources\cameravideo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

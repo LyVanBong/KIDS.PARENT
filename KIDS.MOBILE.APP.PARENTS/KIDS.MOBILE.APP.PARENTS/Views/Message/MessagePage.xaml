@@ -109,6 +109,7 @@
                         <Frame CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="5"
+                               HasShadow="False"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
                             <template:MessageTemplate BackgroundColor="White" />

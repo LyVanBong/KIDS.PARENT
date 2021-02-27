@@ -49,14 +49,6 @@
             </Label>
         </StackLayout>
 
-        <!--<Label Text="{markupExtension:Translate 00092}"
-               TextColor="Black"
-               FontSize="16"
-               FontAttributes="Bold"
-               Grid.Row="1"
-               Margin="10,5,10,5"
-               Grid.ColumnSpan="2"/>-->
-
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"
                FontSize="16"
@@ -97,12 +89,13 @@
 
         <Editor HorizontalOptions="FillAndExpand"
                 TextColor="Black"
-                FontSize="16"
+                FontSize="14"
                 Grid.Row="7"
-                HeightRequest="150"
+                HeightRequest="180"
                 BackgroundColor="White"
                 Margin="10,5,10,5"
                 Text="{Binding MessageContent}"
+                Placeholder="Phụ huynh nhập nội dung xin nghỉ tại đây:&#x0a;Lưu ý:&#x0a;- Đơn xin nghỉ phải được gửi trước 08:00 của ngày xin nghỉ&#x0a;- Ngày xin nghỉ mới không được trùng với ngày đã xin trong đơn cũ"
                 Grid.ColumnSpan="2"/>
 
         <Button
@@ -111,7 +104,7 @@
                 Margin="10,10,10,10"
                 Command="{Binding SendCommand}"
                 Style="{StaticResource SummitButton}"
-                Text="{markupExtension:Translate 00011}"
+                Text="Gửi đơn xin nghỉ"
             Grid.ColumnSpan="2"/>
 
         <Button

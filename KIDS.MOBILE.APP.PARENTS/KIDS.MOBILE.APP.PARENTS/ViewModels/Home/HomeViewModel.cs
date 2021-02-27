@@ -122,6 +122,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                 new MenuItem{ Title = Resource._00048,Icon = ImageSource.FromFile("health.png"),NavigateTo=nameof(HealthCarePage)},
                 new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(SurveyPage)},
                 new MenuItem{ Title = Resource._00050,Icon = ImageSource.FromFile("review.png"),NavigateTo=nameof(MessagePage)},
+                new MenuItem{ Title = "Camera",Icon = ImageSource.FromFile("cameravideo.png"),NavigateTo=""},
             };
         }
 

@@ -82,7 +82,7 @@
             </Image.GestureRecognizers>
         </Image>-->
 
-        <Label Text="{markupExtension:Translate 00040}"
+        <Label Text="Soạn lời nhắn"
                TextColor="Black"
                FontSize="16"
                FontAttributes="Bold"
@@ -96,7 +96,8 @@
                 HeightRequest="150"
                 BackgroundColor="White"
                 Margin="10,5,10,5"
-                Text="{Binding MessageContent}"/>
+                Text="{Binding MessageContent}"
+                Placeholder="Phụ huynh nhập nội dung lời nhắn để gửi đến giáo viên của con..."/>
 
         <Button
                 Grid.Row="9"
@@ -104,7 +105,7 @@
                 Margin="10,10,10,10"
                 Command="{Binding SendCommand}"
                 Style="{StaticResource SummitButton}"
-                Text="{markupExtension:Translate 00011}"/>
+                Text="Gửi lời nhắn"/>
 
         <loadingView:LoadingView
                 Grid.Row="3"
