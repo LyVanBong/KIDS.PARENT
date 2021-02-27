@@ -339,6 +339,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\send.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eat.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />

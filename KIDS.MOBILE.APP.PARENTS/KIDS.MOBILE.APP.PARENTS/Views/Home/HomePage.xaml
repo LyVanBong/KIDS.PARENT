@@ -17,9 +17,11 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="260"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="220"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="240"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="220"/>
             </Grid.RowDefinitions>
             <StackLayout HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
@@ -75,7 +77,7 @@
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
                    Source="home.png"/>
-                <Label Text= "{Binding NeededTitle}"
+                <Label Text= "Album ảnh"
                    FontAttributes="Bold"
                    FontSize="16"
                    HorizontalOptions="StartAndExpand"
@@ -92,6 +94,67 @@
                 VerticalOptions="FillAndExpand"
                 Margin="0,0,0,10"
                 Grid.Row="3" 
+                FlowDirection="LeftToRight" 
+                ItemSize="200" 
+                ColumnSpacing="10"
+                Orientation="Horizontal"
+                IsScrollBarVisible="False"
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding SelectionAlbumCommand}">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                                Margin="5,0,5,0"
+                                Padding="0,0,0,5"
+                                Spacing="0">
+                            <cards:SfCardView CornerRadius="4" HasShadow="True">
+                                <cards:SfCardView.Content>
+                                    <!--  Image  -->
+                                    <Image
+                                                Aspect="AspectFill"
+                                                BackgroundColor="{DynamicResource Gray-200}"
+                                                HeightRequest="100">
+                                        <Image.Source>
+                                            <UriImageSource
+                                                        CacheValidity="14"
+                                                        CachingEnabled="true"
+                                                        Uri="{Binding Image}" />
+                                        </Image.Source>
+                                    </Image>
+
+                                </cards:SfCardView.Content>
+                            </cards:SfCardView>
+                        </StackLayout>
+                    </DataTemplate>
+                    
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+            <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     VerticalOptions="Start"
+                     Grid.Row="4">
+                <Image HorizontalOptions="Start"
+                   Margin="0,0,10,0"
+                   Source="home.png"/>
+                <Label Text= "Tin tức / Thông báo"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Blue"/>
+                <Image HorizontalOptions="End"
+                       WidthRequest="20"
+                   Margin="0,0,10,0"
+                   Source="more.png"/>
+            </StackLayout>
+
+            <syncfusion:SfListView ItemsSource="{Binding NeededItems}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="FillAndExpand"
+                Margin="0,0,0,10"
+                Grid.Row="5" 
                 FlowDirection="LeftToRight" 
                 ItemSize="200" 
                 ColumnSpacing="10"
@@ -134,7 +197,7 @@
                                                 TextColor="Black"
                                             FontAttributes="Bold"/>
 
-                                        
+
                                         <Label
                                                 Margin="5,0,0,0"
                                                 FontSize="12"
@@ -165,18 +228,18 @@
                             </cards:SfCardView>
                         </StackLayout>
                     </DataTemplate>
-                    
+
                 </syncfusion:SfListView.ItemTemplate>
             </syncfusion:SfListView>
 
             <StackLayout HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      VerticalOptions="Start"
-                     Grid.Row="4">
+                     Grid.Row="6">
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
                    Source="home.png"/>
-                <Label Text= "{Binding NeededTitle}"
+                <Label Text= "Cha mẹ cần biết"
                    FontAttributes="Bold"
                    FontSize="16"
                    HorizontalOptions="StartAndExpand"
@@ -192,7 +255,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="FillAndExpand"
                 Margin="0,0,0,10"
-                Grid.Row="5" 
+                Grid.Row="7" 
                 FlowDirection="LeftToRight" 
                 ItemSize="200" 
                 ColumnSpacing="10"
