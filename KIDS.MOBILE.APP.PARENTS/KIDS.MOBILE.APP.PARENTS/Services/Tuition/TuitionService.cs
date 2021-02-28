@@ -39,7 +39,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Tuition
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("DotThu_HocSinhID", "ef3a1009-e305-4811-a4e1-727f1924cb63"),
+                    new RequestParameter("DotThu_HocSinhID", id),
                 };
                 var data = await _requestProvider.GetAsync<List<GetListHistoryTuitionModel>>("Finance/Select/Detail", para);
                 return data;
