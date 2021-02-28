@@ -132,14 +132,15 @@
     <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tuition\TuitionFeeDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
     <Folder Include="ViewModels\News\" />
     <Folder Include="Views\News\" />
-    <Folder Include="Views\Tuition\" />
-    <Folder Include="ViewModels\Tuition\" />
     <Folder Include="ViewModels\Message\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Survey\" />

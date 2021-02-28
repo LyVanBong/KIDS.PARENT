@@ -33,13 +33,13 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Tuition
             }
         }
 
-        public async Task<ResponseModel<List<GetListHistoryTuitionModel>>> GetListHistoryTuition(string studentId)
+        public async Task<ResponseModel<List<GetListHistoryTuitionModel>>> GetListHistoryTuition(string id)
         {
             try
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("DotThu_HocSinhID", "abcc17ce-1862-4e4f-9f5b-8c0f715dbc39"),
+                    new RequestParameter("DotThu_HocSinhID", id),
                 };
                 var data = await _requestProvider.GetAsync<List<GetListHistoryTuitionModel>>("Finance/Select/Detail", para);
                 return data;
