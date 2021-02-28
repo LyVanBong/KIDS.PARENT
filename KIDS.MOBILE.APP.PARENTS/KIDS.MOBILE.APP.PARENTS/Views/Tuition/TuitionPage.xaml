@@ -16,7 +16,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="0"/>
             <RowDefinition Height="180"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
@@ -63,7 +63,7 @@
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
                        />
-                <Label Text="{Binding TotalComplete}"
+                <Label Text="{Binding TotalCompleted}"
                        FontSize="16"
                        TextColor="Blue"
                        HorizontalTextAlignment="Center"
@@ -104,7 +104,7 @@
         </Frame>
         
         <!--Current tuition-->
-        <Frame HorizontalOptions="FillAndExpand" BackgroundColor="White"
+        <!--<Frame HorizontalOptions="FillAndExpand" BackgroundColor="White"
                                VerticalOptions="FillAndExpand"
                                CornerRadius="10"
                                IsClippedToBounds="True"
@@ -160,7 +160,7 @@
                                        Grid.Row="3"
                                        Grid.ColumnSpan="1"/>
             </Grid>
-        </Frame>
+        </Frame>-->
 
         <!--Information listview-->
         <ScrollView HorizontalOptions="FillAndExpand"
@@ -175,7 +175,10 @@
                 Grid.Row="3"
                 FlowDirection="LeftToRight"
                 ItemSize="150"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                SelectedItem="{Binding SelectedTuition}"
+                TapCommand="{Binding SelectedTuitionCommand}"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -215,24 +218,13 @@
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column ="0"/>
-                                <Label Text="{Binding Reduced}"
-                                       TextColor="Red"
+                                <Label Text="{Binding Status}"
+                                       TextColor="{Binding TuitionStatusColor}"
                                        FontAttributes="Bold"
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column="1"
                                        HorizontalOptions="End"/>
-                                <Label Text="{markupExtension:Translate 00085}"
-                                       TextColor= "Blue"
-                                       FontSize="12"
-                                       Grid.Row="3"
-                                       Grid.Column="1"
-                                       HorizontalOptions="End"/>
-                                <Label Text="{markupExtension:Translate 00086}"
-                                       TextColor="Red"
-                                       FontSize="12"
-                                       Grid.Row="3"
-                                       Grid.ColumnSpan="1"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>

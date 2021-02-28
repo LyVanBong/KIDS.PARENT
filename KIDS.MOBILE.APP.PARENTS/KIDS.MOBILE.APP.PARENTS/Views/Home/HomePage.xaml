@@ -89,7 +89,7 @@
                    Source="more.png"/>
             </StackLayout>
 
-            <syncfusion:SfListView ItemsSource="{Binding NeededItems}"
+            <syncfusion:SfListView ItemsSource="{Binding ImageList}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="FillAndExpand"
                 Margin="0,0,0,10"
@@ -119,7 +119,7 @@
                                             <UriImageSource
                                                         CacheValidity="14"
                                                         CachingEnabled="true"
-                                                        Uri="{Binding Image}" />
+                                                        Uri="{Binding Uri}" />
                                         </Image.Source>
                                     </Image>
 
