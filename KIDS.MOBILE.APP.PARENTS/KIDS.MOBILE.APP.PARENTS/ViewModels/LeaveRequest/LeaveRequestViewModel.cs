@@ -85,15 +85,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 {
                         new AbsentInformationModel
                         {
-                            Title = Resource._00098,
-                            Number = information.STT.ToString(),
-                            BackgroundGradientStart = "#f59083",
-                            BackgroundGradientEnd = "#fae188"
-                        },
-                        new AbsentInformationModel
-                        {
-                            Title = Resource._00099,
-                            Number = information.CoMat.ToString(),
+                            Title = "Đi muộn",
+                            Number = information.DiMuon.ToString(),
                             BackgroundGradientStart = "#ff7272",
                             BackgroundGradientEnd = "#f650c5"
                         },

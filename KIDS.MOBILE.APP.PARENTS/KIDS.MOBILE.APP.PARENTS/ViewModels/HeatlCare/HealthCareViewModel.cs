@@ -42,32 +42,32 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#cf86ff",
-                    Name = "Biet boi",
-                    Information = "Khong biet"
+                    Name = "Chiều cao",
+                    Information = "130 cm"
                 },
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#8691ff",
-                    Name = "Biet boi",
-                    Information = "Khong biet"
+                    Name = "Cân nặng",
+                    Information = "30 kg"
                 },
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#ff9686",
-                    Name = "Biet boi",
-                    Information = "Khong biet"
+                    Name = "Bệnh về mắt",
+                    Information = "Không"
                 },
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#cf86ff",
-                    Name = "Biet boi",
-                    Information = "Khong biet"
+                    Name = "Dị ứng",
+                    Information = "Không"
                 },
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#8691ff",
-                    Name = "Biet boi",
-                    Information = "Khong biet"
+                    Name = "Bệnh về tim",
+                    Information = "Không"
                 },
             };
         }

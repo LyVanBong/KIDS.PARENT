@@ -82,7 +82,8 @@
                                 <DataTemplate>
                                     <Frame HorizontalOptions="FillAndExpand"
                                              VerticalOptions="FillAndExpand"
-                                       CornerRadius="10"
+                                            CornerRadius="10"
+                                           HasShadow="False"
                                            IsClippedToBounds="True"
                                            Padding="0"
                                            Margin="10"

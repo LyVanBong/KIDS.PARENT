@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Tuition.TuitionFeeDetailPage"
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="White"
+                     Grid.Row="0">
+            <Image Source="back.png"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   Text="{markupExtension:Translate 00047}"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="24">
+            </Label>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Margin="10,0,10,10">
+                <Frame CornerRadius="{OnPlatform Android=10, iOS=5}"
+                   IsClippedToBounds="True"
+                   HasShadow="False"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Text="{Binding Path=TuitionInformation.Title}"
+                               TextColor="Black"
+                               FontSize="18"
+                               FontAttributes="Bold"/>
+                        <BoxView HeightRequest="1"
+                                             BackgroundColor="Gray"
+                                             HorizontalOptions="FillAndExpand"/>
+                        <Label TextColor="Black"
+                               FontSize="14">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Học sinh : "/>
+                                    <Span Text="{Binding StudentName}" FontAttributes="Bold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label TextColor="Black"
+                               FontSize="14"
+                               Text="{Binding Path=TuitionInformation.Expired}">
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                <StackLayout BindableLayout.ItemsSource="{Binding InformationList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="{OnPlatform Android=20, iOS=10}"
+                                   IsClippedToBounds="True"
+                                   HasShadow="False"
+                                   BackgroundColor="White"
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="0,5,0,5">       
+                                <StackLayout>
+                                    <Label Text="{Binding TenKhoanThu}"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"/>
+                                    <BoxView HeightRequest="1"
+                                             BackgroundColor="Gray"
+                                             HorizontalOptions="FillAndExpand"/>
+                                    <Label TextColor="Black"
+                                           FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Số tiền : "/>
+                                                <Span Text="{Binding SoTien}" TextColor="Blue" FontAttributes="Bold"/>
+                                                <Span Text=" VND"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label TextColor="Black"
+                                           FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Miễn giảm : "/>
+                                                <Span Text="{Binding MienGiam}" TextColor="Red" FontAttributes="Bold"/>
+                                                <Span Text=" VND"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label TextColor="Black"
+                                           FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Số buổi : "/>
+                                                <Span Text="{Binding SoBuoi}" TextColor="Blue" FontAttributes="Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label TextColor="Black"
+                                           FontSize="14"
+                                           LineBreakMode="WordWrap">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Ghi chú : "/>
+                                                <Span Text="{Binding GhiChu}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <StackLayout WidthRequest="320">
+                    <Image Source="atmCard.png" Margin="0,0,15,0"/>
+
+                    <Grid Margin="25,-160,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="HKID ONLINE PERSONAL CARD" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="18"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                        <Label Grid.Row="1" Grid.Column="2" Text="****" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
+                        <Label Grid.Row="1" Grid.Column="3" Text="{Binding CardNumber}" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20" />
+                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Master Card" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20" />
+                        <Label Grid.Row="2" Grid.Column="3" Text="**/**" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="20"/>
+                    </Grid>
+                </StackLayout>
+                <BoxView HeightRequest="50" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</pages:PageBase>

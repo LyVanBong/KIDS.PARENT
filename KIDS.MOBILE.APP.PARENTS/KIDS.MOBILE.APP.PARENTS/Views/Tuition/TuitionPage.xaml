@@ -14,9 +14,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="180"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
@@ -40,32 +40,10 @@
                    FontSize="24">
             </Label>
         </StackLayout>
-
-        <!--Watching-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Padding="5,20,5,0"
-                     Grid.Row="1"
-                     Grid.ColumnSpan="2">
-            <Image Source="home.png"
-                   HorizontalOptions="Start"
-                   VerticalOptions="StartAndExpand">
-            </Image>
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="StartAndExpand"
-                   Margin="10,0,0,0">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Dang xem thong tin be " TextColor="Black" FontSize="16"/>
-                        <Span Text="Pepsi" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
-
+        
         <!--Tuition Done-->
         <Frame HorizontalOptions="FillAndExpand"
+               HasShadow="False"
                VerticalOptions="FillAndExpand"
                Grid.Row="2"
                Grid.Column="0"
@@ -85,7 +63,7 @@
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="CenterAndExpand"
                        />
-                <Label Text="{Binding TotalComplete}"
+                <Label Text="{Binding TotalCompleted}"
                        FontSize="16"
                        TextColor="Blue"
                        HorizontalTextAlignment="Center"
@@ -101,7 +79,8 @@
                Grid.Column="1"
                CornerRadius="10"
                IsClippedToBounds="True"
-               Margin="5,0,10,10">
+               Margin="5,0,10,10"
+               HasShadow="False">
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Orientation="Vertical">
@@ -125,11 +104,12 @@
         </Frame>
         
         <!--Current tuition-->
-        <Frame HorizontalOptions="FillAndExpand" BackgroundColor="White"
+        <!--<Frame HorizontalOptions="FillAndExpand" BackgroundColor="White"
                                VerticalOptions="FillAndExpand"
                                CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="10"
+                               HasShadow="False"
                                Grid.Row="3"
                                Grid.ColumnSpan="2">
             <Grid HorizontalOptions="FillAndExpand"
@@ -180,7 +160,7 @@
                                        Grid.Row="3"
                                        Grid.ColumnSpan="1"/>
             </Grid>
-        </Frame>
+        </Frame>-->
 
         <!--Information listview-->
         <ScrollView HorizontalOptions="FillAndExpand"
@@ -195,7 +175,10 @@
                 Grid.Row="3"
                 FlowDirection="LeftToRight"
                 ItemSize="150"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                SelectedItem="{Binding SelectedTuition}"
+                TapCommand="{Binding SelectedTuitionCommand}"
+                SelectionBackgroundColor="Transparent">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -203,7 +186,8 @@
                                VerticalOptions="FillAndExpand"
                                CornerRadius="10"
                                IsClippedToBounds="True"
-                               Margin="0,5,0,5">
+                               Margin="0,5,0,5"
+                               HasShadow="False">
                             <Grid HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="10,0,10,0">
@@ -234,24 +218,13 @@
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column ="0"/>
-                                <Label Text="{Binding Reduced}"
-                                       TextColor="Red"
+                                <Label Text="{Binding Status}"
+                                       TextColor="{Binding TuitionStatusColor}"
                                        FontAttributes="Bold"
                                        FontSize="16"
                                        Grid.Row="2"
                                        Grid.Column="1"
                                        HorizontalOptions="End"/>
-                                <Label Text="{markupExtension:Translate 00085}"
-                                       TextColor= "Blue"
-                                       FontSize="12"
-                                       Grid.Row="3"
-                                       Grid.Column="1"
-                                       HorizontalOptions="End"/>
-                                <Label Text="{markupExtension:Translate 00086}"
-                                       TextColor="Red"
-                                       FontSize="12"
-                                       Grid.Row="3"
-                                       Grid.ColumnSpan="1"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>

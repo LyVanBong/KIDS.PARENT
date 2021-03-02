@@ -105,6 +105,9 @@
     <EmbeddedResource Update="Views\Account\StudentProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Activity\SleepActivityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -129,14 +132,15 @@
     <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tuition\TuitionFeeDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controls\Dialogs\" />
     <Folder Include="ViewModels\News\" />
     <Folder Include="Views\News\" />
-    <Folder Include="Views\Tuition\" />
-    <Folder Include="ViewModels\Tuition\" />
     <Folder Include="ViewModels\Message\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Survey\" />
@@ -144,8 +148,6 @@
     <Folder Include="ViewModels\HeatlCare\" />
     <Folder Include="Views\HealthCare\" />
     <Folder Include="Models\Account\" />
-    <Folder Include="ViewModels\Activity\" />
-    <Folder Include="Views\Activity\" />
     <Folder Include="ViewModels\MedicineAdvise\" />
     <Folder Include="Views\MedicineAdvise\" />
     <Folder Include="Services\MedicineAdvise\" />
