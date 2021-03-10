@@ -34,6 +34,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         }
         public ICommand LoginCommand { get; private set; }
         public ICommand SaveAccountCommand { get; private set; }
+        public ICommand ForgotPasswordCommand { get; private set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsSaveAccount
@@ -51,6 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
             _databaseService = databaseService;
             _navigationService = navigationService;
             LoginCommand = new DelegateCommand(Login);
+            ForgotPasswordCommand = new DelegateCommand(OnForgotPasswordClicked);
 #if DEBUG
             UserName = "0984103587";
             Password = "123456";
@@ -174,6 +176,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
         public override void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
+        }
+
+        private async void OnForgotPasswordClicked()
+        {
+            await _pageDialogService.DisplayAlertAsync("Quên mật khẩu ?", "Để lấy lại mật khẩu, vui lòng liên hệ với nhà trường hoặc admin HappyKids", "OK");
         }
     }
 }
