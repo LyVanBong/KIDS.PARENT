@@ -66,7 +66,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         }
         private IAlbumService _albumService;
         public DelegateCommand<object> SelectionAlbumCommand { get; }
+        public DelegateCommand NewsCommand { get; }
+        public DelegateCommand AlbumCommand { get; }
         #endregion
+
         public HomeViewModel(INavigationService navigationService, INewService newService, IAlbumService albumService) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -74,6 +77,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             _albumService = albumService;
             ItemTappedCommand = new DelegateCommand<MenuItem>(OnMenuClicked);
             SelectionAlbumCommand = new DelegateCommand<object>(OnSelectionAlbumClicked);
+            AlbumCommand = new DelegateCommand(OnAlbumClicked);
+            NewsCommand = new DelegateCommand(OnNewClicked);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -179,6 +184,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             var param = new NavigationParameters();
             param.Add("album", item);
             await _navigationService.NavigateAsync(nameof(AlbumDetailpage), param);
+        }
+
+        private async void OnNewClicked()
+        {
+            await _navigationService.NavigateAsync(nameof(NewsPage));
+        }
+
+        private async void OnAlbumClicked()
+        {
+            await _navigationService.NavigateAsync(nameof(AlbumPage));
         }
         #endregion
     }

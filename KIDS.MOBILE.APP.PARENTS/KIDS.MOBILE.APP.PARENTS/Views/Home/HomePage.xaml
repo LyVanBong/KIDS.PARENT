@@ -86,7 +86,11 @@
                 <Image HorizontalOptions="End"
                        WidthRequest="20"
                    Margin="0,0,10,0"
-                   Source="more.png"/>
+                   Source="more.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AlbumCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
 
             <syncfusion:SfListView ItemsSource="{Binding ImageList}"
@@ -147,7 +151,11 @@
                 <Image HorizontalOptions="End"
                        WidthRequest="20"
                    Margin="0,0,10,0"
-                   Source="more.png"/>
+                   Source="more.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NewsCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
 
             <syncfusion:SfListView ItemsSource="{Binding NeededItems}"
@@ -248,7 +256,11 @@
                 <Image HorizontalOptions="End"
                        WidthRequest="20"
                    Margin="0,0,10,0"
-                   Source="more.png"/>
+                   Source="more.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NewsCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
 
             <syncfusion:SfListView ItemsSource="{Binding NeededItems}"

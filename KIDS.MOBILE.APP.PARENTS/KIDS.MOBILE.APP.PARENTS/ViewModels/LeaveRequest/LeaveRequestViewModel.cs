@@ -83,27 +83,27 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 var information = data.Data.First();
                 var info = new List<AbsentInformationModel>
                 {
-                        new AbsentInformationModel
-                        {
-                            Title = "Đi muộn",
-                            Number = information.DiMuon.ToString(),
-                            BackgroundGradientStart = "#ff7272",
-                            BackgroundGradientEnd = "#f650c5"
-                        },
-                        new AbsentInformationModel
-                        {
-                            Title = Resource._00100,
-                            Number = information.NghiCoPhep.ToString(),
-                            BackgroundGradientStart = "#5e7cea",
-                            BackgroundGradientEnd = "#1dcce3"
-                        },
-                        new AbsentInformationModel
-                        {
-                            Title = Resource._00101,
-                            Number = information.NghiKhongPhep.ToString(),
-                            BackgroundGradientStart = "#255ea6",
-                            BackgroundGradientEnd = "#b350d1"
-                        }
+                    new AbsentInformationModel
+                    {
+                        Title = Resource._00100,
+                        Number = information.NghiCoPhep.ToString(),
+                        BackgroundGradientStart = "#5e7cea",
+                        BackgroundGradientEnd = "#1dcce3"
+                    },
+                    new AbsentInformationModel
+                    {
+                        Title = Resource._00101,
+                        Number = information.NghiKhongPhep.ToString(),
+                        BackgroundGradientStart = "#255ea6",
+                        BackgroundGradientEnd = "#b350d1"
+                    },
+                    new AbsentInformationModel
+                    {
+                        Title = "Đi muộn",
+                        Number = information.DiMuon.ToString(),
+                        BackgroundGradientStart = "#ff7272",
+                        BackgroundGradientEnd = "#f650c5"
+                    }
                 };
                 InformationList = new ObservableCollection<AbsentInformationModel>(info);
             }
