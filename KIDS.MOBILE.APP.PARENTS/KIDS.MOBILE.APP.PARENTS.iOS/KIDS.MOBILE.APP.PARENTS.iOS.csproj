@@ -121,6 +121,9 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\remove.png" />
     <Compile Include="Controls\XEntryRenderer.cs" />
+    <BundleResource Include="Resources\ic_calendar.png" />
+    <BundleResource Include="Resources\ic_height.png" />
+    <BundleResource Include="Resources\ic_weight.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">

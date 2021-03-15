@@ -13,8 +13,9 @@
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -67,13 +68,106 @@
                    Text="Them chi so suc khoe va can nang cho be">
             </Label>
         </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="#f0eded"
+                     Grid.Row="3">
+            <Grid HorizontalOptions="FillAndExpand"
+                  ColumnSpacing="10"
+                  Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <border:SfBorder
+                    Grid.Column="0"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                    <Image Source="ic_weight.png"/>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="Cân nặng"
+                           TextColor="Black"
+                           FontSize="14">
+                    </Label>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="72 Kg"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                    </Label>
+                </StackLayout>
+                </border:SfBorder>
+                <border:SfBorder
+                    Grid.Column="1"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                    <Image Source="ic_height.png"/>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="Chiều cao"
+                           TextColor="Black"
+                           FontSize="14">
+                    </Label>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="169 Cm"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                    </Label>
+                </StackLayout>
+                </border:SfBorder>
+                <border:SfBorder
+                    Grid.Column="2"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                    <Image Source="ic_calendar.png"/>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="Tháng"
+                           TextColor="Black"
+                           FontSize="14">
+                    </Label>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           Text="3"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                    </Label>
+                </StackLayout>
+                </border:SfBorder>
+                
+            </Grid>
+
+        </StackLayout>
+
 
         <!--Blood Group-->
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Vertical"
                      Margin="10,0,10,0"
-                     Grid.Row="3">
+                     Grid.Row="4">
             <Label Text="Nhom mau :"
                    FontSize="16"
                    TextColor="Black"/>
@@ -89,7 +183,7 @@
         <syncfusion:SfListView SelectionMode="None" 
                                AutoFitMode="Height" 
                                ItemsSource="{Binding HealthList}"
-                               Grid.Row="4"
+                               Grid.Row="5"
                                VerticalOptions="CenterAndExpand"
                                HorizontalOptions="CenterAndExpand"
                                Margin="10,0,10,0">
