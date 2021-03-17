@@ -165,7 +165,8 @@
                 ColumnSpacing="10"
                 Orientation="Horizontal"
                 IsScrollBarVisible="False"
-                SelectionBackgroundColor="Transparent">
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding NewsDetailCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
