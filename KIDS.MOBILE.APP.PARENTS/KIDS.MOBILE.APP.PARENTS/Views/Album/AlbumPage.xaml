@@ -7,7 +7,8 @@
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
 
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
@@ -86,9 +87,11 @@
                                                     </Grid.RowDefinitions>
 
                                                     <!--  Album Image  -->
-                                                    <Image
+                                                    <ffimage:CachedImage
                                                         Grid.Row="0"
                                                         Aspect="AspectFill"
+                                                        Source="{Binding Source}"
+                                                        DownsampleToViewSize="True"
                                                         BackgroundColor="{DynamicResource Gray-200}"
                                                         HeightRequest="{OnIdiom Phone=150,
                                                                                 Tablet=240,
@@ -96,13 +99,7 @@
                                                         WidthRequest="{OnIdiom Phone=160,
                                                                                 Tablet=224,
                                                                                 Desktop=200}">
-                                                        <Image.Source>
-                                                            <UriImageSource
-                                                                CacheValidity="14"
-                                                                CachingEnabled="true"
-                                                                Uri="{Binding Uri}" />
-                                                        </Image.Source>
-                                                    </Image>
+                                                    </ffimage:CachedImage>
 
                                                     <!--  Album Name  -->
                                                     <Label

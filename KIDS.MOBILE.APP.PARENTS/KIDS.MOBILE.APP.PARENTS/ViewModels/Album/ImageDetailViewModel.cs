@@ -8,11 +8,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
     public class ImageDetailViewModel : BaseViewModel
     {
         #region Properties
-        private string _Uri;
-        public string Uri
+        private ImageSource _Source;
+        public ImageSource Source
         {
-            get => _Uri;
-            set => SetProperty(ref _Uri, value);
+            get => _Source;
+            set => SetProperty(ref _Source, value);
         }
         private AlbumDetailModel selectionImage;
         #endregion
@@ -30,7 +30,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
                 base.Initialize(parameters);
                 IsLoading = true;
                 selectionImage = parameters.GetValue<AlbumDetailModel>("image");
-                Uri = selectionImage?.Uri;
+                Source = selectionImage?.Source;
             }
             catch (Exception ex)
             {

@@ -20,6 +20,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Configurations
         /// </summary>
         internal static string UriBaseWebForm = "http://school.hkids.edu.vn";
         /// <summary>
+        /// Uri new web form
+        /// </summary>
+        internal static string UriNewsWebForm = "http://school.hkids.edu.vn/Students/NewsDetails_app.aspx?NewsID=";
+        /// <summary>
         /// Kiểm tra người dùng có lưu tài khoản hay không
         /// </summary>
         internal static string SaveAccount = "SaveAccount";
