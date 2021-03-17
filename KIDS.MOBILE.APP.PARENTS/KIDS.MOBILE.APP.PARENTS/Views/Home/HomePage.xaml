@@ -6,6 +6,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BackgroundColor="White">
     <ScrollView VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
@@ -115,17 +116,13 @@
                             <cards:SfCardView CornerRadius="4" HasShadow="True">
                                 <cards:SfCardView.Content>
                                     <!--  Image  -->
-                                    <Image
+                                    <ffimage:CachedImage
                                                 Aspect="AspectFill"
                                                 BackgroundColor="{DynamicResource Gray-200}"
-                                                HeightRequest="100">
-                                        <Image.Source>
-                                            <UriImageSource
-                                                        CacheValidity="14"
-                                                        CachingEnabled="true"
-                                                        Uri="{Binding Uri}" />
-                                        </Image.Source>
-                                    </Image>
+                                                HeightRequest="100"
+                                                Source="{Binding Source}"
+                                                DownsampleToViewSize="True">
+                                    </ffimage:CachedImage>
 
                                 </cards:SfCardView.Content>
                             </cards:SfCardView>

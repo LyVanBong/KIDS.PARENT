@@ -71,7 +71,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Album
                     {
                         Id = item.AlbumID,
                         Name = item.Description,
-                        Uri = $"{AppConstants.UriBaseWebForm}{item.Thumbnail}"
+                        Source = new Uri($"{AppConstants.UriBaseWebForm}{item.Thumbnail}")
                     });
                 }
             }

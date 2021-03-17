@@ -5,15 +5,21 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.LoadingView;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
-             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
-
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:NotBooleanConverter x:Key="boolReserve"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
@@ -47,43 +53,76 @@
                     VerticalOptions="FillAndExpand"
                     Grid.Row="3"
                     Margin="10">
-            <syncfusion:SfListView
-                ItemsSource="{Binding ImageList}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Margin="10"
-                FlowDirection="LeftToRight"
-                AutoFitMode="DynamicHeight"
-                Orientation="Vertical"
-                SelectionBackgroundColor="Transparent"
-                TapCommand="{Binding SelectionCommand}">
-                <syncfusion:SfListView.LayoutManager>
-                    <syncfusion:GridLayout SpanCount="2"/>
-                </syncfusion:SfListView.LayoutManager>
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame CornerRadius="10"
+            <Grid>
+                <syncfusion:SfListView IsVisible="{Binding IsImageLoading, Converter={converter:NotBooleanConverter}}"
+                    ItemsSource="{Binding ImageList}"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="10"
+                    FlowDirection="LeftToRight"
+                    AutoFitMode="DynamicHeight"
+                    Orientation="Vertical" 
+                    SelectionBackgroundColor="Transparent"
+                    TapCommand="{Binding SelectionCommand}">
+                    <syncfusion:SfListView.LayoutManager>
+                        <syncfusion:GridLayout SpanCount="2"/>
+                    </syncfusion:SfListView.LayoutManager>
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="5"
                                Padding="0"
-                               HasShadow="False"
+                               HasShadow="False" 
+                               HeightRequest="200"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                            <Image 
-                                   HorizontalOptions="FillAndExpand"
-                                   Aspect="AspectFill"
-                                   Margin="0">
-                                <Image.Source>
-                                    <UriImageSource
-                                        CacheValidity="14"
-                                        CachingEnabled="true"
-                                        Uri="{Binding Uri}" />
-                                </Image.Source>
-                            </Image>
-                        </Frame>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
+                                <ffimage:CachedImage IsVisible="{Binding IsImageLoading, Converter={converter:NotBooleanConverter}}"
+                                               HorizontalOptions="FillAndExpand"
+                                               Aspect="AspectFill"
+                                               Margin="0" 
+                                               DownsampleToViewSize="True"
+                                               Source="{Binding Source}">
+                                </ffimage:CachedImage>
+                            </Frame>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                <syncfusion:SfListView IsVisible="{Binding IsImageLoading}"
+                    ItemsSource="{Binding LoadingList}"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="10"
+                    FlowDirection="LeftToRight"
+                    AutoFitMode="DynamicHeight"
+                    Orientation="Vertical" 
+                    SelectionBackgroundColor="Transparent"
+                    SelectionMode="None">
+                    <syncfusion:SfListView.LayoutManager>
+                        <syncfusion:GridLayout SpanCount="2"/>
+                    </syncfusion:SfListView.LayoutManager>
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10"
+                               IsClippedToBounds="True"
+                               Margin="5"
+                               Padding="0"
+                               HasShadow="False" 
+                               HeightRequest="200"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand">
+                                <ffimage:CachedImage
+                                               HorizontalOptions="FillAndExpand"
+                                               Aspect="AspectFill"
+                                               Margin="0" 
+                                               DownsampleToViewSize="True"
+                                               Source="{Binding Source}">
+                                </ffimage:CachedImage>
+                            </Frame>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </Grid>
         </ScrollView>
     </Grid>
 </pages:PageBase>

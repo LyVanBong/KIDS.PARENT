@@ -118,7 +118,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                                 medicineList.Add(new MedicineModel
                                 {
                                     Id = item.Id ?? Guid.Empty,
-                                    Image = ImageSource.FromUri(new Uri($"{AppConstants.UriBaseWebForm}{item.Picture}")),
+                                    Image = new Uri($"{AppConstants.UriBaseWebForm}{item.Picture}"),
                                     MessageContent = item.Note,
                                     Unit = item.Unit,
                                     Name = item.Name,

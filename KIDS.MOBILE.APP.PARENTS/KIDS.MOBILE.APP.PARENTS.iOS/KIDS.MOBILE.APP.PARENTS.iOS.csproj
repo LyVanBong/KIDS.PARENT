@@ -345,6 +345,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\atmCard.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\loading.gif" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />
