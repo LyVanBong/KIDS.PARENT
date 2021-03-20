@@ -84,5 +84,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Controls.Style
         {
             return GridLinesVisibility.Both;
         }
+        
     }
 }

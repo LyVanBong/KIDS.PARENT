@@ -33,7 +33,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             style.Setters.Add(new Setter()
             {
                 Property = GridCell.ForegroundProperty,
-                Value = Color.Black
+                Value = Color.Black,
             });
 
             menuData.Columns[0].CellStyle = style;

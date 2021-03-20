@@ -38,6 +38,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Droid
                     bitMap.Compress(Bitmap.CompressFormat.Png, 100, os);
                 }
                 return "Success";
+
             }
             catch (Exception ex)
             {

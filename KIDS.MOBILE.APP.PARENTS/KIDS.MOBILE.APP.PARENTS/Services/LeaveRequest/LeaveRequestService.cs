@@ -60,9 +60,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("FromDate", model.FromDate.ToShortDateString()),
-                    new RequestParameter("ToDate", model.ToDate.ToShortDateString()),
-                    new RequestParameter("Date", model.Date.ToShortDateString()),
+                    new RequestParameter("FromDate", model.FromDate.ToString("yyyy/MM/dd hh:mm")),
+                    new RequestParameter("ToDate", model.ToDate.ToString("yyyy/MM/dd hh:mm")),
+                    new RequestParameter("Date", model.Date.ToString("yyyy/MM/dd hh:mm")),
                     new RequestParameter("Content", model.Content),
                     new RequestParameter("StudentID", model.StudentID),
                     new RequestParameter("ClassID", model.ClassID)
@@ -82,9 +82,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("FromDate", model.FromDate.ToShortDateString()),
-                    new RequestParameter("ToDate", model.ToDate.ToShortDateString()),
-                    new RequestParameter("Date", model.Date.ToShortDateString()),
+                    new RequestParameter("FromDate", model.FromDate.ToString("yyyy/MM/dd hh:mm")),
+                    new RequestParameter("ToDate", model.ToDate.ToString("yyyy/MM/dd hh:mm")),
+                    new RequestParameter("Date", model.Date.ToString("yyyy/MM/dd hh:mm")),
                     new RequestParameter("Content", model.Content),
                     new RequestParameter("ID", model.ID.ToString())
                 };
@@ -120,8 +120,8 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.LeaveRequest
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("FromDate", fromDate.ToShortDateString()),
-                    new RequestParameter("ToDate", toDate.ToShortDateString()),
+                    new RequestParameter("FromDate", fromDate.ToString("yyyy/MM/dd hh:mm")),
+                    new RequestParameter("ToDate", toDate.ToString("yyyy/MM/dd hh:mm")),
                     new RequestParameter("ClassID", classID),
                     new RequestParameter("StudentID", studentID)
                 };

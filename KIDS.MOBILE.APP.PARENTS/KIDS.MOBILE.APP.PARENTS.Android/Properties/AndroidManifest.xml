@@ -9,16 +9,16 @@
 			</intent-filter>
 		</receiver>
 	</application>
-  <queries>
-    <intent>
-      <action android:name="android.intent.action.VIEW" />
-      <data android:scheme="http"/>
-    </intent>
-    <intent>
-      <action android:name="android.intent.action.VIEW" />
-      <data android:scheme="https"/>
-    </intent>
-  </queries>
+	<queries>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="http" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="https" />
+		</intent>
+	</queries>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<permission android:name="com.bsoftgroup.hk.parent.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="com.bsoftgroup.hk.parent.permission.C2D_MESSAGE" />

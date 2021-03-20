@@ -145,7 +145,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                         Content = MessageContent
                     };
                     var result = await _leaveRequestService.CreateLeaveRequest(model);
-                    if (result.Data == 1)
+                    if (result?.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                         await _navigationService.GoBackAsync();
@@ -166,7 +166,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                         ID = CurrentMessage.Id
                     };
                     var result = await _leaveRequestService.UpdateLeaveRequest(model);
-                    if (result.Data == 1)
+                    if (result?.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                         await _navigationService.GoBackAsync();
@@ -186,7 +186,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                 ID = CurrentMessage.Id
             };
             var result = await _leaveRequestService.DeleteLeaveRequest(model);
-            if (result.Data == 1)
+            if (result?.Data == 1)
             {
                 await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                 await _navigationService.GoBackAsync();
