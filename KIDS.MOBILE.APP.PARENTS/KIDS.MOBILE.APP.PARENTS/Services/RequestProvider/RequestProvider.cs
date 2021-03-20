@@ -70,6 +70,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
                 }
                 _request.Timeout = 10000;
                 var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
+                var test = JsonConvert.SerializeObject(_request);
                 var data = response.StatusCode == HttpStatusCode.OK
                     ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
                     : default;

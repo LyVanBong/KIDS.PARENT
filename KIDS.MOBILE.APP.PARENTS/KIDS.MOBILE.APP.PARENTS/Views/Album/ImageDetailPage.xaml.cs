@@ -15,10 +15,24 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Album
 
         private async void Save_Tapped(object sender, EventArgs e)
         {
-            var imageService = DependencyService.Get<IImageService>();
-            await imageService.CheckPermission();
-            var result = imageService.SaveToGallery(picture);
-            await DisplayAlert(result == "Success" ? "Success" : "Error", result, "Ok");
+            try
+            {
+                var imageService = DependencyService.Get<IImageService>();
+                try
+                {
+                    await imageService.CheckPermission();
+                }
+                catch (Exception ex)
+                {
+
+                }
+                var result = imageService.SaveToGallery(picture);
+                await DisplayAlert(result == "Success" ? "Success" : "Error", result, "Ok");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

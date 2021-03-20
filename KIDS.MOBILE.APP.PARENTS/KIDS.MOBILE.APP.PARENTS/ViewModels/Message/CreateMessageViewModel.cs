@@ -114,7 +114,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                         Image = ImageSourceToBase64(ChooseImage)
                     };
                     var result = await _messageService.CreateMessage(model);
-                    if (result.Data == 1)
+                    if (result?.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                         await _navigationService.GoBackAsync();
@@ -136,7 +136,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                         Image = ImageSourceToBase64(ChooseImage)
                     };
                     var result = await _messageService.UpdateMessage(model);
-                    if (result.Data == 1)
+                    if (result?.Data == 1)
                     {
                         await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                         await _navigationService.GoBackAsync();

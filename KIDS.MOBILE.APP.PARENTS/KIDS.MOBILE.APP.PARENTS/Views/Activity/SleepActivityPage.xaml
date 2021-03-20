@@ -242,7 +242,7 @@
                 <!--Menu for today-->
                 <dataGrid:SfDataGrid HorizontalOptions="FillAndExpand"
                                      ItemsSource="{Binding MenuList}"
-                                     BackgroundColor="White"
+                                     BackgroundColor="Transparent"
                                      AutoGenerateColumns="False"
                                      AllowEditing="False"
                                      Margin="10,0,10,10"
@@ -250,7 +250,7 @@
                                      x:Name="menuData"
                                      Grid.Row="7">
                     <dataGrid:SfDataGrid.Columns>
-                        <dataGrid:GridTextColumn Width="60"
+                        <dataGrid:GridTextColumn Width="100" LoadUIView="True"
                                                  HeaderFontAttribute="Bold"
                                                  HeaderCellTextSize="18"
                                                  MappingName="Time" 

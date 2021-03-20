@@ -108,9 +108,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                         Guid id = (Guid?)parameters["Id"] ?? Guid.Empty;
                         medicineDetail = await _prescriptionService.GetMedicineAdviseDetail(id);
                         MessageContent = medicineDetail?.Content;
-                        SelectedDate = medicineDetail?.Date ?? DateTime.Now;
-                        SelectedFromDate = medicineDetail?.FromDate ?? DateTime.Now;
-                        SelectedToDate = medicineDetail?.ToDate ?? DateTime.Now;
+                        SelectedDate = medicineDetail?.Date != null ? DateTime.Parse(medicineDetail.Date) : DateTime.Now;
+                        SelectedFromDate = medicineDetail?.FromDate != null ? DateTime.Parse(medicineDetail.FromDate) : DateTime.Now;
+                        SelectedToDate = medicineDetail?.ToDate != null ? DateTime.Parse(medicineDetail.ToDate) : DateTime.Now;
                         if (medicineDetail.MedicineList?.Any() == true)
                         {
                             foreach (var item in medicineDetail.MedicineList)
@@ -167,9 +167,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     ClassID = Guid.Parse(AppConstants.User.ClassID),
                     Content = MessageContent,
                     StudentID = Guid.Parse(AppConstants.User.StudentID),
-                    Date = DateTime.Now,
-                    FromDate = SelectedFromDate,
-                    ToDate = SelectedToDate,
+                    Date = DateTime.Now.ToString("yyyy/MM/dd"),
+                    FromDate = SelectedFromDate.ToString("yyyy/MM/dd"),
+                    ToDate = SelectedToDate.ToString("yyyy/MM/dd"),
                     MedicineList = detailList,
                     Id = Guid.NewGuid()
                 };
@@ -186,8 +186,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             }
             else
             {
-                medicineDetail.FromDate = SelectedFromDate;
-                medicineDetail.ToDate = SelectedToDate;
+                medicineDetail.FromDate = SelectedFromDate.ToString("yyyy/MM/dd");
+                medicineDetail.ToDate = SelectedToDate.ToString("yyyy/MM/dd");
                 medicineDetail.Content = MessageContent;
                 medicineDetail.MedicineList = medicineDetail.MedicineList ?? new List<MedicineDetailTicketModel>();
                 if (MedicineList?.Any() == true)
@@ -206,7 +206,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     }
                 }
                 var result = await _prescriptionService.UpdatePrescription(medicineDetail);
-                if (result.Data == 1)
+                if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                     await _navigationService.GoBackAsync();

@@ -46,7 +46,8 @@
                 FlowItemsSource="{Binding MenuItems}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
-                Margin="0,0,0,10" 
+                Margin="0,0,0,10"
+                BackgroundColor="Transparent"
                 Grid.Row="1">
 
                 <flv:FlowListView.FlowColumnTemplate>
@@ -139,7 +140,7 @@
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
                    Source="ic_news.png"/>
-                <Label Text= "Tin tức / Thông báo"
+                <Label Text= "Tin tức &amp; Sự kiện"
                    FontAttributes="Bold"
                    FontSize="16"
                    HorizontalOptions="StartAndExpand"
