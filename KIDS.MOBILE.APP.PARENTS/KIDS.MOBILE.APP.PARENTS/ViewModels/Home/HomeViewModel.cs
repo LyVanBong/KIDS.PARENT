@@ -152,11 +152,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         {
             return new List<NeededItem>
             {
-                new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
-                new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
-                new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
-                new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
-                new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
+                //new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
+                //new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
+                //new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
+                //new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
+                //new NeededItem{Title="Phuong phap cung cap sat cho tr bang cu den", Content="Tr duoi 6 thang tuoi se duoc cung cap day du luong sat",Like=265,Comment="1 Binh luan"},
             };
         }
 

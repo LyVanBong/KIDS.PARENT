@@ -58,6 +58,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             try
             {
                 var jsonBody = JsonConvert.SerializeObject(model);
+                Console.WriteLine("Test : " + jsonBody);
                 var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Create", jsonBody);
                 return data;
             }

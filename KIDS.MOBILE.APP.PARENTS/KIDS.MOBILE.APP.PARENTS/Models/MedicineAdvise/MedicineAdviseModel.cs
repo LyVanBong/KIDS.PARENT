@@ -39,9 +39,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.MedicineAdvise
     public class MedicineTicketModel
     {
         public Guid? Id { get; set; }
-        public DateTime? FromDate { get; set; }
-        public DateTime? ToDate { get; set; }
-        public DateTime? Date { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string Date { get; set; }
         public string Content { get; set; }
         public Guid? StudentID { get; set; }
         public Guid? ClassID { get; set; }

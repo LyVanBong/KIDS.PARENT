@@ -95,7 +95,7 @@
                                 x:Name="SaveAccount"
                                 IsChecked="{Binding IsSaveAccount}"
                                 Color="#5459E6" />
-                        <Label
+                        <Label HorizontalOptions="Start"
                             FontSize="12"
                             VerticalOptions="Center"
                             Text="{markup:Translate 00005}"
@@ -111,7 +111,7 @@
                             VerticalOptions="Center"
                             Text="Quên mật khẩu?"
                             TextColor="#e01100"
-                            HorizontalOptions="FillAndExpand"
+                            HorizontalOptions="EndAndExpand"
                             FontAttributes="Italic">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />

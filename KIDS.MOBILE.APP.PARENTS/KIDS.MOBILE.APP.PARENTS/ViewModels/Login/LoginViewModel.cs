@@ -88,6 +88,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                         {
                             await CheckSaveAccount(data.Data);
                             var idDevice = Xamarin.Essentials.Preferences.Get(AppConstants.PlayerId, null);
+                            Preferences.Set("UserName", UserName);
                             if (idDevice != null)
                             {
                                 var userSend = data.Data;
@@ -170,6 +171,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     UserName = user.NickName;
                     Password = user.Password;
                     Login();
+                }
+                else
+                {
+                    UserName = Preferences.Get("UserName", string.Empty);
                 }
             }
         }
