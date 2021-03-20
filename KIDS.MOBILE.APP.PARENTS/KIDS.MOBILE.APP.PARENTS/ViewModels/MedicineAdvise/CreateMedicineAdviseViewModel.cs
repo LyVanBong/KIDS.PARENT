@@ -206,7 +206,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     }
                 }
                 var result = await _prescriptionService.UpdatePrescription(medicineDetail);
-                if (result.Data == 1)
+                if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
                     await _navigationService.GoBackAsync();

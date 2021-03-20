@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
@@ -156,7 +157,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         #region Private methods
         private async Task GetSleepActivity()
         {
-            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString());
+            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString("yyyy/MM/dd hh:mm"));
             if(sleepActivity?.Data?.Any() == true)
             {
                 var sleepItem = sleepActivity.Data?.First();
@@ -166,7 +167,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         }
         private async Task GetPooActivity()
         {
-            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString());
+            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString("yyyy/MM/dd hh:mm"));
             if (pooActivity?.Data?.Any() == true)
             {
                 var pooItem = pooActivity.Data?.First();
@@ -175,7 +176,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         }
         private async Task GetActivityList()
         {
-            var date = SelectedDate.ToString();
+            var date = SelectedDate.ToString("yyyy/MM/dd hh:mm");
             var listMorningActivity = await _activityService.GetMorningActivity(studentId, classId, date);
             var listAfternoonActivity = await _activityService.GetAfternoonActivity(studentId, classId, date);
 
@@ -203,7 +204,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
 
         private async Task GetMenuList()
         {
-            var date = SelectedDate.ToString();
+            var date = SelectedDate.ToString("yyyy/MM/dd hh:mm");
             var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date);
             EatingComment = listMenu?.Data?.FirstOrDefault()?.MealComment;
             HasAnyActivity = HasAnyActivity ? HasAnyActivity : listMenu?.Data?.Any() == true;
@@ -237,12 +238,28 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public bool IsLast { get; set; } = false;
     }
 
-    public class MenuToDay
+    public class MenuToDay : INotifyPropertyChanged
     {
         public Guid? Id { get; set; }
-        public string Time { get; set; }
+
+        private string _Time;
+        public string Time
+        {
+            get => _Time;
+            set {
+                _Time = value;
+                RaisePropertyChanged(nameof(Time));
+            }
+        }
         public string Content { get; set; }
         public string Comment { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
 

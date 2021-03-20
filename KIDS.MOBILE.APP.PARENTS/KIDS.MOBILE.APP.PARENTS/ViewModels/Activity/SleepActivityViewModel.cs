@@ -19,7 +19,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public ObservableCollection<MenuToDay> MenuList
         {
             get => menuList;
-            set => SetProperty(ref menuList, value);
+            set {
+                menuList = value;
+                RaisePropertyChanged(nameof(MenuList));
+            }
         }
         private DateTime selectedDate;
         public DateTime SelectedDate

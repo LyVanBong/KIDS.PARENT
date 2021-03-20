@@ -61,7 +61,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
                     new RequestParameter("TeacherID", model.TeacherID),
                     new RequestParameter("Parent", model.Parent),
                     new RequestParameter("Content", model.Content),
-                    new RequestParameter("DateCreate", model.DateCreate.ToString()),
+                    new RequestParameter("DateCreate", model.DateCreate.ToString("yyyy/MM/dd hh:mm")),
                     new RequestParameter("StudentID", model.StudentID),
                     new RequestParameter("Type", model.Type.ToString()),
                 };
@@ -82,7 +82,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
                 {
                     new RequestParameter("CommunicationID", model.CommunicationID),
                     new RequestParameter("Content", model.Content),
-                    new RequestParameter("DateCreate", model.DateCreate.ToString()),
+                    new RequestParameter("DateCreate", model.DateCreate.ToString("DateCreate")),
                     new RequestParameter("StudentID", model.StudentID)
                 };
                 var data = await _requestProvider.PostAsync<int>("Communication/Update", para);
