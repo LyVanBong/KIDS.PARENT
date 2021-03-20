@@ -18,38 +18,43 @@
           VerticalOptions="FillAndExpand"
           BackgroundColor="#f0eded">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="{markupExtension:Translate 00040}"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <!--Add new-->
         <StackLayout HorizontalOptions="CenterAndExpand"
                      VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Margin="0,5,10,5"
-                     Grid.Row="2">
+                     Grid.Row="1">
             <border:SfBorder
                 CornerRadius="24"
                 HeightRequest="30"
@@ -72,13 +77,14 @@
                    Text="{markupExtension:Translate 00091}"
                    FontSize="16"
                    TextColor="Black"
+                   FontAttributes="Bold"
                    Margin="5,0,0,0">
             </Label>
         </StackLayout>
-        
+
         <!--Loading View-->
         <loadingView:LoadingView
-                Grid.Row="3"
+                Grid.Row="2"
                 IsVisible="{Binding IsLoading}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
@@ -86,7 +92,7 @@
         <Image Source="question.jpg"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
-               Grid.Row="3"
+               Grid.Row="2"
                IsVisible="{Binding HasAnyMessages, Converter={StaticResource boolReserve}}"
                Aspect="AspectFit"/>
 
@@ -102,20 +108,20 @@
                 TapCommand="{Binding DetailCommand}"
                 SelectionBackgroundColor="Transparent"
                 IsScrollBarVisible="False"
-                Grid.Row="3">
+                Grid.Row="2">
 
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame CornerRadius="10"
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10"
                                IsClippedToBounds="True"
                                Margin="5"
                                HasShadow="False"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                            <template:MessageTemplate BackgroundColor="White" />
-                        </Frame>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
+                        <template:MessageTemplate BackgroundColor="White" />
+                    </Frame>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
     </Grid>
 </pages:PageBase>

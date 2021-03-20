@@ -124,6 +124,10 @@
     <BundleResource Include="Resources\ic_calendar.png" />
     <BundleResource Include="Resources\ic_height.png" />
     <BundleResource Include="Resources\ic_weight.png" />
+    <BundleResource Include="Resources\ic_news.png" />
+    <BundleResource Include="Resources\ic_album.png" />
+    <BundleResource Include="Resources\ic_interactive.png" />
+    <BundleResource Include="Resources\ic_back.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">

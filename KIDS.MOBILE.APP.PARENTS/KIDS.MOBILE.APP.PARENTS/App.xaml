@@ -8,12 +8,12 @@
         <ResourceDictionary>
             <Style x:Key="SummitButton" TargetType="Button">
                 <Setter Property="FontSize" Value="18" />
-                <Setter Property="HeightRequest" Value="55" />
-                <Setter Property="BackgroundColor" Value="#69D2E7" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BackgroundColor" Value="#ff6d00" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Margin" Value="0" />
-                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderRadius" Value="25" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="VerticalOptions" Value="StartAndExpand" />
             </Style>
@@ -22,7 +22,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Color x:Key="BackgroundColorNavBar">#26ADE4</Color>
+            <Color x:Key="BackgroundColorNavBar">#ff6d00</Color>
             <Color x:Key="BackgroundApp">#FFFFFF</Color>
             <Color x:Key="BackgroundLoadView">#A7DBD8</Color>
             <Color x:Key="BackgroundImage">#12cad6</Color>
