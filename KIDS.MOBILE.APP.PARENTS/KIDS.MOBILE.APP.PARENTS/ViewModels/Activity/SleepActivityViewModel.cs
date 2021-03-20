@@ -122,8 +122,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         #region Private methods
         private async Task GetSleepActivity()
         {
-            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString());
-            if(sleepActivity?.Data?.Any() == true)
+            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString("yyyy/MM/dd"));
+            if (sleepActivity?.Data?.Any() == true)
             {
                 var sleepItem = sleepActivity.Data?.First();
                 SleepFrom = sleepItem.SleepFrom;
@@ -132,7 +132,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         }
         private async Task GetPooActivity()
         {
-            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString());
+            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString("yyyy/MM/dd"));
             if (pooActivity?.Data?.Any() == true)
             {
                 var pooItem = pooActivity.Data?.First();
@@ -142,8 +142,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
 
         private async Task GetMenuList()
         {
-            var date = SelectedDate.ToString();
-            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, date);
+            var selectedDate = SelectedDate.ToString("yyyy/MM/dd");
+            var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, selectedDate);
             HasAnyActivity = HasAnyActivity ? HasAnyActivity : listMenu?.Data?.Any() == true;
             EatingComment = listMenu?.Data?.FirstOrDefault()?.MealComment;
             var menuList = new List<MenuToDay>();
