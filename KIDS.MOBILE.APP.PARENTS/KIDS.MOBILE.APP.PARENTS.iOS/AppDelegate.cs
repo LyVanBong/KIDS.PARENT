@@ -52,6 +52,7 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
             CachedImageRenderer.Init();
             SfListViewRenderer.Init();
             SfCardViewRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
         }
     }
     public class iOSInitializer : IPlatformInitializer

@@ -5,7 +5,8 @@
              xmlns:image="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
              BackgroundColor="Black"
-             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
 
     <Grid RowSpacing="10"
           Margin="10"
@@ -46,18 +47,13 @@
             </Label>
         </StackLayout>
 
-        <Image HorizontalOptions="FillAndExpand" x:Name="picture"
+        <ffimage:CachedImage HorizontalOptions="FillAndExpand" x:Name="picture"
                VerticalOptions="FillAndExpand"
                 BackgroundColor="Black"
                Aspect="AspectFit"
+               Source="{Binding Source}"
                 Grid.Row="1">
-            <Image.Source>
-                <UriImageSource
-                    CacheValidity="14"
-                    CachingEnabled="true"
-                    Uri="{Binding Uri}" />
-            </Image.Source>
-        </Image>
+        </ffimage:CachedImage>
     </Grid>
 
 </pages:PageBase>

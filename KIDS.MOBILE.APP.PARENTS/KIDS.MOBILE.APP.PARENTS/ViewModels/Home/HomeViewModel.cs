@@ -20,6 +20,7 @@ using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
 using KIDS.MOBILE.APP.PARENTS.Views.Tuition;
 using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
@@ -68,6 +69,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         public DelegateCommand<object> SelectionAlbumCommand { get; }
         public DelegateCommand NewsCommand { get; }
         public DelegateCommand AlbumCommand { get; }
+        public DelegateCommand<object> NewsDetailCommand { get; }
         #endregion
 
         public HomeViewModel(INavigationService navigationService, INewService newService, IAlbumService albumService) : base(navigationService)
@@ -79,6 +81,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             SelectionAlbumCommand = new DelegateCommand<object>(OnSelectionAlbumClicked);
             AlbumCommand = new DelegateCommand(OnAlbumClicked);
             NewsCommand = new DelegateCommand(OnNewClicked);
+            NewsDetailCommand = new DelegateCommand<object>(OnNewsDetailClicked);
         }
         public override async void Initialize(INavigationParameters parameters)
         {
@@ -171,7 +174,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                     {
                         Id = item.AlbumID,
                         Name = item.Description,
-                        Uri = $"{AppConstants.UriBaseWebForm}{item.Thumbnail}"
+                        Source = new Uri($"{AppConstants.UriBaseWebForm}{item.Thumbnail}")
                     });
                 }
             }
@@ -194,6 +197,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         private async void OnAlbumClicked()
         {
             await _navigationService.NavigateAsync(nameof(AlbumPage));
+        }
+
+        private async void OnNewsDetailClicked(object data)
+        {
+            var item = (Syncfusion.ListView.XForms.ItemTappedEventArgs)data;
+            var id = ((NeededItem)item.ItemData).Id;
+            var uri = $"{AppConstants.UriNewsWebForm}{id}";
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
         #endregion
     }

@@ -121,6 +121,13 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\remove.png" />
     <Compile Include="Controls\XEntryRenderer.cs" />
+    <BundleResource Include="Resources\ic_calendar.png" />
+    <BundleResource Include="Resources\ic_height.png" />
+    <BundleResource Include="Resources\ic_weight.png" />
+    <BundleResource Include="Resources\ic_news.png" />
+    <BundleResource Include="Resources\ic_album.png" />
+    <BundleResource Include="Resources\ic_interactive.png" />
+    <BundleResource Include="Resources\ic_back.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
@@ -344,6 +351,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\atmCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\loading.gif" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

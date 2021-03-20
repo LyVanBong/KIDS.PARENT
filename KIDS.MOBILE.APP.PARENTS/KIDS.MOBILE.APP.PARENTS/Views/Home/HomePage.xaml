@@ -6,6 +6,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BackgroundColor="White">
     <ScrollView VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
@@ -29,7 +30,7 @@
                      Grid.Row="0">
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
-                   Source="home.png"/>
+                   Source="ic_interactive.png"/>
                 <Label Text= "{Binding SchoolInteraction}"
                    FontAttributes="Bold"
                    FontSize="16"
@@ -86,7 +87,7 @@
                 <Image HorizontalOptions="End"
                        WidthRequest="20"
                    Margin="0,0,10,0"
-                   Source="more.png">
+                   Source="ic_album.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AlbumCommand}"/>
                     </Image.GestureRecognizers>
@@ -115,17 +116,13 @@
                             <cards:SfCardView CornerRadius="4" HasShadow="True">
                                 <cards:SfCardView.Content>
                                     <!--  Image  -->
-                                    <Image
+                                    <ffimage:CachedImage
                                                 Aspect="AspectFill"
                                                 BackgroundColor="{DynamicResource Gray-200}"
-                                                HeightRequest="100">
-                                        <Image.Source>
-                                            <UriImageSource
-                                                        CacheValidity="14"
-                                                        CachingEnabled="true"
-                                                        Uri="{Binding Uri}" />
-                                        </Image.Source>
-                                    </Image>
+                                                HeightRequest="100"
+                                                Source="{Binding Source}"
+                                                DownsampleToViewSize="True">
+                                    </ffimage:CachedImage>
 
                                 </cards:SfCardView.Content>
                             </cards:SfCardView>
@@ -141,7 +138,7 @@
                      Grid.Row="4">
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
-                   Source="home.png"/>
+                   Source="ic_news.png"/>
                 <Label Text= "Tin tức / Thông báo"
                    FontAttributes="Bold"
                    FontSize="16"
@@ -168,7 +165,8 @@
                 ColumnSpacing="10"
                 Orientation="Horizontal"
                 IsScrollBarVisible="False"
-                SelectionBackgroundColor="Transparent">
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding NewsDetailCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -273,7 +271,8 @@
                 ColumnSpacing="10"
                 Orientation="Horizontal"
                 IsScrollBarVisible="False"
-                SelectionBackgroundColor="Transparent">
+                SelectionBackgroundColor="Transparent"
+                TapCommand="{Binding NewsDetailCommand}">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>

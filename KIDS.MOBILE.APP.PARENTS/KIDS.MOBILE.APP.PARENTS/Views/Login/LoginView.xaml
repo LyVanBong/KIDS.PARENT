@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*" />
-                <RowDefinition Height=".4*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height=".05*" />
                 <RowDefinition Height=".1*" />
                 <RowDefinition Height=".05*" />
@@ -55,15 +55,8 @@
                 BorderColor="LightGray"
                 CornerRadius="20"
                 HasShadow="False">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height=".5*" />
-                        <RowDefinition Height=".5*" />
-                    </Grid.RowDefinitions>
+                <StackLayout >
                     <textInputLayout:SfTextInputLayout
-                        Grid.Row="0"
                         ContainerType="Outlined"
                         FocusedColor="#5459E6"
                         Hint="{markup:Translate 00003}"
@@ -77,8 +70,6 @@
                             TextColor="Black" />
                     </textInputLayout:SfTextInputLayout>
                     <textInputLayout:SfTextInputLayout
-                        Grid.Row="1"
-                        Margin="0"
                         ContainerType="Outlined"
                         EnablePasswordVisibilityToggle="True"
                         FocusedColor="#5459E6"
@@ -97,37 +88,38 @@
                             Unfocused="UnfocusePassword_OnUnfocused" />
                     </textInputLayout:SfTextInputLayout>
                     <StackLayout
-                        Grid.Row="2"
+                        Margin="0,0,0,0"
                         Padding="0"
-                        Orientation="Horizontal"
-                        VerticalOptions="CenterAndExpand">
+                        Orientation="Horizontal">
                         <CheckBox
-                            x:Name="SaveAccount"
-                            IsChecked="{Binding IsSaveAccount}"
-                            Color="#5459E6" />
+                                x:Name="SaveAccount"
+                                IsChecked="{Binding IsSaveAccount}"
+                                Color="#5459E6" />
                         <Label
-                            FontSize="14"
+                            FontSize="12"
+                            VerticalOptions="Center"
                             Text="{markup:Translate 00005}"
-                            TextColor="Black"
-                            VerticalOptions="Center">
+                            TextColor="Black">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
                             </Label.GestureRecognizers>
                         </Label>
+
                         <Label
                             Padding="0"
-                            FontSize="14"
-                            Text="Quên mật khẩu"
-                            TextColor="Black"
-                            FontAttributes="Italic"
+                            FontSize="12"
                             VerticalOptions="Center"
-                            HorizontalOptions="EndAndExpand">
+                            Text="Quên mật khẩu?"
+                            TextColor="#e01100"
+                            HorizontalOptions="FillAndExpand"
+                            FontAttributes="Italic">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
-                </Grid>
+                </StackLayout>
+
             </Frame>
             <Button
                 Grid.Row="3"

@@ -21,7 +21,8 @@ namespace KIDS.MOBILE.APP.PARENTS.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            CachedImageRenderer.Init(true);
+            CachedImageRenderer.Init(false);
+            CachedImageRenderer.InitImageViewHandler();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             OtherLibraries();
             LoadApplication(new App(new AndroidInitializer()));
