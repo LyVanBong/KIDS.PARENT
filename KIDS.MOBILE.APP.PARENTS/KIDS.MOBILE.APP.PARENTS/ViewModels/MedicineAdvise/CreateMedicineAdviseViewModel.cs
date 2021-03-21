@@ -147,9 +147,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             if (!isUpdate)
             {
                 var detailList = new List<MedicineDetailTicketModel>();
+                Dictionary<string, string> fileList = null;
                 if (MedicineList?.Any() == true)
                 {
-                    foreach(var item in MedicineList)
+                    fileList = new Dictionary<string, string>();
+                    foreach (var item in MedicineList)
                     {
                         detailList.Add(new MedicineDetailTicketModel
                         {
@@ -160,20 +162,22 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                             Note = item.MessageContent,
                             Action = 1
                         });
+                        fileList.Add(item.FilePath, item.FilePath);
                     }
                 }
                 var model = new MedicineTicketModel
                 {
-                    ClassID = Guid.Parse(AppConstants.User.ClassID),
+                    ClassID = Guid.Empty,
                     Content = MessageContent,
-                    StudentID = Guid.Parse(AppConstants.User.StudentID),
+                    StudentID = Guid.Empty,
                     Date = DateTime.Now.ToString("yyyy/MM/dd"),
                     FromDate = SelectedFromDate.ToString("yyyy/MM/dd"),
                     ToDate = SelectedToDate.ToString("yyyy/MM/dd"),
                     MedicineList = detailList,
                     Id = Guid.NewGuid()
                 };
-                var result = await _prescriptionService.CreatePrescription(model);
+                               
+                var result = await _prescriptionService.CreatePrescription(model, fileList);
                 if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -237,8 +241,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 await App.Current.MainPage.DisplayAlert("Error", "Could not get the image, please try again.", "Ok");
                 return;
             }
-
-            //ChooseImage1 = ImageSource.FromStream(() => selectedImageFile.GetStream());
+            
             medicineList.Add(new MedicineModel
             {
                 Id = Guid.NewGuid(),
@@ -246,7 +249,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 Name = string.Empty,
                 Unit = string.Empty,
                 MessageContent = string.Empty,
-                Action = 1
+                Action = 1,
+                FilePath = selectedImageFile.Path
             });
             MedicineList = new ObservableCollection<MedicineModel>(medicineList);
         }
@@ -272,6 +276,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         public string Unit { get; set; }
         public string MessageContent { get; set; }
         public int Action { get; set; }
+        public string FilePath { get; set; }
     }
 }
 
