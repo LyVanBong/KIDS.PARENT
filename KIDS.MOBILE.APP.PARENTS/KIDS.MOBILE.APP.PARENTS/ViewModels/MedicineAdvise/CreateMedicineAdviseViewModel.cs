@@ -156,7 +156,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                         detailList.Add(new MedicineDetailTicketModel
                         {
                             Id = Guid.NewGuid(),
-                            Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
                             Name = item.Name,
                             Unit = item.Unit,
                             Note = item.MessageContent,
@@ -201,7 +200,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                         medicineDetail.MedicineList.Add(new MedicineDetailTicketModel
                         {
                             Id = Guid.NewGuid(),
-                            Picture = item.Image == null ? null : ImageSourceToBase64(item.Image),
                             Name = item.Name,
                             Unit = item.Unit,
                             Note = item.MessageContent,

@@ -114,8 +114,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.User
             }
             ProfilePicture = ImageSource.FromStream(() => selectedImageFile.GetStream());
             var tempUrl = User.Picture;
-            User.Picture = ImageSourceToBase64(ProfilePicture);
-            var result = await _userService.UpdateInfoUser(User);
+            var file = new Dictionary<string, string>();
+            file.Add(selectedImageFile.Path, selectedImageFile.Path);
+            var result = await _userService.UpdateInfoUser(User,file);
             if (result == null || result.Data < 0)
             {
                 await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00063, "OK");
