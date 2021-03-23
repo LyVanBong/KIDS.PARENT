@@ -8,7 +8,7 @@
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.PARENTS.MarkupExtensions;assembly=KIDS.MOBILE.APP.PARENTS"
              xmlns:converter="clr-namespace:KIDS.MOBILE.APP.PARENTS.Converter"
              xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
-             xmlns:dataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:behavior="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.Style"
              x:Name="activityPage"
              xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views">
     <ContentPage.Resources>
@@ -74,12 +74,14 @@
                IsVisible="{Binding HasAnyActivity, Converter={StaticResource boolReserve}}"
                Aspect="AspectFit"/>
 
-        <ScrollView HorizontalOptions="FillAndExpand" IsVisible="{Binding HasAnyActivity}"
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding HasAnyActivity}"
                     VerticalOptions="FillAndExpand"
                     Grid.Row="2">
             <Grid HorizontalOptions="FillAndExpand" 
-                         Padding="0"
-                         VerticalOptions="FillAndExpand">
+                  Padding="0"
+                  VerticalOptions="FillAndExpand"
+                  Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -88,13 +90,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
                 <!--Daily comment-->
@@ -241,83 +237,69 @@
                 </Frame>
 
                 <!--activity list-->
-                <syncfusion:SfListView
-                    ItemsSource="{Binding ActivityList}"
-                    HeightRequest="{Binding ActivityHeightRequest}"
-                    BackgroundColor="White"
+                <CollectionView BackgroundColor="Green"
+                    ItemsSource="{Binding ActivityList,Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="StartAndExpand"
-                    Margin="10,0,10,0" 
-                    IsStickyHeader="True" 
-                    HeaderSize="60"
-                    FlowDirection="LeftToRight" 
-                    IsScrollBarVisible="False"
-                    ItemSize="80"
-                    Orientation="Vertical"
+                    Margin="0" ItemsLayout="VerticalList"
+                    ItemSizingStrategy="MeasureAllItems"
+                    VerticalScrollBarVisibility="Never"
+                    ItemsUpdatingScrollMode="KeepLastItemInView"
                     SelectionMode="None"
-                    x:Name="activityList"
                     Grid.Row="4">
-
-                    <syncfusion:SfListView.HeaderTemplate>
+                    <CollectionView.Behaviors>
+                        <behavior:CollectionViewHightBehavior/>
+                    </CollectionView.Behaviors>
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Padding="20,5,0,20">
-                                <Label TextColor="Black" FontSize="18" FontAttributes="Bold" Text="Class Schedule" />
-                                <Label TextColor="Gray" FontSize="12" Text="8 Mar 2017" />
-                            </StackLayout>
+                            <Grid RowDefinitions="Auto, Auto" BackgroundColor="Blue"
+                                    ColumnDefinitions="0.5*, *"
+                                    Margin="10,0,10,0">
+                                <!-- Schedule time-->
+                                <Label Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding ClassTime}"
+                                        TextColor="Black"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Start"/>
+                                <!-- Vertical Line-->
+                                <BoxView Grid.Row="1"
+                                        Grid.Column="0"
+                                        WidthRequest="6"
+                                        HorizontalOptions="Center"
+                                        Color="Violet"
+                                        VerticalOptions="Fill"
+                                        Margin="10,0,10,0" />
+                                <!-- Card -->
+                                <Frame Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"
+                                        CornerRadius="{OnPlatform Android=20, iOS=10}"
+                                        HasShadow="False"
+                                        Padding="10"
+                                        Margin="10,0,10,20">
+                                    <StackLayout>
+                                        <Label Text="{Binding Title}"
+                                                FontAttributes="Bold"
+                                                TextColor="#535257"
+                                                FontSize="18"/>
+                                        <Label Text="{Binding Instructor}"
+                                                FontAttributes="Bold"
+                                                TextColor="Orange"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="FillAndExpand"/>
+                                        </StackLayout>
+                                </Frame> 
+                            </Grid>
                         </DataTemplate>
-                    </syncfusion:SfListView.HeaderTemplate>
-
-                    <syncfusion:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid ColumnSpacing="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                    <Label HorizontalOptions="Center"
-                                   TextColor="Black"
-                                   FontSize="16"
-                                   FontAttributes="Bold"
-                                   Text="{Binding ClassTime}" />
-
-                                    <Label
-                                  Grid.Row="0"
-                                  Grid.Column="2"
-                                  Margin="20,0"
-                                  TextColor="Gray"
-                                  FontSize="14"
-                                        LineBreakMode="WordWrap"
-                                  Text="{Binding Instructor}" />
-
-                                    <BoxView
-                                  Grid.RowSpan="2"
-                                  Grid.Column="1"
-                                  BackgroundColor="#E4B6C3"
-                                  HorizontalOptions="Center"
-                                  IsVisible="{Binding IsLast, Converter={converter:NotBooleanConverter}}"
-                                  VerticalOptions="Fill"
-                                  WidthRequest="3" />
-
-                                    <Image Grid.Column="1" Source="Bullet.png" />
-
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </syncfusion:SfListView.ItemTemplate>
-                </syncfusion:SfListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 
                 <!--Thanks giving-->
                 <StackLayout Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
-                             Grid.Row="12">
+                             Grid.Row="5">
                     <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
@@ -333,7 +315,7 @@
                        BorderColor="Red"
                        BackgroundColor="White"
                        HasShadow="False"
-                       Grid.Row="13">
+                       Grid.Row="6">
                     <Grid HorizontalOptions="FillAndExpand"
                           VerticalOptions="FillAndExpand"
                           RowSpacing="10">
@@ -370,8 +352,6 @@
                 </Frame>
             </Grid>
         </ScrollView>
-
-        
 
     </Grid>
 

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Activity;
 using Prism.Mvvm;
@@ -27,23 +28,24 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            activityList.Behaviors.Add(new ListViewBehavior());
-            Style style = new Style(typeof(GridCell));
-            style.Setters.Add(new Setter() {
-                Property= GridCell.ForegroundProperty,
-                Value = Color.Black
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                vm.IsLoading = true;
+                await vm.GetDailyActivity(vm.SelectedDate);
+                vm.IsLoading = false;
             });
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            activityList.Behaviors.Clear();
         }
 
-        private async  void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
+        private async void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
         {
+            vm.IsLoading = true;
             await vm?.GetDailyActivity(e.DateAdded.First());
+            vm.IsLoading = false;
         }
     }
 

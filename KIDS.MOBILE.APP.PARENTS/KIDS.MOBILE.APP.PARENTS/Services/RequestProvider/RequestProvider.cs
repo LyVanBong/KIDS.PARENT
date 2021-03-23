@@ -47,7 +47,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             {
                 uri = AppConstants.UrlApiApp + uri;
                 _client.BaseUrl = new Uri(uri);
-                _client.Timeout = 10000;
+                _client.Timeout = 100000;
                 _request = new RestRequest(method);
             }
             catch (Exception ex)
