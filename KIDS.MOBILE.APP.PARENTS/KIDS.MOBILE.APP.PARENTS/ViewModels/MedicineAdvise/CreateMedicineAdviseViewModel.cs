@@ -166,9 +166,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 }
                 var model = new MedicineTicketModel
                 {
-                    ClassID = Guid.Empty,
+                    ClassID = Guid.Parse(AppConstants.User.ClassID),
                     Content = MessageContent,
-                    StudentID = Guid.Empty,
+                    StudentID = Guid.Parse(AppConstants.User.StudentID),
                     Date = DateTime.Now.ToString("yyyy/MM/dd"),
                     FromDate = SelectedFromDate.ToString("yyyy/MM/dd"),
                     ToDate = SelectedToDate.ToString("yyyy/MM/dd"),
