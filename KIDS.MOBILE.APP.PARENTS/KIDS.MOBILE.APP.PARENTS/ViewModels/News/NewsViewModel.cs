@@ -98,11 +98,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
 
         private async void OnSelectionClicked(object data)
         {
-            //var data = (Syncfusion.ListView.XForms.ItemTappedEventArgs) dataItem;
-
-            //var param = new NavigationParameters();
-            //param.Add("NewsId", ((NewModel)data.ItemData).Id);
-            //await _navigationService.NavigateAsync(nameof(NewDetailPage), param);
             var item = (Syncfusion.ListView.XForms.ItemTappedEventArgs)data;
             var id = ((NewModel)item.ItemData).Id;
             var uri = $"{AppConstants.UriNewsWebForm}{id}";

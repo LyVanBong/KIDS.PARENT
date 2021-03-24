@@ -14,7 +14,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
         /// </summary>
         /// <param name="parentModel"></param>
         /// <returns></returns>
-        Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel);
+        Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel, Dictionary<string, string> files = null);
         /// <summary>
         /// Lấy thông tin học sinh
         /// </summary>

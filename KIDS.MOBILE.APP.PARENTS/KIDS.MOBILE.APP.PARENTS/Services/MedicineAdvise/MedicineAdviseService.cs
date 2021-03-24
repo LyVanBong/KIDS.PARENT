@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
@@ -53,13 +54,21 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> CreatePrescription(MedicineTicketModel model)
+        public async Task<ResponseModel<int>> CreatePrescription(MedicineTicketModel model, Dictionary<string, string> files = null)
         {
             try
             {
-                var jsonBody = JsonConvert.SerializeObject(model);
-                Console.WriteLine("Test : " + jsonBody);
-                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Create", jsonBody);
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("FromDate", model.FromDate),
+                    new RequestParameter("ToDate", model.ToDate),
+                    new RequestParameter("Date", model.Date),
+                    new RequestParameter("Content", model.Content),
+                    new RequestParameter("StudentID", model.StudentID.ToString()),
+                    new RequestParameter("ClassID", model.ClassID.ToString()),
+                    new RequestParameter("MedicineList", model.MedicineList?.Any() == true ? JsonConvert.SerializeObject(model.MedicineList) : string.Empty)
+                };
+                var data = await _requestProvider.PostAsync<int>("Prescription/Create", para, files);
                 return data;
             }
             catch (Exception ex)

@@ -40,7 +40,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="{markupExtension:Translate 00044}"
+                   Text="Ăn ngủ hàng ngày"
                    TextColor="Black"
                    FontAttributes="Bold"
                    FontSize="24">
@@ -247,6 +247,7 @@
                                      AllowEditing="False"
                                      Margin="10,0,10,10"
                                      GridStyle="{StaticResource dataGridStyle}"
+                                     VerticalOverScrollMode="None"
                                      x:Name="menuData"
                                      Grid.Row="7">
                     <dataGrid:SfDataGrid.Columns>
