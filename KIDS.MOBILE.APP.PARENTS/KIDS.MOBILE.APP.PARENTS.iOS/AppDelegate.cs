@@ -5,6 +5,7 @@ using Prism.Ioc;
 using Syncfusion.ListView.XForms;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfCalendar.XForms.iOS;
+using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfDataGrid.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.Cards;
@@ -43,6 +44,7 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
         {
             SfLinearProgressBarRenderer.Init();
             SfCircularProgressBarRenderer.Init();
+            SfChartRenderer.Init();
             SfComboBoxRenderer.Init();
             SfDataGridRenderer.Init();
             SfTimePickerRenderer.Init();
@@ -53,7 +55,7 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
             CachedImageRenderer.Init();
             SfListViewRenderer.Init();
             SfCardViewRenderer.Init();
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            CachedImageRenderer.Init();
         }
     }
     public class iOSInitializer : IPlatformInitializer

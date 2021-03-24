@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.HealthCare.HealthChartPage"
+             xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#f0eded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <RelativeLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="5,10,5,10"
+                     BackgroundColor="#ff6d00"
+                     Grid.Row="0">
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
+                   Text="Sức khỏe"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="20">
+            </Label>
+        </RelativeLayout>
+
+        <!--Information-->
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     Padding="5,10,5,10"
+                     BackgroundColor="#f0eded"
+                     Grid.Row="2">
+            <Grid HorizontalOptions="FillAndExpand"
+                  ColumnSpacing="10"
+                  Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <border:SfBorder
+                    Grid.Column="0"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                        <Image Source="ic_weight.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="Cân nặng"
+                           TextColor="Black"
+                           FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="72 Kg"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                        </Label>
+                    </StackLayout>
+                </border:SfBorder>
+                <border:SfBorder
+                    Grid.Column="1"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                        <Image Source="ic_height.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="Chiều cao"
+                           TextColor="Black"
+                           FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="169 Cm"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                        </Label>
+                    </StackLayout>
+                </border:SfBorder>
+                <border:SfBorder
+                    Grid.Column="2"
+                    CornerRadius="8"
+                    BackgroundColor="White"
+                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                    BorderColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10"
+                             Orientation="Vertical">
+                        <Image Source="ic_calendar.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="Tháng"
+                           TextColor="Black"
+                           FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                           Text="3"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="18">
+                        </Label>
+                    </StackLayout>
+                </border:SfBorder>
+
+            </Grid>
+
+        </StackLayout>
+        
+        <!--Chart-->
+        <chart:SfChart Grid.Row="3"
+                       Margin="20,10,20,10">
+
+            <chart:SfChart.Legend>
+                <chart:ChartLegend />
+            </chart:SfChart.Legend>
+            
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis/>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Height (in cm)"/>
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:ColumnSeries ItemsSource="{Binding HealthList}" 
+                                XBindingPath="Serial" 
+                                YBindingPath="Index"
+                                Color="Blue"
+                                EnableTooltip="True"
+                                EnableAnimation="True">
+            </chart:ColumnSeries>
+
+            <chart:LineSeries ItemsSource="{Binding HealthList}" 
+                                XBindingPath="Serial" 
+                                YBindingPath="Index"
+                                EnableAnimation="True"
+                                Color="Pink">
+                <chart:LineSeries.DataMarker>
+                    <chart:ChartDataMarker/>
+                </chart:LineSeries.DataMarker>
+            </chart:LineSeries>
+
+        </chart:SfChart>
+
+    </Grid>
+</pages:PageBase>

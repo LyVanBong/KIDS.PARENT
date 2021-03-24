@@ -26,27 +26,32 @@
             <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="{markupExtension:Translate 00044}"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <calendar:SfCalendar x:Name="calendar"
                              ViewMode="MonthView"
@@ -231,13 +236,13 @@
                                TextColor="Black"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Center"
-                               Text="{Binding StudyingComment}"
+                               Text="{Binding StudyingComment, Mode=TwoWay}"
                                Margin="10,5,5,5"/>
                     </StackLayout>
                 </Frame>
 
                 <!--activity list-->
-                <CollectionView BackgroundColor="Green"
+                <CollectionView
                     ItemsSource="{Binding ActivityList,Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="StartAndExpand"
@@ -252,7 +257,7 @@
                     </CollectionView.Behaviors>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid RowDefinitions="Auto, Auto" BackgroundColor="Blue"
+                            <Grid RowDefinitions="Auto, Auto"
                                     ColumnDefinitions="0.5*, *"
                                     Margin="10,0,10,0">
                                 <!-- Schedule time-->

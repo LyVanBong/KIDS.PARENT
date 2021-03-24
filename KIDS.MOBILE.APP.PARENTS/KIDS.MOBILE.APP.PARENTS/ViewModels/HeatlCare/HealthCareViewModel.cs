@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -16,12 +18,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             get => _healthList;
             set => SetProperty(ref _healthList, value);
         }
+
+        public DelegateCommand<string> HeathChartCommand { get; }
         #endregion
 
         #region Constructor
         public HealthCareViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
+            HeathChartCommand = new DelegateCommand<string>(OnHealthChartClicked);
         }
 
         public override void Initialize(INavigationParameters parameters)
@@ -70,6 +75,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                     Information = "Không"
                 },
             };
+        }
+
+        private async void OnHealthChartClicked(string type)
+        {
+            var param = new NavigationParameters();
+            param.Add("Type", type);
+            await _navigationService.NavigateAsync(nameof(HealthChartPage), param);
         }
         #endregion
     }

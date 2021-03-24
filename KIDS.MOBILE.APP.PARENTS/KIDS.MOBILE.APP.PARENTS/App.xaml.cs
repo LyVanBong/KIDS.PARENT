@@ -110,6 +110,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<ImageDetailPage, ImageDetailViewModel>();
             containerRegistry.RegisterForNavigation<SleepActivityPage, SleepActivityViewModel>();
             containerRegistry.RegisterForNavigation<TuitionFeeDetailPage, TuitionFeeDetailViewModel>();
+            containerRegistry.RegisterForNavigation<HealthChartPage, HealthChartViewModel>();
             #endregion
             #region Registry Dialog
             #endregion
