@@ -20,25 +20,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="Suc Khoe"
-                   TextColor="Black"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
+                   Text="Sức khỏe"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
         
         <!--Add new-->
         <StackLayout HorizontalOptions="StartAndExpand"
@@ -65,9 +70,11 @@
                    Margin="5,0,0,0"
                    FontSize="16"
                    TextColor="Black"
-                   Text="Them chi so suc khoe va can nang cho be">
+                   Text="Thêm chỉ số sức khỏe và cân nặng cho bé">
             </Label>
         </StackLayout>
+        
+        <!--Height and Weight information-->
         <StackLayout HorizontalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Padding="5,10,5,10"
@@ -92,20 +99,24 @@
                     <StackLayout HorizontalOptions="FillAndExpand"
                              Padding="10"
                              Orientation="Vertical">
-                    <Image Source="ic_weight.png"/>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="Cân nặng"
-                           TextColor="Black"
-                           FontSize="14">
-                    </Label>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="72 Kg"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                    </Label>
-                </StackLayout>
+                        <Image Source="ic_weight.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="Cân nặng"
+                               TextColor="Black"
+                               FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Weight}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                        </Label>
+                    </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="1"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
+                
                 <border:SfBorder
                     Grid.Column="1"
                     CornerRadius="8"
@@ -115,22 +126,26 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center">
                     <StackLayout HorizontalOptions="FillAndExpand"
-                             Padding="10"
-                             Orientation="Vertical">
-                    <Image Source="ic_height.png"/>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="Chiều cao"
-                           TextColor="Black"
-                           FontSize="14">
-                    </Label>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="169 Cm"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                    </Label>
-                </StackLayout>
+                                 Padding="10"
+                                 Orientation="Vertical">
+                        <Image Source="ic_height.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="Chiều cao"
+                               TextColor="Black"
+                               FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Height}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                        </Label>
+                    </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="2"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
+                
                 <border:SfBorder
                     Grid.Column="2"
                     CornerRadius="8"
@@ -140,28 +155,30 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center">
                     <StackLayout HorizontalOptions="FillAndExpand"
-                             Padding="10"
-                             Orientation="Vertical">
-                    <Image Source="ic_calendar.png"/>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="Tháng"
-                           TextColor="Black"
-                           FontSize="14">
-                    </Label>
-                    <Label HorizontalOptions="CenterAndExpand"
-                           Text="3"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                    </Label>
-                </StackLayout>
+                                 Padding="10"
+                                 Orientation="Vertical">
+                        <Image Source="ic_calendar.png"/>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="Tháng"
+                               TextColor="Black"
+                               FontSize="14">
+                        </Label>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Month}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                        </Label>
+                    </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="3"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
                 
             </Grid>
 
         </StackLayout>
-
-
+        
         <!--Blood Group-->
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"

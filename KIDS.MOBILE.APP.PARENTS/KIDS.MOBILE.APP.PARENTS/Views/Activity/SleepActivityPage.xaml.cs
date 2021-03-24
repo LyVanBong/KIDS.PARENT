@@ -40,6 +40,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             menuData.Columns[1].CellStyle = style;
             menuData.Behaviors.Add(new DataGridBehavior());
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
+            menuData.View.Refresh();
         }
 
         protected override void OnDisappearing()
@@ -65,7 +66,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
 
         private async void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
         {
+            vm.IsLoading = true;
             await vm?.GetDailyActivity(e.DateAdded.First());
+            vm.IsLoading = false;
         }
     }
 }

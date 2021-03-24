@@ -16,7 +16,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel)
+        public async Task<ResponseModel<int>> UpdateInfoUser(ParentModel parentModel, Dictionary<string, string> files = null)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
                     new RequestParameter("Address",parentModel.Address),
                     new RequestParameter("Picture",parentModel.Picture),
                 };
-                var data = await _requestProvider.PostAsync<int>("Student/ParentUpdate", parameters);
+                var data = await _requestProvider.PostAsync<int>("Student/ParentUpdate", parameters,files);
                 return data;
             }
             catch (Exception)
