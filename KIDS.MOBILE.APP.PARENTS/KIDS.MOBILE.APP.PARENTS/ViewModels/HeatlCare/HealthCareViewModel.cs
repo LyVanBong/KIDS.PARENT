@@ -47,7 +47,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
 
         private IHealthCareService _healthService;
         private List<GetStudentHealthModel> dataList = new List<GetStudentHealthModel>();
-        private ICommand HeathChartCommand { get; }
+        public DelegateCommand<string> HeathChartCommand { get; }
         #endregion
 
         #region Constructor
@@ -125,7 +125,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         private async void OnHealthChartClicked(string type)
         {
             var param = new NavigationParameters();
+            dataList = dataList?.OrderByDescending(x => x.Date).Take(5).ToList();
             param.Add("Type", type);
+            param.Add("Information", dataList);
             await _navigationService.NavigateAsync(nameof(HealthChartPage), param);
         }
         #endregion

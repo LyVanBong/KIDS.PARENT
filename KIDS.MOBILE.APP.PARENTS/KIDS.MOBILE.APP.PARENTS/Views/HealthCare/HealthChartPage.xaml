@@ -13,7 +13,8 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="140"/>
             <RowDefinition Height="400"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -59,11 +60,11 @@
                 <border:SfBorder
                     Grid.Column="0"
                     CornerRadius="8"
-                    BackgroundColor="White"
                     BorderWidth="{OnIdiom Default=2, Desktop=0}"
                     BorderColor="White"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Center">
+                    VerticalOptions="Center"
+                    BackgroundColor="{Binding WeightColor}">
                     <StackLayout HorizontalOptions="FillAndExpand"
                              Padding="10"
                              Orientation="Vertical">
@@ -74,17 +75,21 @@
                            FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                           Text="72 Kg"
+                           Text="{Binding Weight}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">
                         </Label>
                     </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="1"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
+                
                 <border:SfBorder
                     Grid.Column="1"
                     CornerRadius="8"
-                    BackgroundColor="White"
+                    BackgroundColor="{Binding HeightColor}"
                     BorderWidth="{OnIdiom Default=2, Desktop=0}"
                     BorderColor="White"
                     HorizontalOptions="FillAndExpand"
@@ -99,17 +104,21 @@
                            FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                           Text="169 Cm"
+                           Text="{Binding Height}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">
                         </Label>
                     </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="2"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
+                
                 <border:SfBorder
                     Grid.Column="2"
                     CornerRadius="8"
-                    BackgroundColor="White"
+                    BackgroundColor="{Binding BmiColor}"
                     BorderWidth="{OnIdiom Default=2, Desktop=0}"
                     BorderColor="White"
                     HorizontalOptions="FillAndExpand"
@@ -119,17 +128,20 @@
                              Orientation="Vertical">
                         <Image Source="ic_calendar.png"/>
                         <Label HorizontalOptions="CenterAndExpand"
-                           Text="Tháng"
+                           Text="BMI"
                            TextColor="Black"
                            FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                           Text="3"
+                           Text="{Binding Bmi}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">
                         </Label>
                     </StackLayout>
+                    <border:SfBorder.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="3"/>
+                    </border:SfBorder.GestureRecognizers>
                 </border:SfBorder>
 
             </Grid>
@@ -145,23 +157,27 @@
             </chart:SfChart.Legend>
             
             <chart:SfChart.PrimaryAxis>
-                <chart:CategoryAxis/>
+                <chart:CategoryAxis MaximumLabels="5"/>
             </chart:SfChart.PrimaryAxis>
 
             <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis>
+                <chart:NumericalAxis Maximum="{Binding MaximumValue}">
                     <chart:NumericalAxis.Title>
-                        <chart:ChartAxisTitle Text="Height (in cm)"/>
+                        <chart:ChartAxisTitle Text="{Binding ChartTitle}"/>
                     </chart:NumericalAxis.Title>
                 </chart:NumericalAxis>
             </chart:SfChart.SecondaryAxis>
 
-            <chart:ColumnSeries ItemsSource="{Binding HealthList}" 
+            <chart:ColumnSeries ItemsSource="{Binding HealthList}" Spacing="0.6"
                                 XBindingPath="Serial" 
                                 YBindingPath="Index"
-                                Color="Blue"
                                 EnableTooltip="True"
                                 EnableAnimation="True">
+                <chart:ColumnSeries.ColorModel>
+
+                    <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding ColorList}"/>
+
+                </chart:ColumnSeries.ColorModel>
             </chart:ColumnSeries>
 
             <chart:LineSeries ItemsSource="{Binding HealthList}" 
@@ -176,5 +192,46 @@
 
         </chart:SfChart>
 
+        <Grid RowDefinitions="*,*"
+              ColumnDefinitions="*,4*,*,4*"
+              Margin="20,0,20,0"
+              Grid.Row="4">
+            <BoxView Grid.Row="0"
+                     Grid.Column="0"
+                     Margin="0,5,0,5"
+                     Color="#0fb2f2"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10,0,10,0"
+                   FontSize="12"
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding NormalIndexText}"/>
+            <BoxView Grid.Row="0"
+                     Grid.Column="2"
+                     Margin="0,5,0,5"
+                     Color="#ffd04f"/>
+            <Label Grid.Row="0"
+                   Grid.Column="3"
+                   Margin="10,0,10,0"
+                   FontSize="12"
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding UnderIndexText}"/>
+            <BoxView Grid.Row="1"
+                     Grid.Column="0"
+                     Margin="0,5,0,5"
+                     Color="#ff3e3b"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="10,0,10,0"
+                   FontSize="12"
+                   LineBreakMode="WordWrap"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding OverIndexText}"/>
+        </Grid>
     </Grid>
 </pages:PageBase>

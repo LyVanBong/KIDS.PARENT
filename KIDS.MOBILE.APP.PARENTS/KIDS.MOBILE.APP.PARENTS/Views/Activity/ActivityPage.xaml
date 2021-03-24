@@ -268,7 +268,7 @@
                                         Grid.Column="0"
                                         WidthRequest="6"
                                         HorizontalOptions="Center"
-                                        Color="Violet"
+                                        Color="#793bff"
                                         VerticalOptions="Fill"
                                         Margin="10,0,10,0" />
                                  <!--Card--> 
@@ -286,7 +286,7 @@
                                                 FontSize="18"/>
                                         <Label Text="{Binding Instructor}"
                                                 FontAttributes="Bold"
-                                                TextColor="Orange"
+                                                TextColor="#ff7c3b"
                                                 LineBreakMode="WordWrap"
                                                 HorizontalOptions="FillAndExpand"/>
                                         </StackLayout>
