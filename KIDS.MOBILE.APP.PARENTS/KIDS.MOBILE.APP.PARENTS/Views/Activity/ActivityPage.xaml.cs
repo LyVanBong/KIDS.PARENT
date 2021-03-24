@@ -17,6 +17,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             InitializeComponent();
             ViewModelLocator.SetAutowireViewModel(this, true);
             vm = (ActivityViewModel) this.BindingContext;
+            activityList.Behaviors.Add(new ListViewBehavior());
         }
 
         protected override void OnBindingContextChanged()
@@ -25,15 +26,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             vm = (ActivityViewModel)this.BindingContext;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                vm.IsLoading = true;
-                await vm.GetDailyActivity(vm.SelectedDate);
-                vm.IsLoading = false;
-            });
+            vm.IsLoading = true;
+            await vm.GetDailyActivity(vm.SelectedDate);
+            vm.IsLoading = false;
         }
 
         protected override void OnDisappearing()

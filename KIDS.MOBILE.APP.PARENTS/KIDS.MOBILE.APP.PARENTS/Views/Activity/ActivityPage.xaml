@@ -237,32 +237,29 @@
                 </Frame>
 
                 <!--activity list-->
-                <CollectionView BackgroundColor="Green"
+                <syncfusion:SfListView x:Name="activityList"
                     ItemsSource="{Binding ActivityList,Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="StartAndExpand"
-                    Margin="0" ItemsLayout="VerticalList"
-                    ItemSizingStrategy="MeasureAllItems"
-                    VerticalScrollBarVisibility="Never"
-                    ItemsUpdatingScrollMode="KeepLastItemInView"
+                    Margin="0"
+                    AutoFitMode="DynamicHeight"
                     SelectionMode="None"
+                    IsScrollingEnabled="False"
                     Grid.Row="4">
-                    <CollectionView.Behaviors>
-                        <behavior:CollectionViewHightBehavior/>
-                    </CollectionView.Behaviors>
-                    <CollectionView.ItemTemplate>
+                    
+                    <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid RowDefinitions="Auto, Auto" BackgroundColor="Blue"
+                            <Grid RowDefinitions="Auto, Auto"
                                     ColumnDefinitions="0.5*, *"
                                     Margin="10,0,10,0">
-                                <!-- Schedule time-->
+                                 <!--Schedule time-->
                                 <Label Grid.Row="0"
                                         Grid.Column="0"
                                         Text="{Binding ClassTime}"
                                         TextColor="Black"
                                         FontAttributes="Bold"
                                         VerticalOptions="Start"/>
-                                <!-- Vertical Line-->
+                                 <!--Vertical Line-->
                                 <BoxView Grid.Row="1"
                                         Grid.Column="0"
                                         WidthRequest="6"
@@ -270,7 +267,7 @@
                                         Color="Violet"
                                         VerticalOptions="Fill"
                                         Margin="10,0,10,0" />
-                                <!-- Card -->
+                                 <!--Card--> 
                                 <Frame Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="1"
@@ -292,8 +289,8 @@
                                 </Frame> 
                             </Grid>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
                 
                 <!--Thanks giving-->
                 <StackLayout Margin="10,10,10,5"
