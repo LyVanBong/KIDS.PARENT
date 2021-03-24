@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.HealthCare;
+using KIDS.MOBILE.APP.PARENTS.Services.HealthCare;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -16,18 +20,59 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             get => _healthList;
             set => SetProperty(ref _healthList, value);
         }
+
+        private string _Weight;
+        public string Weight
+        {
+            get => _Weight;
+            set => SetProperty(ref _Weight, value);
+        }
+
+        private string _Month;
+        public string Month
+        {
+            get => _Month;
+            set => SetProperty(ref _Month, value);
+        }
+
+        private string _Height;
+        public string Height
+        {
+            get => _Height;
+            set => SetProperty(ref _Height, value);
+        }
+
+        private IHealthCareService _healthService;
+        private List<GetStudentHealthModel> dataList = new List<GetStudentHealthModel>();
         #endregion
 
         #region Constructor
-        public HealthCareViewModel(INavigationService navigationService) : base(navigationService)
+        public HealthCareViewModel(INavigationService navigationService, IHealthCareService healthCareService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _healthService = healthCareService;
         }
 
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
-            base.Initialize(parameters);
-            HealthList = new ObservableCollection<HealthInformationModel>(GetHealthList());
+            try
+            {
+                base.Initialize(parameters);
+                HealthList = new ObservableCollection<HealthInformationModel>(GetHealthList());
+                IsLoading = false;
+                var studentId = AppConstants.User.StudentID;
+                var data = await _healthService.GetStudentHealthInfo(studentId);
+                dataList = data?.Data ?? new List<GetStudentHealthModel>();
+                var info = data?.Data?.FirstOrDefault();
+                Weight = $"{info?.Width} KG";
+                Height = $"{info?.Height} CM";
+                Month = $"{info?.MonthAge}";
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         #endregion
 

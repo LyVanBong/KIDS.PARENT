@@ -99,7 +99,7 @@
                            FontSize="14">
                     </Label>
                     <Label HorizontalOptions="CenterAndExpand"
-                           Text="72 Kg"
+                           Text="{Binding Weight}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">
@@ -124,7 +124,7 @@
                            FontSize="14">
                     </Label>
                     <Label HorizontalOptions="CenterAndExpand"
-                           Text="169 Cm"
+                           Text="{Binding Height}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">
@@ -149,7 +149,7 @@
                            FontSize="14">
                     </Label>
                     <Label HorizontalOptions="CenterAndExpand"
-                           Text="3"
+                           Text="{Binding Month}"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="18">

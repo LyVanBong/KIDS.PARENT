@@ -159,5 +159,7 @@
     <Folder Include="ViewModels\Album\" />
     <Folder Include="Services\Album\" />
     <Folder Include="Models\Album\" />
+    <Folder Include="Models\HealthCare\" />
+    <Folder Include="Services\HealthCare\" />
   </ItemGroup>
 </Project>
