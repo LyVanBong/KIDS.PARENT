@@ -16,6 +16,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
     {
         #region Properties
         private IActivityService _activityService;
+
         private ObservableCollection<ExerciseClass> _activityList = new ObservableCollection<ExerciseClass>();
         public ObservableCollection<ExerciseClass> ActivityList
         {
@@ -26,36 +27,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 RaisePropertyChanged(nameof(ActivityList));
             }
         }
-        private ObservableCollection<MenuToDay> menuList = new ObservableCollection<MenuToDay>();
-        public ObservableCollection<MenuToDay> MenuList
-        {
-            get => menuList;
-            set => SetProperty(ref menuList, value);
-        }
+
         private DateTime selectedDate;
         public DateTime SelectedDate
         {
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
-        private string sleepFrom;
-        public string SleepFrom
-        {
-            get => sleepFrom;
-            set => SetProperty(ref sleepFrom, value);
-        }
-        private string sleepTo;
-        public string SleepTo
-        {
-            get => sleepTo;
-            set => SetProperty(ref sleepTo, value);
-        }
-        private int pooNumber;
-        public int PooNumber
-        {
-            get => pooNumber;
-            set => SetProperty(ref pooNumber, value);
-        }
+
         public bool IsActivityVisible
         {
             get => ActivityList.Any();
@@ -68,18 +47,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             set => SetProperty(ref _IsDailyCommentVisible, value);
         }
 
-        private string _EatingComment;
-        public string EatingComment
-        {
-            get => _EatingComment;
-            set 
-            {
-                _EatingComment = value;
-                RaisePropertyChanged(nameof(EatingComment));
-                RaisePropertyChanged(nameof(IsEatingCommentVisible));
-            }
-        }
-        public bool IsEatingCommentVisible { get => !string.IsNullOrEmpty(EatingComment); }
         private string _StudyingComment;
         public string StudyingComment
         {
@@ -87,14 +54,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             set
             {
                 _StudyingComment = value;
-                RaisePropertyChanged(nameof(_StudyingComment));
+                RaisePropertyChanged(nameof(StudyingComment));
                 RaisePropertyChanged(nameof(IsStudyingCommentVisible));
             }
         }
+
         public bool IsStudyingCommentVisible { get => !string.IsNullOrEmpty(StudyingComment); }
         private string studentId;
         private string classId;
         private string gradeId;
+
         private bool hasAnyActivity;
         public bool HasAnyActivity
         {
@@ -148,6 +117,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         {
             try
             {
+                ActivityList?.Clear();
                 var selectedDate = SelectedDate.ToString("yyyy/MM/dd");
                 var listMorningActivity = await _activityService.GetMorningActivity(studentId, classId, selectedDate);
                 var listAfternoonActivity = await _activityService.GetAfternoonActivity(studentId, classId, selectedDate);

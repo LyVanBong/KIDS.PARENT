@@ -70,7 +70,7 @@
                    Margin="5,0,0,0"
                    FontSize="16"
                    TextColor="Black"
-                   Text="Them chi so suc khoe va can nang cho be">
+                   Text="Thêm chỉ số sức khỏe và cân nặng cho bé">
             </Label>
         </StackLayout>
         
@@ -106,7 +106,7 @@
                                FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                               Text="72 Kg"
+                               Text="{Binding Weight}"
                                TextColor="Black"
                                FontAttributes="Bold"
                                FontSize="18">
@@ -135,7 +135,7 @@
                                FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                               Text="169 Cm"
+                               Text="{Binding Height}"
                                TextColor="Black"
                                FontAttributes="Bold"
                                FontSize="18">
@@ -164,7 +164,7 @@
                                FontSize="14">
                         </Label>
                         <Label HorizontalOptions="CenterAndExpand"
-                               Text="3"
+                               Text="{Binding Month}"
                                TextColor="Black"
                                FontAttributes="Bold"
                                FontSize="18">
