@@ -70,7 +70,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => hasAnyActivity;
             set => SetProperty(ref hasAnyActivity, value);
         }
-        //public DelegateCommand AddCommand { get; }
         #endregion
 
         #region Contructor
@@ -78,7 +77,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         {
             _navigationService = navigationService;
             _activityService = activityService;
-            //AddCommand = new DelegateCommand(OnAddClick);
         }
         public override void Initialize(INavigationParameters parameters)
         {
@@ -90,7 +88,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 studentId = AppConstants.User.StudentID;
                 classId = AppConstants.User.ClassID;
                 gradeId = AppConstants.User.GradeID;
-                //ActivityList = new ObservableCollection<ExerciseClass>(new List<ExerciseClass>());
             }
             catch (Exception ex)
             {
