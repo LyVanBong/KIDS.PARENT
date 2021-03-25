@@ -180,7 +180,7 @@
                    BackgroundColor="White"
                    TextColor="Black"
                    FontSize="12"
-                   Placeholder="Viet binh luan..."
+                   Placeholder="Viết bình luận..."
                    Text="{Binding Content}"
                    Grid.Row="6"
                    Grid.ColumnSpan="6"

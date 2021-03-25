@@ -101,8 +101,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
         public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            //await GetAttendanceInformation();
+            
             await GetStudentInformation();
+            await GetAttendanceInformation();
             //await GetAttendanceForMonth(SelectedDate);
         }
 

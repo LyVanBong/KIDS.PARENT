@@ -40,7 +40,8 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Activity
             menuData.Columns[1].CellStyle = style;
             menuData.Behaviors.Add(new DataGridBehavior());
             menuData.QueryRowHeight += MenuData_QueryRowHeight;
-            menuData.View.Refresh();
+
+            menuData.View?.Refresh();
         }
 
         protected override void OnDisappearing()

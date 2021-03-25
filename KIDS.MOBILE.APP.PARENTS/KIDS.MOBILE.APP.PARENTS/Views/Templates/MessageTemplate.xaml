@@ -61,7 +61,7 @@
             IsEnabled="False"
             Grid.ColumnSpan="6"
             BackgroundColor="#f0eded"
-            Text="Viet binh luan..."
+            Text="Viết bình luận..."
             FontSize="12"
             TextColor="White"
             TextTransform="None"
