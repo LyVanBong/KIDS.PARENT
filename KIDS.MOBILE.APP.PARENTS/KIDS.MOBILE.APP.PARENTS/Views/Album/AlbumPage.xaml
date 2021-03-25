@@ -18,25 +18,30 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="{markupExtension:Translate 00046}"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <!--Image List-->
         <loadingView:LoadingView
@@ -79,7 +84,7 @@
                                         </syncfusion:SfListView.LayoutManager>
                                         <syncfusion:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid RowSpacing="8">
+                                                <Grid RowSpacing="8" Margin="5,0,5,0">
 
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />

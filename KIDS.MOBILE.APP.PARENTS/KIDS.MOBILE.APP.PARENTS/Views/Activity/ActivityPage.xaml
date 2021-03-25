@@ -26,7 +26,7 @@
             <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
+        
         <!--Header-->
         <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
@@ -236,7 +236,7 @@
                                TextColor="Black"
                                HorizontalTextAlignment="Start"
                                VerticalTextAlignment="Center"
-                               Text="{Binding StudyingComment, Mode=TwoWay}"
+                               Text="{Binding StudyingComment}"
                                Margin="10,5,5,5"/>
                     </StackLayout>
                 </Frame>
@@ -251,6 +251,7 @@
                     SelectionMode="None"
                     IsScrollingEnabled="False"
                     Grid.Row="4">
+                    
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
                             <Grid RowDefinitions="Auto, Auto"
@@ -268,7 +269,7 @@
                                         Grid.Column="0"
                                         WidthRequest="6"
                                         HorizontalOptions="Center"
-                                        Color="#793bff"
+                                        Color="Violet"
                                         VerticalOptions="Fill"
                                         Margin="10,0,10,0" />
                                  <!--Card--> 
@@ -286,7 +287,7 @@
                                                 FontSize="18"/>
                                         <Label Text="{Binding Instructor}"
                                                 FontAttributes="Bold"
-                                                TextColor="#ff7c3b"
+                                                TextColor="Orange"
                                                 LineBreakMode="WordWrap"
                                                 HorizontalOptions="FillAndExpand"/>
                                         </StackLayout>

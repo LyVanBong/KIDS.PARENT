@@ -22,25 +22,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="{markupExtension:Translate 00041}"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
         
         <StackLayout HorizontalOptions="StartAndExpand"
                      VerticalOptions="FillAndExpand"
@@ -68,17 +73,20 @@
         </StackLayout>
         
         <!--Absent information-->
-        <syncfusion:SfListView SelectionMode="None" 
+        <Grid Grid.Row="3"
+              ColumnDefinitions="0.5*,*,*,*,0.5*">
+            <syncfusion:SfListView SelectionMode="None"
                                AutoFitMode="Height" 
                                ItemsSource="{Binding InformationList}"
-                               Grid.Row="3"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
                                VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="Center"
+                               HorizontalOptions="FillAndExpand"
                                SelectionBackgroundColor="Transparent">
 
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
-                    <cards:SfCardView CornerRadius="8" HorizontalOptions="CenterAndExpand"
+                    <cards:SfCardView CornerRadius="8" HorizontalOptions="FillAndExpand"
                                       BackgroundColor="Transparent"
                                       BorderColor="Transparent">
                         <cards:SfCardView.Content>
@@ -118,10 +126,11 @@
 
             <!--  Layout to customize number of columns in SfListView  -->
             <syncfusion:SfListView.LayoutManager>
-                <syncfusion:GridLayout SpanCount="4" />
+                <syncfusion:GridLayout SpanCount="3" />
             </syncfusion:SfListView.LayoutManager>
 
         </syncfusion:SfListView>
+        </Grid>
 
         <!--Add new-->
         <StackLayout HorizontalOptions="StartAndExpand"
