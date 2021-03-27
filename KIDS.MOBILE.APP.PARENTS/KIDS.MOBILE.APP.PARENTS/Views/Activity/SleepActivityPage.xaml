@@ -27,25 +27,30 @@
         </Grid.RowDefinitions>
 
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="Ăn ngủ hàng ngày"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <calendar:SfCalendar x:Name="calendar"
                              ViewMode="MonthView"
@@ -403,63 +408,7 @@
                             </Label.FormattedText>
                         </Label>
                     </StackLayout>
-                </Frame>
-
-                <!--Thanks giving-->
-                <StackLayout Margin="10,10,10,5"
-                             HorizontalOptions="FillAndExpand"
-                             Orientation="Horizontal"
-                             Grid.Row="12">
-                    <Image Source="review.png"
-                           VerticalOptions="Start"
-                           Margin="0,0,10,0"/>
-                    <Label Text="{markupExtension:Translate 00114}"
-                           FontAttributes="Bold"
-                           FontSize="20"
-                           TextColor="Black"/>
-                </StackLayout>
-
-                <Frame Margin="10,5,10,20"
-                       HorizontalOptions="FillAndExpand"
-                       CornerRadius="10"
-                       BorderColor="Red"
-                       BackgroundColor="White"
-                       HasShadow="False"
-                       Grid.Row="13">
-                    <Grid HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand"
-                          RowSpacing="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label TextColor="Gray"
-                               FontSize="14"
-                               Text="{markupExtension:Translate 00115}"
-                               LineBreakMode="WordWrap"
-                               Grid.Row="0"
-                               Grid.ColumnSpan="2"/>
-                        <Image Aspect="AspectFit"
-                               WidthRequest="200"
-                               VerticalOptions="StartAndExpand"
-                               Source="giving.jpg"
-                               Grid.Column="0"
-                               Grid.Row="1"/>
-                        <Button CornerRadius="10"
-                                BackgroundColor="Red"
-                                TextColor="White"
-                                Text="{markupExtension:Translate 00116}"
-                                Padding="10,5,10,5"
-                                HorizontalOptions="End"
-                                VerticalOptions="End"
-                                Grid.Row="1"
-                                Grid.Column="1"/>
-                    </Grid>
-                </Frame>
+                </Frame>    
             </Grid>
         </ScrollView>
 

@@ -12,6 +12,7 @@ using KIDS.MOBILE.APP.PARENTS.ViewModels.Album;
 using KIDS.MOBILE.APP.PARENTS.Views;
 using KIDS.MOBILE.APP.PARENTS.Views.Activity;
 using KIDS.MOBILE.APP.PARENTS.Views.Album;
+using KIDS.MOBILE.APP.PARENTS.Views.Comment;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.Views.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise;
@@ -135,14 +136,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                 new MenuItem{ Title = Resource._00040,Icon = ImageSource.FromFile("message.png"),NavigateTo=nameof(MessagePage)},
                 new MenuItem{ Title = Resource._00041,Icon = ImageSource.FromFile("leave.png"),NavigateTo=nameof(LeaveRequestPage)},
                 new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromFile("medicine.png"),NavigateTo=nameof(MedicineAdvisePage)},
-                new MenuItem{ Title = Resource._00043,Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(PickupPage)},
-                new MenuItem{ Title = "Học tập hàng ngày",Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(ActivityPage)},
-                new MenuItem{ Title = "Ăn ngủ hàng ngày",Icon = ImageSource.FromFile("eat.png"),NavigateTo=nameof(SleepActivityPage)},
+                new MenuItem{ Title = "Điểm danh",Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(PickupPage)},
+                new MenuItem{ Title = "Lịch học",Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(ActivityPage)},
+                new MenuItem{ Title = "Ăn ngủ",Icon = ImageSource.FromFile("eat.png"),NavigateTo=nameof(SleepActivityPage)},
+                new MenuItem{ Title = "Nhận xét",Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(CommentPage)},
                 new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromFile("news.png"),NavigateTo=nameof(NewsPage)},
                 new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromFile("album.png"),NavigateTo=nameof(AlbumPage)},
                 new MenuItem{ Title = Resource._00047,Icon = ImageSource.FromFile("tuition.png"),NavigateTo=nameof(TuitionPage)},
                 new MenuItem{ Title = Resource._00048,Icon = ImageSource.FromFile("health.png"),NavigateTo=nameof(HealthCarePage)},
-                //new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(SurveyPage)},
+                new MenuItem{ Title = Resource._00049,Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(SurveyPage)},
                 new MenuItem{ Title = Resource._00050,Icon = ImageSource.FromFile("review.png"),NavigateTo=nameof(MessagePage)},
                 new MenuItem{ Title = "Camera",Icon = ImageSource.FromFile("cameravideo.png"),NavigateTo=""},
             };

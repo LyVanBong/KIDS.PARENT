@@ -29,6 +29,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
             get => _informationList;
             set => SetProperty(ref _informationList, value);
         }
+
         private ILeaveRequestService _leaveRequestService;
         private string fromDate;
         public string FromDate 
@@ -96,13 +97,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
                         Number = information.NghiKhongPhep.ToString(),
                         BackgroundGradientStart = "#255ea6",
                         BackgroundGradientEnd = "#b350d1"
-                    },
-                    new AbsentInformationModel
-                    {
-                        Title = "Đi muộn",
-                        Number = information.DiMuon.ToString(),
-                        BackgroundGradientStart = "#ff7272",
-                        BackgroundGradientEnd = "#f650c5"
                     }
                 };
                 InformationList = new ObservableCollection<AbsentInformationModel>(info);

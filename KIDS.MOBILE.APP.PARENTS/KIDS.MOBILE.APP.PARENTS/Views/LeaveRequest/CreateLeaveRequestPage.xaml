@@ -28,26 +28,31 @@
         </Grid.ColumnDefinitions>
         
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
-                     Orientation="Horizontal"
                      Padding="5,10,5,10"
-                     BackgroundColor="White"
+                     BackgroundColor="#ff6d00"
                      Grid.Row="0"
                      Grid.ColumnSpan="2">
-            <Image Source="back.png"
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
-                   Text="{markupExtension:Translate 00040}"
-                   TextColor="Black"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
+                   Text="{markupExtension:Translate 00041}"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <Label Text="{markupExtension:Translate 00094}"
                TextColor="Black"

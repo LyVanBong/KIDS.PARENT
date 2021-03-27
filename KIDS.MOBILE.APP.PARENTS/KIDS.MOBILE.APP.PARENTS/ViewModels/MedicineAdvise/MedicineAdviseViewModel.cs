@@ -48,12 +48,28 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 base.OnNavigatedTo(parameters);
                 IsLoading = true;
                 HasAnyMessages = false;
-                MessageList?.Clear();
                 await GetMessagesList();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        public async void OnAppearing()
+        {
+            try
+            {
+                IsLoading = true;
+                await GetMessagesList();
+            }
+            catch (Exception ex)
+            {
+
             }
             finally
             {
@@ -79,11 +95,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     {
                         Id = item.ID ?? Guid.Empty,
                         ReceivedUser = item.NguoiGui,
-                        DateTime = item.Date != null ? item.Date.Value.ToShortDateString() : string.Empty,
+                        TimePeriod = item.Date != null ? item.Date.Value.ToString("dd-MM-yyyy") : string.Empty,
                         ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
                         Comment = item.Content
                     });
                 }
+                messageList = messageList.OrderByDescending(x => x.DateTime).ToList();
                 MessageList = new ObservableCollection<MessageModel>(messageList);
                 HasAnyMessages = true;
             }

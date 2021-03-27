@@ -61,6 +61,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         private MessageModel CurrentMessage { get; set; }
         private MedicineTicketModel medicineDetail;
         private List<MedicineModel> listMedicine;
+        private string defaultPath = null;
         #endregion
 
         #region Contructor
@@ -70,6 +71,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             _prescriptionService = prescriptionService;
             SendCommand = new DelegateCommand(OnSendClick);
             GalleryCommand = new DelegateCommand(OnGalleryClick);
+            MedicineList = new ObservableCollection<MedicineModel>();
         }
         public override void Initialize(INavigationParameters parameters)
         {
@@ -118,11 +120,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                                 medicineList.Add(new MedicineModel
                                 {
                                     Id = item.Id ?? Guid.Empty,
-                                    Image = new Uri($"{AppConstants.UriBaseWebForm}{item.Picture}"),
+                                    Image = new Uri($"{AppConstants.UriBaseWebForm}/{item.Picture}"),
                                     MessageContent = item.Note,
                                     Unit = item.Unit,
                                     Name = item.Name,
-                                    Action = 0
+                                    Action = 1,
+                                    FilePath = item.Picture
                                 });
                             }
                             listMedicine = medicineList;
@@ -193,8 +196,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 medicineDetail.ToDate = SelectedToDate.ToString("yyyy/MM/dd");
                 medicineDetail.Content = MessageContent;
                 medicineDetail.MedicineList = medicineDetail.MedicineList ?? new List<MedicineDetailTicketModel>();
+                var fileList = new Dictionary<string, string>();
                 if (MedicineList?.Any() == true)
-                {
+                {   
                     foreach (var item in MedicineList)
                     {
                         medicineDetail.MedicineList.Add(new MedicineDetailTicketModel
@@ -205,9 +209,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                             Note = item.MessageContent,
                             Action = item.Action
                         });
+                        if (item.Action == 0)
+                        {
+                            fileList.Add(item.FilePath, item.FilePath);
+                        }
                     }
                 }
-                var result = await _prescriptionService.UpdatePrescription(medicineDetail);
+                var result = await _prescriptionService.UpdatePrescription(medicineDetail, fileList);
                 if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
@@ -240,7 +248,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 return;
             }
             
-            medicineList.Add(new MedicineModel
+            MedicineList.Add(new MedicineModel
             {
                 Id = Guid.NewGuid(),
                 Image = ImageSource.FromStream(() => selectedImageFile.GetStream()),
@@ -250,12 +258,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 Action = 1,
                 FilePath = selectedImageFile.Path
             });
-            MedicineList = new ObservableCollection<MedicineModel>(medicineList);
+            defaultPath = selectedImageFile.Path;
+            //MedicineList = new ObservableCollection<MedicineModel>(medicineList);
         }
 
         public void OnDeleteClick(MedicineModel data)
         {
-            var item = listMedicine.FirstOrDefault(x => x.Id == data.Id);
+            var item = MedicineList.FirstOrDefault(x => x.Id == data.Id);
             if(item != null)
             {
                 item.Action = 2;

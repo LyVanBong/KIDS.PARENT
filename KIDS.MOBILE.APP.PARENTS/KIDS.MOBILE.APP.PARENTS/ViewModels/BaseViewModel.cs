@@ -41,22 +41,5 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
         {
             await _navigationService.GoBackAsync();
         }
-
-        protected string ImageSourceToBase64(ImageSource source)
-        {
-            StreamImageSource streamImageSource = (StreamImageSource)source;
-            System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-            Task<Stream> task = streamImageSource.Stream(cancellationToken);
-            Stream stream = task.Result;
-
-            byte[] b;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                stream.CopyTo(ms);
-                b = ms.ToArray();
-            }
-
-            return Convert.ToBase64String(b);
-        }
     }
 }

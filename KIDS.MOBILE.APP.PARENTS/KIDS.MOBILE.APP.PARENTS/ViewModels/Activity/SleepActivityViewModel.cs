@@ -155,7 +155,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                     {
                         Id = item.ID,
                         Time = item.BuaAn,
-                        Content = item.MonAn,
+                        Content = item.TenMonAn,
                         Comment = item.MealComment
                     });
                 }

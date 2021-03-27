@@ -10,5 +10,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Activity
         public string Contents { get; set; }
         public string ThoiGian { get; set; }
         public string NhanXet { get; set; } = null;
+        public string Title { get; set; }
     }
 }

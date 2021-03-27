@@ -77,15 +77,24 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             }
         }
 
-        public async Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model)
+        public async Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model, Dictionary<string, string> files = null)
         {
             try
             {
-                var jsonBody = JsonConvert.SerializeObject(model);
-                var data = await _requestProvider.PostJsonBodyAsync<int>("Prescription/Update", jsonBody);
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("FromDate", model.FromDate),
+                    new RequestParameter("ToDate", model.ToDate),
+                    new RequestParameter("Date", model.Date),
+                    new RequestParameter("Content", model.Content),
+                    new RequestParameter("StudentID", model.StudentID.ToString()),
+                    new RequestParameter("ClassID", model.ClassID.ToString()),
+                    new RequestParameter("MedicineList", model.MedicineList?.Any() == true ? JsonConvert.SerializeObject(model.MedicineList) : string.Empty)
+                };
+                var data = await _requestProvider.PostAsync<int>("Prescription/Update", para, files);
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
