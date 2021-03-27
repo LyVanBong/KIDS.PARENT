@@ -119,11 +119,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                                 medicineList.Add(new MedicineModel
                                 {
                                     Id = item.Id ?? Guid.Empty,
-                                    Image = new Uri($"{AppConstants.UriBaseWebForm}{item.Picture}"),
+                                    Image = new Uri($"{AppConstants.UriBaseWebForm}/{item.Picture}"),
                                     MessageContent = item.Note,
                                     Unit = item.Unit,
                                     Name = item.Name,
-                                    Action = 0
+                                    Action = 0,
+                                    FilePath = item.Picture
                                 });
                             }
                             listMedicine = medicineList;
@@ -194,8 +195,9 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 medicineDetail.ToDate = SelectedToDate.ToString("yyyy/MM/dd");
                 medicineDetail.Content = MessageContent;
                 medicineDetail.MedicineList = medicineDetail.MedicineList ?? new List<MedicineDetailTicketModel>();
+                var fileList = new Dictionary<string, string>();
                 if (MedicineList?.Any() == true)
-                {
+                {   
                     foreach (var item in MedicineList)
                     {
                         medicineDetail.MedicineList.Add(new MedicineDetailTicketModel
@@ -206,9 +208,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                             Note = item.MessageContent,
                             Action = item.Action
                         });
+                        fileList.Add(item.FilePath, item.FilePath);
                     }
                 }
-                var result = await _prescriptionService.UpdatePrescription(medicineDetail);
+                var result = await _prescriptionService.UpdatePrescription(medicineDetail, fileList);
                 if (result?.Data == 1)
                 {
                     await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);

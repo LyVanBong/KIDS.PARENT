@@ -109,7 +109,8 @@
                 FlowDirection="LeftToRight"
                 AutoFitMode="DynamicHeight"
                 Orientation="Vertical"
-                TapCommand="{Binding SelectedCommand}">
+                TapCommand="{Binding SelectedCommand}"
+                IsScrollingEnabled="False">
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>

@@ -10,7 +10,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
     {
         Task<ResponseModel<List<GetPrescriptionModel>>> GetAllMedicineAdvise(string studentId);
         Task<ResponseModel<int>> CreatePrescription(MedicineTicketModel model, Dictionary<string, string> files = null);
-        Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model);
+        Task<ResponseModel<int>> UpdatePrescription(MedicineTicketModel model, Dictionary<string, string> files = null);
         Task<ResponseModel<int>> DeletePrescription(PrescriptionModel model);
         Task<MedicineTicketModel> GetMedicineAdviseDetail(Guid id);
     }

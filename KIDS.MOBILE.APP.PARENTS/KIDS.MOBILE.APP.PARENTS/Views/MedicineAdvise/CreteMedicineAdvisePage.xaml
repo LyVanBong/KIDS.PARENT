@@ -160,6 +160,7 @@
                                    Margin="10,5,10,5"
                                    FlowDirection="MatchParent"
                                    IsScrollingEnabled="False"
+                                   SelectionMode="None"
                                    Grid.Row="4">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
