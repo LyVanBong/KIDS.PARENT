@@ -9,6 +9,7 @@ using KIDS.MOBILE.APP.PARENTS.Models.User;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services;
 using KIDS.MOBILE.APP.PARENTS.Services.User;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest;
 using KIDS.MOBILE.APP.PARENTS.Views.Pickup;
 using Prism.Commands;
 using Prism.Navigation;
@@ -20,6 +21,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
 {
     public class PickupViewModel : BaseViewModel
     {
+        #region Properties
         private ObservableCollection<MessageModel> _messagesList = new ObservableCollection<MessageModel>();
         public ObservableCollection<MessageModel> MessagesList
         {
@@ -32,20 +34,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
         {
             get => _TimePeriod;
             set => SetProperty(ref _TimePeriod, value);
-        }
-
-        private int _OnTime;
-        public int OnTime
-        {
-            get => _OnTime;
-            set => SetProperty(ref _OnTime, value);
-        }
-
-        private int _Late;
-        public int Late
-        {
-            get => _Late;
-            set => SetProperty(ref _Late, value);
         }
 
         private DateTime _SelectedDate;
@@ -84,9 +72,19 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
             set => SetProperty(ref _Student, value);
         }
 
+        private ObservableCollection<AbsentInformationModel> _informationList = new ObservableCollection<AbsentInformationModel>();
+        public ObservableCollection<AbsentInformationModel> InformationList
+        {
+            get => _informationList;
+            set => SetProperty(ref _informationList, value);
+        }
+
         private IUserService _userService;
         private ILeaveRequestService _leaveRequestService;
+        private GetAttendanceResponseModel dataCount;
+        #endregion
 
+        #region Constructor
         public PickupViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService, IUserService userService) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -95,31 +93,29 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
             SelectedDate = DateTime.Now;
             Month = DateTime.Now.Month;
         }
-        private void OnSwipeLeftClicked(object o)
-        {
-        }
+
         public override async void Initialize(INavigationParameters parameters)
         {
-            base.Initialize(parameters);
-            //await GetAttendanceInformation();
-            await GetStudentInformation();
+            try
+            {
+                base.Initialize(parameters);
+                IsLoading = true;
+                await GetInformationList();
+                await GetStudentInformation();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
             //await GetAttendanceForMonth(SelectedDate);
         }
+        #endregion
 
-        private async Task GetAttendanceInformation()
-        {
-            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            var endDate = startDate.AddMonths(1).AddDays(-1);
-            TimePeriod = $"{Resource._00105} {startDate.ToString("yyyy-MM-dd")} {Resource._00106} {endDate.ToString("yyyy-MM-dd")}";
-            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, startDate.ToString(), endDate.ToString());
-            if(data?.Data?.Any() == true)
-            {
-                var item = data.Data.First();
-                OnTime = item.CoMat ?? 0;
-                Late = item.DiMuon ?? 0;
-            }
-        }
-
+        #region Methods
         private async Task GetStudentInformation()
         {
             var student = await _userService.GetStudent(AppConstants.User.StudentID);
@@ -141,7 +137,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
                 var events = new EventCollection();
                 foreach (var dataItem in data.Data)
                 {
-                    Color color = dataItem.CoMat == true ? Color.Green : Color.Red;
+                    Color color = GetColor(dataItem);
                     events.Add(
                         dataItem.Date.Value,
                         new DayEventCollection<object>{EventIndicatorColor = color, EventIndicatorSelectedColor = color });
@@ -149,6 +145,66 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
                 Events = events;
             }
         }
+
+        private async Task GetInformationList()
+        {
+            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, startDate.ToString("yyyy-MM-dd"),startDate.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
+            if (data?.Data?.Any() == true)
+            {
+                var information = data.Data.First();
+                var info = new List<AbsentInformationModel>
+                {
+                    new AbsentInformationModel
+                    {
+                        Title = Resource._00100,
+                        Number = information.NghiCoPhep.ToString(),
+                        BackgroundGradientStart = "#039612",
+                        BackgroundGradientEnd = "#039612"
+                    },
+                    new AbsentInformationModel
+                    {
+                        Title = Resource._00101,
+                        Number = information.NghiKhongPhep.ToString(),
+                        BackgroundGradientStart = "#ff0a0a",
+                        BackgroundGradientEnd = "#ff0a0a"
+                    },
+                    new AbsentInformationModel
+                    {
+                        Title = "Đi muộn",
+                        Number = information.DiMuon.ToString(),
+                        BackgroundGradientStart = "#d000f5",
+                        BackgroundGradientEnd = "#d000f5"
+                    },
+                    new AbsentInformationModel
+                    {
+                        Title = "Số ngày đi học",
+                        Number = information.STT.ToString(),
+                        BackgroundGradientStart = "#ff6d00",
+                        BackgroundGradientEnd = "#ff6d00"
+                    },
+                };
+                InformationList = new ObservableCollection<AbsentInformationModel>(info);
+            }
+        }
+
+        private Color GetColor(GetAttendanceForMonthModel data)
+        {
+            if (data?.NghiKhongPhep == true)
+            {
+                return Color.FromHex("#ff0a0a");
+            }
+            else if (data?.NghiCoPhep == true)
+            {
+                return Color.FromHex("#039612");
+            }
+            else if (data?.DiMuon == true)
+            {
+                return Color.FromHex("#d000f5");
+            }
+            return Color.FromHex("#ff6d00");
+        }
+        #endregion
     }
 
     public class DayEventCollection<T> : List<T>, IPersonalizableDayEvent

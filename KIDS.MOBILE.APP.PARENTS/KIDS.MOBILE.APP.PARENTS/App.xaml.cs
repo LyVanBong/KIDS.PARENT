@@ -55,6 +55,8 @@ using KIDS.MOBILE.APP.PARENTS.Views.Album;
 using KIDS.MOBILE.APP.PARENTS.ViewModels.Album;
 using KIDS.MOBILE.APP.PARENTS.Services.Album;
 using KIDS.MOBILE.APP.PARENTS.Services.HealthCare;
+using KIDS.MOBILE.APP.PARENTS.Views.Comment;
+using KIDS.MOBILE.APP.PARENTS.ViewModels.Comment;
 
 namespace KIDS.MOBILE.APP.PARENTS
 {
@@ -113,6 +115,7 @@ namespace KIDS.MOBILE.APP.PARENTS
             containerRegistry.RegisterForNavigation<SleepActivityPage, SleepActivityViewModel>();
             containerRegistry.RegisterForNavigation<TuitionFeeDetailPage, TuitionFeeDetailViewModel>();
             containerRegistry.RegisterForNavigation<HealthChartPage, HealthChartViewModel>();
+            containerRegistry.RegisterForNavigation<CommentPage, CommentViewModel>();
             #endregion
             #region Registry Dialog
             #endregion

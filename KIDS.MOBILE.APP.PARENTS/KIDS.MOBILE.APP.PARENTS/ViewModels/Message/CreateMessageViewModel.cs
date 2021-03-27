@@ -110,8 +110,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                         Content = MessageContent,
                         DateCreate = SelectedDate,
                         StudentID = AppConstants.User.StudentID,
-                        Type = 2,
-                        Image = ImageSourceToBase64(ChooseImage)
+                        Type = 2
                     };
                     var result = await _messageService.CreateMessage(model);
                     if (result?.Data == 1)
@@ -132,8 +131,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                         Content = MessageContent,
                         DateCreate = SelectedDate,
                         StudentID = AppConstants.User.StudentID,
-                        Type = 2,
-                        Image = ImageSourceToBase64(ChooseImage)
+                        Type = 2
                     };
                     var result = await _messageService.UpdateMessage(model);
                     if (result?.Data == 1)

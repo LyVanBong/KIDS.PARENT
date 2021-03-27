@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
@@ -24,13 +25,20 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.RequestProvider
             try
             {
                 CreateClients(uri);
+                var param = string.Empty;
                 if(parameters != null && parameters.Any())
                 {
                     foreach(var item in parameters)
                     {
                         _request.AddQueryParameter(item.Key, item.Value);
+                        if (!string.IsNullOrEmpty(param))
+                        {
+                            param = $"{param}&";
+                        }
+                        param = $"{param}{item.Key}={item.Value}";
                     }
                 }
+                _request.Method = Method.GET;
                 var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
                 var data = response.StatusCode == HttpStatusCode.OK ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content) : default;
                 return data;

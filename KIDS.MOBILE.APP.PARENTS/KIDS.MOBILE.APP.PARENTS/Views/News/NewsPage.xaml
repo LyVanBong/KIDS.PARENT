@@ -19,24 +19,29 @@
                  Orientation="Vertical"
                  BackgroundColor="#f0eded">
         <!--Header-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="Start"
-                     Orientation="Horizontal"
+        <RelativeLayout HorizontalOptions="FillAndExpand"
+                        HeightRequest="40"
                      Padding="5,10,5,10"
-                     BackgroundColor="White">
-            <Image Source="back.png"
+                     BackgroundColor="#ff6d00">
+            <Image Source="ic_back.png"
+                   Margin="10"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=-25}"
+                   VerticalOptions="Center"
                    HorizontalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
+                   VerticalOptions="Center"
                    Text="{markupExtension:Translate 00045}"
-                   TextColor="Black"
+                   TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="24">
+                   FontSize="20">
             </Label>
-        </StackLayout>
+        </RelativeLayout>
 
         <loadingView:LoadingView
                 Grid.Row="0"

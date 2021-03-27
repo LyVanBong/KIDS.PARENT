@@ -162,5 +162,7 @@
     <Folder Include="Models\Album\" />
     <Folder Include="Models\HealthCare\" />
     <Folder Include="Services\HealthCare\" />
+    <Folder Include="ViewModels\Comment\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
 </Project>

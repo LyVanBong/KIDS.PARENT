@@ -42,11 +42,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             AddCommand = new DelegateCommand(OnAddClick);
             DetailCommand = new DelegateCommand<object>(OnDetailClick);
         }
-        public override async void Initialize(INavigationParameters parameters)
+        #endregion
+
+        #region Public methods
+        #endregion
+
+        #region Private methods
+        public async void OnAppearing()
         {
             try
             {
-                base.Initialize(parameters);
                 IsLoading = true;
                 HasAnyMessages = false;
                 await GetMessagesList();
@@ -59,14 +64,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             {
                 IsLoading = false;
             }
-            
         }
-        #endregion
 
-        #region Public methods
-        #endregion
-
-        #region Private methods
         private async Task GetMessagesList()
         {
             try
@@ -82,11 +81,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
                         {
                             Id = item.CommunicationID,
                             ReceivedUser = item.NguoiGui?.ToString(),
-                            DateTime = item.DateCreate != null ? item.DateCreate.Value.ToShortDateString() : string.Empty,
+                            TimePeriod = item.DateCreate != null ? item.DateCreate.Value.ToString("hh:mm dd-MM-yyyy") : string.Empty,
                             ImageUrl = $"{AppConstants.UriBaseWebForm}{item.Picture}",
                             Comment = item.Content
                         });
                     }
+                    messageList = messageList.OrderByDescending(x => x.DateTime).ToList();
                     MessageList = new ObservableCollection<MessageModel>(messageList);
                     HasAnyMessages = true;
                 }
