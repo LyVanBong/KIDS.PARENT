@@ -54,9 +54,6 @@
                      Grid.Row="2">
             <Image BackgroundColor="White"
                        Source="leave.png">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
-                </Image.GestureRecognizers>
             </Image>
 
             <Label VerticalOptions="Center"

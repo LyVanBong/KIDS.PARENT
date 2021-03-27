@@ -46,7 +46,7 @@
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.4}"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=0.2}"  
                    VerticalOptions="Center"
-                   Text="{markupExtension:Translate 00044}"
+                   Text="Lịch học"
                    TextColor="White"
                    FontAttributes="Bold"
                    FontSize="20">
