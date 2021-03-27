@@ -61,7 +61,7 @@
             IsEnabled="False"
             Grid.ColumnSpan="6"
             BackgroundColor="#f0eded"
-            Text="Viết bình luận..."
+            Text="Chi tiết..."
             FontSize="12"
             TextColor="White"
             TextTransform="None"

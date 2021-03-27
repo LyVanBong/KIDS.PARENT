@@ -11,10 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="400"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -43,195 +40,207 @@
             </Label>
         </RelativeLayout>
 
-        <!--Information-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     Orientation="Horizontal"
-                     Padding="5,10,5,10"
-                     BackgroundColor="#f0eded"
-                     Grid.Row="2">
+        <ScrollView Grid.Row="2">
             <Grid HorizontalOptions="FillAndExpand"
-                  ColumnSpacing="10"
-                  Padding="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <border:SfBorder
-                    Grid.Column="0"
-                    CornerRadius="8"
-                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                    BorderColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Center"
-                    BackgroundColor="{Binding WeightColor}">
-                    <StackLayout HorizontalOptions="FillAndExpand"
-                             Padding="10"
-                             Orientation="Vertical">
-                        <Image Source="ic_weight.png"/>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="Cân nặng"
-                           TextColor="Black"
-                           FontSize="14">
-                        </Label>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="{Binding Weight}"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                        </Label>
-                    </StackLayout>
-                    <border:SfBorder.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="1"/>
-                    </border:SfBorder.GestureRecognizers>
-                </border:SfBorder>
+                  VerticalOptions="FillAndExpand"
+                  BackgroundColor="#f0eded">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <!--Information-->
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         Padding="5,10,5,10"
+                         BackgroundColor="#f0eded"
+                         Grid.Row="0">
+                <Grid HorizontalOptions="FillAndExpand"
+                      ColumnSpacing="10"
+                      Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <border:SfBorder
+                        Grid.Column="0"
+                        CornerRadius="8"
+                        BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                        BorderColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        BackgroundColor="{Binding WeightColor}">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 Padding="10"
+                                 Orientation="Vertical">
+                            <Image Source="ic_weight.png"/>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="Cân nặng"
+                               TextColor="Black"
+                               FontSize="14">
+                            </Label>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Weight}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                            </Label>
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="1"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
                 
-                <border:SfBorder
-                    Grid.Column="1"
-                    CornerRadius="8"
-                    BackgroundColor="{Binding HeightColor}"
-                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                    BorderColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="FillAndExpand"
-                             Padding="10"
-                             Orientation="Vertical">
-                        <Image Source="ic_height.png"/>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="Chiều cao"
-                           TextColor="Black"
-                           FontSize="14">
-                        </Label>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="{Binding Height}"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                        </Label>
-                    </StackLayout>
-                    <border:SfBorder.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="2"/>
-                    </border:SfBorder.GestureRecognizers>
-                </border:SfBorder>
+                    <border:SfBorder
+                        Grid.Column="1"
+                        CornerRadius="8"
+                        BackgroundColor="{Binding HeightColor}"
+                        BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                        BorderColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 Padding="10"
+                                 Orientation="Vertical">
+                            <Image Source="ic_height.png"/>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="Chiều cao"
+                               TextColor="Black"
+                               FontSize="14">
+                            </Label>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Height}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                            </Label>
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="2"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
                 
-                <border:SfBorder
-                    Grid.Column="2"
-                    CornerRadius="8"
-                    BackgroundColor="{Binding BmiColor}"
-                    BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                    BorderColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="FillAndExpand"
-                             Padding="10"
-                             Orientation="Vertical">
-                        <Image Source="ic_calendar.png"/>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="BMI"
-                           TextColor="Black"
-                           FontSize="14">
-                        </Label>
-                        <Label HorizontalOptions="CenterAndExpand"
-                           Text="{Binding Bmi}"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="18">
-                        </Label>
-                    </StackLayout>
-                    <border:SfBorder.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="3"/>
-                    </border:SfBorder.GestureRecognizers>
-                </border:SfBorder>
+                    <border:SfBorder
+                        Grid.Column="2"
+                        CornerRadius="8"
+                        BackgroundColor="{Binding BmiColor}"
+                        BorderWidth="{OnIdiom Default=2, Desktop=0}"
+                        BorderColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 Padding="10"
+                                 Orientation="Vertical">
+                            <Image Source="ic_calendar.png"/>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="BMI"
+                               TextColor="Black"
+                               FontSize="14">
+                            </Label>
+                            <Label HorizontalOptions="CenterAndExpand"
+                               Text="{Binding Bmi}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18">
+                            </Label>
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HeathChartCommand}" CommandParameter="3"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
 
-            </Grid>
+                </Grid>
 
-        </StackLayout>
+            </StackLayout>
         
-        <!--Chart-->
-        <chart:SfChart Grid.Row="3"
-                       Margin="20,10,20,10">
+            <!--Chart-->
+            <chart:SfChart Grid.Row="1"
+                           Margin="20,10,20,10">
 
-            <chart:SfChart.Legend>
-                <chart:ChartLegend />
-            </chart:SfChart.Legend>
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend />
+                </chart:SfChart.Legend>
             
-            <chart:SfChart.PrimaryAxis>
-                <chart:CategoryAxis MaximumLabels="5"/>
-            </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.PrimaryAxis>
+                    <chart:CategoryAxis MaximumLabels="5"/>
+                </chart:SfChart.PrimaryAxis>
 
-            <chart:SfChart.SecondaryAxis>
-                <chart:NumericalAxis Maximum="{Binding MaximumValue}">
-                    <chart:NumericalAxis.Title>
-                        <chart:ChartAxisTitle Text="{Binding ChartTitle}"/>
-                    </chart:NumericalAxis.Title>
-                </chart:NumericalAxis>
-            </chart:SfChart.SecondaryAxis>
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis Maximum="{Binding MaximumValue}">
+                        <chart:NumericalAxis.Title>
+                            <chart:ChartAxisTitle Text="{Binding ChartTitle}"/>
+                        </chart:NumericalAxis.Title>
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
 
-            <chart:ColumnSeries ItemsSource="{Binding HealthList}" Spacing="0.6"
-                                XBindingPath="Serial" 
-                                YBindingPath="Index"
-                                EnableTooltip="True"
-                                EnableAnimation="True">
-                <chart:ColumnSeries.ColorModel>
+                <chart:ColumnSeries ItemsSource="{Binding HealthList}" Spacing="0.6"
+                                    XBindingPath="Serial" 
+                                    YBindingPath="Index"
+                                    EnableTooltip="True"
+                                    EnableAnimation="True">
+                    <chart:ColumnSeries.ColorModel>
 
-                    <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding ColorList}"/>
+                        <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding ColorList}"/>
 
-                </chart:ColumnSeries.ColorModel>
-            </chart:ColumnSeries>
+                    </chart:ColumnSeries.ColorModel>
+                </chart:ColumnSeries>
 
-            <chart:LineSeries ItemsSource="{Binding HealthList}" 
-                                XBindingPath="Serial" 
-                                YBindingPath="Index"
-                                EnableAnimation="True"
-                                Color="Pink">
-                <chart:LineSeries.DataMarker>
-                    <chart:ChartDataMarker/>
-                </chart:LineSeries.DataMarker>
-            </chart:LineSeries>
+                <chart:LineSeries ItemsSource="{Binding HealthList}" 
+                                    XBindingPath="Serial" 
+                                    YBindingPath="Index"
+                                    EnableAnimation="True"
+                                    Color="Pink">
+                    <chart:LineSeries.DataMarker>
+                        <chart:ChartDataMarker/>
+                    </chart:LineSeries.DataMarker>
+                </chart:LineSeries>
 
-        </chart:SfChart>
+            </chart:SfChart>
 
-        <Grid RowDefinitions="*,*"
-              ColumnDefinitions="*,4*,*,4*"
-              Margin="20,0,20,0"
-              Grid.Row="4">
-            <BoxView Grid.Row="0"
-                     Grid.Column="0"
-                     Margin="0,5,0,5"
-                     Color="#0fb2f2"/>
-            <Label Grid.Row="0"
-                   Grid.Column="1"
-                   Margin="10,0,10,0"
-                   FontSize="12"
-                   LineBreakMode="WordWrap"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Text="{Binding NormalIndexText}"/>
-            <BoxView Grid.Row="0"
-                     Grid.Column="2"
-                     Margin="0,5,0,5"
-                     Color="#ffd04f"/>
-            <Label Grid.Row="0"
-                   Grid.Column="3"
-                   Margin="10,0,10,0"
-                   FontSize="12"
-                   LineBreakMode="WordWrap"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Text="{Binding UnderIndexText}"/>
-            <BoxView Grid.Row="1"
-                     Grid.Column="0"
-                     Margin="0,5,0,5"
-                     Color="#ff3e3b"/>
-            <Label Grid.Row="1"
-                   Grid.Column="1"
-                   Margin="10,0,10,0"
-                   FontSize="12"
-                   LineBreakMode="WordWrap"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Text="{Binding OverIndexText}"/>
+            <Grid RowDefinitions="*,*"
+                  ColumnDefinitions="*,4*,*,4*"
+                  Margin="20,0,20,0"
+                  Grid.Row="2">
+                <BoxView Grid.Row="0"
+                         Grid.Column="0"
+                         Margin="0,5,0,5"
+                         Color="#0fb2f2"/>
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Margin="10,0,10,0"
+                       FontSize="12"
+                       LineBreakMode="WordWrap"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Text="{Binding NormalIndexText}"/>
+                <BoxView Grid.Row="0"
+                         Grid.Column="2"
+                         Margin="0,5,0,5"
+                         Color="#ffd04f"/>
+                <Label Grid.Row="0"
+                       Grid.Column="3"
+                       Margin="10,0,10,0"
+                       FontSize="12"
+                       LineBreakMode="WordWrap"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Text="{Binding UnderIndexText}"/>
+                <BoxView Grid.Row="1"
+                         Grid.Column="0"
+                         Margin="0,5,0,5"
+                         Color="#ff3e3b"/>
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="10,0,10,0"
+                       FontSize="12"
+                       LineBreakMode="WordWrap"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Text="{Binding OverIndexText}"/>
+            </Grid>
         </Grid>
+        </ScrollView>
     </Grid>
 </pages:PageBase>
