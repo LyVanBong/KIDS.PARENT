@@ -61,6 +61,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
         private MessageModel CurrentMessage { get; set; }
         private MedicineTicketModel medicineDetail;
         private List<MedicineModel> listMedicine;
+        private string defaultPath = null;
         #endregion
 
         #region Contructor
@@ -123,7 +124,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                                     MessageContent = item.Note,
                                     Unit = item.Unit,
                                     Name = item.Name,
-                                    Action = 0,
+                                    Action = 1,
                                     FilePath = item.Picture
                                 });
                             }
@@ -208,7 +209,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                             Note = item.MessageContent,
                             Action = item.Action
                         });
-                        fileList.Add(item.FilePath, item.FilePath);
+                        if (item.Action == 0)
+                        {
+                            fileList.Add(item.FilePath, item.FilePath);
+                        }
                     }
                 }
                 var result = await _prescriptionService.UpdatePrescription(medicineDetail, fileList);
@@ -254,6 +258,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 Action = 1,
                 FilePath = selectedImageFile.Path
             });
+            defaultPath = selectedImageFile.Path;
             //MedicineList = new ObservableCollection<MedicineModel>(medicineList);
         }
 

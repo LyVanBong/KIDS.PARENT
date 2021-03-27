@@ -17,7 +17,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -71,66 +71,6 @@
                 </Label.FormattedText>
             </Label>
         </StackLayout>
-        
-        <!--Absent information-->
-        <Grid Grid.Row="3"
-              ColumnDefinitions="0.5*,*,*,*,0.5*">
-            <syncfusion:SfListView SelectionMode="None"
-                               AutoFitMode="Height" 
-                               ItemsSource="{Binding InformationList}"
-                               Grid.Column="1"
-                               Grid.ColumnSpan="3"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="FillAndExpand"
-                               SelectionBackgroundColor="Transparent">
-
-            <syncfusion:SfListView.ItemTemplate>
-                <DataTemplate>
-                    <cards:SfCardView CornerRadius="8" HorizontalOptions="FillAndExpand"
-                                      BackgroundColor="Transparent"
-                                      BorderColor="Transparent">
-                        <cards:SfCardView.Content>
-                            <border:SfBorder
-                                CornerRadius="50"
-                                HeightRequest="100"
-                                BackgroundColor="Transparent"
-                                BorderWidth="{OnIdiom Default=2, Desktop=0}"
-                                BorderColor="Gray"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="100">      
-                                <Grid BackgroundColor="Transparent">
-                                    <gradient:SfGradientView>
-                                        <gradient:SfGradientView.BackgroundBrush>
-                                            <gradient:SfLinearGradientBrush>
-                                                <gradient:SfLinearGradientBrush.GradientStops>
-                                                    <gradient:SfGradientStop Color="{Binding BackgroundGradientStart}" Offset="0.0"/>
-                                                    <gradient:SfGradientStop Color="{Binding BackgroundGradientEnd}" Offset="1.0"/>
-                                                </gradient:SfLinearGradientBrush.GradientStops>
-                                            </gradient:SfLinearGradientBrush>
-                                        </gradient:SfGradientView.BackgroundBrush>
-                                    </gradient:SfGradientView>
-
-                                    <StackLayout Margin="5,0,5,0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                        <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="10" Text="{Binding Title}" HorizontalTextAlignment="Center"></Label>
-                                        <Label TextColor="White" LineHeight="{OnPlatform Android=1.25, Default=-1}" FontSize="24" Text="{Binding Number}" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-
-                                    </StackLayout>
-                                </Grid>
-                            </border:SfBorder>
-                        </cards:SfCardView.Content>
-                    </cards:SfCardView>
-
-                </DataTemplate>
-            </syncfusion:SfListView.ItemTemplate>
-
-            <!--  Layout to customize number of columns in SfListView  -->
-            <syncfusion:SfListView.LayoutManager>
-                <syncfusion:GridLayout SpanCount="3" />
-            </syncfusion:SfListView.LayoutManager>
-
-        </syncfusion:SfListView>
-        </Grid>
 
         <!--Add new-->
         <StackLayout HorizontalOptions="StartAndExpand"

@@ -186,7 +186,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                         for(int i = 0; i < dataList.Count; i++)
                         {
                             HealthList.Add(new ChartModel($"Lần {i + 1}", dataList[i].Height ?? 0));
-                            ColorList.Add(i % 2 == 0 ? Color.FromHex("#0fb2f2") : Color.FromHex("#ff3e3b"));
+                            ColorList.Add(GetColor(dataList[i]?.BMI ?? 0));
                         }
                         MaximumValue = (dataList.Max(x => x.Height) ?? 0) + 20;
                     }
@@ -204,7 +204,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                         for (int i = 0; i < dataList.Count; i++)
                         {
                             HealthList.Add(new ChartModel($"Lần {i + 1}", dataList[i].BMI ?? 0));
-                            ColorList.Add(i % 2 == 0 ? Color.FromHex("#0fb2f2") : Color.FromHex("#ff3e3b"));
+                            ColorList.Add(GetColor(dataList[i]?.BMI ?? 0));
                         }
                         MaximumValue = (dataList.Max(x => x.BMI) ?? 0) + 2;
                     }
@@ -222,7 +222,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                         for (int i = 0; i < dataList.Count; i++)
                         {
                             HealthList.Add(new ChartModel($"Lần {i + 1}", dataList[i].Width ?? 0));
-                            ColorList.Add(i % 2 != 0 ? Color.FromHex("#0fb2f2") : Color.FromHex("#ff3e3b"));
+                            ColorList.Add(GetColor(dataList[i]?.BMI ?? 0));
                         }
                         MaximumValue = (dataList.Max(x => x.Width) ?? 0) + 10;
                     }
@@ -232,6 +232,22 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                     OverIndexText = "Thừa cân, béo phì";
                     UnderIndexText = "Suy dinh dưỡng";
                     break;
+            }
+        }
+
+        private Color GetColor(double bmiIndex)
+        {
+            if(bmiIndex < 18.5)
+            {
+                return Color.FromHex("#ffd04f");
+            }
+            else if (bmiIndex > 22.9)
+            {
+                return Color.FromHex("#ff3e3b");
+            }
+            else
+            {
+                return Color.FromHex("#0fb2f2");
             }
         }
         #endregion

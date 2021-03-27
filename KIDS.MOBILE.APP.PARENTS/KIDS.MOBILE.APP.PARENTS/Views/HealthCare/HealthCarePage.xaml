@@ -61,7 +61,7 @@
                 VerticalOptions="Center"
                 WidthRequest="30">
                 <Image BackgroundColor="White"
-                       Source="home.png">
+                       Source="add.png">
                 </Image>
             </border:SfBorder>
 
