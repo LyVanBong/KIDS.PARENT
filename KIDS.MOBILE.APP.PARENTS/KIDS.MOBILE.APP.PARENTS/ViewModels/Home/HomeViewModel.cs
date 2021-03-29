@@ -138,7 +138,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
                 new MenuItem{ Title = Resource._00042,Icon = ImageSource.FromFile("medicine.png"),NavigateTo=nameof(MedicineAdvisePage)},
                 new MenuItem{ Title = "Điểm danh",Icon = ImageSource.FromFile("pickup.png"),NavigateTo=nameof(PickupPage)},
                 new MenuItem{ Title = "Lịch học",Icon = ImageSource.FromFile("activity.png"),NavigateTo=nameof(ActivityPage)},
-                new MenuItem{ Title = "Ăn ngủ",Icon = ImageSource.FromFile("eat.png"),NavigateTo=nameof(SleepActivityPage)},
+                new MenuItem{ Title = "Thực đơn",Icon = ImageSource.FromFile("eat.png"),NavigateTo=nameof(SleepActivityPage)},
                 new MenuItem{ Title = "Nhận xét",Icon = ImageSource.FromFile("survey.png"),NavigateTo=nameof(CommentPage)},
                 new MenuItem{ Title = Resource._00045,Icon = ImageSource.FromFile("news.png"),NavigateTo=nameof(NewsPage)},
                 new MenuItem{ Title = Resource._00046,Icon = ImageSource.FromFile("album.png"),NavigateTo=nameof(AlbumPage)},

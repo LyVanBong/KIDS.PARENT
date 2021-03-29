@@ -47,6 +47,20 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             get => _PooComment;
             set => SetProperty(ref _PooComment, value);
         }
+
+        private ImageSource _WeeklyImageSource;
+        public ImageSource WeeklyImageSource
+        {
+            get => _WeeklyImageSource;
+            set => SetProperty(ref _WeeklyImageSource, value);
+        }
+
+        private string _WeeklyComment;
+        public string WeeklyComment
+        {
+            get => _WeeklyComment;
+            set => SetProperty(ref _WeeklyComment, value);
+        }
         #endregion
 
         #region Constructor
@@ -92,6 +106,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
                 SleepingComment = $"{comment.SleepComment}";
                 PooComment = $"{comment.HygieneComment}";
                 ImageSource = !string.IsNullOrEmpty(comment.PhieuBeNgoan) ? new Uri(comment.PhieuBeNgoan) : null;
+                WeeklyComment = $"{comment.WeekComment}";
+                WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
             }
         }
         #endregion
