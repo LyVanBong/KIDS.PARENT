@@ -85,6 +85,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             _navigationService = navigationService;
             _activityService = activityService;
         }
+
         public override async void Initialize(INavigationParameters parameters)
         {
             try
@@ -130,6 +131,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
                 SleepTo = sleepItem.SleepTo;
             }
         }
+
         private async Task GetPooActivity()
         {
             var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString("yyyy/MM/dd"));
@@ -144,7 +146,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         {
             var selectedDate = SelectedDate.ToString("yyyy/MM/dd");
             var listMenu = await _activityService.GetTodayMenu(studentId, gradeId, selectedDate);
-            HasAnyActivity = HasAnyActivity ? HasAnyActivity : listMenu?.Data?.Any() == true;
+            HasAnyActivity = listMenu?.Data?.Any() == true;
             EatingComment = listMenu?.Data?.FirstOrDefault()?.MealComment;
             var menuList = new List<MenuToDay>();
             if(listMenu?.Data?.Any() == true)

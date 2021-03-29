@@ -28,6 +28,17 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             }
         }
 
+        private ObservableCollection<ExerciseClass> _afternoonActivityList = new ObservableCollection<ExerciseClass>();
+        public ObservableCollection<ExerciseClass> AfternoonActivityList
+        {
+            get => _afternoonActivityList;
+            set
+            {
+                _afternoonActivityList = value;
+                RaisePropertyChanged(nameof(AfternoonActivityList));
+            }
+        }
+
         private DateTime selectedDate;
         public DateTime SelectedDate
         {
@@ -37,7 +48,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
 
         public bool IsActivityVisible
         {
-            get => ActivityList.Any();
+            get => ActivityList.Any() && AfternoonActivityList.Any();
         }
 
         private bool _IsDailyCommentVisible;
@@ -115,30 +126,47 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             try
             {
                 ActivityList?.Clear();
+                AfternoonActivityList?.Clear();
                 var selectedDate = SelectedDate.ToString("yyyy/MM/dd");
                 var listMorningActivity = await _activityService.GetMorningActivity(studentId, classId, selectedDate);
                 var listAfternoonActivity = await _activityService.GetAfternoonActivity(studentId, classId, selectedDate);
 
                 HasAnyActivity = listMorningActivity?.Data?.Any() == true || listAfternoonActivity?.Data?.Any() == true;
 
-                var listActivities = new List<DailyActivityResponseModel>();
-                var listBinding = new List<ExerciseClass>();
-                if (listMorningActivity?.Data?.Any() == true) listActivities.AddRange(listMorningActivity.Data);
-                if (listAfternoonActivity?.Data?.Any() == true) listActivities.AddRange(listAfternoonActivity.Data);
-                foreach (var item in listActivities)
+                var morningActivities = new List<ExerciseClass>();
+                var afternoonActivities = new List<ExerciseClass>();
+
+                if(listMorningActivity?.Data?.Any() == true)
                 {
-                    listBinding.Add(new ExerciseClass
+                    foreach (var item in listMorningActivity.Data)
                     {
-                        Id = item.ID,
-                        Instructor = item.Contents,
-                        ClassTime = item.ThoiGian,
-                        IsLast = false,
-                        Title = string.Empty
-                    });
+                        morningActivities.Add(new ExerciseClass
+                        {
+                            Id = item.ID,
+                            Instructor = item.Contents,
+                            ClassTime = item.ThoiGian,
+                            IsLast = false,
+                            Title = string.Empty
+                        });
+                    }
+                    ActivityList = new ObservableCollection<ExerciseClass>(morningActivities);
                 }
-                if (listBinding.Any()) listBinding.Last().IsLast = true;
-                StudyingComment = listAfternoonActivity?.Data?.FirstOrDefault().NhanXet;
-                ActivityList = new ObservableCollection<ExerciseClass>(listBinding);
+
+                if (listAfternoonActivity?.Data?.Any() == true)
+                {
+                    foreach (var item in listAfternoonActivity.Data)
+                    {
+                        afternoonActivities.Add(new ExerciseClass
+                        {
+                            Id = item.ID,
+                            Instructor = item.Contents,
+                            ClassTime = item.ThoiGian,
+                            IsLast = false,
+                            Title = string.Empty
+                        });
+                    }
+                    AfternoonActivityList = new ObservableCollection<ExerciseClass>(afternoonActivities);
+                }
             }
             catch (Exception ex)
             {
