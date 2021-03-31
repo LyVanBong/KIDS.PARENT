@@ -141,6 +141,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor">
       <Version>18.4.0.33</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.7</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageService.cs" />

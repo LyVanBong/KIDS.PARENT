@@ -47,10 +47,12 @@
         
         <!--Add new-->
         <StackLayout HorizontalOptions="StartAndExpand"
-                     VerticalOptions="FillAndExpand"
                      Orientation="Horizontal"
                      Margin="10,5,10,5"
                      Grid.Row="2">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding AddCommand}"/>
+            </StackLayout.GestureRecognizers>
             <border:SfBorder
                 CornerRadius="24"
                 HeightRequest="30"
