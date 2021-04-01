@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Models.HealthCare;
 using KIDS.MOBILE.APP.PARENTS.Services.HealthCare;
+using KIDS.MOBILE.APP.PARENTS.Services.Popup;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
 using Prism.Commands;
 using Prism.Navigation;
@@ -46,16 +48,22 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         }
 
         private IHealthCareService _healthService;
+        private IInputAlertDialogService _popup;
         private List<GetStudentHealthModel> dataList = new List<GetStudentHealthModel>();
         public DelegateCommand<string> HeathChartCommand { get; }
+        public DelegateCommand AddCommand { get; }
         #endregion
 
         #region Constructor
-        public HealthCareViewModel(INavigationService navigationService, IHealthCareService healthCareService) : base(navigationService)
+        public HealthCareViewModel(INavigationService navigationService,
+            IHealthCareService healthCareService,
+            IInputAlertDialogService popup) : base(navigationService)
         {
             _navigationService = navigationService;
             _healthService = healthCareService;
+            _popup = popup;
             HeathChartCommand = new DelegateCommand<string>(OnHealthChartClicked);
+            AddCommand = new DelegateCommand(OnAddClicked);
         }
 
         public override async void Initialize(INavigationParameters parameters)
@@ -64,15 +72,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             {
                 base.Initialize(parameters);
                 HealthList = new ObservableCollection<HealthInformationModel>(GetHealthList());
-                IsLoading = false;
-                var studentId = AppConstants.User.StudentID;
-                var data = await _healthService.GetStudentHealthInfo(studentId);
-                dataList = data?.Data ?? new List<GetStudentHealthModel>();
-                var info = data?.Data?.FirstOrDefault();
-                Weight = $"{info?.Width} KG";
-                Height = $"{info?.Height} CM";
-                Month = $"{info?.MonthAge}";
-                IsLoading = false;
+                await GetHealthInformation();
             }
             catch (Exception ex)
             {
@@ -82,6 +82,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         #endregion
 
         #region Public methods
+        public void OnDisappering()
+        {
+            _popup.ClosePopup();
+        }
         #endregion
 
         #region Private methods
@@ -129,6 +133,71 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             param.Add("Type", type);
             param.Add("Information", dataList);
             await _navigationService.NavigateAsync(nameof(HealthChartPage), param);
+        }
+
+        private async Task GetHealthInformation()
+        {
+            try
+            {
+                IsLoading = false;
+                var studentId = AppConstants.User.StudentID;
+                var data = await _healthService.GetStudentHealthInfo(studentId);
+                dataList = data?.Data ?? new List<GetStudentHealthModel>();
+                var info = data?.Data?.FirstOrDefault();
+                Weight = $"{info?.Width} KG";
+                Height = $"{info?.Height} CM";
+                Month = $"{info?.MonthAge}";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        private async void OnAddClicked()
+        {
+            try
+            {
+                var result = await _popup.OpenMultipleDataInputAlertDialog(string.Empty, string.Empty, string.Empty);
+                if(result != null)
+                {
+                    if(string.IsNullOrEmpty(result.Value1) || string.IsNullOrEmpty(result.Value2) || string.IsNullOrEmpty(result.Value3))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Lỗi", "Hãy nhập đủ thông tin cho bé", "OK");
+                    }
+                    else
+                    {
+                        var model = new CreateHealthInformationModel
+                        {
+                            ID = Guid.NewGuid(),
+                            StudentID = AppConstants.User.StudentID,
+                            ClassID = AppConstants.User.ClassID,
+                            Date = DateTime.Now,
+                            MonthAge = double.Parse(result.Value1),
+                            Width = double.Parse(result.Value2),
+                            Height = double.Parse(result.Value3)
+                        };
+                        var response = await _healthService.CreateHealthInformation(model);
+                        if(response?.Data == 1)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Thành công", "Nhập thông tin cho bé thành công", "OK");
+                            await GetHealthInformation();
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Lỗi", "Lỗi phát sinh. Vui lòng thử lại hoặc liên hệ với admin.", "OK");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Lỗi", "Hãy nhập lại thông tin cho bé ( chỉ nhập số )", "OK");
+            }
         }
         #endregion
     }
