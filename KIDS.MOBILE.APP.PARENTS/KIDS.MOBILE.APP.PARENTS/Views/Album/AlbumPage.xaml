@@ -39,7 +39,7 @@
                    Text="{markupExtension:Translate 00046}"
                    TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="20">
+                   FontSize="25">
             </Label>
         </RelativeLayout>
 

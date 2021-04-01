@@ -32,5 +32,51 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.HealthCare
                 return null;
             }
         }
+
+        public async Task<ResponseModel<int>> CreateHealthInformation(CreateHealthInformationModel model)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("ID", model.ID.ToString()),
+                    new RequestParameter("StudentID", model.StudentID.ToString()),
+                    new RequestParameter("ClassID", model.ClassID.ToString()),
+                    new RequestParameter("Date", model.Date.ToString("yyyy-MM-dd")),
+                    new RequestParameter("MonthAge", model.MonthAge.ToString()),
+                    new RequestParameter("Height", model.Height.ToString()),
+                    new RequestParameter("Width", model.Width.ToString())
+                };
+                var data = await _requestProvider.PostAsync<int>("Health/Insert", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<ResponseModel<int>> UpdateHealthInformation(CreateHealthInformationModel model)
+        {
+            try
+            {
+                var para = new List<RequestParameter>()
+                {
+                    new RequestParameter("ID", model.ID.ToString()),
+                    new RequestParameter("StudentID", model.StudentID.ToString()),
+                    new RequestParameter("ClassID", model.ClassID.ToString()),
+                    new RequestParameter("Date", model.Date.ToString("yyyy-MM-dd")),
+                    new RequestParameter("MonthAge", model.MonthAge.ToString()),
+                    new RequestParameter("Height", model.Height.ToString()),
+                    new RequestParameter("Width", model.Width.ToString())
+                };
+                var data = await _requestProvider.PostAsync<int>("Health/Update", para);
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -63,6 +63,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="18.4.0.33" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.2936" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.7" />
   </ItemGroup>
 
   <ItemGroup>
@@ -164,5 +165,6 @@
     <Folder Include="Services\HealthCare\" />
     <Folder Include="ViewModels\Comment\" />
     <Folder Include="Views\Comment\" />
+    <Folder Include="Services\Popup\" />
   </ItemGroup>
 </Project>

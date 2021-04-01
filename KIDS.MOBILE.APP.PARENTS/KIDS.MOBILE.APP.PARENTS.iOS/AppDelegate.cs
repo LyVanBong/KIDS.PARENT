@@ -42,6 +42,7 @@ namespace KIDS.MOBILE.APP.PARENTS.iOS
 
         private void OtherLibraries()
         {
+            Rg.Plugins.Popup.Popup.Init();
             SfLinearProgressBarRenderer.Init();
             SfCircularProgressBarRenderer.Init();
             SfChartRenderer.Init();
