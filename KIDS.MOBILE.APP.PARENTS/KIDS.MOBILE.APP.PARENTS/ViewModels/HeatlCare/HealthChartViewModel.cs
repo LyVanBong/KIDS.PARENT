@@ -140,6 +140,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         public DelegateCommand<string> HeathChartCommand { get; }
 
         private List<GetStudentHealthModel> dataList = new List<GetStudentHealthModel>();
+
+        private ObservableCollection<GetStudentHealthModel> _History;
+        public ObservableCollection<GetStudentHealthModel> History
+        {
+            get => _History;
+            set => SetProperty(ref _History, value);
+        }
         #endregion
 
         #region Constructor
@@ -154,6 +161,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             base.Initialize(parameters);
             HealthList = new ObservableCollection<ChartModel>();
             ColorList = new ObservableCollection<Color>();
+            
             if (parameters?.ContainsKey("Information") == true)
             {
                 dataList = (List<GetStudentHealthModel>)parameters["Information"] ?? new List<GetStudentHealthModel>();
@@ -161,6 +169,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                 Height = $"{dataList?.FirstOrDefault()?.Height} CM";
                 Bmi = $"{dataList?.FirstOrDefault()?.BMI}";
                 dataList = dataList.OrderBy(x => x.Date).ToList();
+                History = new ObservableCollection<GetStudentHealthModel>(dataList);
             }
 
             if (parameters?.ContainsKey("Type") == true)
