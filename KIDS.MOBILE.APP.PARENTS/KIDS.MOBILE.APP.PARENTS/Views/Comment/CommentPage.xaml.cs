@@ -13,6 +13,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Comment
         {
             InitializeComponent();
             dailyStack.IsVisible = true;
+            weeklyStack.IsVisible = false;
         }
 
         protected override void OnBindingContextChanged()
@@ -25,6 +26,8 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Comment
         {
             vm.IsLoading = true;
             await vm?.GetAttendanceForMonth(e.DateAdded.First());
+            await vm?.GetSleepActivity(e.DateAdded.First());
+            await vm?.GetPooActivity(e.DateAdded.First());
             vm.IsLoading = false;
         }
 

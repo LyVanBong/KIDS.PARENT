@@ -142,6 +142,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <!--Daily comment-->
                     <StackLayout 
@@ -244,11 +248,82 @@
                         </StackLayout>
                     </Frame>
 
-                    <!--Sleeping comment-->
+                    <!--Sleeping-->
                     <StackLayout Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="7">
+                        <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                        <Label Text="{markupExtension:Translate 00109}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                    </StackLayout>
+
+                    <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       HasShadow="False"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       Grid.Row="8">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                            <Image Aspect="AspectFit"
+                               WidthRequest="60"
+                               VerticalOptions="CenterAndExpand"
+                               Source="sleeping.jpg"/>
+                            <Label FontSize="12"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{markupExtension:Translate 00111}"
+                               Margin="5,5,5,5"/>
+                            <Frame BorderColor="Blue"
+                               CornerRadius="10" 
+                               Padding="5,0,5,0"
+                               HeightRequest="40"
+                               WidthRequest="50"
+                               VerticalOptions="Center"
+                               HasShadow="False">
+                                <Label FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="Blue"
+                                   Text="{Binding SleepFrom}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                            </Frame>
+                            <Label FontSize="12"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{markupExtension:Translate 00112}"
+                               Margin="5,5,5,5"/>
+                            <Frame BorderColor="Blue"
+                               CornerRadius="10" 
+                               Padding="5,0,5,0"
+                               HeightRequest="40"
+                               WidthRequest="50"
+                               VerticalOptions="Center"
+                               HasShadow="False">
+                                <Label FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="Blue"
+                                   Text="{Binding SleepTo}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--Sleeping comment-->
+                    <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="9">
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
@@ -263,7 +338,7 @@
                        CornerRadius="10"
                        BorderColor="Transparent"
                        BackgroundColor="White"
-                       Grid.Row="8">
+                       Grid.Row="10">
                         <StackLayout HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  Orientation="Horizontal">
@@ -281,11 +356,55 @@
                         </StackLayout>
                     </Frame>
 
+                    <!--Poo-->
+                    <StackLayout Margin="10,10,10,5"
+                             HorizontalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Grid.Row="11">
+                        <Image Source="review.png"
+                           VerticalOptions="Start"
+                           Margin="0,0,10,0"/>
+                        <Label Text="{markupExtension:Translate 00110}"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Black"/>
+                    </StackLayout>
+
+                    <Frame Margin="10,5,10,5"
+                       HorizontalOptions="FillAndExpand"
+                       CornerRadius="10"
+                       BorderColor="Transparent"
+                       BackgroundColor="White"
+                       HasShadow="False"
+                       Grid.Row="12">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal">
+                            <Image Aspect="AspectFit"
+                               WidthRequest="60"
+                               VerticalOptions="CenterAndExpand"
+                               Source="poo.jpg"/>
+                            <Label FontSize="16"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               Margin="5,5,5,5">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{markupExtension:Translate 00113}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding PooNumber}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+
                     <!--Poo comment-->
                     <StackLayout Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
-                             Grid.Row="9">
+                             Grid.Row="13">
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
@@ -294,15 +413,15 @@
                            FontSize="20"
                            TextColor="Black"/>
                     </StackLayout>
+                    
                     <Frame Margin="10,5,10,5"
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
                        CornerRadius="10"
                        BorderColor="Transparent"
                        BackgroundColor="White"
-                       Grid.Row="10">
+                       Grid.Row="14">
                         <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
                                  Orientation="Horizontal">
                             <Image Aspect="AspectFit"
                                WidthRequest="80"
@@ -322,7 +441,7 @@
                     <StackLayout Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
-                             Grid.Row="11">
+                             Grid.Row="15">
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
@@ -338,7 +457,7 @@
                        BorderColor="Red"
                        BackgroundColor="White"
                        HasShadow="False"
-                       Grid.Row="12">
+                       Grid.Row="16">
                         <Grid HorizontalOptions="FillAndExpand"
                           VerticalOptions="FillAndExpand"
                           RowSpacing="10">

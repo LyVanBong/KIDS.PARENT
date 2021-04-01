@@ -259,7 +259,8 @@
                                        AutoFitMode="DynamicHeight"
                                        Orientation="Vertical"
                                        ItemsSource="{Binding History}"
-                                       SelectionMode="None"
+                                       SelectionMode="Single"
+                                       TapCommand="{Binding DetailCommand}"
                                        SelectionBackgroundColor="Transparent">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>

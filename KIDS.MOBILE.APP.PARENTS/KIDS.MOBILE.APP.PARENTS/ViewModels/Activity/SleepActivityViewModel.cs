@@ -30,24 +30,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
-        private string sleepFrom;
-        public string SleepFrom
-        {
-            get => sleepFrom;
-            set => SetProperty(ref sleepFrom, value);
-        }
-        private string sleepTo;
-        public string SleepTo
-        {
-            get => sleepTo;
-            set => SetProperty(ref sleepTo, value);
-        }
-        private int pooNumber;
-        public int PooNumber
-        {
-            get => pooNumber;
-            set => SetProperty(ref pooNumber, value);
-        }
+        
         private bool _IsDailyCommentVisible;
         public bool IsDailyCommentVisible
         {
@@ -115,33 +98,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         {
             SelectedDate = date;
             await GetMenuList();
-            await GetSleepActivity();
-            await GetPooActivity();
         }
         #endregion
 
         #region Private methods
-        private async Task GetSleepActivity()
-        {
-            var sleepActivity = await _activityService.GetTodaySleep(studentId, gradeId, SelectedDate.ToString("yyyy/MM/dd"));
-            if (sleepActivity?.Data?.Any() == true)
-            {
-                var sleepItem = sleepActivity.Data?.First();
-                SleepFrom = sleepItem.SleepFrom;
-                SleepTo = sleepItem.SleepTo;
-            }
-        }
-
-        private async Task GetPooActivity()
-        {
-            var pooActivity = await _activityService.GetTodayPoo(studentId, SelectedDate.ToString("yyyy/MM/dd"));
-            if (pooActivity?.Data?.Any() == true)
-            {
-                var pooItem = pooActivity.Data?.First();
-                PooNumber = pooItem.Hygiene ?? 0;
-            }
-        }
-
         private async Task GetMenuList()
         {
             var selectedDate = SelectedDate.ToString("yyyy/MM/dd");
