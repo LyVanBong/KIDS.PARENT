@@ -158,7 +158,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Phiếu bé ngoan"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
 
@@ -184,7 +184,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Nhận xét học tập"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
                     <Frame Margin="10,5,10,5"
@@ -221,7 +221,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Nhận xét bữa ăn"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
                     <Frame Margin="10,5,10,5"
@@ -258,7 +258,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Nhận xét giấc ngủ"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
 
@@ -348,7 +348,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Nhận xét vệ sinh"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
 
@@ -407,7 +407,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="{markupExtension:Translate 00114}"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="#f71119"/>
                     </StackLayout>
 
@@ -448,6 +448,7 @@
                                 Padding="10,5,10,5"
                                 HorizontalOptions="End"
                                 VerticalOptions="End"
+                                Command="{Binding ThanksCommand}"
                                 Grid.Row="1"
                                 Grid.Column="1"/>
                         </Grid>
@@ -475,7 +476,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="Phiếu bé ngoan"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
 
@@ -499,9 +500,9 @@
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
-                        <Label Text="Nhận xét học tập"
+                        <Label Text="Nhận xét chung"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="Black"/>
                     </StackLayout>
                     <Frame Margin="10,5,10,5"
@@ -538,7 +539,7 @@
                            Margin="0,0,10,0"/>
                         <Label Text="{markupExtension:Translate 00114}"
                            FontAttributes="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            TextColor="#f71119"/>
                     </StackLayout>
 
@@ -579,6 +580,7 @@
                                 Padding="10,5,10,5"
                                 HorizontalOptions="End"
                                 VerticalOptions="End"
+                                Command="{Binding ThanksCommand}"
                                 Grid.Row="1"
                                 Grid.Column="1"/>
                         </Grid>
