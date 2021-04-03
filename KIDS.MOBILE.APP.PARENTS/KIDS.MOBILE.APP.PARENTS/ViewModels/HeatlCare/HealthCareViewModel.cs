@@ -93,18 +93,18 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         {
             return new List<HealthInformationModel>
             {
-                new HealthInformationModel
-                {
-                    BackgroundGradientStart="#cf86ff",
-                    Name = "Chiều cao",
-                    Information = "130 cm"
-                },
-                new HealthInformationModel
-                {
-                    BackgroundGradientStart="#8691ff",
-                    Name = "Cân nặng",
-                    Information = "30 kg"
-                },
+                //new HealthInformationModel
+                //{
+                //    BackgroundGradientStart="#cf86ff",
+                //    Name = "Chiều cao",
+                //    Information = "130 cm"
+                //},
+                //new HealthInformationModel
+                //{
+                //    BackgroundGradientStart="#8691ff",
+                //    Name = "Cân nặng",
+                //    Information = "30 kg"
+                //},
                 new HealthInformationModel
                 {
                     BackgroundGradientStart="#ff9686",
@@ -144,8 +144,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                 var data = await _healthService.GetStudentHealthInfo(studentId);
                 dataList = data?.Data ?? new List<GetStudentHealthModel>();
                 var info = data?.Data?.FirstOrDefault();
-                Weight = $"{info?.Width} KG";
-                Height = $"{info?.Height} CM";
+                Weight = $"{info?.Width} kg";
+                Height = $"{info?.Height} cm";
                 Month = $"{info?.MonthAge}";
             }
             catch (Exception ex)

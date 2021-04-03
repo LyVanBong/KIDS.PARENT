@@ -190,7 +190,7 @@
             <Label Text="Nhom mau :"
                    FontSize="16"
                    TextColor="Black"/>
-            <buttons:SfRadioGroup Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="40">
+            <buttons:SfRadioGroup Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="20">
                 <buttons:SfRadioButton Text="A" FontSize="16" TextColor="Black"/>
                 <buttons:SfRadioButton Text="B" FontSize="16" TextColor="Black"/>
                 <buttons:SfRadioButton Text="O" FontSize="16" TextColor="Black"/>

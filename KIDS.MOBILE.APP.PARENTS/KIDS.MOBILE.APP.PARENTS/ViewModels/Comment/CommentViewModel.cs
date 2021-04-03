@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
 using KIDS.MOBILE.APP.PARENTS.Services;
 using KIDS.MOBILE.APP.PARENTS.Services.Activity;
+using KIDS.MOBILE.APP.PARENTS.Views.Message;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -84,6 +86,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             set => SetProperty(ref pooNumber, value);
         }
 
+        public DelegateCommand ThanksCommand { get; }
+
         private IActivityService _activityService;
         #endregion
 
@@ -93,6 +97,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             _navigationService = navigationService;
             _leaveRequestService = leaveRequestService;
             _activityService = activityService;
+            ThanksCommand = new DelegateCommand(OnThanksClicked);
         }
 
         public override async void Initialize(INavigationParameters parameters)
@@ -157,6 +162,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
                 var pooItem = pooActivity.Data?.First();
                 PooNumber = pooItem.Hygiene ?? 0;
             }
+        }
+
+        private async void OnThanksClicked()
+        {
+            await _navigationService.NavigateAsync(nameof(MessagePage));
         }
         #endregion
     }

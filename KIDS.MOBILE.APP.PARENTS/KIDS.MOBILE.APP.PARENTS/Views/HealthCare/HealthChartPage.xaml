@@ -260,6 +260,7 @@
                                        Orientation="Vertical"
                                        ItemsSource="{Binding History}"
                                        SelectionMode="None"
+                                       TapCommand="{Binding DetailCommand}"
                                        SelectionBackgroundColor="Transparent">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
