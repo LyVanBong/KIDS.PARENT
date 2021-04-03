@@ -15,8 +15,8 @@
                  VerticalOptions="FillAndExpand"
                  Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="350"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="280"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="30"/>
@@ -25,10 +25,12 @@
                 <RowDefinition Height="220"/>
             </Grid.RowDefinitions>
             <StackLayout HorizontalOptions="FillAndExpand"
-                     Orientation="Horizontal"
+                     Orientation="Vertical"
                      VerticalOptions="Start"
+                     HeightRequest="150"
+                     x:Name="slideImage"
                      Grid.Row="0">
-                <Image HorizontalOptions="Start"
+                <!--<Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
                    Source="ic_interactive.png"/>
                 <Label Text= "{Binding SchoolInteraction}"
@@ -36,7 +38,48 @@
                    FontSize="16"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   TextColor="Blue"/>
+                   TextColor="Blue"/>-->
+                <Frame
+                    Margin="10"
+                    Padding="0"
+                    CornerRadius="15"
+                    IsClippedToBounds="True">
+                    <StackLayout
+                        x:Name="slider"
+                        HeightRequest="240"
+                        HorizontalOptions="FillAndExpand">
+                        <CarouselView
+                            x:Name="carouselView"
+                            Margin="0"
+                            IndicatorView="indicatorView"
+                            ItemsSource="{Binding SliderImage}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <StackLayout>
+                                            <Image
+                                                Aspect="AspectFill"
+                                                HeightRequest="240"
+                                                Source="{Binding ImageUrl}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout>
+                    <IndicatorView
+                        x:Name="indicatorView"
+                        Margin="0,0,0,0"
+                        HorizontalOptions="Center"
+                        IndicatorColor="LightGray"
+                        IndicatorsShape="Circle"
+                        SelectedIndicatorColor="#F70000"
+                        VerticalOptions="StartAndExpand" />
+                </StackLayout>
             </StackLayout>
 
             <flv:FlowListView FlowColumnCount="4"   

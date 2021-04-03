@@ -88,71 +88,101 @@
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <!--Menu for today-->
-                <dataGrid:SfDataGrid HorizontalOptions="FillAndExpand"
-                                     ItemsSource="{Binding MenuList}"
-                                     BackgroundColor="Transparent"
-                                     AutoGenerateColumns="False"
-                                     AllowEditing="False"
-                                     Margin="10,0,10,10"
-                                     GridStyle="{StaticResource dataGridStyle}"
-                                     VerticalOverScrollMode="None"
-                                     x:Name="menuData"
-                                     Grid.Row="7">
-                    <dataGrid:SfDataGrid.Columns>
-                        <dataGrid:GridTextColumn Width="100" LoadUIView="True"
-                                                 HeaderFontAttribute="Bold"
-                                                 HeaderCellTextSize="18"
-                                                 MappingName="Time" 
-                                                 TextAlignment="Start"
-                                                 Padding="10,5,10,5"
-                                                 FontAttribute="Bold">
-                            <dataGrid:GridTextColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <Label Text="Thời gian"
-                                           TextColor="Black"
-                                           FontSize="18"
-                                           FontAttributes="Bold"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalOptions="Center"/>
-                                </DataTemplate>
-                            </dataGrid:GridTextColumn.HeaderTemplate>
-                        </dataGrid:GridTextColumn>
-                        <dataGrid:GridTextColumn HeaderText="Nội dung" 
-                                                 ColumnSizer="LastColumnFill"
-                                                 HeaderFontAttribute="Bold"
-                                                 HeaderCellTextSize="18"
-                                                 MappingName="Content"
-                                                 TextAlignment="Start"
-                                                 Padding="10,5,10,5">
-                            <dataGrid:GridTextColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <Label Text="Nội dung"
-                                           TextColor="Black"
-                                           FontSize="18"
-                                           FontAttributes="Bold"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalOptions="Center"/>
-                                </DataTemplate>
-                            </dataGrid:GridTextColumn.HeaderTemplate>
-                        </dataGrid:GridTextColumn>
-                    </dataGrid:SfDataGrid.Columns>
-                </dataGrid:SfDataGrid>
+                <syncfusion:SfListView x:Name="activityList"
+                    ItemsSource="{Binding MenuList,Mode=TwoWay}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="10,0,10,0"
+                    AutoFitMode="DynamicHeight"
+                    SelectionMode="None"
+                    IsScrollingEnabled="False"
+                    Grid.Row="0">
+
+                    <syncfusion:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,2*" ColumnSpacing="0" BackgroundColor="#64ccf5">
+                                    <Frame Grid.Column="0"
+                                           BorderColor="#1df21d"
+                                           HasShadow="False"
+                                           CornerRadius="0"
+                                           IsClippedToBounds="False"
+                                           BackgroundColor="Transparent">
+                                        <Label Text="Thời gian"
+                                               FontSize="16"
+                                               TextColor="Black"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"/>
+                                    </Frame>
+                                    <Frame Grid.Column="1"
+                                           CornerRadius="0"
+                                           BorderColor="#1df21d"
+                                           HasShadow="False"
+                                           IsClippedToBounds="False"
+                                           BackgroundColor="Transparent">
+                                        <Label Text="Nội dung"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="CenterAndExpand"/>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.HeaderTemplate>
+
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,2*" ColumnSpacing="0">
+                                    <Frame Grid.Column="0"
+                                           BorderColor="#1df21d"
+                                           HasShadow="False"
+                                           CornerRadius="0"
+                                           IsClippedToBounds="False"
+                                           Padding="0">
+                                        <StackLayout HorizontalOptions="FillAndExpand"
+                                                     VerticalOptions="FillAndExpand"
+                                                     Orientation="Vertical">
+                                            <Image HeightRequest="40"
+                                                   Margin="0,5,0,0"
+                                                   VerticalOptions="StartAndExpand"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   Aspect="AspectFit"
+                                                   Source="{Binding Image}"/>
+                                            <Label Text="{Binding Time}"
+                                               FontSize="14"
+                                               TextColor="{Binding TextColor}"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               LineBreakMode="WordWrap"
+                                               Padding="10,5,10,10"/>
+                                        </StackLayout>
+                                    </Frame>
+                                    <Frame Grid.Column="1" CornerRadius="0"
+                                           BorderColor="#1df21d"
+                                           HasShadow="False"
+                                           IsClippedToBounds="False"
+                                           Padding="5">
+                                        <Label Text="{Binding Content}"
+                                               FontSize="14"
+                                               TextColor="Black"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               Padding="10,10,10,10"
+                                               LineBreakMode="WordWrap"/>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
 
                 
             </Grid>

@@ -48,7 +48,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="140"/>
                     <RowDefinition Height="400"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="80"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
@@ -259,8 +259,7 @@
                                        AutoFitMode="DynamicHeight"
                                        Orientation="Vertical"
                                        ItemsSource="{Binding History}"
-                                       SelectionMode="Single"
-                                       TapCommand="{Binding DetailCommand}"
+                                       SelectionMode="None"
                                        SelectionBackgroundColor="Transparent">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>

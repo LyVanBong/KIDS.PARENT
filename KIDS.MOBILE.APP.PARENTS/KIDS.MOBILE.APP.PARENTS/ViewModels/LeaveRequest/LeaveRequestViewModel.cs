@@ -78,7 +78,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.LeaveRequest
 
         private async Task GetInformationList()
         {
-            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, FromDate, ToDate);
+            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.StudentID, AppConstants.User.ClassID, FromDate, ToDate);
             if(data?.Data?.Any() == true)
             {
                 var information = data.Data.First();

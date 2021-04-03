@@ -149,7 +149,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
         private async Task GetInformationList()
         {
             var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.ClassID, AppConstants.User.StudentID, startDate.ToString("yyyy-MM-dd"),startDate.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
+            var data = await _leaveRequestService.GetAttendanceInformation(AppConstants.User.StudentID, AppConstants.User.ClassID, startDate.ToString("yyyy-MM-dd"),startDate.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
             if (data?.Data?.Any() == true)
             {
                 var information = data.Data.First();
@@ -179,7 +179,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
                     new AbsentInformationModel
                     {
                         Title = "Đi học",
-                        Number = information.STT.ToString(),
+                        Number = information.CoMat.ToString(),
                         BackgroundGradientStart = "#ff6d00",
                         BackgroundGradientEnd = "#ff6d00"
                     },
