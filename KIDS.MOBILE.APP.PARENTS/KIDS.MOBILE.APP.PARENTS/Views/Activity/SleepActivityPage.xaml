@@ -24,6 +24,7 @@
             <!--<RowDefinition Height="60"/>-->
             <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <!--Header-->
@@ -79,7 +80,7 @@
                Aspect="AspectFit"/>
 
         <ScrollView HorizontalOptions="FillAndExpand"
-                    IsVisible="{Binding HasAnyActivity}"
+                    IsEnabled="True"
                     VerticalOptions="FillAndExpand"
                     Grid.Row="2">
             <Grid HorizontalOptions="FillAndExpand" 
