@@ -269,79 +269,73 @@
                        BorderColor="Transparent"
                        BackgroundColor="White"
                        Grid.Row="8">
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                                 Orientation="Horizontal">
-                            <Image Aspect="AspectFit"
-                               WidthRequest="60"
-                               VerticalOptions="CenterAndExpand"
-                               Source="sleeping.PNG"/>
-                            <Label FontSize="12"
-                               TextColor="Black"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Center"
-                               Text="{markupExtension:Translate 00111}"
-                               Margin="5,5,5,5"/>
-                            <Frame BorderColor="Blue"
-                               CornerRadius="10" 
-                               Padding="5,0,5,0"
-                               HeightRequest="40"
-                               WidthRequest="50"
-                               VerticalOptions="Center"
-                               HasShadow="False">
-                                <Label FontAttributes="Bold"
-                                   FontSize="16"
-                                   TextColor="Blue"
-                                   Text="{Binding SleepFrom}"
+                        <Grid HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     RowDefinitions="*,*"
+                                     ColumnDefinitions="80,*">
+                                <Image Aspect="AspectFit"
+                                   Margin="10"
+                                   VerticalOptions="CenterAndExpand"
+                                   Source="sleeping.PNG"
+                                   Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"/>
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="CenterAndExpand"
+                                             Orientation="Horizontal"
+                                             Grid.Column="1"
+                                             Grid.Row="0">
+                                    <Label FontSize="12"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                       Text="{markupExtension:Translate 00111}"
+                                       Margin="5,5,5,5"/>
+                                <Frame BorderColor="Blue"
+                                   CornerRadius="10" 
+                                   Padding="5,0,5,0"
+                                   HeightRequest="40"
+                                   WidthRequest="50"
                                    VerticalOptions="Center"
-                                   HorizontalOptions="Center"/>
-                            </Frame>
-                            <Label FontSize="12"
-                               TextColor="Black"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Center"
-                               Text="{markupExtension:Translate 00112}"
-                               Margin="5,5,5,5"/>
-                            <Frame BorderColor="Blue"
-                               CornerRadius="10" 
-                               Padding="5,0,5,0"
-                               HeightRequest="40"
-                               WidthRequest="50"
-                               VerticalOptions="Center"
-                               HasShadow="False">
-                                <Label FontAttributes="Bold"
-                                   FontSize="16"
-                                   TextColor="Blue"
-                                   Text="{Binding SleepTo}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"/>
-                            </Frame>
-                        </StackLayout>
-                    </Frame>
-
-                    <!--Sleeping comment-->
-                    <Frame Margin="10,5,10,5"
-                       HorizontalOptions="FillAndExpand"
-                       HasShadow="False"
-                       CornerRadius="10"
-                       BorderColor="Transparent"
-                       BackgroundColor="White"
-                       Grid.Row="10">
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                                 Orientation="Horizontal">
-                            <Image Aspect="AspectFit"
-                               WidthRequest="80"
-                               VerticalOptions="CenterAndExpand"
-                               Source="sleeping.PNG"/>
-                            <Label FontSize="16"
-                               TextColor="Black"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Center"
-                               Text="{Binding SleepingComment}"
-                               LineBreakMode="WordWrap"
-                               Margin="10,5,5,5"/>
-                        </StackLayout>
+                                   HasShadow="False">
+                                    <Label FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="Blue"
+                                       Text="{Binding SleepFrom}"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"/>
+                                </Frame>
+                                <Label FontSize="12"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                       Text="{markupExtension:Translate 00112}"
+                                       Margin="5,5,5,5"/>
+                                    <Frame BorderColor="Blue"
+                                       CornerRadius="10" 
+                                       Padding="5,0,5,0"
+                                       HeightRequest="40"
+                                       WidthRequest="50"
+                                       VerticalOptions="Center"
+                                       HasShadow="False">
+                                        <Label FontAttributes="Bold"
+                                           FontSize="16"
+                                           TextColor="Blue"
+                                           Text="{Binding SleepTo}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                    </Frame>
+                                </StackLayout>
+                                <Label FontSize="16"
+                                   TextColor="#ff00f7"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SleepingComment}"
+                                   LineBreakMode="WordWrap"
+                                   Margin="10,5,5,5"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+                            </Grid>
                     </Frame>
 
                     <!--Poo-->
@@ -365,18 +359,24 @@
                        BackgroundColor="White"
                        HasShadow="False"
                        Grid.Row="12">
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="FillAndExpand"
-                                 Orientation="Horizontal">
+                        <Grid HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     RowDefinitions="*,*"
+                                     ColumnDefinitions="80,*">
                             <Image Aspect="AspectFit"
-                               WidthRequest="60"
-                               VerticalOptions="CenterAndExpand"
-                               Source="poo.jpg"/>
+                                   Margin="10"
+                                   VerticalOptions="CenterAndExpand"
+                                   Source="poo.jpg"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"/>
                             <Label FontSize="16"
-                               TextColor="Black"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Start"
-                               Margin="5,5,5,5">
+                                   TextColor="Black"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Start"
+                                   Margin="5,5,5,5"
+                                   Grid.Column="1"
+                                             Grid.Row="0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{markupExtension:Translate 00113}"/>
@@ -385,31 +385,16 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                        </StackLayout>
-                    </Frame>
-
-                    <!--Poo comment-->
-                    <Frame Margin="10,5,10,5"
-                       HorizontalOptions="FillAndExpand"
-                       HasShadow="False"
-                       CornerRadius="10"
-                       BorderColor="Transparent"
-                       BackgroundColor="White"
-                       Grid.Row="14">
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                 Orientation="Horizontal">
-                            <Image Aspect="AspectFit"
-                               WidthRequest="80"
-                               VerticalOptions="CenterAndExpand"
-                               Source="poo.jpg"/>
                             <Label FontSize="16"
-                               TextColor="Black"
-                               HorizontalTextAlignment="Start"
-                               VerticalTextAlignment="Center"
-                               Text="{Binding PooComment}"
-                               LineBreakMode="WordWrap"
-                               Margin="10,5,5,5"/>
-                        </StackLayout>
+                                   TextColor="#ff00f7"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding PooComment}"
+                                   LineBreakMode="WordWrap"
+                                   Margin="10,5,5,5"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+                        </Grid>
                     </Frame>
 
                     <!--Thanks giving-->

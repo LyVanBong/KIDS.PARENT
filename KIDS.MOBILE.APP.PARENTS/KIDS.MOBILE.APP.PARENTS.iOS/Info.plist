@@ -9,7 +9,7 @@
 	<key>CFBundleName</key>
 	<string>KIDS.MOBILE.APP.PARENTS</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.9</string>
+	<string>1.1.10</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>MinimumOSVersion</key>
@@ -49,5 +49,10 @@
 	<string>Our library favors this right</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Our library favors this right</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

@@ -113,13 +113,46 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
             {
                 foreach(var item in listMenu.Data)
                 {
-                    menuList.Add(new MenuToDay
+                    var menu = new MenuToDay
                     {
                         Id = item.ID,
                         Time = item.BuaAn,
                         Content = item.TenMonAn,
                         Comment = item.MealComment
-                    });
+                    };
+                    if(listMenu.Data.IndexOf(item) == 0)
+                    {
+                        menu.Image = ImageSource.FromFile("breakfast.png");
+                        
+                    }
+                    else if(listMenu.Data.IndexOf(item) == listMenu.Data.Count -1 )
+                    {
+                        menu.Image = ImageSource.FromFile("dinner.png");
+                    }
+                    else
+                    {
+                        menu.Image = ImageSource.FromFile("lunch.jpeg");
+                    }
+                    var colorIndex = listMenu.Data.IndexOf(item) % 5;
+                    switch (colorIndex)
+                    {
+                        case 0:
+                            menu.TextColor = Color.FromHex("#ff7700");
+                            break;
+                        case 1:
+                            menu.TextColor = Color.FromHex("#002aff");
+                            break;
+                        case 2:
+                            menu.TextColor = Color.FromHex("#ff00c3");
+                            break;
+                        case 3:
+                            menu.TextColor = Color.FromHex("#9d00ff");
+                            break;
+                        default:
+                            menu.TextColor = Color.FromHex("#ff0000");
+                            break;
+                    }
+                    menuList.Add(menu);
                 }
                 EatingComment = listMenu.Data.First().MealComment;
             }

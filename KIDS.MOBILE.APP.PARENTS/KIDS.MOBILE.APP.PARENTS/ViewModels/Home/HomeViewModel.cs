@@ -44,6 +44,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             set => SetProperty(ref _menuItems, value);
         }
 
+        private ObservableCollection<SliderImage> _SliderImage = new ObservableCollection<SliderImage>();
+        public ObservableCollection<SliderImage> SliderImage
+        {
+            get => _SliderImage;
+            set => SetProperty(ref _SliderImage, value);
+        }
+
         private string _neededTitle;
         public string NeededTitle
         {
@@ -93,6 +100,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             NeededItems = new ObservableCollection<NeededItem>(CreateNeededList());
             await GetAllNews(AppConstants.User.DonVi, AppConstants.User.ClassID);
             await GetImageList();
+            CreateSliderImageList();
         }
 
         private async void OnMenuClicked(MenuItem sender)
@@ -208,6 +216,24 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             var uri = $"{AppConstants.UriNewsWebForm}{id}";
             await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
+
+        private void CreateSliderImageList()
+        {
+            var source = new List<SliderImage>();
+            source.Add(new SliderImage
+            {
+                ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdrTJykeSe4VZtgO_wdsX5Aya_e6HU7l_GzD2WAqYT8eufvKK3"
+            });
+            source.Add(new SliderImage
+            {
+                ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7Ro5r_BfbpUOi8eOJVpeAxGhBeEfMmugCORqaDGWjXNrffzZW"
+            });
+            source.Add(new SliderImage
+            {
+                ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCbvlAg48fyryQgHdp66wWiRm4CClCVCzFPxFZpEmkUVSOhaJ"
+            });
+            SliderImage = new ObservableCollection<SliderImage>(source);
+        }
         #endregion
     }
 
@@ -241,5 +267,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
         }
         public int Like { get; set; }
         public string Comment { get; set; }
+    }
+
+    public class SliderImage
+    {
+        public string ImageUrl { get; set; }
     }
 }
