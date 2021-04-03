@@ -42,7 +42,14 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Popup
 
         public void ClosePopup()
         {
-            Popup?.PageClosedTaskCompletionSource.SetResult(null);
+            try
+            {
+                Popup?.PageClosedTaskCompletionSource?.SetResult(null);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private async Task<T> Navigate<T>(InputAlertDialogBase<T> popup)

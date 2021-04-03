@@ -178,8 +178,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
                             ClassID = AppConstants.User.ClassID,
                             Date = DateTime.Now,
                             MonthAge = double.Parse(result.Value1),
-                            Width = double.Parse(result.Value2),
-                            Height = double.Parse(result.Value3)
+                            Width = double.Parse(result.Value3),
+                            Height = double.Parse(result.Value2)
                         };
                         var response = await _healthService.CreateHealthInformation(model);
                         if(response?.Data == 1)

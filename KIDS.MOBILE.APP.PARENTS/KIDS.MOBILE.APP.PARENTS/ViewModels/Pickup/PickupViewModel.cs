@@ -178,7 +178,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
                     },
                     new AbsentInformationModel
                     {
-                        Title = "Số ngày đi học",
+                        Title = "Đi học",
                         Number = information.STT.ToString(),
                         BackgroundGradientStart = "#ff6d00",
                         BackgroundGradientEnd = "#ff6d00"
