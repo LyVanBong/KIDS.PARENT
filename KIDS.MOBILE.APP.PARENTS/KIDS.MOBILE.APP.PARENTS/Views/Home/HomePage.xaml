@@ -288,7 +288,7 @@
                      Grid.Row="6">
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
-                   Source="home.png"/>
+                   Source="review.png"/>
                 <Label Text= "Cha mẹ cần biết"
                    FontAttributes="Bold"
                    FontSize="16"
