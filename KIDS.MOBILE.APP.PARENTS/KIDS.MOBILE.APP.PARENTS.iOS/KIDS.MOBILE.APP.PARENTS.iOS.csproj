@@ -134,6 +134,8 @@
     <BundleResource Include="Resources\breakfast.png" />
     <BundleResource Include="Resources\afternoon.png" />
     <BundleResource Include="Resources\morning.png" />
+    <BundleResource Include="Resources\heart.png" />
+    <BundleResource Include="Resources\flower.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">

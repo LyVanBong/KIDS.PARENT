@@ -153,13 +153,17 @@
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="1">
-                        <Image Source="review.png"
+                        <Image Source="flower.png"
                            VerticalOptions="Start"
+                           WidthRequest="40"
+                           HeightRequest="40"
+                           Aspect="AspectFit"
                            Margin="0,0,10,0"/>
                         <Label Text="Phiếu bé ngoan"
                            FontAttributes="Bold"
                            FontSize="18"
-                           TextColor="Black"/>
+                           TextColor="Black"
+                               VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Frame Margin="10,5,10,5" Padding="0"
@@ -403,13 +407,17 @@
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="15">
-                        <Image Source="review.png"
+                        <Image Source="heart.png"
                            VerticalOptions="Start"
+                               WidthRequest="40"
+                           HeightRequest="40"
+                           Aspect="AspectFit"
                            Margin="0,0,10,0"/>
                         <Label Text="{markupExtension:Translate 00114}"
                            FontAttributes="Bold"
                            FontSize="18"
-                           TextColor="#f71119"/>
+                           TextColor="#f71119"
+                               VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Frame Margin="10,5,10,20"
@@ -472,13 +480,17 @@
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="1">
-                        <Image Source="review.png"
+                        <Image Source="flower.png"
                            VerticalOptions="Start"
+                               WidthRequest="40"
+                           HeightRequest="40"
+                           Aspect="AspectFit"
                            Margin="0,0,10,0"/>
                         <Label Text="Phiếu bé ngoan"
                            FontAttributes="Bold"
                            FontSize="18"
-                           TextColor="Black"/>
+                           TextColor="Black"
+                               VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Frame Margin="10,5,10,5" Padding="0"
@@ -535,13 +547,17 @@
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
                              Grid.Row="5">
-                        <Image Source="review.png"
+                        <Image Source="heart.png"
                            VerticalOptions="Start"
+                               WidthRequest="40"
+                           HeightRequest="40"
+                           Aspect="AspectFit"
                            Margin="0,0,10,0"/>
                         <Label Text="{markupExtension:Translate 00114}"
                            FontAttributes="Bold"
                            FontSize="18"
-                           TextColor="#f71119"/>
+                           TextColor="#f71119"
+                               VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Frame Margin="10,5,10,20"
