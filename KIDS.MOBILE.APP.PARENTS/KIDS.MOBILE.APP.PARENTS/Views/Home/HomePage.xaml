@@ -78,7 +78,7 @@
                      Grid.Row="2">
                 <Image HorizontalOptions="Start"
                    Margin="0,0,10,0"
-                   Source="home.png"/>
+                   Source="album.png"/>
                 <Label Text= "Album ảnh"
                    FontAttributes="Bold"
                    FontSize="16"

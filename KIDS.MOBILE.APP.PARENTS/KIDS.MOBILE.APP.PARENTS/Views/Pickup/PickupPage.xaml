@@ -61,7 +61,7 @@
                Grid.Row="2"/>
 
         <!--Absent information-->
-        <syncfusion:SfListView SelectionMode="None" 
+        <syncfusion:SfListView SelectionMode="None" FlowDirection="MatchParent"
                                AutoFitMode="Height" 
                                ItemsSource="{Binding InformationList}"
                                Grid.Row="3"

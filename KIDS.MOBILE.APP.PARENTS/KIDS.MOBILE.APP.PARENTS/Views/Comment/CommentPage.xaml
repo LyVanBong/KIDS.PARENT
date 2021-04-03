@@ -105,7 +105,7 @@
                 <Grid Grid.Row="0"
                       ColumnDefinitions="*, *">
                     <Button x:Name="dailyComment"
-                            Text="NHẬN XÉT HÀNG NGÀY"
+                            Text="NHẬN XÉT NGÀY"
                             FontAttributes="Bold"
                             FontSize="14"
                             TextColor="White"
@@ -115,7 +115,7 @@
                             Clicked="DailyComment_Clicked"
                             Grid.Column="0"/>
                     <Button x:Name="weeklyComment"
-                            Text="NHẬN XÉT HÀNG TUẦN"
+                            Text="NHẬN XÉT TUẦN"
                             FontAttributes="Bold"
                             FontSize="14"
                             TextColor="Black"
@@ -256,7 +256,7 @@
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
-                        <Label Text="{markupExtension:Translate 00109}"
+                        <Label Text="Nhận xét giấc ngủ"
                            FontAttributes="Bold"
                            FontSize="20"
                            TextColor="Black"/>
@@ -275,7 +275,7 @@
                             <Image Aspect="AspectFit"
                                WidthRequest="60"
                                VerticalOptions="CenterAndExpand"
-                               Source="sleeping.jpg"/>
+                               Source="sleeping.PNG"/>
                             <Label FontSize="12"
                                TextColor="Black"
                                HorizontalTextAlignment="Start"
@@ -320,18 +320,6 @@
                     </Frame>
 
                     <!--Sleeping comment-->
-                    <StackLayout Margin="10,10,10,5"
-                             HorizontalOptions="FillAndExpand"
-                             Orientation="Horizontal"
-                             Grid.Row="9">
-                        <Image Source="review.png"
-                           VerticalOptions="Start"
-                           Margin="0,0,10,0"/>
-                        <Label Text="Nhận xét giấc ngủ"
-                           FontAttributes="Bold"
-                           FontSize="20"
-                           TextColor="Black"/>
-                    </StackLayout>
                     <Frame Margin="10,5,10,5"
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
@@ -364,7 +352,7 @@
                         <Image Source="review.png"
                            VerticalOptions="Start"
                            Margin="0,0,10,0"/>
-                        <Label Text="{markupExtension:Translate 00110}"
+                        <Label Text="Nhận xét vệ sinh"
                            FontAttributes="Bold"
                            FontSize="20"
                            TextColor="Black"/>
@@ -401,19 +389,6 @@
                     </Frame>
 
                     <!--Poo comment-->
-                    <StackLayout Margin="10,10,10,5"
-                             HorizontalOptions="FillAndExpand"
-                             Orientation="Horizontal"
-                             Grid.Row="13">
-                        <Image Source="review.png"
-                           VerticalOptions="Start"
-                           Margin="0,0,10,0"/>
-                        <Label Text="Nhận xét vệ sinh"
-                           FontAttributes="Bold"
-                           FontSize="20"
-                           TextColor="Black"/>
-                    </StackLayout>
-                    
                     <Frame Margin="10,5,10,5"
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
