@@ -103,6 +103,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
                 base.Initialize(parameters);
                 var date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                 await GetAttendanceForMonth(date);
+                await GetSleepActivity(date);
+                await GetPooActivity(date);
             }
             catch (Exception ex)
             {
