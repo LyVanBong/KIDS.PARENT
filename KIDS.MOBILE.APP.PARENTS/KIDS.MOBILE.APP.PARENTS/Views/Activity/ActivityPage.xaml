@@ -96,14 +96,22 @@
                 </Grid.RowDefinitions>
 
                 <!--Morning Activity title-->
-                <Label  Text="Lịch học buổi sáng"
+                <Grid ColumnDefinitions="60,*"
+                             Grid.Row="0">
+                    <Image Source="morning.png"
+                           Aspect="AspectFit"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.Column="0"/>
+                    <Label  Text="Buổi sáng"
                         FontSize="20"
                         FontAttributes="Bold"
                         TextColor="#ff6d00"
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="CenterAndExpand"
                         Margin="10,0,10,0"
-                        Grid.Row="0"/>
+                        Grid.Column="1"/>
+                </Grid>
 
                 <!--activity list-->
                 <syncfusion:SfListView x:Name="activityList"
@@ -121,7 +129,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0" BackgroundColor="#64ccf5">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -135,7 +143,7 @@
                                     </Frame>
                                     <Frame Grid.Column="1"
                                            CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            BackgroundColor="Transparent">
@@ -156,7 +164,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -171,7 +179,7 @@
                                                Padding="0,10,0,10"/>
                                     </Frame>
                                     <Frame Grid.Column="1" CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            Padding="5">
@@ -190,14 +198,23 @@
                 </syncfusion:SfListView>
 
                 <!--Afternoon Activity title-->
-                <Label  Text="Lịch học buổi chiều"
+                <Grid ColumnDefinitions="60,*"
+                      Margin="0,20,0,0"
+                      Grid.Row="2">
+                    <Image Source="afternoon.png"
+                           Aspect="AspectFit"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.Column="0"/>
+                    <Label  Text="Buổi chiều"
                         FontSize="20"
                         FontAttributes="Bold"
-                        TextColor="#ff0099"
+                        TextColor="Red"
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="CenterAndExpand"
                         Margin="10,0,10,0"
-                        Grid.Row="2"/>
+                        Grid.Column="1"/>
+                </Grid>
 
                 <!--afternoon activity list-->
                 <syncfusion:SfListView
@@ -215,7 +232,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0" BackgroundColor="#64ccf5">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -229,7 +246,7 @@
                                     </Frame>
                                     <Frame Grid.Column="1"
                                            CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            BackgroundColor="Transparent">
@@ -250,7 +267,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -265,7 +282,7 @@
                                                Padding="0,10,0,10"/>
                                     </Frame>
                                     <Frame Grid.Column="1" CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            Padding="5">

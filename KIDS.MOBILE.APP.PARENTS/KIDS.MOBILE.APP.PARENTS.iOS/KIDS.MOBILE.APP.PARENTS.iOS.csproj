@@ -129,6 +129,11 @@
     <BundleResource Include="Resources\ic_interactive.png" />
     <BundleResource Include="Resources\ic_back.png" />
     <Compile Include="ImageService.cs" />
+    <BundleResource Include="Resources\lunch.jpeg" />
+    <BundleResource Include="Resources\dinner.png" />
+    <BundleResource Include="Resources\breakfast.png" />
+    <BundleResource Include="Resources\afternoon.png" />
+    <BundleResource Include="Resources\morning.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">

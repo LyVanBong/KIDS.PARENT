@@ -82,12 +82,17 @@
                                HeightRequest="200"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand">
-                                <ffimage:CachedImage IsVisible="{Binding IsImageLoading, Converter={converter:NotBooleanConverter}}"
-                                               HorizontalOptions="FillAndExpand"
-                                               Aspect="AspectFill"
-                                               Margin="0" 
-                                               DownsampleToViewSize="True"
-                                               Source="{Binding Source}">
+                                <ffimage:CachedImage    IsVisible="{Binding IsImageLoading, Converter={converter:NotBooleanConverter}}"
+                                                        Aspect="AspectFill"
+                                                        Source="{Binding Source}"
+                                                        DownsampleToViewSize="True"
+                                                        BackgroundColor="{DynamicResource Gray-200}"
+                                                        HeightRequest="{OnIdiom Phone=150,
+                                                                                Tablet=240,
+                                                                                Desktop=120}"
+                                                        WidthRequest="{OnIdiom Phone=160,
+                                                                                Tablet=224,
+                                                                                Desktop=200}">
                                 </ffimage:CachedImage>
                             </Frame>
                         </DataTemplate>

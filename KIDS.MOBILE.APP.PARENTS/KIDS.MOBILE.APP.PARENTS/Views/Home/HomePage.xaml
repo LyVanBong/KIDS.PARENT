@@ -16,7 +16,7 @@
                  Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="280"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="30"/>

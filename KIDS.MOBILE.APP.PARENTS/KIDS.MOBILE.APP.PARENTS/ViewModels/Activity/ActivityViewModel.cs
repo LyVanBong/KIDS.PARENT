@@ -188,28 +188,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Activity
         public bool IsLast { get; set; } = false;
     }
 
-    public class MenuToDay : INotifyPropertyChanged
+    public class MenuToDay
     {
         public Guid? Id { get; set; }
-
-        private string _Time;
-        public string Time
-        {
-            get => _Time;
-            set {
-                _Time = value;
-                RaisePropertyChanged(nameof(Time));
-            }
-        }
+        public string Time { get; set; }
         public string Content { get; set; }
         public string Comment { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
+        public ImageSource Image { get; set; }
+        public Color TextColor { get; set; }
     }
 }
 
