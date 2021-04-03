@@ -106,7 +106,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0" BackgroundColor="#64ccf5">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -120,7 +120,7 @@
                                     </Frame>
                                     <Frame Grid.Column="1"
                                            CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            BackgroundColor="Transparent">
@@ -141,7 +141,7 @@
                             <ViewCell>
                                 <Grid ColumnDefinitions="*,2*" ColumnSpacing="0">
                                     <Frame Grid.Column="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            CornerRadius="0"
                                            IsClippedToBounds="False"
@@ -166,7 +166,7 @@
                                         </StackLayout>
                                     </Frame>
                                     <Frame Grid.Column="1" CornerRadius="0"
-                                           BorderColor="#1df21d"
+                                           BorderColor="#bababa"
                                            HasShadow="False"
                                            IsClippedToBounds="False"
                                            Padding="5">

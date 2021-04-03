@@ -176,8 +176,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
             if (parameters?.ContainsKey("Information") == true)
             {
                 dataList = (List<GetStudentHealthModel>)parameters["Information"] ?? new List<GetStudentHealthModel>();
-                Weight = $"{dataList?.FirstOrDefault()?.Width} KG";
-                Height = $"{dataList?.FirstOrDefault()?.Height} CM";
+                Weight = $"{dataList?.FirstOrDefault()?.Width} kg";
+                Height = $"{dataList?.FirstOrDefault()?.Height} cm";
                 Bmi = $"{dataList?.FirstOrDefault()?.BMI}";
                 dataList = dataList.OrderBy(x => x.Date).ToList();
                 History = new ObservableCollection<GetStudentHealthModel>(dataList);
