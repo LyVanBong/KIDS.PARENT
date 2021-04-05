@@ -7,7 +7,9 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:pages="clr-namespace:KIDS.MOBILE.APP.PARENTS.Views"
              xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             BackgroundColor="White">
+             xmlns:behavior="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.Style"
+             BackgroundColor="White"
+             x:Name="mainPage">
     <ScrollView VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
                 VerticalScrollBarVisibility="Always">
@@ -30,15 +32,15 @@
                      HeightRequest="150"
                      x:Name="slideImage"
                      Grid.Row="0">
-                <!--<Image HorizontalOptions="Start"
-                   Margin="0,0,10,0"
-                   Source="ic_interactive.png"/>
-                <Label Text= "{Binding SchoolInteraction}"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   TextColor="Blue"/>-->
+                <Label Text="{Binding Title}"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="Blue"
+                       BackgroundColor="White">
+                    <Label.Behaviors>
+                        <behavior:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference mainPage}}"/>
+                    </Label.Behaviors>
+                </Label>
                 <Frame
                     Margin="10"
                     Padding="0"

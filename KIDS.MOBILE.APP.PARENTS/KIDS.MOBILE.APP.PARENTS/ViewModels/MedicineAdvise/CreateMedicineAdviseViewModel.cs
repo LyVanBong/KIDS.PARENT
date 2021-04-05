@@ -255,7 +255,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 Name = string.Empty,
                 Unit = string.Empty,
                 MessageContent = string.Empty,
-                Action = 1,
+                Action = 0,
                 FilePath = selectedImageFile.Path
             });
             defaultPath = selectedImageFile.Path;

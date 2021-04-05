@@ -73,6 +73,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             get => _imageList;
             set => SetProperty(ref _imageList, value);
         }
+
+        private string _Title;
+        public string Title
+        {
+            get => _Title;
+            set => SetProperty(ref _Title, value);
+        }
+
         private IAlbumService _albumService;
         public DelegateCommand<object> SelectionAlbumCommand { get; }
         public DelegateCommand NewsCommand { get; }
@@ -101,6 +109,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             await GetAllNews(AppConstants.User.DonVi, AppConstants.User.ClassID);
             await GetImageList();
             CreateSliderImageList();
+            Title = "Cùng bố mẹ nuôi dạy con cái.";
         }
 
         private async void OnMenuClicked(MenuItem sender)
@@ -272,5 +281,12 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
     public class SliderImage
     {
         public string ImageUrl { get; set; }
+    }
+
+    public class Control
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string PriorityId { get; set; }
     }
 }
