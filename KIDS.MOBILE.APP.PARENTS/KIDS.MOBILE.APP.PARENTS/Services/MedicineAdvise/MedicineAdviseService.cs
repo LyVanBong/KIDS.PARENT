@@ -83,6 +83,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.MedicineAdvise
             {
                 var para = new List<RequestParameter>()
                 {
+                    new RequestParameter("ID", model.Id.ToString()),
                     new RequestParameter("FromDate", model.FromDate),
                     new RequestParameter("ToDate", model.ToDate),
                     new RequestParameter("Date", model.Date),

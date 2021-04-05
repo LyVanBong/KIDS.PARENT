@@ -191,6 +191,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
         #endregion
 
         #region Public methods
+        public void OnDisappering()
+        {
+            _popup.ClosePopup();
+        }
         #endregion
 
         #region Private methods

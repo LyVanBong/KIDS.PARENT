@@ -106,7 +106,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Message
                     {
                         ClassID = AppConstants.User.ClassID,
                         TeacherID = string.Empty, //TODO
-                        Parent = null,
+                        Parent = AppConstants.User.ParentID.ToString(),
                         Content = MessageContent,
                         DateCreate = SelectedDate,
                         StudentID = AppConstants.User.StudentID,
