@@ -2,8 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Configurations;
+using KIDS.MOBILE.APP.PARENTS.Models.Message;
+using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services;
 using KIDS.MOBILE.APP.PARENTS.Services.Activity;
+using KIDS.MOBILE.APP.PARENTS.Services.Message;
+using KIDS.MOBILE.APP.PARENTS.Services.Popup;
 using KIDS.MOBILE.APP.PARENTS.Views.Message;
 using Prism.Commands;
 using Prism.Navigation;
@@ -89,14 +93,18 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
         public DelegateCommand ThanksCommand { get; }
 
         private IActivityService _activityService;
+        private IInputAlertDialogService _popup;
+        private IMessageService _messageService;
         #endregion
 
         #region Constructor
-        public CommentViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService, IActivityService activityService) : base(navigationService)
+        public CommentViewModel(INavigationService navigationService, ILeaveRequestService leaveRequestService, IActivityService activityService, IInputAlertDialogService popup, IMessageService messageService) : base(navigationService)
         {
             _navigationService = navigationService;
             _leaveRequestService = leaveRequestService;
             _activityService = activityService;
+            _messageService = messageService;
+            _popup = popup;
             ThanksCommand = new DelegateCommand(OnThanksClicked);
         }
 
@@ -119,6 +127,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             {
                 IsLoading = false;
             }
+        }
+
+        public void OnDisappering()
+        {
+            _popup.ClosePopup();
         }
         #endregion
 
@@ -166,7 +179,37 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
 
         private async void OnThanksClicked()
         {
-            await _navigationService.NavigateAsync(nameof(MessagePage));
+            try
+            {
+                var message = await _popup.OpenThanksMessagePopup(string.Empty);
+                if(message != null)
+                {
+                    var model = new CreateMessageModel
+                    {
+                        ClassID = AppConstants.User.ClassID,
+                        TeacherID = string.Empty, //TODO
+                        Parent = AppConstants.User.ParentID.ToString(),
+                        Content = message.Value1,
+                        DateCreate = DateTime.Now,
+                        StudentID = AppConstants.User.StudentID,
+                        Type = 2
+                    };
+                    var result = await _messageService.CreateMessage(model);
+                    if (result?.Data == 1)
+                    {
+                        await App.Current.MainPage.DisplayAlert(Resource._00097, string.Empty, Resource._00011);
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert(Resource._00063, string.Empty, Resource._00011);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
         #endregion
     }

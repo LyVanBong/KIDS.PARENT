@@ -22,6 +22,12 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.Comment
             vm = (CommentViewModel)this.BindingContext;
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            vm.OnDisappering();
+        }
+
         private async void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
         {
             vm.IsLoading = true;

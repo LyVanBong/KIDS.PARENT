@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KIDS.MOBILE.APP.PARENTS.Views.Popups.ThanksMessagePopup"
+             xmlns:controls="clr-namespace:KIDS.MOBILE.APP.PARENTS.Controls.Renderers.Entry">
+    <ContentView.Content>
+        <Frame IsClippedToBounds="True"
+               HasShadow="False"
+               CornerRadius="{OnPlatform Android=10, iOS=5}"
+               BackgroundColor="#8c7b6f"
+               HeightRequest="310"
+               WidthRequest="300"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Padding="0">
+            <Grid BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+
+                <Frame Padding="0"
+                       CornerRadius="0"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       HasShadow="False"
+                       BackgroundColor="#ff6d00"
+                       Grid.Row="0">
+                    <Label Text="Gửi lời cảm ơn tới cô giáo của trẻ"
+                       TextColor="White"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                <controls:XEntry x:Name="TextEntry1"
+                             Margin="10"
+                             TextColor="Black"
+                             BackgroundColor="White"
+                             CornerRadius="10"
+                             Grid.Row="1"/>
+
+                <Grid Margin="10,0,10,0"
+                    Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="SaveButton"
+                        Grid.Column="0"
+                        BackgroundColor="#058fff"
+                        Text="Lưu"
+                        TextColor="White"
+                        FontAttributes="Bold">
+                        <Button.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="40" />
+                                <On Platform="iOS" Value="30" />
+                                <On Platform="Windows" Value="35" />
+                            </OnPlatform>
+                        </Button.HeightRequest>
+                    </Button>
+                    <Button
+                        x:Name="CancelButton"
+                        Grid.Column="1"
+                        BackgroundColor="#058fff"
+                        Text="Huỷ"
+                        TextColor="White"
+                        FontAttributes="Bold">
+                        <Button.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="40" />
+                                <On Platform="iOS" Value="30" />
+                            </OnPlatform>
+                        </Button.HeightRequest>
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
