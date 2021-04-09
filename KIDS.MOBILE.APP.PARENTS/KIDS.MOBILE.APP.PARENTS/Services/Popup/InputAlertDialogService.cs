@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KIDS.MOBILE.APP.PARENTS.Views.HealthCare;
+using KIDS.MOBILE.APP.PARENTS.Views.Popups;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -27,6 +28,33 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Popup
                 (sender, obj) =>
                 {
                     Popup.PageClosedTaskCompletionSource.SetResult(((CreateHealthInformationPopup)sender).MultipleDataResult);
+                };
+
+            // subscribe to the TextInputView's Button click event
+            inputView.CancelButtonEventHandler +=
+                (sender, obj) =>
+                {
+                    Popup.PageClosedTaskCompletionSource.SetResult(null);
+                };
+
+            // return user inserted text value
+            return await Navigate(Popup);
+        }
+
+        public async Task<PopupDataModel> OpenThanksMessagePopup(string entry1Value)
+        {
+            // create the TextInputView
+            var inputView = new ThanksMessagePopup(entry1Value);
+
+            // create the Transparent Popup Page
+            // of type string since we need a string return
+            Popup = new InputAlertDialogBase<PopupDataModel>(inputView);
+
+            // subscribe to the TextInputView's Button click event
+            inputView.SaveButtonEventHandler +=
+                (sender, obj) =>
+                {
+                    Popup.PageClosedTaskCompletionSource.SetResult(((ThanksMessagePopup)sender).MultipleDataResult);
                 };
 
             // subscribe to the TextInputView's Button click event

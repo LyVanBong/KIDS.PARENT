@@ -11,5 +11,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Popup
             string entry1Value,
             string entry2Value,
             string entry3Value);
+        Task<PopupDataModel> OpenThanksMessagePopup(string entry1Value);
     }
 }
