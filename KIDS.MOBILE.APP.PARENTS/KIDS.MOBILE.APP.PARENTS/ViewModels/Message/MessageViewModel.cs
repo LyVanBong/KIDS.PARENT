@@ -118,7 +118,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
     {
         public Guid Id { get; set; }
         public string ReceivedUser { get; set; }
-        public string ReceivedUserText { get =>  $"{Resource._00090}{ReceivedUser}"; }
+        public string ReceivedUserText { get =>  $"{ReceivedUser}"; }
         public string TimePeriod { get; set; }
         public string DateTime { get; set; }
         public string ImageUrl { get; set; }
