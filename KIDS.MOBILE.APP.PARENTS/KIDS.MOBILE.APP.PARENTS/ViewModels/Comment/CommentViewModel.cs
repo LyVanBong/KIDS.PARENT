@@ -125,42 +125,63 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
         #region Methods
         public async Task GetAttendanceForMonth(DateTime date)
         {
-            var startDate = new DateTime(date.Year, date.Month, 1);
-            var data = await _leaveRequestService.GetAttendanceForMonth(AppConstants.User.ClassID.ToString(),
-                AppConstants.User.StudentID.ToString(),
-                startDate,
-                startDate.AddMonths(1).AddDays(-1));
-            if (data?.Data?.Any() == true)
+            try
             {
-                var comment = data.Data.First();
-                StudyingComment = $"{comment.StudyCommentAM}{comment.StudyCommentPM}";
-                EatingComment = $"{comment.MealComment0}{comment.MealComment1}{comment.MealComment2}{comment.MealComment3}{comment.MealComment4}{comment.MealComment5}";
-                SleepingComment = $"{comment.SleepComment}";
-                PooComment = $"{comment.HygieneComment}";
-                ImageSource = !string.IsNullOrEmpty(comment.PhieuBeNgoan) ? new Uri(comment.PhieuBeNgoan) : null;
-                WeeklyComment = $"{comment.WeekComment}";
-                WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
+                var startDate = new DateTime(date.Year, date.Month, 1);
+                var data = await _leaveRequestService.GetAttendanceForMonth(AppConstants.User.ClassID.ToString(),
+                    AppConstants.User.StudentID.ToString(),
+                    startDate,
+                    startDate.AddMonths(1).AddDays(-1));
+                if (data?.Data?.Any() == true)
+                {
+                    var comment = data.Data.First();
+                    StudyingComment = $"{comment.StudyCommentAM}{comment.StudyCommentPM}";
+                    EatingComment = $"{comment.MealComment0}{comment.MealComment1}{comment.MealComment2}{comment.MealComment3}{comment.MealComment4}{comment.MealComment5}";
+                    SleepingComment = $"{comment.SleepComment}";
+                    PooComment = $"{comment.HygieneComment}";
+                    ImageSource = !string.IsNullOrEmpty(comment.Picture) ? new Uri($"{AppConstants.UriBaseWebForm}{comment.Picture}") : null;
+                    WeeklyComment = $"{comment.WeekComment}";
+                    WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
         public async Task GetSleepActivity(DateTime date)
         {
-            var sleepActivity = await _activityService.GetTodaySleep(AppConstants.User.StudentID, AppConstants.User.GradeID, date.ToString("yyyy/MM/dd"));
-            if (sleepActivity?.Data?.Any() == true)
+            try
             {
-                var sleepItem = sleepActivity.Data?.First();
-                SleepFrom = sleepItem.SleepFrom;
-                SleepTo = sleepItem.SleepTo;
+                var sleepActivity = await _activityService.GetTodaySleep(AppConstants.User.StudentID, AppConstants.User.GradeID, date.ToString("yyyy/MM/dd"));
+                if (sleepActivity?.Data?.Any() == true)
+                {
+                    var sleepItem = sleepActivity.Data?.First();
+                    SleepFrom = sleepItem.SleepFrom;
+                    SleepTo = sleepItem.SleepTo;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
         public async Task GetPooActivity(DateTime date)
         {
-            var pooActivity = await _activityService.GetTodayPoo(AppConstants.User.StudentID, date.ToString("yyyy/MM/dd"));
-            if (pooActivity?.Data?.Any() == true)
+            try
             {
-                var pooItem = pooActivity.Data?.First();
-                PooNumber = pooItem.Hygiene ?? 0;
+                var pooActivity = await _activityService.GetTodayPoo(AppConstants.User.StudentID, date.ToString("yyyy/MM/dd"));
+                if (pooActivity?.Data?.Any() == true)
+                {
+                    var pooItem = pooActivity.Data?.First();
+                    PooNumber = pooItem.Hygiene ?? 0;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

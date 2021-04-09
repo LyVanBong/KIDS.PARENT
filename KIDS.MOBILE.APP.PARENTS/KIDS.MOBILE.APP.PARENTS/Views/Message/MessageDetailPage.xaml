@@ -81,7 +81,6 @@
            TextColor="Black">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{markupExtension:Translate 00090}"/>
                             <Span Text="{Binding Path=MessageModel.ReceivedUser}" FontAttributes="Bold"/>
                         </FormattedString>
                     </Label.FormattedText>
