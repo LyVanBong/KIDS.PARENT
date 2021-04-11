@@ -24,12 +24,11 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
                 {
                     new RequestParameter("ID",parentModel.ID),
                     new RequestParameter("Name",parentModel.Name),
-                    new RequestParameter("Sex",parentModel.Sex+""),
-                    new RequestParameter("Dob",parentModel.DOB),
+                    new RequestParameter("Sex",parentModel.Sex.ToString()),
+                    new RequestParameter("Dob",parentModel.DOB?.ToString("yyyy-MM-dd")),
                     new RequestParameter("Mobile",parentModel.Mobile),
                     new RequestParameter("Email",parentModel.Email),
-                    new RequestParameter("Address",parentModel.Address),
-                    new RequestParameter("Picture",parentModel.Picture),
+                    new RequestParameter("Address",parentModel.Address)
                 };
                 var data = await _requestProvider.PostAsync<int>("Student/ParentUpdate", parameters,files);
                 return data;
@@ -49,7 +48,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.User
                     new RequestParameter("StudentID",studentModel.StudentID),
                     new RequestParameter("Name",studentModel.Name),
                     new RequestParameter("Sex",studentModel.Sex+""),
-                    new RequestParameter("Dob",studentModel.DOB),
+                    new RequestParameter("Dob",studentModel.DOB?.ToString("yyyy-MM-dd")),
                     new RequestParameter("Email",studentModel.Email),
                     new RequestParameter("Address",studentModel.Address),
                     new RequestParameter("Picture",studentModel.Picture),

@@ -103,10 +103,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
                 if(listTuition?.Data?.Any() == true)
                 {
                     var currentTuition = listTuition.Data.First();
-                    UnCompleted = currentTuition.TrangThai == "CHƯA ĐÓNG" ? $"{currentTuition.TongCong} {Resource._00082}" : $"0 {Resource._00082}";
+                    UnCompleted = currentTuition.TrangThai == "CHƯA ĐÓNG" ? $"{string.Format("{0:n}", currentTuition.TongCong)} {Resource._00082}" : $"0 {Resource._00082}";
                     TuitionStatus = currentTuition.TrangThai;
                     TuitionStatusColor = currentTuition.TrangThai == "CHƯA ĐÓNG" ? "#FF0000" : "#0000FF";
-                    Completed = $"{currentTuition.TongCong?.ToString("#,###.###")} {Resource._00082}";
+                    Completed = $"{string.Format("{0:n}", currentTuition.TongCong)} {Resource._00082}";
                     Title = currentTuition.TenDotThu;
                     Expired = currentTuition.ThoiGianThu != null ? $"{Resource._00089}{currentTuition.ThoiGianThu.Value.ToShortDateString()}" : $"{Resource._00089}";
 
@@ -118,15 +118,15 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
                         total += item.TongCong ?? 0;
                         historyList.Add(new TuitionInformationModel
                         {
-                            Id = item.ID,
+                            Id = item.DotThu_HocSinhID ?? Guid.Empty,
                             Title = item.TenDotThu,
                             Expired = item.ThoiGianThu != null ? $"{Resource._00084} {item.ThoiGianThu.Value.ToShortDateString()}" : string.Empty,
-                            Completed = $"{item.TongCong} {Resource._00082}",
+                            Completed = $"{string.Format("{0:n}", item.TongCong)} {Resource._00082}",
                             Status = $"{item.TrangThai}",
                             TuitionStatusColor = item.TrangThai == "CHƯA ĐÓNG" ? "#FF0000" : "#0000FF"
                         });
                     }
-                    TotalCompleted = $"{total} VND";
+                    TotalCompleted = $"{string.Format("{0:n}", total)} VND";
                     InformationList = new ObservableCollection<TuitionInformationModel>(historyList);
                 }
             });

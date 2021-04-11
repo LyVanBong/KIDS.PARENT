@@ -1,4 +1,5 @@
-﻿using KIDS.MOBILE.APP.PARENTS.Configurations;
+﻿using System;
+using KIDS.MOBILE.APP.PARENTS.Configurations;
 
 namespace KIDS.MOBILE.APP.PARENTS.Models.User
 {
@@ -9,7 +10,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.User
         public string StudentID { get; set; }
         public string Name { get; set; }
         public bool Sex { get; set; }
-        public string DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public string Mobile { get; set; }
         public string Tel { get; set; }
         public string Address { get; set; }

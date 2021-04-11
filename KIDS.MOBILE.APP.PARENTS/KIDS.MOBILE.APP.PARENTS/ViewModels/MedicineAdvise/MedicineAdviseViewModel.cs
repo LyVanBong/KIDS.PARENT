@@ -48,7 +48,6 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 base.OnNavigatedTo(parameters);
                 IsLoading = true;
                 HasAnyMessages = false;
-                await GetMessagesList();
             }
             catch (Exception ex)
             {

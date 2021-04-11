@@ -10,7 +10,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.User
         public string Name { get; set; }
         public string NickName { get; set; }
         public bool? Sex { get; set; }
-        public string DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public string ClassID { get; set; }
         public string Father { get; set; }
         public string Mother { get; set; }
@@ -40,7 +40,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.User
         public string Type { get; set; }
         public string ClassName { get; set; }
         public string SchoolName { get; set; }
-        public string TmpDOB => DateTime.Parse(DOB).ToString("dd/MM/yyyy");
+        public string TmpDOB => DOB?.ToString("yyyy-MM-dd");
         public string TmpPicture => AppConstants.UriBaseWebForm + Picture;
     }
 }

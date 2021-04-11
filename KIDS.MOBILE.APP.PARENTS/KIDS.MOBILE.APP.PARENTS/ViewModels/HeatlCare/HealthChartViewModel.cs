@@ -261,11 +261,11 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.HeatlCare
 
         private Color GetColor(double bmiIndex)
         {
-            if(bmiIndex < 18.5)
+            if(bmiIndex < 14.5)
             {
                 return Color.FromHex("#ffd04f");
             }
-            else if (bmiIndex > 22.9)
+            else if (bmiIndex > 20)
             {
                 return Color.FromHex("#ff3e3b");
             }

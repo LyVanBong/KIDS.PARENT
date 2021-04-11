@@ -71,7 +71,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels
             try
             {
                 var studentId = AppConstants.User.StudentID;
-                var data = await _messageService.GetAllSentMessage(studentId);
+                var data = await _messageService.GetAllSentMessage(studentId, AppConstants.User.ClassID);
                 if (data?.Data?.Any() == true)
                 {
                     var messageList = new List<MessageModel>();
