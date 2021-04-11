@@ -15,6 +15,8 @@ using KIDS.MOBILE.APP.PARENTS.Configurations;
 using Prism.Services;
 using KIDS.MOBILE.APP.PARENTS.Resources;
 using KIDS.MOBILE.APP.PARENTS.Services.PushNotification;
+using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
 {
@@ -98,7 +100,14 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                                     Debug.WriteLine($"Phan hoi tu thong bao day: {send}");
                                 }
                             }
-                            await _navigationService.NavigateAsync("/MainPage?selected=HomePage");
+
+                            var banners = new List<string>();
+                            if (!string.IsNullOrEmpty(data.Data?.Banner)) banners.Add(data.Data?.Banner);
+                            if (!string.IsNullOrEmpty(data.Data?.Banner2)) banners.Add(data.Data?.Banner2);
+                            if (!string.IsNullOrEmpty(data.Data?.Banner3)) banners.Add(data.Data?.Banner3);
+                            var param = new NavigationParameters();
+                            param.Add("banner", banners);
+                            await _navigationService.NavigateAsync("/MainPage?selected=HomePage", param);
                         }
                         else if (data.Code == -1)
                         {
