@@ -469,13 +469,13 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="0"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <StackLayout 
+                    <!--<StackLayout 
                              Margin="10,10,10,5"
                              HorizontalOptions="FillAndExpand"
                              Orientation="Horizontal"
@@ -503,7 +503,7 @@
                         <Image Source="{Binding WeeklyImageSource}"
                            Aspect="AspectFit"
                            HorizontalOptions="FillAndExpand"/>
-                    </Frame>
+                    </Frame>-->
 
                     <!--Weekly comment-->
                     <StackLayout Margin="10,10,10,5"

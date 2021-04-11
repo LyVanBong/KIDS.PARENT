@@ -109,7 +109,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             await GetAllNews(AppConstants.User.DonVi, AppConstants.User.ClassID);
             await GetImageList();
             CreateSliderImageList();
-            Title = "Cùng bố mẹ nuôi dạy con cái.";
+            Title = "Luôn đồng hành cùng con yêu mỗi ngày đến trường!";
         }
 
         private async void OnMenuClicked(MenuItem sender)

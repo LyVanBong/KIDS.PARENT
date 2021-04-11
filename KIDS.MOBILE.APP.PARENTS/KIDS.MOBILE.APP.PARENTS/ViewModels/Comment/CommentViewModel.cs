@@ -154,7 +154,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
                     PooComment = $"{comment.HygieneComment}";
                     ImageSource = !string.IsNullOrEmpty(comment.Picture) ? new Uri($"{AppConstants.UriBaseWebForm}{comment.Picture}") : null;
                     WeeklyComment = $"{comment.WeekComment}";
-                    WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
+                    //WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
                 }
             }
             catch (Exception ex)

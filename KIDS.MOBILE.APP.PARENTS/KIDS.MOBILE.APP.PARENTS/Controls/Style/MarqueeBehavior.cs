@@ -48,7 +48,7 @@ namespace KIDS.MOBILE.APP.PARENTS.Controls.Style
         /// </summary>
         private void StartAnimation()
         {
-            Device.StartTimer(TimeSpan.FromMilliseconds(600), () =>
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000), () =>
             {
                 label.TranslationX -= 20f;
 

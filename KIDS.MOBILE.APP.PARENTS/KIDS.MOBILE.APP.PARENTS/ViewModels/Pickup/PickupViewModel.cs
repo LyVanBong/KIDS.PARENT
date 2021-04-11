@@ -138,6 +138,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Pickup
                 foreach (var dataItem in data.Data)
                 {
                     Color color = GetColor(dataItem);
+                    if (events.ContainsKey(dataItem.Date.Value)) continue;
                     events.Add(
                         dataItem.Date.Value,
                         new DayEventCollection<object>{EventIndicatorColor = color, EventIndicatorSelectedColor = color });
