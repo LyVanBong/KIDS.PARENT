@@ -21,5 +21,8 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Login
         public string ClassName { get; set; }
         public string GradeName { get; set; }
         public string Picture { get; set; }
+        public string Banner { get; set; }
+        public string Banner2 { get; set; }
+        public string Banner3 { get; set; }
     }
 }
