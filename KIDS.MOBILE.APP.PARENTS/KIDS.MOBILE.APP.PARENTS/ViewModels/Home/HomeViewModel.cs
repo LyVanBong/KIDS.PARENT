@@ -108,7 +108,27 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
             NeededItems = new ObservableCollection<NeededItem>(CreateNeededList());
             await GetAllNews(AppConstants.User.DonVi, AppConstants.User.ClassID);
             await GetImageList();
-            CreateSliderImageList();
+            var source = new List<SliderImage>();
+            if (parameters?.ContainsKey("banner") == true)
+            {
+                var banners = (List<string>)parameters["banner"];
+                if(banners?.Any() == true)
+                {   
+                    foreach (var banner in banners)
+                    {
+                        if (!string.IsNullOrEmpty(banner)) source.Add(new Home.SliderImage { ImageUrl= $"{AppConstants.UriBaseWebForm}{banner}" });
+                    }
+                }
+            }
+            if (!source.Any())
+            {
+                CreateSliderImageList();
+            }
+            else
+            {
+                SliderImage = new ObservableCollection<SliderImage>(source);
+            }
+            
             Title = "Luôn đồng hành cùng con yêu mỗi ngày đến trường!";
         }
 
