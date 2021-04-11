@@ -12,5 +12,6 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Tuition
         public string TenDotThu { get; set; }
         public decimal? TongCong { get; set; }
         public string TrangThai { get; set; }
+        public Guid? DotThu_HocSinhID { get; set; }
     }
 }

@@ -173,9 +173,19 @@
                        BorderColor="Transparent"
                        BackgroundColor="White"
                        Grid.Row="2">
-                        <Image Source="{Binding ImageSource}"
-                           Aspect="AspectFit"
-                           HorizontalOptions="FillAndExpand"/>
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding ImageSource}"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="FillAndExpand"/>
+                            <Label FontSize="16"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding DailyComment}"
+                               LineBreakMode="WordWrap"
+                               Margin="10,5,5,5"/>
+
+                        </StackLayout>
                     </Frame>
 
                     <!--Studying comment-->

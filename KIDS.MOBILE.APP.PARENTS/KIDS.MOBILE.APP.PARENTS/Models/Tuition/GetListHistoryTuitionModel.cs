@@ -12,7 +12,9 @@ namespace KIDS.MOBILE.APP.PARENTS.Models.Tuition
         public Nullable<int> SoBuoi { get; set; }
         public Nullable<decimal> MucThu { get; set; }
         public Nullable<decimal> MienGiam { get; set; }
+        public string SoTienDisplay { get => string.Format("{0:n}", SoTien ?? 0); }
         public Nullable<decimal> SoTien { get; set; }
+        public string MienGiamDisplay { get => string.Format("{0:n}", MienGiam ?? 0); }
         public Nullable<System.DateTime> Ngay { get; set; }
         public string GhiChu { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

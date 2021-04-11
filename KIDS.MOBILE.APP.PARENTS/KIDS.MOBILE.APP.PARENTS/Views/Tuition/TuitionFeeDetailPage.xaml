@@ -91,7 +91,7 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Số tiền : "/>
-                                                <Span Text="{Binding SoTien}" TextColor="Blue" FontAttributes="Bold"/>
+                                                <Span Text="{Binding SoTienDisplay}" TextColor="Blue" FontAttributes="Bold"/>
                                                 <Span Text=" VND"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -101,7 +101,7 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Miễn giảm : "/>
-                                                <Span Text="{Binding MienGiam}" TextColor="Red" FontAttributes="Bold"/>
+                                                <Span Text="{Binding MienGiamDisplay}" TextColor="Red" FontAttributes="Bold"/>
                                                 <Span Text=" VND"/>
                                             </FormattedString>
                                         </Label.FormattedText>
