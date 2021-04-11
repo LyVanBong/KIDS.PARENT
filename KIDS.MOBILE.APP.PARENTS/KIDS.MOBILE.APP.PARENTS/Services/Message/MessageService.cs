@@ -17,15 +17,16 @@ namespace KIDS.MOBILE.APP.PARENTS.Services.Message
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<List<StudentMessageSentModel>>> GetAllSentMessage(string studentId)
+        public async Task<ResponseModel<List<StudentMessageSentModel>>> GetAllSentMessage(string studentId, string classId)
         {
             try
             {
                 var para = new List<RequestParameter>()
                 {
-                    new RequestParameter("StudentID", studentId)
+                    new RequestParameter("StudentID", studentId),
+                    new RequestParameter("ClassID", classId)
                 };
-                var data = await _requestProvider.GetAsync<List<StudentMessageSentModel>>("Communication/Select/Student", para);
+                var data = await _requestProvider.GetAsync<List<StudentMessageSentModel>>("Communication/Select/TeacherToStudent", para);
                 return data;
             }
             catch (Exception)

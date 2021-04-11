@@ -20,10 +20,10 @@ namespace KIDS.MOBILE.APP.PARENTS.Views.MedicineAdvise
             vm = (MedicineAdviseViewModel)this.BindingContext;
         }
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    vm.OnAppearing();
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.OnAppearing();
+        }
     }
 }
