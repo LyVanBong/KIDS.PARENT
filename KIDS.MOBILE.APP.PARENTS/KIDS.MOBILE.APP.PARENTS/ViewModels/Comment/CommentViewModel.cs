@@ -90,6 +90,13 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             set => SetProperty(ref pooNumber, value);
         }
 
+        private string dailyComment;
+        public string DailyComment
+        {
+            get => dailyComment;
+            set => SetProperty(ref dailyComment, value);
+        }
+
         public DelegateCommand ThanksCommand { get; }
 
         private IActivityService _activityService;
@@ -114,7 +121,7 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
             {
                 IsLoading = true;
                 base.Initialize(parameters);
-                var date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                var date = DateTime.Now;
                 await GetAttendanceForMonth(date);
                 await GetSleepActivity(date);
                 await GetPooActivity(date);
@@ -140,21 +147,18 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Comment
         {
             try
             {
-                var startDate = new DateTime(date.Year, date.Month, 1);
-                var data = await _leaveRequestService.GetAttendanceForMonth(AppConstants.User.ClassID.ToString(),
-                    AppConstants.User.StudentID.ToString(),
-                    startDate,
-                    startDate.AddMonths(1).AddDays(-1));
+                var data = await _activityService.GetMorningActivity(AppConstants.User.StudentID, AppConstants.User.ClassID, date.ToString("yyyy-MM-dd")); ;
                 if (data?.Data?.Any() == true)
                 {
                     var comment = data.Data.First();
-                    StudyingComment = $"{comment.StudyCommentAM}{comment.StudyCommentPM}";
-                    EatingComment = $"{comment.MealComment0}{comment.MealComment1}{comment.MealComment2}{comment.MealComment3}{comment.MealComment4}{comment.MealComment5}";
-                    SleepingComment = $"{comment.SleepComment}";
-                    PooComment = $"{comment.HygieneComment}";
-                    ImageSource = !string.IsNullOrEmpty(comment.Picture) ? new Uri($"{AppConstants.UriBaseWebForm}{comment.Picture}") : null;
-                    WeeklyComment = $"{comment.WeekComment}";
-                    WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
+                    StudyingComment = $"{comment.NhanXetHoc}";
+                    EatingComment = $"{comment.NhanXetAn}";
+                    SleepingComment = $"{comment.NhanXetNgu}";
+                    PooComment = $"{comment.NhanXetWC}";
+                    DailyComment = $"{comment.NhanXetNgay}";
+                    ImageSource = !string.IsNullOrEmpty(comment.PhieuBeNgoanNgay) ? new Uri($"{AppConstants.UriBaseWebForm}{comment.PhieuBeNgoanNgay}") : null;
+                    WeeklyComment = $"{comment.NhanXetTuan}";
+                    //WeeklyImageSource = !string.IsNullOrEmpty(comment.WeekPhieuBeNgoan) ? new Uri(comment.WeekPhieuBeNgoan) : null;
                 }
             }
             catch (Exception ex)

@@ -177,6 +177,10 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Login
                     UserName = Preferences.Get("UserName", string.Empty);
                 }
             }
+            else
+            {
+                UserName = Preferences.Get("UserName", string.Empty);
+            }
         }
         public override void Initialize(INavigationParameters parameters)
         {

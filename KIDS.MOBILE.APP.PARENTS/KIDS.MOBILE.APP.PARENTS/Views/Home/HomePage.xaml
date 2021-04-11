@@ -29,13 +29,14 @@
             <StackLayout HorizontalOptions="FillAndExpand"
                      Orientation="Vertical"
                      VerticalOptions="Start"
-                     HeightRequest="150"
+                     HeightRequest="180"
                      x:Name="slideImage"
                      Grid.Row="0">
                 <Label Text="{Binding Title}"
-                       FontSize="16"
+                       FontSize="14"
+                       LineBreakMode="NoWrap"
                        FontAttributes="Bold"
-                       TextColor="Blue"
+                       TextColor="#0377fc"
                        BackgroundColor="White">
                     <Label.Behaviors>
                         <behavior:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference mainPage}}"/>

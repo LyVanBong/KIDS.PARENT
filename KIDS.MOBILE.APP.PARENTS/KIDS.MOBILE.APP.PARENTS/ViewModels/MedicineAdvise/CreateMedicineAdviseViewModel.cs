@@ -48,20 +48,31 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             get => chooseImage1;
             set => SetProperty(ref chooseImage1, value);
         }
+
         private ObservableCollection<MedicineModel> _MedicineList;
         public ObservableCollection<MedicineModel> MedicineList
         {
             get => _MedicineList;
             set => SetProperty(ref _MedicineList, value);
         }
+
+        private bool _IsDeleteVisible;
+        public bool IsDeleteVisible
+        {
+            get => _IsDeleteVisible;
+            set => SetProperty(ref _IsDeleteVisible, value);
+        }
+
         private List<MedicineModel> medicineList;
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GalleryCommand { get; set; }
+        public DelegateCommand DeleteCommand { get; set; }
         private bool isUpdate;
         private MessageModel CurrentMessage { get; set; }
         private MedicineTicketModel medicineDetail;
         private List<MedicineModel> listMedicine;
         private string defaultPath = null;
+        private Guid ID = Guid.Empty;
         #endregion
 
         #region Contructor
@@ -72,13 +83,16 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
             SendCommand = new DelegateCommand(OnSendClick);
             GalleryCommand = new DelegateCommand(OnGalleryClick);
             MedicineList = new ObservableCollection<MedicineModel>();
+            DeleteCommand = new DelegateCommand(OnDelete);
         }
+
         public override void Initialize(INavigationParameters parameters)
         {
             try
             {
                 base.Initialize(parameters);
                 IsLoading = true;
+                IsDeleteVisible = false;
                 ChooseImage1 = ImageSource.FromFile("add_image.png");
                 SelectedDate = DateTime.Now;
                 SelectedFromDate = DateTime.Now;
@@ -108,6 +122,8 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                     if (parameters.ContainsKey("Id"))
                     {
                         Guid id = (Guid?)parameters["Id"] ?? Guid.Empty;
+                        ID = id;
+                        IsDeleteVisible = true;
                         medicineDetail = await _prescriptionService.GetMedicineAdviseDetail(id);
                         MessageContent = medicineDetail?.Content;
                         SelectedDate = medicineDetail?.Date != null ? DateTime.Parse(medicineDetail.Date) : DateTime.Now;
@@ -270,6 +286,32 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.MedicineAdvise
                 item.Action = 2;
             }
             MedicineList.Remove(data);
+        }
+
+        private async void OnDelete()
+        {
+            try
+            {
+                IsLoading = true;
+                var result = await _prescriptionService.DeletePrescription(new PrescriptionModel { ID = this.ID });
+                if(result?.Data > 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Thành công!", "Xoá thành công", "OK");
+                    await _navigationService.GoBackAsync();
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Lỗi!", "Xoá không thành công. Vui lòng thử laị hoặc liên hệ với admin.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Lỗi!", "Xoá không thành công. Vui lòng thử laị hoặc liên hệ với admin.", "OK");
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
         #endregion
     }

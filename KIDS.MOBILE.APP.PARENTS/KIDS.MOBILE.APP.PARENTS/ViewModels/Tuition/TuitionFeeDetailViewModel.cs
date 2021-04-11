@@ -40,16 +40,25 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Tuition
             _tuitionService = tuitionService;
         }
 
-        public override void Initialize(INavigationParameters parameters)
+        public async override void Initialize(INavigationParameters parameters)
         {
-            base.Initialize(parameters);
-            if (parameters.ContainsKey("tuition"))
+            try
             {
-                TuitionInformation = (TuitionInformationModel)parameters["tuition"];
-                Task.Run(async () =>
+                IsLoading = true;
+                base.Initialize(parameters);
+                if (parameters.ContainsKey("tuition"))
                 {
+                    TuitionInformation = (TuitionInformationModel)parameters["tuition"];
                     await GetInformationList();
-                });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion
