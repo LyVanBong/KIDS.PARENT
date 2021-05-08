@@ -134,8 +134,24 @@ namespace KIDS.MOBILE.APP.PARENTS.ViewModels.Home
 
         private async void OnMenuClicked(MenuItem sender)
         {
-            if (!string.IsNullOrEmpty(sender.NavigateTo))
+            if (!string.IsNullOrEmpty(sender.NavigateTo)) 
+            {
                 await _navigationService.NavigateAsync(sender.NavigateTo);
+            }
+            else
+            {
+                var user = AppConstants.User;
+                string uri = string.Empty;
+                if (sender.Title == "Đánh giá định kỳ")
+                {   
+                    uri = $"http://school.hkids.edu.vn/Students/AssesApp.aspx?SchoolID={user.DonVi}&GradeID={user.ClassID}&StudentID={user.StudentID}";
+                }
+                else
+                {
+                    uri = $"http://school.hkids.edu.vn/students/surveyGridApp.aspx?SchoolID={user.DonVi}&GradeID={user.GradeID}&StudentID={user.StudentID}";
+                }
+                await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
         }
 
         private async Task GetAllNews(string schoolId, string classId)
